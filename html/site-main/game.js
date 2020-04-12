@@ -433,11 +433,12 @@ function UpdateCrafterManagerMenu(){
 };
 
 var sections = {
-  'Terra': '<h6>Tier 1 (1-10ℨ)</h6>',
-  'Salis Primis': '<h6>Tier 1 (10-100ℨ)</h6>',
-  'Salis Secundus': '<h6>Tier 2 (100-1000ℨ)</h6>',
-  'Salis Tertius': '<h6>Tier 3 (1000-10000ℨ)</h6>',
-}
+  'Caloric': '<h6>Tier 1 (Primes & Fundamentals)</h6>',
+  'Terra': '<h6>Tier 2 (1-10ℨ)</h6>',
+  'Salis Primis': '<h6>Tier 3 (10-100ℨ)</h6>',
+  'Salis Secundus': '<h6>Tier 4 (100-1000ℨ)</h6>',
+  'Salis Tertius': '<h6>Tier 5 (1000-10000ℨ)</h6>',
+};
 function UpdateCodex(){
   var curr_str = $('#codexReagents').html();
   var codex_str = '';
