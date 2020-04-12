@@ -76,6 +76,7 @@ var recipes = {
               [{'Borium':2},18, {'Bismetum':1, 'Aër':1},54,],
               [{'Lithium':2},15, {'Hydragyrum':1, 'Ignis':1},45,],
               [{'Magnesium':2},18, {'Lithium':1, 'Ignis':1},52,],
+              [{'Kalium':2},18, {'Lithium':1, 'Aqua':1},52,],
               [{'Phosphorus':2},21, {'Magnesium':1, 'Aër':1},63,],
               [{'Platinum':2},21, {'Borium':1, 'Ignis':1},63,],
               [{'Zincum':2},24, {'Magnesium':1, 'Terra':1},72,],
@@ -93,6 +94,7 @@ var recipes = {
              [{'Bismetum':1, 'Aër':1},60,{'Borium':2},6],
              [{'Hydragyrum':1, 'Ignis':1},50,{'Lithium':2},5],
              [{'Lithium':1, 'Ignis':1},60,{'Magnesium':2},6],
+             [{'Lithium':1, 'Aqua':1},60,{'Kalium':2},6],
              [{'Magnesium':1, 'Aër':1},70,{'Phosphorus':2},7],
              [{'Borium':1, 'Ignis':1},70,{'Platinum':2},7],
              [{'Magnesium':1, 'Terra':1},80,{'Zincum':2},8],
@@ -122,6 +124,44 @@ var operations = {
   '♐︎': 'ceration'
 };
 
+var symbol_index = {
+  '∴': 'fission',
+  '∵': 'fusion',
+  '♒︎': 'multiplication',
+  '♓︎': 'projection',
+  '♐︎': 'ceration',
+  'C': 'Caloric Fluid',
+  '🝎': 'Caput Mortum',
+  '☿': 'Hydragyrum',
+  '🜍': 'Sulphuris',
+  '🜔': 'Salis',
+  '🜃': 'Terra',
+  '🜄': 'Aqua',
+  '🜁': 'Aër',
+  '🜂': 'Ignis',
+  '🜔': 'Salis',
+  '🜔\'': 'Salis Primis',
+  '🜔\'\'': 'Salis Secundus',
+  '🜔\'\'\'': 'Salis Tertius',
+  '♁': 'Stibium',
+  '🜺': 'Arsenicum',
+  '🜘': 'Bisemutum',
+  '=': 'Borium',
+  'L': 'Lithium',
+  '⊛': 'Magnesium',
+  'P': 'Phosphorus',
+  '☽☉': 'Platinum',
+  'K': 'Kalium',
+  'Z': 'Zincum',
+  '♄': 'Plumbum',
+  '♃': 'Stannum',
+  '♂': 'Ferrum',
+  '♀': 'Cuprum',
+  '☽': 'Argentum',
+  '☉': 'Aurum',
+  '🜀': 'Quintessence',
+  '|☉|': 'Aurum Potabile'
+}
 
 var time = 0;
 var heatTimer = 0;
@@ -337,7 +377,7 @@ function UpdateCycle(){
       Buy(limitListDesig[i], limitListPrice[i], item, true);
     };
   });
-
+  UpdateJournal();
   UpdateSave();
 };
 
@@ -378,7 +418,23 @@ function UpdateBuyer(){
 function UpdateCrafter(){
   var f = $('#autoCraftFormula').val().replace('autoCraftFormula','');
   var a = parseInt($('#autoCraftAmount').val().replace('autoCraftAmount',''));
-  console.log('Trying to autocraft', f, a);
+  console.log('Trying to make crafter for', f, a);
+  if (isNaN(a)){
+    $('#errorCrafterAmount').modal('show');
+    return;
+  }
+  var failed = false;
+  f.split(' ').forEach((item, i) => {
+    if (symbol_index[item] == undefined){
+      $('#errorCrafterFormula').modal('show');
+      failed = true;
+    }
+  });
+
+  if (failed){
+    return;
+  }
+
   var cost = a*100;
   if (Player.stats['Caloric'][0]>=cost){
     Player.stats['Caloric'][0] -= cost;
@@ -395,7 +451,6 @@ function UpdateCrafter(){
 function UpdateCrafterManager(){
   Object.keys(jobList).forEach((item, i) => {
     var k = item.split(' ');
-    console.log('K', k);
     var label = 'autoCraft'+([operations[k[0]], k.slice(1).map((x)=>(LookupItem(x,'symbol'))).join('-')].join('-'));
     console.log ('LABELIS', label);
     var new_val = parseInt($('#'+label).val().replace(label,''));
@@ -439,6 +494,7 @@ var sections = {
   'Salis Secundus': '<h6>Tier 4 (100-1000ℨ)</h6>',
   'Salis Tertius': '<h6>Tier 5 (1000-10000ℨ)</h6>',
 };
+
 function UpdateCodex(){
   var curr_str = $('#codexReagents').html();
   var codex_str = '';
@@ -457,6 +513,26 @@ function UpdateCodex(){
   if (curr_str!=codex_str){
     $('#codexReagents').html(codex_str);
   };
+};
+
+var curr_entry = 2;
+var incomplete_entries = ['Ignis', 'Salis Primis', 'Lithium', 'Amaneuensis']
+
+function UpdateJournal(){
+  incomplete_entries.forEach((item, i) => {
+    if (LookupInventory(item)){
+      console.log('new entry', incomplete_entries);
+      incomplete_entries.splice(i,1);
+      $('#journal').html('<b>Entry '+curr_entry+'</b>'+$('#entry_'+item.replace(' ', '_')).html()+$('#journal').html()+'<br>');
+      curr_entry += 1;
+    }else if ((item=='Amaneuensis') && (Object.keys(jobList).length!=0)) {
+        incomplete_entries.pop(i);
+        $('#journal').html('<b>Entry '+curr_entry+'</b>'+$('#entry_Amaneuensis').html()+$('#journal').html()+'<br>');
+        curr_entry += 1;
+    };
+  });
+
+
 }
 
 function getMaterials(target,amts){

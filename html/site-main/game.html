@@ -158,14 +158,62 @@
         </div>
         <div class="col-sm" style="font-family: \'Felipa\', cursive; font-size: 14pt">
           <h3>Journal<h3>
-          <div class="overflow-auto" id="journal" style="width: 18rem; height: 10rem; font-family: 'Tangerine', cursive; font-size: 18pt">
+          <div class="overflow-auto" style="height: calc(100vh - 110px); overflow-y: scroll; font-family: 'Tangerine', cursive; font-size: 18pt">
+            <div id="entry_Amaneuensis" hidden>
+              <p>
+                My first apprentice- now, I may be properly addressed as Master. He is an honest soul, scrawny, eager to perform any "alchemical" task no matter how menial. I ask if silence disturbs him, and he replies with some optimistic pean about the greatest minds working in solitude. I wonder whether to tell him that this "great mind" might fire him without warning, which was why he was paid in lump sum rather than by the hour.
+              </p>
+              <p>
+                Is it wrong, that I cannot feel a touch of affinity for this boy whose age I shared so recently?
+              </p>
+            </div>
+            <div id="entry_Lithium" hidden>
+              <p>
+                Lately, I've found myself more and more often questioning my decision to abscond to this damned city. The thought haunts me through my meals, it haunts me as I law down for a scant few moments of rest each night, it demands my attention as I wrestle with beakers and pestles. Every now and then I glance towards the door, and a pang seems to rip through me when I confirm again the conspicuous lack of a letter-pile. So often I thought them distractions, foolish things to disturb me from my path to greatness, but now...
+              </p>
+              <p>
+                Alchemy is a solitary quest for understanding- I march alone. I cannot afford to let these human things attach me. Henceforth I will seal shut the letter-flap and remove the visitor's bell. It's not as if they've been in much demand, at any rate.
+              </p>
+              <p>
+                In other news, I have recently created lithium.
+              </p>
+            </div>
+            <div id="entry_Salis_Primis" hidden>
+              <p>
+                Success! Salt rises, like so much dust, and entwines itself with the air into a higher, more pure form. The mysteries of the world unveiled <i>ex nihilo</i>. From here, the realm of production alchemy awaits. Were I still within the academy, no doubt I would have found some plebian to gloat- but here, I have only my reflection in these dull beakers for company.
+              </p>
+              <p>
+                The disturbances to my hovel have not ceased. Thankfully, I answer to no land-lord or neighbour, and certainly intend to keep it that way, save for any apprentices I may choose to employ. I must endeavour to minimise any deletrious intrusions reality may deign to make upon my work: no more contemplative strolls, lest any theives see any opportunity as they have so surely been waiting.
+              </p>
+              <p>
+                I must order more locks.
+              </p>
+            </div>
+            <div id="entry_Ignis" hidden>
+              <p>
+                There is a hint of uncertainty in the air. Shifting shadows, murmurs in crowds, rumours that shadow the markets and apothecaries. I have not made the acquaintance of this city for long, but I know its humours well enough to feel the tide turning. The great game is afoot.
+              </p>
+              <p>
+                I cannot fathom how this will affect my work- just today I have finally begun the work of creating the elemental essences. But in truth, I cannot chance leaving my workstation so often. Just the previous day I returned to find my lock tampered with, my windows disturbed. I must be careful, now.
+              </p>
+              <p>
+                I will not be stopped again.
+              </p>
+            </div>
             <br>
-            <b>First Entry</b><br>But two days ago I would have laughed at the idea of sitting here, scribbling on foolscap in the ruins of some second-rate knockoff alchemist's hovel. I! Greatest student of natural philosophy in a generation, kicked out the the Academy for plagiarism! That dotard of a professor saw my work and was jealous- I know it.<br>
-            <br>
-            I see it now. Natural philsophy was never for me. Yes, I will persue the alchemical arts instead, <i>elixir vitae, aurum potabile, lapis philosophorum</i>. I will complete the work without these so-called Professors, and show them how wrong they were. Mark my words! Someday the proctors of the Academy will grovel before me, as I hold aloft the secret to transubstantiation, and I will say<br>
-            <br>
-            "No."
-            <br>
+            <div id="journal">
+              <b>Entry 1</b>
+              <p>
+                But two days ago I would have laughed at the idea of sitting here, scribbling on foolscap in the ruins of some second-rate knockoff alchemist's hovel. I! Greatest student of natural philosophy in a generation, kicked out the the Academy for plagiarism! That dotard of a professor saw my work and was jealous- I know it.
+              </p>
+              <p>
+                I see it now. Natural philsophy was never for me. Yes, I will persue the alchemical arts instead, <i>elixir vitae, aurum potabile, lapis philosophorum</i>. I will complete the work without these so-called Professors, and show them how wrong they were. Mark my words! Someday the proctors of the Academy will grovel before me, as I hold aloft the secret to transubstantiation, and I will say
+              </p>
+              <p>
+                "No."
+              </p>
+            </div>
+
           </div>
         </div>
       </div>
@@ -267,6 +315,44 @@
           </div>
           <div class="modal-body">
             Insufficient caloric fluid to complete purchase.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="errorCrafterFormula" tabindex="-1" role="dialog" aria-labelledby="errorCrafterFormulaTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="errorCrafterFormulaTitle">Error</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Incorrect alchemical formula.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="errorCrafterAmount" tabindex="-1" role="dialog" aria-labelledby="errorCrafterAmountTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="errorCrafterAmountTitle">Error</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Please specify number of amaneuenses to hire.
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -457,6 +543,7 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-3.2.1.slim.min.js"><\/script>')</script>
     <script src="../../assets/js/vendor/popper.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
     <script src="game.js"></script>
   </body>
 </html>
