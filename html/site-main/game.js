@@ -83,10 +83,10 @@ var recipes = {
 
   // ∵ Unison
   'fusion': [[{'Caloric':40},0,{'Ignis':2},1],
-             [{'Sulphuris':2},20,{'Ignis':2},1],
-             [{'Sulphuris':1, 'Salis':1},20,{'Aër':2},1],
-             [{'Hydragyrum':2},20,{'Aqua':2},1],
-             [{'Hydragyrum':1, 'Salis':1},20,{'Terra':2},1],
+             [{'Sulphuris':2},10,{'Ignis':2},1],
+             [{'Sulphuris':1, 'Salis':1},10,{'Aër':2},1],
+             [{'Hydragyrum':2},10,{'Aqua':2},1],
+             [{'Hydragyrum':1, 'Salis':1},10,{'Terra':2},1],
              [{'Aër':1, 'Salis':1},10,{'Salis Primis':1},1],
              [{'Hydragyrum':1, 'Aqua':1},50,{'Arsenicum':2},5],
              [{'Hydragyrum':1, 'Terra':1},50,{'Bismetum':2},5],
