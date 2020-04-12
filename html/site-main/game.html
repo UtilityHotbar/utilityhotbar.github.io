@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../assets/img/favicons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicons/favicon-16x16.png">
+    <link href="https://fonts.googleapis.com/css2?family=Felipa&family=Mrs+Saint+Delafield&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+    <title>Mass Defect</title>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="starter-template.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#"><img src="../../assets/img/favicons/favicon-32x32.png" alt=""></img></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+          <li class="nav-item active">
+            <a class="nav-link" href="game.html">Game<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#helpModal">Help</a>
+              <a class="dropdown-item disabled" href="#">Save</a>
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#creditModal">Credits</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+
+      <div class="starter-template">
+        <h1 style="font-family: \'Felipa\', cursive">Mass Defect</h1>
+        <p class="lead" style="font-family: \'Felipa\', cursive">Welcome, alchemist.</p>
+      </div>
+
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm" style="font-family: \'Felipa\', cursive; font-size: 14pt">
+          <h3>Inventory<h3>
+          <br>
+          <div id='time' style="font-size: 14pt"></div>
+          <div id='stats' style="font-family: \'Felipa\', cursive; font-size: 14pt">
+          </div>
+          <button type="button" class="btn btn-secondary" id="CollectCalories">Collect excess heat</button>
+          <br><br>
+          <button type="button" class="btn btn-secondary" id="ShowCodex" data-toggle="modal" data-target="#codexModal">Codex Alchemicus Democritus</button>
+          <font size=-0.75 id="caloricWait" class="form-text text-muted"></font>
+        </div>
+        <div class="col-sm" style="font-family: \'Felipa\', cursive; font-size: 14pt">
+          <h3>Deeds<h3>
+          <br>
+          <div class="card" style="width: 18rem;font-family: \'Felipa\', cursive; font-size: 14pt">
+            <div class="card-body">
+              <h5 class="card-title text-center">∴</h5>
+              <p class="card-text">Process of Division</p>
+              <div style='font-size: 12pt'>
+                <label for="fissionMenu">Primary Reagent:</label>
+                <select id="fissionMenu">
+
+                </select>
+              </div>
+              <br>
+              <button type="button" class="btn btn-primary bg-secondary border-secondary" id="fission">Invoke</button>
+              <button type="button" class="btn btn-primary bg-secondary border-secondary" data-toggle="modal" data-target="#fissionModal">Codex</button>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;font-family: \'Felipa\', cursive; font-size: 14pt">
+            <div class="card-body">
+              <h5 class="card-title text-center">∵</h5>
+              <p class="card-text">Process of Unison</p>
+              <div style='font-size: 12pt'>
+                <label for="fusionMenu1">Primary Reagent:</label>
+                <select id="fusionMenu1">
+
+                </select>
+                <label for="fusionMenu2">Secondary Reagent:</label>
+                <select id="fusionMenu2">
+
+                </select>
+              </div>
+              <br>
+              <button type="button" class="btn btn-primary bg-secondary border-secondary" id="fusion">Invoke</button>
+              <button type="button" class="btn btn-primary bg-secondary border-secondary" data-toggle="modal" data-target="#fusionModal">Codex</button>
+            </div>
+          </div>
+
+          <div id="Processes">
+
+          </div>
+
+          <div id="Tasks">
+
+          </div>
+
+          <div class="card" style="width: 18rem;font-family: \'Felipa\', cursive; font-size: 12pt">
+            <div class="card-body">
+              <h5 class="card-title text-center">Alchemical Reserves</h5>
+              <p class="card-text">Every alchemist requires a source of primes, and certain quarters are happy to provide without prying questions.</p>
+              <label for="buyMenu">Products:</label>
+              <select id="buyMenu">
+                <option value="NULL|0">---</option>
+                <option value="Sulphuris|5">Sulphuris (5ℨ)</option>
+                <option value="Hydragyrum|5">Hydragyrum (5ℨ)</option>
+                <option value="Salis|1">Salis (1ℨ)</option>
+              </select>
+              <button type="button" class="btn btn-primary bg-success border-success" id="buy">Buy</button>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;font-family: \'Felipa\', cursive; font-size: 12pt">
+            <div class="card-body">
+              <h5 class="card-title text-center">Alchemical Amaneuensis</h5>
+              <p class="card-text">An apprentice, to record and perform menial processes.</p>
+              <button type="button" data-toggle="modal" data-target="#autoCraftModal" class="btn btn-primary bg-info border-info">Hire</button>
+            </div>
+          </div>
+
+          <div class="card" style="width: 18rem;font-family: \'Felipa\', cursive; font-size: 12pt">
+            <div class="card-body">
+              <h5 class="card-title text-center">Alchemical Achatour</h5>
+              <p class="card-text">A buyer, to visit certain obscure apothecaries and purveyors of nature.</p>
+              <button type="button" data-toggle="modal" data-target="#autoBuyModal" class="btn btn-primary bg-info border-info">Hire</button>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-sm" style="font-family: \'Felipa\', cursive; font-size: 14pt">
+          <h3>Journal<h3>
+          <div class="overflow-auto" id="journal" style="width: 18rem; height: 10rem; font-family: 'Tangerine', cursive; font-size: 18pt">
+            <br>
+            <b>First Entry</b><br>But two days ago I would have laughed at the idea of sitting here, scribbling on foolscap in the ruins of some second-rate knockoff alchemist's hovel. I! Greatest student of natural philosophy in a generation, kicked out the the Academy for plagiarism! That dotard of a professor saw my work and was jealous- I know it.<br>
+            <br>
+            I see it now. Natural philsophy was never for me. Yes, I will persue the alchemical arts instead, <i>elixir vitae, aurum potabile, lapis philosophorum</i>. I will complete the work without these so-called Professors, and show them how wrong they were. Mark my words! Someday the proctors of the Academy will grovel before me, as I hold aloft the secret to transubstantiation, and I will say<br>
+            <br>
+            "No."
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+    </main>
+
+    <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="helpModalTitle">Help</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <font size=-3><i>
+                <p><b>Excerpt from the </i>Codex Alchemicus Democritus<i></b></p>
+                <p>The fundamental underpinnings of modern Democritic, or atomic, alchemy were first uncovered at the turn of the century by the famed theologian and alchemist Bartholomew of Rome (Known in certain realms as the syncretic quasi-spiritual mythic figure </i>Zacharius Barthus<i>). In his seminal </i>Ars Alchemica<i> he proposes three fundamental rules of atomic alchemy (transcribed for modern audiences):</i></p>
+                <ol><i>
+                  <li>All materials are composed of atoms, indivisible particles each possessing an </i>atomic mass<i> and </i>alchemical quiddity<i>.</li>
+                  <li>Reagents may be combined via atomic unison to create a product of </i>higher quiddity<i> but </i>lesser mass<i>.</li>
+                  <li>A reagent may be separated via atomic division to create two products of </i>lower quiddity<i> but </i>equivalent mass<i>. Excess energy is released in this process due to loss of quiddity.</li></i>
+                </ol>
+              </font>
+            </div>
+            <p>
+              Hi! Welcome to Mass Defect, the particle physics alchemy incremental (?) game (??) that challenges you to make the philosopher's stone! (<b>Ed. note:</b> Philosopher's Stone now available in Ultra-Rare or above loot boxes for subscription tiers Double Black Diamond and above, please contact  <a href="NO" data-toggle="tooltip" title data-original-title="Please don't">give-me-money@massdefect.com</a> for mortgage and payment plans)
+            </p>
+            <p>
+              While the game may seem somewhat confusing at first, you should know that there are really two things you can do: Combine elements with heat (Caloric) to make new elements, and break up existing elements for heat and their components. The first is atomic fusion or <i>unison</i> (∵), the second, atomic fission or <i>division</i> (∴). Both require activation energy (measured in units of Caloric fluid).
+            </p>
+            <p>
+              Starting with the three alchemical primes of Mercury (Hydragyrum), Sulphur (Sulphuris) and Salt (Salis), you will have to recreate elements in the hopes of ultimately reaching Gold (Aurum). If that seems hard, don't worry! You have a lot of tools to help you.
+            </p>
+            <p>
+
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="creditModal" tabindex="-1" role="dialog" aria-labelledby="creditModalTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="creditModalTitle">Credits</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            A game by rndm.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="errorModalTitle">Error</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Insufficient reagents/caloric fluid to perform alchemical operation.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="errorBuyModal" tabindex="-1" role="dialog" aria-labelledby="errorModalTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="errorBuyModalTitle">Error</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Insufficient caloric fluid to complete purchase.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="newElementModal" tabindex="-1" role="dialog" aria-labelledby="newElementModalTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newElementModalTitle">New Element</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <i>Congratulations! You have discovered a new element:</i>
+            <div class="container" id="newElement">
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="fissionModal" tabindex="-1" role="dialog" aria-labelledby="fissionModalTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="fissionModalTitle">Division</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p><b>Excerpt from the <i>Codex Alchemicus Democritus</i></b></p>
+            From one, two. The process of division reduces an alchemical element to two lesser elements. For alchemical primes, this reduces them to <i>caput mortem</i>. The process is exothermic, allowing more caloric fluid to be harvested from the resulting combustion than supplied. This effect is due to the demotion of matter to a lower alchemical state and the resultant conversion of alchemical quiddity to heat.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="fusionModal" tabindex="-1" role="dialog" aria-labelledby="fusionModalTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="fusionModalTitle">Unison</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p><b>Excerpt from the <i>Codex Alchemicus Democritus</i></b></p>
+            From two, one. The unison operation promotes two reagents into a single product of elevated alchemical quiddity. It is often the case (excepting elemental essences) that the resulting product possesses less weight than the sum of the two reagents- this difference in weight comes from the transmutation of matter into alchemical quiddity. The material cost of any fundamental transmutation is known as the mass defect. This promotion also requires more heat to induce, and is therefore an endothermic reaction.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="codexModal" tabindex="-1" role="dialog" aria-labelledby="codexModalTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="codexModalTitle">Codex Alchemicus Democritus</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ul class="nav nav-tabs">
+              <li class="nav-item"><a data-toggle="tab" class="active nav-link" href="#introduction">Introduction</a></li>
+              <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#processes">Processes</a></li>
+              <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#reagents">Reagents</a></li>
+            </ul>
+
+            <div class="tab-content">
+              <div id="introduction" class="tab-pane fade show active">
+                <br>
+                <h5>Introduction</h5>
+                <p>
+                  The fundamental underpinnings of modern Democritic, or atomic, alchemy were first uncovered at the turn of the century by the famed theologian and alchemist Bartholomew of Rome (Known in certain realms as the syncretic quasi-spiritual mythic figure <i>Zacharius Barthus</i>). In his seminal <i>Ars Alchemica</i> he proposes three fundamental rules of atomic alchemy (transcribed for modern audiences):
+                </p>
+                <ol>
+                  <li>All materials are composed of atoms, indivisible particles each possessing an <i>atomic mass</i> and <i>alchemical quiddity</i>.</li>
+                  <li>Reagents may be combined via atomic unison to create a product of <i>higher quiddity</i> but <i>lesser mass</i>.</li>
+                  <li>A reagent may be separated via atomic division to create two products of <i>lower quiddity</i> but <i>equivalent mass</i>. Excess energy is released in this process due to loss of quiddity.</li>
+                </ol>
+              </div>
+              <div id="reagents" class="tab-pane fade">
+                <br>
+                <h5>Alchemical Reagents</h5>
+                <div id="codexReagents">
+
+                </div>
+              </div>
+              <div id="processes" class="tab-pane fade">
+                <br>
+                <h5>Alchemical Processes</h5>
+                <h6>Division</h6>
+                <p>
+                  From one, two. The process of division reduces an alchemical element to two lesser elements. For alchemical primes, this reduces them to <i>caput mortem</i>. The process is exothermic, allowing more caloric fluid to be harvested from the resulting combustion than supplied. This effect is due to the demotion of matter to a lower alchemical state and the resultant conversion of alchemical quiddity to heat.
+                </p>
+                <h6>Unison</h6>
+                <p>
+                  From two, one. The unison operation promotes two reagents into a single product of elevated alchemical quiddity. It is often the case (excepting elemental essences) that the resulting product possesses less weight than the sum of the two reagents- this difference in weight comes from the transmutation of matter into alchemical quiddity. The material cost of any fundamental transmutation is known as the mass defect. This promotion also requires more heat to induce, and is therefore an endothermic reaction.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="autoBuyModal" tabindex="-1" role="dialog" aria-labelledby="autoBuyModalTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="autoBuyModalTitle">Alchemical Achatour</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>The man clad in swarthy robes grins at you. "Yes," he mutters. "Ingredients, at very reasonable prices." He is so polite as to offer you no up-front fee, except for a "small premium" of caloric fluid he skims off the top of each purchase. You remind yourself to weigh caloric a little more liberally as he scurries off.</p>
+            <p><i>If the supply of the following primes drops below 5 automatically purchase:</i><p>
+            <label for="autoBuyHydragyrum">Hydragyrum (6ℨ):</label><input type="number" id="autoBuyHydragyrum" class="form-control" value="0" min="0"><br>
+            <label for="autoBuySulphuris">Sulphuris (6ℨ):</label><input type="number" id="autoBuySulphuris" class="form-control" value="0" min="0"><br>
+            <label for="autoBuySalis">Salis (3ℨ):</label><input type="number" id="autoBuySalis" class="form-control" value="0" min="0">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal" id="autoBuyButton">Confirm</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="autoCraftModal" tabindex="-1" role="dialog" aria-labelledby="autoCraftModalTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="autoCraftModalTitle">Alchemical Amaneuensis</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>The apprentice nods nervously as you gesture around the laboratory. He's young- a fresh reject from the Academy admissions trials, still brimming with hope for becoming a "real alchemist". The Colleges of Alchemical Engineering and Theoretical Alchemy may have rejected them, but you will still find a use- if only for automating the most basic of functions.</p>
+            <p><i>Enter alchemical formula to transcribe: (SYMBOL REAGENT-1 REAGENT-2)</i><p>
+            <label for="autoCraftFormula">Formula:</label><input type="text" id="autoCraftFormula" class="form-control" placeholder="Example: ∵ 🜍 🜔 / ∴ 🜍 /..."><br>
+            <label for="autoCraftAmount">Amount:</label><input type="number" id="autoCraftAmount" class="form-control" min="0" placeholder="Amount to hire">
+            <small id="autoCraftAmountHelp" class="form-text text-muted">1 amaneuensis = 1 reaction/🝮)</small>
+            <div class="alert alert-info"><b>Manage Existing Amaneuenses:</b>
+              <div id="autoCraftManager">
+              </div>
+              <button type="button" class="btn btn-success" id="autoCraftManagerButton" data-dismiss="modal">Confirm</button>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal" id="autoCraftButton">Hire (100ℨ/Amaneuensis)</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-3.2.1.slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="game.js"></script>
+  </body>
+</html>
