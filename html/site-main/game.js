@@ -177,11 +177,13 @@ if (previous_save == null){
       'Platinum': [0, 0.4],
       'Kalium': [0, 0.3],
       'Zincum': [0, 0.3],
+
       'Salis Secundus': [0, 0.5],
       'Plumbum': [0, 0.5],
       'Stannum': [0, 0.55],
       'Ferrum': [0, 0.6],
       'Cuprum': [0, 0.65],
+
       'Salis Tertius': [0, 0.75],
       'Argentum': [0, 0.8],
       'Aurum': [0, 0.9],
@@ -430,10 +432,19 @@ function UpdateCrafterManagerMenu(){
 
 };
 
+var sections = {
+  'Terra': '<h6>Tier 1 (1-10ℨ)</h6>',
+  'Salis Primis': '<h6>Tier 1 (10-100ℨ)</h6>',
+  'Salis Secundus': '<h6>Tier 2 (100-1000ℨ)</h6>',
+  'Salis Tertius': '<h6>Tier 3 (1000-10000ℨ)</h6>',
+}
 function UpdateCodex(){
   var curr_str = $('#codexReagents').html();
   var codex_str = '';
   Object.keys(Player.stats).forEach((item, i) => {
+    if (Object.keys(sections).includes(item)){
+      codex_str += sections[item];
+    }
     var looked = LookupItem(item);
     if (LookupInventory(item)){
 
