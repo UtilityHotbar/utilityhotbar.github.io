@@ -10,6 +10,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicons/favicon-16x16.png">
     <link href="https://fonts.googleapis.com/css2?family=Felipa&family=Mrs+Saint+Delafield&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vollkorn+SC&display=swap" rel="stylesheet">
     <title>Mass Defect</title>
 
 
@@ -73,9 +75,8 @@
           <div id='stats' style="font-family: \'Felipa\', cursive; font-size: 14pt">
           </div>
           <button type="button" class="btn btn-secondary" id="CollectCalories">Collect excess heat</button>
-          <br><br>
-          <button type="button" class="btn btn-secondary" id="ShowCodex" data-toggle="modal" data-target="#codexModal">Codex Alchemicus Democritus</button>
           <font size=-0.75 id="caloricWait" class="form-text text-muted"></font>
+          <button type="button" class="btn btn-secondary" id="ShowCodex" data-toggle="modal" data-target="#codexModal">Codex Alchemicus Democritus</button>
         </div>
         <div class="col-sm" style="font-family: \'Felipa\', cursive; font-size: 14pt">
           <h3>Deeds<h3>
@@ -91,8 +92,8 @@
                 </select>
               </div>
               <br>
-              <button type="button" class="btn btn-primary bg-secondary border-secondary" id="fission">Invoke</button>
-              <button type="button" class="btn btn-primary bg-secondary border-secondary" data-toggle="modal" data-target="#fissionModal">Codex</button>
+              <button type="button" class="btn btn-secondary" id="fission">Invoke</button>
+              <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#fissionModal">Codex</button>
             </div>
           </div>
 
@@ -159,6 +160,31 @@
         <div class="col-sm" style="font-family: \'Felipa\', cursive; font-size: 14pt">
           <h3>Journal<h3>
           <div class="overflow-auto" style="height: calc(100vh - 110px); overflow-y: scroll; font-family: 'Tangerine', cursive; font-size: 18pt">
+            <div id="entry_King" hidden>
+              <p>
+                The game has come for me at last. Just this morning, I finished my work on extracting the second purification of salt- a momentous accomplishment, and perhaps in another time I would celebrate. However...
+              </p>
+              <p>
+                Upon the moment of my completion, I heard the distinct sound of an implosion near the market quarter. Fearing the loss of my trusted supplier, I rushed to investigate, only to discover a finely dressed gentleman discreetly beckoning me away from the crowd- a few market stalls had collapsed thanks to a bolting horse, nothing more. He introduced himself as a fellow member of <i>Corps Guestphalia Hall</i>, now the discreet reprensentative of a certain Prussian noble with ties to the house of Hohenzollern. I should have made my exit then- but I was foolish, and remembering my days as a brash young Romantic enticed by <i>mensur</i>, I accepted his letter.
+              </p>
+              <p>
+                When I returned to my hovel, I found my worst fears confirmed- the door was left open, my imperfectly fastened locks thrown onto the ground. My workstations were left untouched, thankfully enough, and those few who would aid me in my studies had all temporarily decamped due to a sermon by some hot-headed war preacher in the cathedral. The intruder left no trace save a single, hastily scrawled note.
+              </p>
+              <button type="button" class="btn btn-light" id="viewLetter" data-toggle="modal" data-target="#letterModal">Read Letter</button>
+              <button type="button" class="btn btn-light" id="viewLetter" data-toggle="modal" data-target="#noteModal">Read Note</button>
+              <br>
+            </div>
+            <div id="entry_Phosphorus" hidden>
+              <p>
+                I must confess, these long nights have taken their toll upon my work. But yesterday I fell asleep and forgot entirely the reagents simmering upon my desk... My noctural woolgathering came at a most inopportune moment, as I discovered when I awoke to the sound of a frightenful din at my door. A fool I had been, to leave my windows unshuttered- the ghastly luminesence from the phosphorous container was mistaken for a fire, or perhaps a haunting. I shudder to think what signal this occurence might deliver to those players of the Game that are no doubt afoot in this city...
+              </p>
+              <p>
+                I shall take such chances no more. When the morrow comes (as it must), I shall chance the city streets to find some metalsmith from which I might purchase firm shutters to seal shut my windows, to thereby abstain my work from prying eyes once and for all. There is a sorrow in these proceedings, but it must be done.
+              </p>
+              <p>
+                For now, however, I shall content myself with one last night under the stars.
+              </p>
+            </div>
             <div id="entry_Amaneuensis" hidden>
               <p>
                 My first apprentice- now, I may be properly addressed as Master. He is an honest soul, scrawny, eager to perform any "alchemical" task no matter how menial. I ask if silence disturbs him, and he replies with some optimistic pean about the greatest minds working in solitude. I wonder whether to tell him that this "great mind" might fire him without warning, which was why he was paid in lump sum rather than by the hour.
@@ -180,10 +206,10 @@
             </div>
             <div id="entry_Salis_Primis" hidden>
               <p>
-                Success! Salt rises, like so much dust, and entwines itself with the air into a higher, more pure form. The mysteries of the world unveiled <i>ex nihilo</i>. From here, the realm of production alchemy awaits. Were I still within the academy, no doubt I would have found some plebian to gloat- but here, I have only my reflection in these dull beakers for company.
+                Success! Salt rises, like so much dust, and entwines itself with the air into a higher, more pure form. The mysteries of the world unveiled <i>ex nihilo</i>. From here, the realm of production alchemy awaits. Were I still within the University, no doubt I would have found some plebian to gloat- but here, I have only my reflection in these dull beakers for company.
               </p>
               <p>
-                The disturbances to my hovel have not ceased. Thankfully, I answer to no land-lord or neighbour, and certainly intend to keep it that way, save for any apprentices I may choose to employ. I must endeavour to minimise any deletrious intrusions reality may deign to make upon my work: no more contemplative strolls, lest any theives see any opportunity as they have so surely been waiting.
+                The disturbances to my hovel have not ceased. Thankfully, I answer to no land-lord or neighbour, and certainly intend to keep it that way, save for any apprentices I may choose to employ. The present focus, then, must be to minimise any deletrious intrusions the commonfolk of this city may deign to make upon my work: no more contemplative strolls, lest any theives see an opportunity that they have so surely been waiting for.
               </p>
               <p>
                 I must order more locks.
@@ -204,10 +230,10 @@
             <div id="journal">
               <b>Entry 1</b>
               <p>
-                But two days ago I would have laughed at the idea of sitting here, scribbling on foolscap in the ruins of some second-rate knockoff alchemist's hovel. I! Greatest student of natural philosophy in a generation, kicked out the the Academy for plagiarism! That dotard of a professor saw my work and was jealous- I know it.
+                But two days ago I would have laughed at the idea of sitting here, scribbling on foolscap in the ruins of some second-rate knockoff alchemist's hovel. I! Greatest student of natural philosophy in a generation, kicked out the the University for plagiarism! That dotard of a professor saw my work and was jealous- I know it.
               </p>
               <p>
-                I see it now. Natural philsophy was never for me. Yes, I will persue the alchemical arts instead, <i>elixir vitae, aurum potabile, lapis philosophorum</i>. I will complete the work without these so-called Professors, and show them how wrong they were. Mark my words! Someday the proctors of the Academy will grovel before me, as I hold aloft the secret to transubstantiation, and I will say
+                I see it now. Natural philsophy was never for me. Yes, I will persue the alchemical arts instead, <i>elixir vitae, aurum potabile, lapis philosophorum</i>. I will complete the work without these so-called Professors, and show them how wrong they were. Mark my words! Someday the proctors of the University will grovel before me, as I hold aloft the secret to transubstantiation, and I will say
               </p>
               <p>
                 "No."
@@ -233,7 +259,7 @@
             <div class="container">
               <font size=-3><i>
                 <p><b>Excerpt from the </i>Codex Alchemicus Democritus<i></b></p>
-                <p>The fundamental underpinnings of modern Democritic, or atomic, alchemy were first uncovered at the turn of the century by the famed theologian and alchemist Bartholomew of Rome (Known in certain realms as the syncretic quasi-spiritual mythic figure </i>Zacharius Barthus<i>). In his seminal </i>Ars Alchemica<i> he proposes three fundamental rules of atomic alchemy (transcribed for modern audiences):</i></p>
+                <p>The fundamental underpinnings of modern Democritic, or atomic, alchemy were first uncovered at the Renaissance's apex by famed theologian and alchemist Bartholomew of Rome (Known in certain realms as the syncretic quasi-spiritual mythic figure </i>Zacharius Barthus<i>). In his seminal </i>Ars Alchemica<i> he proposes three fundamental rules of atomic alchemy (transcribed for modern audiences):</i></p>
                 <ol><i>
                   <li>All materials are composed of atoms, indivisible particles each possessing an </i>atomic mass<i> and </i>alchemical quiddity<i>.</li>
                   <li>Reagents may be combined via atomic unison to create a product of </i>higher quiddity<i> but </i>lesser mass<i>.</li>
@@ -285,17 +311,36 @@
       </div>
     </div>
 
-    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalTitle" aria-hidden="true">
+    <div class="modal fade" id="errorFluidModal" tabindex="-1" role="dialog" aria-labelledby="errorFluidModalTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="errorModalTitle">Error</h5>
+            <h5 class="modal-title" id="errorFluidModalTitle">Error</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            Insufficient reagents/caloric fluid to perform alchemical operation.
+            Insufficient caloric fluid to perform alchemical operation.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="errorReagentModal" tabindex="-1" role="dialog" aria-labelledby="errorReagentModalTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="errorReagentModalTitle">Error</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Insufficient reagents to perform alchemical operation.
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -444,13 +489,16 @@
                 <br>
                 <h5>Introduction</h5>
                 <p>
-                  The fundamental underpinnings of modern Democritic, or atomic, alchemy were first uncovered at the turn of the century by the famed theologian and alchemist Bartholomew of Rome (Known in certain realms as the syncretic quasi-spiritual mythic figure <i>Zacharius Barthus</i>). In his seminal <i>Ars Alchemica</i> he proposes three fundamental rules of atomic alchemy (transcribed for modern audiences):
+                  The fundamental underpinnings of modern Democritic, or atomic, alchemy were first proposed at the Renaissance's apex by famed theologian and alchemist Bartholomew of Rome (Known in certain realms as the syncretic quasi-spiritual mythic figure <i>Zacharius Barthus</i>). In his seminal <i>Ars Alchemica</i> he proposes three fundamental rules of atomic alchemy (transcribed for modern audiences):
                 </p>
                 <ol>
                   <li>All materials are composed of atoms, indivisible particles each possessing an <i>atomic mass</i> and <i>alchemical quiddity</i>.</li>
                   <li>Reagents may be combined via atomic unison to create a product of <i>higher quiddity</i> but <i>lesser mass</i>.</li>
                   <li>A reagent may be separated via atomic division to create two products of <i>lower quiddity</i> but <i>equivalent mass</i>. Excess energy is released in this process due to loss of quiddity.</li>
                 </ol>
+                <p>
+                  These statements, radical as they were, made their true impact felt upon the civilised world in 1791 when Giuseppe Medici produced in the Clementinum two devices that demonstrated the qualities Bartholomew proposed: First, the division that reduced sulphuris to caput mortem; Second, the unison of sulphuris into Ignis. These demonstrations proved conclusively
+                </p>
               </div>
               <div id="reagents" class="tab-pane fade">
                 <br>
@@ -516,7 +564,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <p>The apprentice nods nervously as you gesture around the laboratory. He's young- a fresh reject from the Academy admissions trials, still brimming with hope for becoming a "real alchemist". The Colleges of Alchemical Engineering and Theoretical Alchemy may have rejected them, but you will still find a use- if only for automating the most basic of functions.</p>
+            <p>The apprentice nods nervously as you gesture around the laboratory. He's young- a fresh reject from the University admissions trials, still brimming with hope for becoming a "real alchemist". The Colleges of Alchemical Engineering and Theoretical Alchemy may have rejected them, but you will still find a use- if only for automating the most basic of functions.</p>
             <p><i>Enter alchemical formula to transcribe: (SYMBOL REAGENT-1 REAGENT-2)</i><p>
             <label for="autoCraftFormula">Formula:</label><input type="text" id="autoCraftFormula" class="form-control" placeholder="Example: ∵ 🜍 🜔 / ∴ 🜍 /..."><br>
             <label for="autoCraftAmount">Amount:</label><input type="number" id="autoCraftAmount" class="form-control" min="0" placeholder="Amount to hire">
@@ -534,6 +582,84 @@
         </div>
       </div>
     </div>
+
+    <div class="modal fade" id="letterModal" tabindex="-1" role="dialog" aria-labelledby="letterModalTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="letterModalTitle">A Noble's Letter</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p class="text-center" style="font-family: 'UnifrakturMaguntia', cursive;"><b>In Treue fest</b></p>
+            <div class="letter-body" style="font-family: 'Vollkorn SC', serif;">
+              <p>
+                It is with great urgency and burning concern that I compose this letter to you. My aides-de-camp have informed me much of your skill and talent, and I share your indignation at the University that rejected your potential. Perhaps you would have done better to remain at Halle... I myself first found my character distingished through the handling of blades.
+              </p>
+              <p>
+                But enough reminiscing. The heady days of youth are far behind us, and the uncertainties of war close at hand. The imperial ambitions of the rescendent Italian Empire have not yet been curbed, and A.E.I.O.U. (I shall not suffer his name to be dictated by my tongue nor transcribed by the hand of my amaneuensis) has seen fit to aid and abet their alchemical conquest in exchange for claims upon Prussia herself. This, I tell you in all honesty, is a demonstration of jealous rivalry transformed into insanity of the highest order. To the West, rumours emerge that the resurgent French princeps yet hopes to retake the title of Rome himself. It is in this time of need for our great Confederation, then, that I write to you.
+              </p>
+              <p>
+                Your alchemical services would be in high demand in my court, and my considerable assets shall be rendered at your disposal, including certain valuable tomes within my giftschrank which you may find... enlightening. To speak the truth, it pains me to witness the mind of a generation, forced to toil in such drudgery. I do not, however, intend to cajole- your refusal will be treated with the utmost respect, and I will see to it personally that you are not further troubled by my lieges. I cannot, however, guarantee the same about my enemies.
+              </p>
+              <p>
+                Consider my offer well. I know well the desire to complete your current work, and thus eagerly await your reply in no less than one month's time. My aide has been instructed to remain within the city, should you desire to tender your response.
+              </p>
+              <p style="font-family: 'UnifrakturMaguntia', cursive;">
+                M. I. J.
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="noteModal" tabindex="-1" role="dialog" aria-labelledby="noteModalTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="noteModalTitle">A Note</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="letter-body" style="font-family: 'Tangerine', serif; font-size: 16pt;">
+              <p>
+                Greetings, though I regret it should be under these circumstances. In my defense, you have not exactly been sociable.
+              </p>
+              <p>
+                News has reached the University concerning your alchemical work. It should please you to know that professor D'Alquis will be taking an extended leave of absence beginning next week. Once he's gone, it will be relatively easy convincing the University to accept you again, this time as an equal. Think it over.
+              </p>
+              <p>
+                I'm afraid I can't extend my stay in this blasted place any longer. Send your reply by mail to the Pontifex. A messenger will come for you soon enough.
+                <br>
+                <div id="secret">
+                  <br>
+                  <br>
+                </div>
+                <br>
+                F.
+              </p>
+            </div>
+            <div id="secret_hint">
+              The scrap of fine parchment is conspicuously too long for the short note.
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
     <!-- /.container -->
 
     <!-- Bootstrap core JavaScript

@@ -21,7 +21,7 @@ var codex = {
 
   'Hydragyrum': 'Mercury- One of the three alchemical primes. Known for its volatility and fluid nature, it is a liquid prime that contains a female, metallic essence often associated with the mind',
   'Sulphuris': 'Sulphur- One of the three alchemical primes. Known for its irascibility and inflammatory nature, it is a solid prime that represents the soul and a male, combustive essence.',
-  'Salis': 'Salt- Most mundane of the three alchemical primes. Coarse matter that nevertheless ameliorates the extremes of the other primes, the purification and transubstantiation of salis mirrors the journey of the alchemist themselves as they seek the <i>magnum opus</i>. Salis, being exhausted in operation, adds no mass to the final product, but changes the alchemical nature of it irrevocably.',
+  'Salis': 'Salt- Most mundane of the three alchemical primes. Coarse matter that nevertheless ameliorates the extremes of the other primes, the purification and transubstantiation of salis mirrors the journey of the alchemist themselves as they seek the <i>magnum opus</i>. The purified forms of salis, being exhausted in operation, adds no mass to the final product, but changes the alchemical nature of it irrevocably.',
 
   'Salis Primis': 'The first elevation of salt. A white gleam shines through the now refined crystals. To be purified, salis must first be sifted: Combine salis with aër.',
 
@@ -31,7 +31,7 @@ var codex = {
   'Borium': 'Boron- Legends tell of the aethereal luminence of stars that first graced the earth with this strange material. It is now possible to alchemically synthesise such a material through the refinement of bismetum and aër, but certain alchemists hold that natural borium has a radiance all of its own.',
   'Lithium': 'Lithium- The lightest of the metals, lithium possesses a volatility and lustfulness that urges to flame at even the smallest of provocations. Hydragyrum and ignis combine to craft this delicate metal that may only be stored in oils.',
   'Magnesium': 'Magnesium- While in its raw alchemical form it rivals lithium in reactivity, exposure to air soon corrodes this delicate metal and it can often be found with a thin layer of impure dust from exposure to air. Combine lithium and ignis- and beware flames.',
-  'Phosphorus': 'Phosphorus- The first of the artificial elements to be discovered via atomic alchemy, phosphorous in its natural state annihilates itself too swiftly to be harvested. The pale luminesence released by the mixture of magnesium and aër is an alluring sight.',
+  'Phosphorus': 'Phosphorus- The first of the artificial elements to be discovered via atomic alchemy, phosphorus in its natural state annihilates itself too swiftly to be harvested. The pale luminesence released by the mixture of magnesium and aër is an alluring sight.',
   'Platinum': 'Platinum- Brightest of the metals, with purity inviolate, the stalwart visage of this metal rivals even the sun and moon in intensity. Its steadfastness is inherited from Borium, although further enhanced with ignis.',
   'Kalium': 'Potassium- Having inherited her name from the late work of modern alchemists, kalium is a superbly ductile and malleable metal that spawns from the softening of lithium through aqua.',
   'Zincum': 'Zinc- The last of the mundane elements, it demonstrates a remarkable resemblance with and comity towards magnesium, being the product of it and terra and found abundantly beneath the soil.',
@@ -106,6 +106,8 @@ var recipes = {
              [{'Cuprum':1, 'Salis Secundus':1},1000,{'Salis Tertius':1},1],
              [{'Hydragyrum':2, 'Salis Tertius':1},5000,{'Argentum':2},500],
              [{'Argentum':2, 'Salis Tertius':1},10000,{'Aurum':2},1],
+
+             [{'Note': 1, 'Caloric':1},0,{'Charred Note': 1},0]
             ],
   // ♒︎ Multiplication
   'multiplication': [],
@@ -160,7 +162,9 @@ var symbol_index = {
   '☽': 'Argentum',
   '☉': 'Aurum',
   '🜀': 'Quintessence',
-  '|☉|': 'Aurum Potabile'
+  '|☉|': 'Aurum Potabile',
+
+  'Note': 'Note'
 }
 
 var time = 0;
@@ -188,7 +192,7 @@ if (previous_save == null){
       others : ['Caloric'],
       primes: ['Hydragyrum', 'Sulphuris', 'Salis'],
       elements: [],
-      salts: [],
+      salts: ['Salis'],
       mundanes: [],
       metals: ['Aurum'],
       highers: []
@@ -196,6 +200,9 @@ if (previous_save == null){
     stats : {
       'Caloric': [1000, 0],
       'Caput Mortum': [0, 0.25],
+      'Note': [0,0],
+      'Letter': [0,0],
+      'Charred Note': [0,0],
 
       'Hydragyrum': [1, 0.1],
       'Sulphuris': [1, 0.1],
@@ -329,7 +336,7 @@ function UpdateVisual(){
   curr_text = $('#stats').html();
   new_text = '';
   Object.keys(Player.stats).forEach((material, i) => {
-    if (LookupInventory(material)){
+    if (LookupInventory(material) || Player.stats[material][0]>0){
       new_text += '<p>'+LookupItem(material)+' <font size="-0.5">'+Player.stats[material][0]+LookupUnit(material)+'</font></p>';
       // $('#stats').html($('#stats').html()+'<a draggable=True>'+LookupItem(material)+' </a>'+Player.stats[material][0]+'<br>')
     };
@@ -516,7 +523,7 @@ function UpdateCodex(){
 };
 
 var curr_entry = 2;
-var incomplete_entries = ['Ignis', 'Salis Primis', 'Lithium', 'Amaneuensis']
+var incomplete_entries = ['Ignis', 'Salis Primis', 'Lithium', 'Amaneuensis', 'King', 'Note'];
 
 function UpdateJournal(){
   incomplete_entries.forEach((item, i) => {
@@ -526,10 +533,24 @@ function UpdateJournal(){
       $('#journal').html('<b>Entry '+curr_entry+'</b>'+$('#entry_'+item.replace(' ', '_')).html()+$('#journal').html()+'<br>');
       curr_entry += 1;
     }else if ((item=='Amaneuensis') && (Object.keys(jobList).length!=0)) {
-        incomplete_entries.pop(i);
-        $('#journal').html('<b>Entry '+curr_entry+'</b>'+$('#entry_Amaneuensis').html()+$('#journal').html()+'<br>');
+      incomplete_entries.splice(i,1);
+      $('#journal').html('<b>Entry '+curr_entry+'</b>'+$('#entry_Amaneuensis').html()+$('#journal').html()+'<br>');
+      curr_entry += 1;
+    }else if (item=='King'){
+      if (LookupInventory('Salis Secundus')){
+        incomplete_entries.splice(i,1);
+        Player.stats['Letter'][0]+=1;
+        Player.stats['Note'][0]+=1;
+        $('#journal').html('<b>Entry '+curr_entry+'</b>'+$('#entry_King').html()+$('#journal').html()+'<br>');
         curr_entry += 1;
-    };
+      };
+    }else if (item=='Note'){
+      if (Player.stats['Charred Note'][0]>0){
+        incomplete_entries.splice(i,1);
+        $('#secret').html('<b>The University and their benefactors know about your visitor from the confederation. Take this as a warning: whatever you do, do not accept his offer. <i>Nemo me impune lacessit.</i></b>');
+        $('#secret_hint').html('');
+      };
+    };;
   });
 
 
@@ -574,49 +595,33 @@ function reaction(operation, materials, auto=false){
     if (JSON.stringify(raw) == JSON.stringify(materials)){
       if (Player.stats['Caloric'][0]>=cost){
         console.log('Caloric test passed');
-        var failed = false;
-        // Object.keys(needed).forEach((item, i) => {
-        //   if (Player.stats[item][0]>=needed[item]){
-        //     console.log (Player.stats[item][0], needed[item], item)
-        //     if (!auto){
-        //       $('#errorModal').modal('show');
-        //     };
-        //     failed = true;
-        //   };
-        // });
         for (let i = 0; i < Object.keys(needed).length; i++) {
           if (Player.stats[Object.keys(needed)[i]][0] < needed[Object.keys(needed)[i]]){
             if (!auto){
-              $('#errorModal').modal('show');
+              $('#errorReagentModal').modal('show');
             };
             console.log('Insufficient materials');
             return;
           };
         };
-        if (!failed){
-          Player.stats['Caloric'][0]-=cost;
-          Object.keys(needed).forEach((item, i) => {
-            Player.stats[item][0]-=needed[item];
-          });
-          Object.keys(result).forEach((item, i) => {
-            AddItem(item);
-            if (operation == 'fusion'){
-              Player.stats[item][0]+=result[item]*(1-Player.stats[item][1]);
-            }else{
-              Player.stats[item][0]+=result[item];
-            };
-          });
-          Player.stats['Caloric'][0] += refund;
-          console.log('Operation completed successfully');
-          break;
-        }else {
-          if (!auto){
-            $('#errorModal').modal('show');
+        Player.stats['Caloric'][0]-=cost;
+        Object.keys(needed).forEach((item, i) => {
+          Player.stats[item][0]-=needed[item];
+        });
+        Object.keys(result).forEach((item, i) => {
+          AddItem(item);
+          if (operation == 'fusion'){
+            Player.stats[item][0]+=result[item]*(1-Player.stats[item][1]);
+          }else{
+            Player.stats[item][0]+=result[item];
           };
-        };
+        });
+        Player.stats['Caloric'][0] += refund;
+        console.log('Operation completed successfully');
+        break;
       }else{
         if (!auto){
-          $('#errorModal').modal('show');
+          $('#errorFluidModal').modal('show');
         };
       };
     };
