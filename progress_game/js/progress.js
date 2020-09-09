@@ -109,7 +109,7 @@ function log_hist(){
   for (var i=0;i<arguments.length;i++){
     entry.push(arguments[i]);
   }
-  $('#history').append(entry.join(' '));
+  $('#history').prepend(entry.join(' '));
   current_entries += 1;
   update();
 }
@@ -119,7 +119,7 @@ function log_raw(){ //log without updating to avoid loop
   for (var i=0;i<arguments.length;i++){
     entry.push(arguments[i]);
   }
-  $('#history').append(entry.join(' '));
+  $('#history').prepend(entry.join(' '));
   current_entries += 1;
 }
 

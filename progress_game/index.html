@@ -12,12 +12,12 @@
 
   </head>
   <body>
-    <div id="boring" style="max-width: 500px" class="paper container">
-      <div class="row flex-spaces tabs">
-        <input id="tab1" type="radio" name="tabs" checked>
+    <div id="boring" class="paper container"> <!-- Removed class 'tabs' for easier viewing -->
+      <div class="row flex-spaces">
+        <!-- <input id="tab1" type="radio" name="tabs" checked>
         <label for="tab1">Life</label>
         <input id="tab2" type="radio" name="tabs">
-        <label id="history-tab" for="tab2">History <span class="badge" style="opacity: 0.75" id="current-entries">0</span></label>
+        <label id="history-tab" for="tab2">History <span class="badge" style="opacity: 0.75" id="current-entries">0</span></label> -->
         <div class="content" id="content1">
           <div id="energy">
             <h3>Energy Remaining: <span class="badge success" id="current-energy">10</span><h3>
@@ -47,8 +47,8 @@
           <button type="button" id="food">Get Food</button>
           <button type="button" id="sleep">Sleep</button>
         </div>
-        <div class="content" id="content2">
-          <div id="history">
+        <div class="content" id="content2" style="float: left">
+          <div id="history" style="max-height:1000px; overflow: auto;">
           </div>
         </div>
       </div>
