@@ -4,8 +4,10 @@
     <meta charset="utf-8">
     <title>Landing Page</title>
     <style media="screen">
-      body {
+      .mainpage {
         max-width: 1000px;
+      }
+      .eva_core {
         background-color: black;
         padding: 32px;
         margin: 0 auto;
@@ -13,14 +15,6 @@
         font-family: serif;
         color: white;
         text-shadow: 0 0 2px #e19a86, 0 0 1.5px #854535, 0 0 1.5px #5c150c;
-      }
-      a {
-        font-weight: bold;
-        text-decoration: none;
-        color: #ff5701; /* ff8c28 */
-      }
-      a:hover {
-        color: #ffff92;
       }
       .eva_header {
         transform: scale(1, 1.5);
@@ -41,27 +35,37 @@
         letter-spacing: -.06em;
         margin: 10px 0 26px 0;
       }
+      a {
+        font-weight: bold;
+        text-decoration: none;
+        color: #ff5701; /* ff8c28 */
+      }
+      a:hover {
+        color: #ffff92;
+      }
     </style>
 
     <!-- <meta http-equiv="refresh" content="0; url=alchemy/html/site-main/index.html"> -->
   </head>
   <body>
-    <h3 class="eva_header">UtilityHotbar's Homepage</h3>
-    <div class="eva_sans">
-      Current Projects: 2
-    </div>
-    <div class="eva_main" style="border:1px solid; padding: 5px">
-      <a href="progress_game/index.html">Progress Game</a></span><br>
-      A prototype micro-idle/"clicker" game based on escaping the loop.
-    </div>
-    <br><br>
-    <div class="eva_main" style="border:1px solid; padding: 5px">
-      <a href="alchemy/html/site-main/index.html">Mass Defect</a></span><br>
-      A project based on incorrect interpretations of nuclear physics, alchemy, and calories.
-    </div>
-    <br>
-    <div class="eva-main">
-      CSS based on <a href="https://codepen.io/renanpvaz/pen/rGxzqE">this</a>.
+    <div class="eva_core mainpage">
+      <h3 class="eva_header">UtilityHotbar's Homepage</h3>
+      <div class="eva_sans">
+        Current Projects: 2
+      </div>
+      <div class="eva_main" style="border:1px solid; padding: 5px">
+        <a href="progress_game/index.html">Progress Game</a></span><br>
+        A prototype micro-idle/"clicker" game based on escaping the loop.
+      </div>
+      <br><br>
+      <div class="eva_main" style="border:1px solid; padding: 5px">
+        <a href="alchemy/html/site-main/index.html">Mass Defect</a></span><br>
+        A project based on incorrect interpretations of nuclear physics, alchemy, and calories.
+      </div>
+      <br>
+      <div class="eva-main">
+        CSS based on <a href="https://codepen.io/renanpvaz/pen/rGxzqE">this</a>.
+      </div>
     </div>
   </body>
 </html>
