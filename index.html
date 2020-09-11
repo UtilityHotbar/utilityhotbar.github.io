@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Landing Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
     <style media="screen">
       .mainpage {
         max-width: 1000px;
@@ -22,13 +23,18 @@
         letter-spacing: -.03em;
       }
       .eva_main {
-
+        transform: scale(1, 1.3);
+        font-size: 100%;
+        line-height: 1em;
+      }
+      .eva_mincho {
+        font-family: 'Sawarabi Mincho';
         transform: scale(1, 1.3);
         font-size: 100%;
         line-height: 1em;
       }
       .eva_sans {
-        font-weight:normal;
+        font-weight: normal;
         font-family: sans-serif;
         font-size: 100%;
         transform: scale(1, 1.5);
@@ -47,7 +53,7 @@
   </head>
   <body>
     <div class="eva_core mainpage">
-      <h3 class="eva_header">UtilityHotbar's Homepage</h3>
+      <h3> <span class="eva_header">UtilityHotbar's Homepage</span><br><span class="eva_mincho">ゆちりぢほとばのホームページ</span></h3>
       <div class="eva_sans">
         Current Projects: 2
       </div>
