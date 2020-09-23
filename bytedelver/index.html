@@ -1,0 +1,90 @@
+
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>ByteDelver</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A small roguelike.">
+    <meta name="slingcode-tags" content="game">
+    <link href="favicon.png" rel="icon">
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+    <link href="main.css" rel="stylesheet"/>
+    <script src="rfdc.js"></script>
+    <script src="rot.min.js"></script>
+    <script src="test_terminal.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="chart.bundle.min.js" charset="utf-8"></script>
+    <script src="chartjs-plugin-colorschemes.min.js" charset="utf-8"></script>
+    <style>
+
+      * { box-sizing: border-box; }
+      body { max-width: 1400px; width: 100%; margin: 1em auto; font-size: 1.25em; }
+      .nes-container > * { margin-top: 1em; margin-bottom: 1em; }
+      body > * { margin-bottom: 1em; margin-top: 1em; }
+      body {background-color:#212529; font-family:'Press-Start-2p',monospace; color:white}
+    </style>
+  </head>
+  <body>
+    <div class='crt'>
+      <h1>ByteDelver</h1>
+      <div class="nes-container with-title is-dark" style='float: left; max-width: 900px'>
+        <p class="title" id="main-title">Character Creation</p>
+        <div id="name-screen" class="nes-field">
+          	<label for="name-field">Your name</label>
+          	<input type="text" id="name-field" class="nes-input">
+          	<label for="seed-field">Seed (Optional)</label>
+          	<input type="text" id="seed-field" class="nes-input">
+              <br>
+              <button type="button" class="nes-btn is-primary" id="name-done">Continue</button>
+        </div>
+        <div id="confirm-screen" class="nes-field">
+         	<div class="nes-balloon from-left" style="color:black">
+            <p id="name-show"></p>
+        	</div>
+          <label>
+            <input type="radio" class="nes-radio is-dark" name="confirm-radio" value="yes" checked/>
+            <span>Yes</span>
+          </label>
+
+          <label>
+            <input type="radio" class="nes-radio is-dark" name="confirm-radio" value="no"/>
+            <span>No</span>
+          </label>
+
+          <button type="button" class="nes-btn is-primary" id="name-confirm">Continue</button>
+        </div>
+        <div id="main-game" class="nes-field">
+          <div id='game-window' style='float: left'></div>
+          <div id='inventory-window' style='float: right; width:290px' class='nes-container with-title is-dark'>
+            <p class="title" id="inventory-title">Inventory</p>
+            <div style='max-height:180px; overflow-y:auto'>
+              <ol id='status-inventory'></ol>
+            </div>
+          </div>
+          <div id='local-window' style='float: right; width:290px' class='nes-container with-title is-dark'>
+            <p class="title" id="local-title">You can see</p>
+            <div style='max-height:100px; overflow-y:auto' id='status-local' class=""></div>
+          </div>
+          <div style='clear: both'>
+            <div style='height:150px; background-color:#0f1215'>
+              <div id='status-text'></div>
+            </div>
+            <br>
+            <div id='status-standing'></div>
+            <div id='status-bar'></div>
+          </div>
+        </div>
+        Sanity
+  	    <progress class="nes-progress is-primary" value="50" max="100" id="progress"></progress>
+      </div>
+      <div class="nes-container with-title is-dark" style='float: right; max-width: 410px; width: 410px' id='combat-screen'>
+        <p class='title' id='combat-title'>Overview</p>
+        <canvas id="stat-chart" width="400px" height="400px"></canvas>
+      </div>
+      <p style='clear: both'>Made with the help of <a href="https://nostalgic-css.github.io/NES.css/" target="_blank">ness.css</a>, <a href="http://erikosterberg.com/terminaljs/" target="_blank">terminal.js</a>, and <a href="http://ondras.github.io/rot.js/hp/" target="_blank">rot.js</a></p>
+    </div>
+  </body>
+  <script src="game.js"></script>
+</html>
