@@ -181,7 +181,7 @@ function update(){
       console.log(dreams, daydream_content[dreams])
     }else{
       log_hist('<b>You escape into the wider unknown...</b>');
-      $('#content1').html('<div class="alert alert-success">Packing what meagre supplies you have left, you escape into the wider unknown, into the dangers that await...</div>');
+      $('#content1').html('<div class="alert alert-success">Packing what meagre supplies you have left, you escape into the wider unknown, into the dangers that await...</div><br><a href="index2.html">Continue</a>');
     }
   }
   var curr_day_progress = $('#daydream-progress').attr('class').match(/w-\d+/g)[0];
