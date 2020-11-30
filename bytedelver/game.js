@@ -27,8 +27,8 @@ var weapon_data = {
 
 var bestiary = [
   {
-    'name':'Kobold',
-    'icon':'k',
+    'name':'Spectre',
+    'icon':'s',
     'radius':5,
     'x':0,
     'y':0,
@@ -52,7 +52,8 @@ var symbol_reference = {'':'Floor',
                         '[':'Weapon',
                         '&':'Armour',
                         '$':'Gold',
-                        'k':'Kobold'
+                        's':'Spectre',
+                        'b':'Book'
                        };
 
 var dungeon_words = ['Dungeon', 'Lair', 'Catacombs', 'Oubliette', 'Keep',]; // 'Forge', 'Chambers', 'Halls'
@@ -237,6 +238,17 @@ function assignFeatures(map_data, generator_type){
     // Add treasure items
     for (var i = 0; i < parseInt(ROT.RNG.getUniform() * TREASURE_PER_LEVEL_MAX); i++){
       var curr_treasure = makeTreasure(ROT.RNG.getItem(['potion','weapon','armour','gold']));
+      var curr_room = ROT.RNG.getItem(available_rooms);
+      var curr_x = curr_room.getLeft() + parseInt(ROT.RNG.getUniform()*(curr_room.getRight()-curr_room.getLeft()));
+      var curr_y = curr_room.getTop() + parseInt(ROT.RNG.getUniform()*(curr_room.getBottom()-curr_room.getTop()));
+      if (!curr_features['locations'][curr_x+','+curr_y]){ // Check for collisions with entrances/exits/already existing features
+        curr_features['locations'][curr_x+','+curr_y] = curr_treasure[0];
+        curr_features['item_data'][curr_x+','+curr_y] = curr_treasure[1];
+      }
+    }
+    // Add secret book
+    if (game_data['dungeon_level'] > 0){
+      var curr_treasure = ['b',{'amt':1,'name':'Book'}];
       var curr_room = ROT.RNG.getItem(available_rooms);
       var curr_x = curr_room.getLeft() + parseInt(ROT.RNG.getUniform()*(curr_room.getRight()-curr_room.getLeft()));
       var curr_y = curr_room.getTop() + parseInt(ROT.RNG.getUniform()*(curr_room.getBottom()-curr_room.getTop()));
@@ -567,7 +579,7 @@ $(window).on("keydown", function(key_presed){
         }else{
           status_term.print('There is no turning back.');
         }
-      }else if (['$','[','&','+'].includes(context)) {
+      }else if (['$','[','&','+', 'b'].includes(context)) {
         var item_data = game_data['features'][game_data['dungeon_level']]['item_data'][x+','+y];
         var location_data = game_data['features'][game_data['dungeon_level']]['locations'][x+','+y];
         var item_name = item_data['name'];
@@ -592,6 +604,10 @@ $(window).on("keydown", function(key_presed){
       inventoryUnequip(char_data['equipped']);
     }else if (curr_name == 'VK_SPACE') {
       status_term.input('In what direction? [QWEASDZXC or 1-9]',userAttack);
+    }else if (curr_name == 'VK_R') {
+      if (char_data['inventory']['Book']){
+        status_term.print('You read the book...')
+      }
     }
     updateWindow();
   }else{
