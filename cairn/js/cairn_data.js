@@ -226,23 +226,23 @@ gen_data['equipment'] = [
 ]
 gen_data['armour'] = {
   '1-3': 'None',
-  '4-14': 'Brigandine',
-  '15-19': 'Chainmail',
-  '20': 'Plate'
+  '4-14': 'Brigandine (1 Armor, bulky)',
+  '15-19': 'Chainmail (2 Armor, bulky)',
+  '20': 'Plate (3 Armor, bulky)'
 }
 
 gen_data['helmet'] = {
   '1-13': 'None',
-  '14-16': 'Helmet',
-  '17-19': 'Shield',
-  '20': 'Helmet and Shield'
+  '14-16': 'Helmet (+1 Armor)',
+  '17-19': 'Shield (+1 Armor)',
+  '20': 'Helmet and Shield (+2 Armor)'
 }
 
 gen_data['weapons'] = {
   '1-5': 'Dagger, Cudgel, Staff ',
   '6-14': 'Sword, Mace, Axe',
-  '15-19': 'Longbow, Crossbow, Sling',
-  '20': 'Halberd, War Hammer, Battleaxe'
+  '15-19': 'Longbow (Bulky), Crossbow (Bulky), Sling',
+  '20': 'Halberd (Bulky), War Hammer (Bulky), Battleaxe (Bulky)'
 }
 
 gen_data['bonus'] = {

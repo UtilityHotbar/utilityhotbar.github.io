@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Derelict Divers Squad Keeper</title>
+    <script src="js/salvage_data.js" charset="utf-8"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Balthazar&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <style media="screen">
+      body {width: 600px; margin: auto; font-family: 'Roboto', sans-serif;font-size: 10pt;}
+      h1 {font-family: 'Balthazar', serif;}
+      b {font-family: 'Balthazar', serif;font-size: 12pt;}
+      .diver {background-color: lightgrey; margin: 5px; padding: 5px;}
+      .column {
+        float: left;
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Derelict Divers Squad Keeper</h1>
+    Reload to create new divers.
+    <br><br>
+    <div class="column">
+      <div class="diver">
+        <b>Captain</b><br>
+        Name: <input type="text" value="">
+        <script type="text/javascript">
+          createChar()
+        </script>
+        Wounded: <input type="checkbox" name="" value="">
+        Dead: <input type="checkbox" name="" value="">
+      </div>
+      <div class="diver">
+        <b>Point man</b><br>
+        Name: <input type="text" value="">
+        <script type="text/javascript">
+          createChar()
+        </script>
+        Wounded: <input type="checkbox" name="" value="">
+        Dead: <input type="checkbox" name="" value="">
+      </div>
+      <div class="diver">
+        <b>Diver</b><br>
+        Name: <input type="text" value="">
+        <script type="text/javascript">
+          createChar()
+        </script>
+        Wounded: <input type="checkbox" name="" value="">
+        Dead: <input type="checkbox" name="" value="">
+      </div>
+    </div>
+    <div class="column">
+      <div style="margin: 5px;">
+        <b>Salvage/Notes:</b><br>
+        <textarea name="name" rows="20" cols="30"></textarea>
+      </div>
+    </div>
+
+  </body>
+</html>
