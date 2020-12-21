@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Minmax(e,r)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,500;1,300&display=swap" rel="stylesheet"><style media="screen">
+      body {
+        margin: auto;
+        font-family: "Spectral";
+        zoom: 0.9;
+        -moz-transform: scale(0.8);
+        -moz-transform-origin: 0 0;}
+      button {font-family: "Spectral"}
+      .column {float:left; padding: 10px; margin: 5px; width: 300px;}
+      .mainColumn {float:left; padding: 10px; margin: 5px; width: 400px;}
+    </style>
+
+    <script src="js/rfdc.js" charset="utf-8"></script>
+    <script src="js/srd_monsters.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <h1>Minmax(encounter,reward)</h1>
+    <div id="dungeon" class="mainColumn">
+      You are in the dungeon.<br><br>
+      <button type="button" id="makeRoom">Kick down a door</button>
+      <button type="button" id="returnVillage">Go Home</button>
+      <br><br>
+      <div id="fightConsoleContainer" style="height:150px; background-color:black;">
+        <div id="fightConsole">
+
+        </div>
+      </div>
+    </div>
+    <div id="village" class="mainColumn">
+      The village. Train here.
+      <h3>Trainers</h3>
+      <ul>
+        <li><button type="button" id="buy_drunk">Hire Drunk</button> (10 gold)</li>
+        <li><button type="button" id="buy_retired">Hire Retired Fencer</button> (100 gold)</li>
+        <li><button type="button" id="buy_trainer">Hire Trainer</button> (1000 gold)</li>
+      </ul>
+      <h3>Trainers</h3>
+      <ul>
+        <li><button type="button" id="buy_hireling">Hire Hireling</button> (250 gold)</li>
+        <li><button type="button" id="buy_fighter">Hire Fighter</button> (5000 gold)</li>
+        <li><button type="button" id="buy_battlemaster">Hire Battlemaster</button> (100000 gold)</li>
+      </ul>
+      <h3>Projects</h3>
+      <div id="projects">
+        <button type="button" id="projectButton">Expand Tavern</button> (1000 gold)
+      </div>
+      <br>
+      <div id="villageConsoleContainer" style="height:150px; background-color:black;">
+        <div id="villageConsole">
+
+        </div>
+      </div>
+      <br>
+      <button type="button" id="returnDungeon">Return to dungeon</button>
+    </div>
+    <div id="stats" class="column">
+      <table>
+        <b>You</b>
+        <tr>
+          <td>Name:</td>
+          <td><span id="name"></span> <button id="changeName">Edit</button></td>
+        </tr>
+        <tr>
+          <td>Level:</td>
+          <td><span id="level"></span> / <span id="levelCap"></span></td>
+        </tr>
+        <tr>
+          <td>Power:</td>
+          <td id="power"></td>
+        </tr>
+        <tr>
+          <td>XP:</td>
+          <td><span id="xp"></span> / <span id="threshold"></span></td>
+        </tr>
+        <tr>
+          <td>Gold:</td>
+          <td id="gold"></td>
+        </tr>
+      </table>
+      <br>
+      <table>
+        <b>Village</b>
+        <tr>
+          <td>Drunks:</td>
+          <td id="drunk"></td>
+        </tr>
+        <tr>
+          <td>Retired fencers:</td>
+          <td id="retired"></td>
+        </tr>
+        <tr>
+          <td>Trainers:</td>
+          <td id="trainer"></td>
+        </tr>
+        <tr>
+          <td>Hirelings:</td>
+          <td id="hireling"></td>
+        </tr>
+        <tr>
+          <td>Fighters:</td>
+          <td id="fighter"></td>
+        </tr>
+        <tr>
+          <td>Battlemasters:</td>
+          <td id="battlemaster"></td>
+        </tr>
+        <tr>
+          <td>Total poplation:</td>
+          <td><span id="pop"></span> / <span id="maxpop"></span></td>
+        </tr>
+      </table>
+    </div>
+
+    <script src="js/jquery-3.5.1.js" charset="utf-8"></script>
+    <script src="js/test_terminal.js" charset="utf-8"></script>
+    <script src="js/main.js" charset="utf-8"></script>
+  </body>
+</html>
