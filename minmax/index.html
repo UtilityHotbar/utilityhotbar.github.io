@@ -6,12 +6,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,500;1,300&display=swap" rel="stylesheet"><style media="screen">
       body {
         margin: auto;
+        width: 800px;
         font-family: "Spectral";
         zoom: 0.9;
         -moz-transform: scale(0.8);
-        -moz-transform-origin: 0 0;}
+        -moz-transform-origin: 0 0;
+        background-color: #333333;
+        color: #A6A6A8;
+      }
+      h1 {padding:5px;color: #B6B6B8}
       button {font-family: "Spectral"}
-      .column {float:left; padding: 10px; margin: 5px; width: 300px;}
+      .column {float:left; padding: 10px; margin: 5px; width: 300px; background-color: #444444}
       .mainColumn {float:left; padding: 10px; margin: 5px; width: 400px;}
     </style>
 
@@ -35,11 +40,11 @@
       The village. Train here.
       <h3>Trainers</h3>
       <ul>
-        <li><button type="button" id="buy_drunk">Hire Drunk</button> (10 gold)</li>
-        <li><button type="button" id="buy_retired">Hire Retired Fencer</button> (100 gold)</li>
-        <li><button type="button" id="buy_trainer">Hire Trainer</button> (1000 gold)</li>
+        <li><button type="button" id="buy_drunk">Hire Drunk</button> (10 gold, 0.0001 Power/s)</li>
+        <li><button type="button" id="buy_retired">Hire Retired Fencer</button> (100 gold, 0.0015 Power/s)</li>
+        <li><button type="button" id="buy_trainer">Hire Trainer</button> (1000 gold, 0.02 Power/s)</li>
       </ul>
-      <h3>Trainers</h3>
+      <h3>Henchmen</h3>
       <ul>
         <li><button type="button" id="buy_hireling">Hire Hireling</button> (250 gold)</li>
         <li><button type="button" id="buy_fighter">Hire Fighter</button> (5000 gold)</li>

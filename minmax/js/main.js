@@ -62,6 +62,9 @@ function toggle() {
 function updateStats() {
   Object.keys(player).forEach((item, i) => {
     curr = player[item]
+    if (item == 'power'){
+      curr = curr.toFixed(4)
+    }
     $('#'+item).html(curr)
   });
 }
@@ -217,8 +220,8 @@ function improveVillage() {
 function reformDrunks() {
   if (buyProject('reform drunks', 50, 'village_drunks')){
     clearProject();
-    village.battlemaster += 50;
-    village_term.print('Now reformed, the drunks have been employed to a better use as loyal battlemasters.');
+    village.hireling += 50;
+    village_term.print('Now reformed, the drunks have been employed to a better use as loyal hirelings.');
     updateVillage();
   }
 }
