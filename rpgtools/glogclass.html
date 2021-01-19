@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>GLOG Class Maker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;700&family=Tangerine&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <style media="screen">
+      body {background-color: black; color: lightgrey; width: 600px; margin: auto}
+      td {width: 100px}
+      textarea, input {width: 300px; background-color: lightgrey}
+      .outputArea {
+        background-image: url("images/more worn paper.jpg");
+        border: solid;
+        border-radius: 1px;
+        border-color: grey;
+        color: black;
+        font-family: "Inknut Antiqua";
+        font-size: 10pt;
+        padding: 10px;
+        line-height: 120%;
+      }
+      .result {
+        font-family: "Inknut Antiqua";
+        color: black;
+      }
+    </style>
+    <table>
+      <h2>GLOG Class Maker</h2>
+      <tr>
+        <td>Name:</td>
+        <td><textarea id="name">Potter</textarea></td>
+      </tr>
+      <tr>
+        <td>Description:</td>
+        <td><textarea id="desc">*Just another potter.*</textarea></td>
+      </tr>
+      <tr>
+        <td>Starting Equipment:</td>
+        <td><textarea id="equip">Clay, small cup.</textarea></td>
+      </tr>
+      <tr>
+        <td>A:</td>
+        <td><textarea id="A">**Apprentice** - You learn to identify and shape different types of clay. You can make simple clay cups and bake them until hard.</textarea>
+</td>
+      </tr>
+      <tr>
+        <td>B:</td>
+        <td><textarea id="B">**Student** - You can make a variety of clay items. They sell for reasonable prices.</textarea>
+</td>
+      </tr>
+      <tr>
+        <td>C:</td>
+        <td><textarea id="C">**Craftsman** - Gain an Apprentice. Teach them all you know, and they become a Student.</textarea>
+</td>
+      </tr>
+      <tr>
+        <td>D:</td>
+        <td><textarea id="D">**Master** - Gain 1d4 Students, including your original Apprentice. They may leave you, to start their own businesses.</textarea>
+</td>
+      </tr>
+    </table>
+    <button type="button" name="button" onclick="glogify()">GLOG it!</button>
+    <br><br>
+    <div class="outputArea">
+      <h2><span id="res_name" class="result"></span></h2>
+      <span id="res_desc" class="result"></span><br><br>
+      <b>Starts with:</b> <span id="res_equip" class="result"></span><br>
+      <ol type="A">
+        <li><span id="res_A" class="result"></span></li>
+        <li><span id="res_B" class="result"></span></li>
+        <li><span id="res_C" class="result"></span></li>
+        <li><span id="res_D" class="result"></span></li>
+      </ol>
+    </div>
+    <script type="text/javascript">
+      function parseMarkdown(markdownText) { // Shortened and modified from https://www.bigomega.dev/markdown-parser/
+      	const htmlText = markdownText
+      		.replace(/^\> (.*$)/gim, '<blockquote>$1</blockquote>')
+      		.replace(/\*\*(.*)\*\*/gim, '<b>$1</b>')
+      		.replace(/\*(.*)\*/gim, '<i>$1</i>')
+          .replace(/__(.*)__/gim, '<u>$1</u>')
+      		.replace(/\n$/gim, '<br />')
+      	return htmlText.trim()
+      }
+      function glogify(){
+        ['name', 'desc', 'equip','A','B','C','D'].forEach((item, i) => {
+          console.log(document.getElementById(item).value)
+          document.getElementById('res_'+item).innerHTML = parseMarkdown(document.getElementById(item).value)
+        });
+
+      }
+    </script>
+  </body>
+</html>
