@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>RPG tools</title>
+
+  </head>
+  <body>
+    <style media="screen">
+      body {background-color: black; color: lightgrey; font-family: serif; width: 1000px; margin: auto};
+    </style>
+    <div id="pointless facts">
+      <h2>Pointless things you didn't need to know about your character</h2>
+      <button onclick='selectRandom_who_really_are_you_mkv()'>Who really are you?</button> <button onclick='showTables_who_really_are_you_mkv()'>Show tables</button>
+      <br><br>
+      <div id='outputText_who_really_are_you_mkv'></div>
+      <script>
+      function expandString(str, map) {
+      	var recur_limit = 20
+      	while (str.match(/{.*?}/) && recur_limit > 0){
+      		str = str.replace(/{.*?}/g, (match) => {
+      			var input = match.toLowerCase().replace(/ /g, '_').replace(/[^a-z0-9_-]/g,'').split('_-')
+      			var key = input[0]
+
+      			if (!map.hasOwnProperty(key))
+      				return key
+
+      			if (input.includes(`u`)) {
+      				key_u = key+`_unique`
+      				if (!map.hasOwnProperty(key_u) || map[key_u].length == 0)
+      					map[key_u] = map[key].slice()
+      				return map[key_u].splice(Math.floor(Math.random() * map[key_u].length), 1);
+      			}
+
+      			return map[key][Math.floor(Math.random() * map[key].length)]
+      		})
+      		recur_limit -= 1
+      	}
+      	return str
+      }
+
+      var lists_who_really_are_you_mkv = {
+      	runesign: [`Star`, `Sun`, `Moon`, `Eel`, `Dagger`, `River mouth`, `Horn`, `Goat`, `Giant's thumb`, `Ancient Gate`, `Friend`, `Foe`, `Wanderer`, `Palm`, `Claw`, `Blade`, `Quill`, `Sword`, `Defence`, `Offence`],
+      	mix: [`Dried jerky`, `Crushed nuts`, `Dried fish`, `Fried fritters`, `Assorted bugs`, `Questionably sourced mushrooms`, `Raw grain`, `Processed mush`, `Sausages of unknown origin`, `Dried blood`],
+      	direction: [`The left one`, `The right one`, `Both`, `Neither`],
+      	trinket: [`{useless descriptor -u} {useless descriptor -u} {weapon}`, `{useless descriptor -u} {useless descriptor -u} {hierloom}`, `{useless descriptor -u} {sentimental object}`, `{mix}`],
+      	useless_descriptor: [`Broken`, `Worn`, `Crushed`, `Twisted`, `Acid-eaten`, `Partially digested`, `Questionnably sourced`, `Bloodstained`, `Ruined`, `Irrevocably damaged`],
+      	weapon: [`Sword`, `Knife`, `Falchion`, `Pole`, `Spear`, `Arrow`, `Bow`, `Dagger`, `Longbow`, `Caltrops`],
+      	hierloom: [`Charm`, `Spearhead`, `Arrowhead`, `Statuette`, `Gemstone`, `Bead`],
+      	sentimental_object: [`Letter`, `Keepsake`, `Portrait`, `Watch`, `Pen`, `Trinket`],
+      }
+
+      function selectRandom_who_really_are_you_mkv() {
+      	document.getElementById('outputText_who_really_are_you_mkv').innerHTML = expandString(`Your character's...<br />Runesign: {runesign}<br />Preferred trail mix: {mix}<br />Favoured limb: {direction}<br />Favoured path at a fork: {direction}<br />Useless thing: {trinket}`, lists_who_really_are_you_mkv)
+      }
+
+      function showTables_who_really_are_you_mkv(){
+      	document.getElementById('outputText_who_really_are_you_mkv').innerHTML = `Your character's...<br />Runesign: {runesign}<br />Preferred trail mix: {mix}<br />Favoured limb: {direction}<br />Favoured path at a fork: {direction}<br />Useless thing: {trinket}<br/><br/>runesign<br/>1. Star<br/>2. Sun<br/>3. Moon<br/>4. Eel<br/>5. Dagger<br/>6. River mouth<br/>7. Horn<br/>8. Goat<br/>9. Giant's thumb<br/>10. Ancient Gate<br/>11. Friend<br/>12. Foe<br/>13. Wanderer<br/>14. Palm<br/>15. Claw<br/>16. Blade<br/>17. Quill<br/>18. Sword<br/>19. Defence<br/>20. Offence<br/><br/>mix<br/>1. Dried jerky<br/>2. Crushed nuts<br/>3. Dried fish<br/>4. Fried fritters<br/>5. Assorted bugs<br/>6. Questionably sourced mushrooms<br/>7. Raw grain<br/>8. Processed mush<br/>9. Sausages of unknown origin<br/>10. Dried blood<br/><br/>direction<br/>1. The left one<br/>2. The right one<br/>3. Both<br/>4. Neither<br/><br/>trinket<br/>1. {useless descriptor -u} {useless descriptor -u} {weapon}<br/>2. {useless descriptor -u} {useless descriptor -u} {hierloom}<br/>3. {useless descriptor -u} {sentimental object}<br/>4. {mix}<br/><br/>useless descriptor<br/>1. Broken<br/>2. Worn<br/>3. Crushed<br/>4. Twisted<br/>5. Acid-eaten<br/>6. Partially digested<br/>7. Questionnably sourced<br/>8. Bloodstained<br/>9. Ruined<br/>10. Irrevocably damaged<br/><br/>weapon<br/>1. Sword<br/>2. Knife<br/>3. Falchion<br/>4. Pole<br/>5. Spear<br/>6. Arrow<br/>7. Bow<br/>8. Dagger<br/>9. Longbow<br/>10. Caltrops<br/><br/>hierloom<br/>1. Charm<br/>2. Spearhead<br/>3. Arrowhead<br/>4. Statuette<br/>5. Gemstone<br/>6. Bead<br/><br/>sentimental object<br/>1. Letter<br/>2. Keepsake<br/>3. Portrait<br/>4. Watch<br/>5. Pen<br/>6. Trinket`
+      }
+      </script>
+    </div>
+  </body>
+</html>
