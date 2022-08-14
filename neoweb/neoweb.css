@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Ibarra+Real+Nova:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Libre+Barcode+39+Text&family=Share+Tech+Mono&display=swap');
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+:root {
+    --neonred: #ae2d63;
+    --carbonblack: #171717;
+    --stainwhite: #fff4e1;
+    --offblue: #3da79b;
+    --crtyellow: #ffcc65;
+    --dimcrtyellow: #9f7f40;
+}
+
+::selection {
+    background-color: var(--crtyellow);
+    color: var(--carbonblack);
+}
+
+body {
+    background-color: var(--carbonblack);
+    color: var(--stainwhite);
+    padding: 0.1em;
+    font-family: 'EB Garamond', 'Times New Roman', Times, serif;
+    letter-spacing: 0.05em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Ibarra Real Nova', 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: 600;
+    text-transform: lowercase;
+    letter-spacing: 0.1em;
+    margin-top: 0em;
+    margin-bottom: 0.5em;
+    padding: 0.1em;
+    transition: all 0.15s;
+    transition-timing-function: linear;
+}
+
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+    background-color: var(--offblue);
+    color: var(--carbonblack);
+    filter: brightness(120%);
+}
+
+.flicker {
+    animation: backlight-haze 10s infinite;
+}
+@keyframes backlight-haze {
+    0% {text-shadow: 2px 2px 8px var(--neonred)}
+    10% {text-shadow: 2px 2px 6px var(--neonred)}
+    20% {text-shadow: 2px 2px 7px var(--neonred)}
+    30% {text-shadow: 2px 2px 9px var(--neonred)}
+    50% {text-shadow: 2px 2px 6px var(--neonred)}
+    60% {text-shadow: 2px 2px 7px var(--neonred)}
+    70% {text-shadow: 2px 2px 8px var(--neonred)}
+    80% {text-shadow: 2px 2px 6px var(--neonred)}
+
+    90% {text-shadow: 2px 2px 8px var(--neonred)}
+    100% {text-shadow: 2px 2px 5px var(--neonred)}
+}
+
+.chatbox {
+    border-top: solid 1px var(--neonred);
+    border-bottom: solid 1px var(--neonred);
+    padding-top: 1em;
+    padding-bottom: 1em;
+    max-width: 85%;
+    margin: auto;
+}
+
+a {
+    color: var(--offblue);
+    transition: all 0.1s;
+}
+
+a:hover {
+    filter: brightness(120%);
+}
+
+a:active {
+    filter: brightness(200%);
+}
+
+a:visited {
+    color: var(--neonred);
+}
+
+blockquote {
+    border-left: 1px solid var(--neonred);
+    padding-left: 1em;
+    margin-left: 1em;
+}
+
+table {
+    border: 2px solid var(--offblue);
+    border-spacing: 0;
+    border-collapse: collapse;
+    box-shadow: 4px 4px var(--offblue);
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+}
+
+td, th {
+    border: 1px solid var(--offblue);
+    padding: 0.5em;
+}
+
+th {
+    font-family: 'Ibarra Real Nova', 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: 600;
+    text-transform: lowercase;
+    letter-spacing: 0.1em;
+    text-shadow: 1px 1px 3px var(--offblue);
+}
+
+code {
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 10pt;
+    letter-spacing: 0.05em;
+}
+
+.barcode {
+    font-family: 'Libre Barcode 39 Text', 'Courier New', Courier, monospace;
+    font-size: 20pt;
+}
+
+button {
+    border: 2px solid var(--neonred);
+    padding: 0.5em;
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    background-color: var(--carbonblack);
+    color: var(--stainwhite);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+button:hover {
+    background-color: var(--neonred);
+    filter: brightness(120%);
+    text-shadow: 0px 0px 3px var(--stainwhite);
+}
+
+button:active {
+    background-color: var(--neonred);
+    filter: brightness(200%);
+    text-shadow: 0px 0px 5px var(--stainwhite);
+}
+
+.box {
+    border: 1px dashed var(--crtyellow);
+    padding: 1em;
+    margin: 1em;
+}
+
+input[type='text'], input[type='password'] {
+    border: 0.15em solid var(--crtyellow);
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+    color: var(--stainwhite);
+    background-color: var(--carbonblack);
+    box-shadow: 2px 2px var(--crtyellow);
+}
+
+
+input[type='radio']{
+    appearance: none;
+    background-color: var(--carbonblack);
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid var(--crtyellow);
+    border-radius: 50%;
+    box-shadow: none;
+    transform: translateY(0.1em);
+    cursor: pointer;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+
+}
+
+input[type='checkbox']{
+    appearance: none;
+    background-color: var(--carbonblack);
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid var(--crtyellow);
+    transform: translateY(0.4em);
+    cursor: pointer;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+input[type='radio']:hover, input[type='checkbox']:hover{
+    background-color: var(--dimcrtyellow);
+}
+
+input[type='radio']:checked, input[type='checkbox']:checked{
+    background-color: var(--crtyellow);
+}
+
+hr {
+    border: 1px solid var(--offblue);
+}
+
+.focus {
+    margin: auto;
+    max-width: fit-content;
+}
