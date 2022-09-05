@@ -34,6 +34,8 @@
 - [Google Fonts](https://fonts.google.com/) - A huge amount of free and open license fonts.
 - [Old Book Illustrations](https://www.oldbookillustrations.com/) - Scans of old books, ready to use.
 - [Library of Congress](https://www.loc.gov/) - Public domain resources of various kinds (images/scans etc.).
+- [H. P. Lovecraft Historical Society](https://www.hplhs.org/resources.php) - Vintage props, resources, and fonts (some free, some more for sale).
+- [Hathi Trust](https://www.hathitrust.org/) - Open access academic and research library.
 
 ## Videos
 - [Making an ARG: Walker Creek](https://www.youtube.com/watch?v=2bDAUXlJmRo) - Alex Hera walks you through making an ARG.
