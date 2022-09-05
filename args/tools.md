@@ -33,6 +33,7 @@
 - [Indestructible Type](https://indestructibletype.com/Home.html) - Excellent free and open license fonts.
 - [Google Fonts](https://fonts.google.com/) - A huge amount of free and open license fonts.
 - [Old Book Illustrations](https://www.oldbookillustrations.com/) - Scans of old books, ready to use.
+- [Library of Congress](https://www.loc.gov/) - Public domain resources of various kinds (images/scans etc.).
 
 ## Videos
 - [Making an ARG: Walker Creek](https://www.youtube.com/watch?v=2bDAUXlJmRo) - Alex Hera walks you through making an ARG.
