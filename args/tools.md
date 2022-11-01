@@ -11,6 +11,7 @@
 - [Google Firebase](https://firebase.google.com/)*: Web hosting and cloud/database management with free tier
 - [Github Pages](https://pages.github.com/): Free web hosting
 - [Protonmail](https://proton.me/): Free secure email accounts (Only 250 MB storage unless you do a bunch of stuff that gives you 1GB but secure and less hassle to set up than google)
+- [Swiss Transfer](https://www.swisstransfer.com/en-us): Free file transfers (password optional), stays up for up to 30 days
 
 ## Software Tools
 - [Affinity Suite](https://affinity.serif.com/)*: Alternative to Photoshop/InDesign/Illustrator, one time purchase with ~70% of the features
