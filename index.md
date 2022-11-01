@@ -22,6 +22,7 @@
 * [**Showmd**](https://github.com/UtilityHotbar/showmd/) - Displays markdown files in a semi-pretty way in the shell.
 * [**oldbook.css**](https://github.com/UtilityHotbar/oldbook-css) - A CSS theme that simulates old books. For some reason, my most popular project by far. No JS needed.
 * [**neoweb.css**](https://utilityhotbar.github.io/neoweb/) - Another CSS theme, with a demo page. No JS needed.
+* [**ARG Tools**](https://utilityhotbar.github.io/args/) - Tools for running and making ARGs.
 
 ## Old Stuff
 * [**Progress Game**](https://utilityhotbar.github.io/progress_game) - Short incremental game with [paper.css](https://www.getpapercss.com/).
