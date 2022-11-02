@@ -8,10 +8,22 @@ body{
     color: #f8f8f2;
 }
 
+::selection {
+    background: rgb(39, 64, 110);
+}
+
 a {
     color: lightcoral;
 }
 
 a:visited {
     color: lightsalmon;
+}
+
+a:hover {
+    color: lightgoldenrodyellow;
+}
+
+a:active{
+    color: whitesmoke;
 }
