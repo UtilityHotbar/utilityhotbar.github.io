@@ -68,7 +68,11 @@ function update_indiv_element(thing){
             document.getElementById('combat-table').style.opacity = '0%';
         }
     }else if (elem_name == 'edge'){
-
+        for (i=-6; i<=6; i++){
+            document.getElementById('edge'+i).style.backgroundColor = 'inherit';
+        }
+        console.log([elem_new_val])
+        document.getElementById('edge'+elem_new_val).style.backgroundColor = 'antiquewhite';
     }else{
         document.getElementById(elem_name).innerHTML = elem_new_val;
     } 

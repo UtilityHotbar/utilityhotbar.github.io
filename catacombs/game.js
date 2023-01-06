@@ -400,6 +400,8 @@ function run_fight(you, enemy, surprised=false){
             break;
         }
         // Edge display (to player)
+        edge = Math.round(edge);
+        print_screen(['edge', edge])
         if (edge > 0){
             print_term('You think you have the edge right now...');
         }else if (edge < 0){
@@ -416,7 +418,8 @@ function run_fight(you, enemy, surprised=false){
             edge -= roll(1, 3);
         }
 
-        edge = clamp(edge, -6, 6);
+        edge = Math.round(clamp(edge, -6, 6));
+
 
         // Struggle check (Who hits, modified by edge)
         print_term('Both of you struggle to land a strike...')

@@ -183,3 +183,10 @@ table {
     font-family: 'QTChancery', 'Times New Roman', Times, serif;
     letter-spacing: 0.1rem;
 }
+
+.edge-box{
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+    height: 0.5em;
+    background-color: inherit;
+}
