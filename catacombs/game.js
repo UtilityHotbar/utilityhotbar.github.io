@@ -205,7 +205,7 @@ function roll_treasure(hero, level){
         if (hero['ranged_attacks'] == 0){
             hero['ranged_attacks'] = 1;
         }
-        print_screen([['damage', hero['damage']], ['ranged_damage', hero['damage']]])
+        print_screen([['ranged_attacks', hero['ranged_attacks']], ['ranged_damage', hero['damage']]])
     }else if (result == 3){
         print_term('You find a patch of armour!');
         amt = roll(1, 6)+level;
