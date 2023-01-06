@@ -51,7 +51,7 @@ monster_index = {
     7: [{'name': 'mechadragon', 'speed': -1, 'damage': 12}]
 }
 
-curr_length = 0;
+curr_length = 18;
 curr_level = 1;
 curr_turn = 10;
 player_dead = false;
