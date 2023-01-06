@@ -270,11 +270,15 @@ function loop_step(main_character){
         bump = roll (2, 6);
         main_character['max_hp'] += bump;
         main_character['hp'] += bump;
+        print_term('===LEVEL UP===');
         print_term('You gain '+bump+' HP.');
         print_screen([['level', curr_level], ['max_hp', main_character['max_hp']], ['hp', main_character['hp']]]);
     }
     if (!player_dead){
         setTimeout(()=>{loop_step(main_character)}, 300);
+    }else{
+        game_end_function(main_character);
+        return false;
     }
 }
 
