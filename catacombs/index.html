@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DELVER</title>
+    <link rel="stylesheet" href="ht_emu.css">
+</head>
+<body>
+    <h1>Catacombs of Steel</h1>
+    <div id="content">
+        <p>
+            A simulation by <a href="https://utilityhotbar.github.io">Utilityhotbar</a>.<br>
+            <!-- Download <a class="special-text" href="manual.pdf">User Manual v1.0</a>. -->
+        </p>
+        <br>
+        <div id="game-container">
+            <div class="terminal">
+                <div class="terminal-output" id="mainterm">
+                </div>
+            </div>
+            <div id="character-sheet">
+                <h2>You</h2>
+                <table id="stats-section">
+                    <tr>
+                        <th>STR</th><td id="str">18</td>
+                        <th>DEX</th><td id="dex">18</td>
+
+                    </tr>
+                    <tr>
+                        <th>CON</th><td id="con">18</td>
+                        <th>INT</th><td id="int">18</td>
+                    </tr>
+                    <tr>
+                        <th>WIS</th><td id="wis">18</td>
+                        <th>CHA</th><td id="cha">18</td>
+                    </tr>
+                </table>
+                <hr>
+                <table id="data-section">
+                    <tr>
+                        <th>HP</th><td><span id="hp">20</span>/<span id="max_hp">20</span></td>
+                    </tr>
+                    <tr>
+                        <th>Gold</th><td id="gold">0</td>
+                    </tr>
+                    <tr>
+                        <th>Melee DMG</th><td><span id="attacks">1</span>d<span id="damage">6</span></td>
+                    </tr>
+                    <tr>
+                        <th>Ranged DMG</th><td><span id="ranged_attacks">0</span>d<span id="ranged_damage">4</span></td>
+                    </tr>
+                    <tr>
+                        <th>Level</th><td id="level">1</td>
+                    </tr>
+                </table>
+                <hr>
+                <table id="skills-section">
+                    <tr>
+                        <th>Melee</th><td>+<span id="melee">0</span>%</td>
+                    </tr>
+                    <tr>
+                        <th>Ranged</th><td>+<span id="ranged">0</span>%</td>
+                    </tr>
+                    <tr>
+                        <th>Defense</th><td>+<span id="defense">0</span>%</td>
+                    </tr>
+                    <tr>
+                        <th>Medicine</th><td>+<span id="medicine">0</span>%</td>
+                    </tr>
+                    <tr>
+                        <th>Navigation</th><td>+<span id="navigation">0</span>%</td>
+                    </tr>
+                    <tr>
+                        <th>Footing</th><td>+<span id="footing">0</span>%</td>
+                    </tr>
+                    <tr>
+                        <th>Perception</th><td>+<span id="perception">0</span>%</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="combat-table">
+                <h2>Enemy</h2>
+                <table id="enemy-section">
+                    <tr>
+                        <th colspan=2><span id="enemy-name" ></span></th>
+                    </tr>
+                    <tr>
+                        <th>HP</th><td><span id="enemy-hp"></span>/<span id="enemy-max_hp"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Damage</th><td><span id="enemy-attacks"></span>d<span id="enemy-damage"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Tactic</th><td id="enemy-tactic"></td>
+                    </tr>
+                    <tr>
+                        <th>Speed</th><td id="enemy-speed"></td>
+                    </tr>
+                    <tr>
+                        <th>Strange</th><td id="enemy-strange"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="terminal.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

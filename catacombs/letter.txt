@@ -1,0 +1,17 @@
+===BEGIN MESSAGE===
+Gilles,
+
+I trust that this letter finds you well. I'm afraid I'm rather out of options... My old friends at the Statinstitut have gotten wind of my document smuggling activities and have been monitoring my communications. Hopefully this laptop reaches you safely via snail mail. The cipher is basic and I trust that it didn't take you long to figure out how to use the key. 
+
+On to more important news: this laptop contains a number of documents in an encrypted partition that the NOVOS extraction software won't be able to detect, so if you're using that you'll need to go back to the physical device. Boot it up, enter the terminal, and paste in these commands exactly:
+
+$ su superbruger
+$ dd bs=1 tælformat=64 skip=128118720 soge=446 in=A:
+
+This should reveal a new partition. Mount it and download the documents.
+
+Stay strong. The people of Havland need to know that they have been deceived from the beginning.
+
+- Huang
+===END MESSAGE===
+

@@ -1,0 +1,182 @@
+@font-face {
+    font-family: 'QTChancery';
+    src: url('fonts/QTChanceryType.otf');
+}
+
+@font-face {
+    font-family: 'QTChancery';
+    src: url('fonts/QTChanceryType-Bold.otf');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'QTGaromand';
+    src: url('fonts/QTGaromand.otf');
+}
+
+@font-face {
+    font-family: 'QTGaromand';
+    src: url('fonts/QTGaromand-Bold.otf');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'QTGaromand';
+    src: url('fonts/QTGaromand-Italic.otf');
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'QTGaromand', 'Times New Roman', Times, serif;
+    src: url('fonts/QTGaromand-BoldItalic.otf');
+    font-style: italic;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'VT323';
+    src: url('fonts/VT323-Regular.ttf');
+}
+
+
+@font-face {
+    font-family: 'JSL Blackletter';
+    src: url('fonts/JBLACK.TTF');
+}
+
+@font-face {
+    font-family: 'Cutive Mono';
+    src: url('fonts/CutiveMono-Regular.ttf');
+}
+
+body {
+    background-color: rgb(51, 61, 67);
+    font-family: 'QTGaromand', 'Times New Roman', Times, serif;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0em;
+    color: antiquewhite;
+}
+
+#content {
+    max-width: 85%;
+    margin: auto;
+}
+
+p {
+    text-align: center;
+}
+
+h1, h2 {
+    font-family: 'JSL Blackletter', serif;
+    letter-spacing: 0.5rem;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 0.75em;
+    letter-spacing: 0.2rem;
+
+}
+
+
+a {
+    color: rgb(238, 190, 132);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+a:hover{
+    filter: brightness(110%);
+    text-shadow: 0px 0px 3px white;
+}
+
+a:active{
+    filter: brightness(150%);
+}
+
+#game-container {
+    margin: auto;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.terminal {
+    font-family: 'VT323', 'Courier New', Courier, monospace;
+    /* margin: auto; */
+    width: 300px;
+    height: 300px;
+    padding: 1em;
+    background-color: black;
+    color: white;
+    border-radius: 2px;
+    box-shadow: 0px 0px 3px black;
+}
+
+.terminal-output {
+    font-variant-ligatures: none;
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.terminal-button {
+    background-color: black;
+    border: solid 2px white;
+    color: white;
+    font-family: 'VT323', 'Courier New', Courier, monospace;
+    font-size: 12pt;
+    cursor: pointer;
+}
+
+.terminal-button:hover {
+    background-color: rgb(67, 67, 67);
+}
+
+.terminal-button:active {
+    background-color: rgb(138, 138, 138);
+}
+
+.data {
+    color: darkcyan;
+}
+
+#combat-table{
+    display: none;
+}
+
+#character-sheet, #combat-table{
+    padding: 1em;
+    margin-left: 2em;
+    width: 12em;
+    border: solid 2.5px antiquewhite;
+    text-align: center;
+}
+
+#stats-section {
+    font-family: 'QTChancery', 'Times New Roman', Times, serif;
+}
+
+#data-section, #skills-section, #enemy-section {
+    font-family: 'Cutive Mono', 'Courier New', Courier, monospace;
+}
+
+#data-section th, #skills-section th, #enemy-section th {
+    text-align: left;
+    font-weight: normal;
+
+}
+
+table {
+    width: 100%;
+}
+
+#enemy-name{
+    font-weight: bold;
+    font-family: 'QTChancery', 'Times New Roman', Times, serif;
+    letter-spacing: 0.1rem;
+}
