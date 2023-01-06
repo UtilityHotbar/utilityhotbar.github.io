@@ -48,7 +48,9 @@ monster_index = {
     4: [{'name': 'smartgel slime controller', 'speed': -2, 'strange': 1, 'damage': 8}, {'name': 'catacomb warden', 'tactic': 2, 'attacks': 2}],
     5: [{'name': 'rogue joke', 'strange': 3}, {'name': 'dire dire wolf', 'speed': 3}, {'name': 'awakened microcontroller fabricator', 'speed': -1, 'tactic': -1}],
     6: [{'name': 'active terminator', 'tactic': 2, 'speed': 1, 'strange': -1, 'damage': 8}],
-    7: [{'name': 'mechadragon', 'speed': -1, 'damage': 12}]
+    7: [{'name': 'mechadragon', 'speed': -1, 'damage': 12},],
+    8: [{'name': 'optimised clone', 'speed': 2, 'tactic': 2, 'strange': -2, 'damage': 10}, {'name': 'dangerously competent bounty hunter', 'tactic': 4}, {'name':'glitch in spacetime', 'speed': 4}],
+    9: [{'name': 'content-terminating wormhole'}]
 }
 
 curr_length = 18;
@@ -180,7 +182,10 @@ function get_monster(level){
     hp = roll(level, 6);
     base['hp'] = hp;
     base['max_hp'] = hp;
-    base['attacks'] = level;
+    base['attacks'] = smallest(7, level);
+    if (level > 7){
+        base['damage'] = level-1;
+    }
     Object.keys(target).forEach(element => {
         base[element] = target[element];
     });
