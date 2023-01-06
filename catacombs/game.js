@@ -298,7 +298,7 @@ function encounter_roll(current_hero, clevel){
         print_screen(['gold', current_hero['gold']]);
     }else if (enc == 5){
         print_term('You look around for anything interesting...');
-        if (roll(1,greatest(4, 10-clevel)) < 3){
+        if (roll(1,greatest(4, 10-clevel)) < 7){
             print_term('You find some treasure!');
             roll_treasure(current_hero, clevel);
         };
