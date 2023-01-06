@@ -3,7 +3,7 @@ OTHER_ELEMENT_QUEUE = [];
 PRINTING = false;
 const UPDATE_KEYWORD = '%UPDATE%'
 
-function print_term(ts, d=400, l='mainterm') {  // push string or list of strings to print queue
+function print_term(ts, d=550, l='mainterm') {  // push string or list of strings to print queue
     if (typeof ts === 'string'){
         QUEUE.push(ts);
     }else if (typeof ts === 'object'){
@@ -19,14 +19,19 @@ function print_term(ts, d=400, l='mainterm') {  // push string or list of string
 function out(delay, elem){  // Grabs top line in queue and pushes it to webpage, then calls itself again after a timeout if there are lines remaining in queue
     t = QUEUE[0];
     QUEUE = QUEUE.slice(1);
-    if (t == UPDATE_KEYWORD){
+    while (t == UPDATE_KEYWORD){
         update_other_elements();
-    }else{
-        tl = t + '<br>';
-        i = document.getElementById(elem)
-        i.innerHTML += tl;
-        i.scrollTop = i.scrollHeight;
+        t = QUEUE[0];
+        QUEUE = QUEUE.slice(1);
+        if (QUEUE.length == 0){
+            PRINTING = false;
+            return;
+        }
     }
+    tl = t + '<br>';
+    i = document.getElementById(elem)
+    i.innerHTML += tl;
+    i.scrollTop = i.scrollHeight;
 
 
     if (QUEUE.length > 0){

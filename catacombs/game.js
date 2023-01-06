@@ -39,17 +39,18 @@ base_monster = {
     'speed': 0,
     'tactic': 0,
     'strange': 0,
+    'tough': 0,
 }
 
 monster_index = {
     1: [{'name': 'goblin', 'tactic': 1}, {'name': 'dire wolf', 'speed': 1}, {'name': 'rogue drone', 'damage': 8}],
-    2: [{'name': 'smartgel slime consumer', 'speed': -2, 'tactic': -1, 'strange': 1}, {'name': 'hostile obelisk', 'strange': 2}],
+    2: [{'name': 'smartgel slime consumer', 'speed': -2, 'tactic': -1, 'strange': 1}, {'name': 'hostile obelisk', 'strange': 2, 'tough': 1}],
     3: [{'name': 'partially defective terminator', 'tactic': 1, 'strange': -1}, {'name': 'acolyte wizard', 'speed': -1, 'damage': 10}, {'name': 'analytic philosopher', 'tactic': 2, 'strange': 1, 'damage': 4}, {'name': 'acceleration fiend', 'speed': 3},],
     4: [{'name': 'smartgel slime controller', 'speed': -2, 'strange': 1, 'damage': 8}, {'name': 'catacomb warden', 'tactic': 2, 'attacks': 2}],
-    5: [{'name': 'rogue joke', 'strange': 3}, {'name': 'dire dire wolf', 'speed': 3}, {'name': 'awakened microcontroller fabricator', 'speed': -1, 'tactic': -1}],
+    5: [{'name': 'rogue joke', 'strange': 3}, {'name': 'dire dire wolf', 'speed': 3}, {'name': 'awakened microcontroller fabricator', 'speed': -1, 'tactic': -1, 'tough': 2}],
     6: [{'name': 'active terminator', 'tactic': 2, 'speed': 1, 'strange': -1, 'damage': 8}],
-    7: [{'name': 'mechadragon', 'speed': -1, 'damage': 12},],
-    8: [{'name': 'optimised clone', 'speed': 2, 'tactic': 2, 'strange': -2, 'damage': 10}, {'name': 'dangerously competent bounty hunter', 'tactic': 4}, {'name':'glitch in spacetime', 'speed': 4}],
+    7: [{'name': 'mechadragon', 'speed': -1, 'damage': 12, 'tough': 3},],
+    8: [{'name': 'optimised clone', 'speed': 2, 'tactic': 2, 'strange': -2, 'damage': 10}, {'name': 'dangerously competent bounty hunter', 'tactic': 4}, {'name':'glitch in spacetime', 'speed': 4, 'tough': 1}],
     9: [{'name': 'content-terminating wormhole'}]
 }
 
@@ -429,7 +430,7 @@ function run_fight(you, enemy, surprised=false){
 
         // Damage roll (Modified by edge and strength)
         if (hits){
-            dmg = Math.round(roll(you['attacks'], you['damage']) + get_bonus(you, 'str'));
+            dmg = Math.round(roll(you['attacks'], greatest(you['damage'] - enemy['tough'], 2)) + get_bonus(you, 'str'));
             if (skill_check(you, 'int', 'perception', enemy['strange'] - edge)){
                 print_term('Critical hit!');
                 dmg *= 2;
