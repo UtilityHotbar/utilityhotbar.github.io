@@ -46,7 +46,7 @@ monster_index = {
     2: [{'name': 'smartgel slime consumer', 'speed': -2, 'tactic': -1, 'strange': 1}, {'name': 'hostile obelisk', 'strange': 2}],
     3: [{'name': 'partially defective terminator', 'tactic': 1, 'strange': -1}, {'name': 'acolyte wizard', 'speed': -1, 'damage': 10}, {'name': 'analytic philosopher', 'tactic': 2, 'strange': 1, 'damage': 4}, {'name': 'acceleration fiend', 'speed': 3},],
     4: [{'name': 'smartgel slime controller', 'speed': -2, 'strange': 1, 'damage': 8}, {'name': 'catacomb warden', 'tactic': 2, 'attacks': 2}],
-    5: [{'name': 'rogue joke', 'strange': 3}, {'name': 'dire dire wolf', 'speed': 3}, {'name': 'awakened roomba', 'speed': -1, 'tactic': -1}],
+    5: [{'name': 'rogue joke', 'strange': 3}, {'name': 'dire dire wolf', 'speed': 3}, {'name': 'awakened microcontroller fabricator', 'speed': -1, 'tactic': -1}],
     6: [{'name': 'active terminator', 'tactic': 2, 'speed': 1, 'strange': -1, 'damage': 8}],
     7: [{'name': 'mechadragon', 'speed': -1, 'damage': 12}]
 }
