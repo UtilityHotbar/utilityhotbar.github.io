@@ -65,6 +65,9 @@ function update_indiv_element(thing){
         if (elem_new_val == 'show'){
             document.getElementById('combat-table').style.opacity = '100%';
         }else if (elem_new_val == 'hide'){
+            for (i=-6; i<=6; i++){
+                document.getElementById('edge'+i).style.backgroundColor = 'inherit';
+            }
             document.getElementById('combat-table').style.opacity = '0%';
         }
     }else if (elem_name == 'edge'){
