@@ -266,7 +266,7 @@ function loop_step(main_character){
         print_term('You gain '+bump+' HP.');
         print_screen([['level', curr_level], ['max_hp', main_character['max_hp']], ['hp', main_character['hp']]]);
     }
-    if (curr_level < 8 && !player_dead){
+    if (!player_dead){
         setTimeout(()=>{loop_step(main_character)}, 300);
     }
 }
