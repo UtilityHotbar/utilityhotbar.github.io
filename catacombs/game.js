@@ -258,9 +258,13 @@ function loop_step(main_character){
     }
     if (curr_length <= 0){
         print_term('You find the stairs to the next floor...');
-        curr_level += 1
-        curr_length = roll(3, 6)+3+curr_level
-        print_screen(['level', curr_level])
+        curr_level += 1;
+        curr_length = roll(3, 6)+3+curr_level;
+        bump = roll (2, 6);
+        main_character['max_hp'] += bump;
+        main_character['hp'] += bump;
+        print_term('You gain '+bump+' HP.');
+        print_screen([['level', curr_level], ['max_hp', main_character['max_hp']], ['hp', main_character['hp']]]);
     }
     if (curr_level < 8 && !player_dead){
         setTimeout(()=>{loop_step(main_character)}, 300);
