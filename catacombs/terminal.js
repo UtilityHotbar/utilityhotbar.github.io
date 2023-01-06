@@ -58,9 +58,9 @@ function update_indiv_element(thing){
     elem_new_val = thing[1];
     if (elem_name == 'combat'){
         if (elem_new_val == 'show'){
-            document.getElementById('combat-table').style.display = 'block';
+            document.getElementById('combat-table').style.opacity = '100%';
         }else if (elem_new_val == 'hide'){
-            document.getElementById('combat-table').style.display = 'none';
+            document.getElementById('combat-table').style.opacity = '0%';
         }
     }else if (elem_name == 'edge'){
 

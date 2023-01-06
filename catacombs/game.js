@@ -130,7 +130,7 @@ function skill_check(character, stat, skill, diff=0){
     else{
         if (character['skills'][skill] < 50){
             character['skills'][skill] += 1; // Failing a skill check improves it by 1% to a maximum of 50%
-            print_term('Your '+skill+' skill increased to +'+character['skills'][skill]+'%.')
+            print_term('Your '+skill+' skill increased by 1%.')
             print_screen([skill, character['skills'][skill]])
         }
         return false;
@@ -468,7 +468,7 @@ function start_game(){
     myhero = {...base_hero};
     update_list = []
     stats.forEach(element => {
-        start_val =  roll(2, 6) + 3
+        start_val =  smallest(roll(3, 6) + 2, 18)
         myhero['stats'][element] = start_val;
         update_list.push([element, start_val])
     });

@@ -147,12 +147,14 @@ a:active{
 }
 
 #combat-table{
-    display: none;
+    opacity: 0%;
+    transition: all 0.2s;
 }
 
 #character-sheet, #combat-table{
     padding: 1em;
     margin-left: 2em;
+    margin-right: 2em;
     width: 12em;
     border: solid 2.5px antiquewhite;
     text-align: center;
