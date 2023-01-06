@@ -246,9 +246,10 @@ function roll_treasure(hero, level){
 }
 
 function loop_step(main_character){
-    if (curr_level > 7){
+    if (curr_level > 9){
         print_term('You win!');
         game_end_function(main_character);
+        return;
     }
     console.log(main_character)
     curr_turn += 1;
