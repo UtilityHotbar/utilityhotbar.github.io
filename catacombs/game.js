@@ -79,7 +79,7 @@ OTHER_ELEMENT_QUEUE = [];
 PRINTING = false;
 const UPDATE_KEYWORD = '%UPDATE%'
 
-function print_term(ts, d=550, l='mainterm', now=false) {  // push string or list of strings to print queue
+function print_term(ts, now=false, d=550, l='mainterm', ) {  // push string or list of strings to print queue
     console.log([ts])
     if (typeof ts === 'string'){
         if (now){
@@ -89,7 +89,7 @@ function print_term(ts, d=550, l='mainterm', now=false) {  // push string or lis
         }
     }else if (typeof ts === 'object'){
         if (now){
-            QUEUE = ts + QUEUE;
+            QUEUE = ts.concat(QUEUE);
         }else{
             QUEUE.push.apply(QUEUE, ts);
         }
@@ -495,7 +495,7 @@ function roll_treasure(hero, level){
 
 function cast(name){
     if (player_casting){
-        print_term('[SPELL] You are already casting a spell!', now=true);
+        print_term('[SPELL] You are already casting a spell!', true);
         return false;
     }else if (player_dead){
         return false;
@@ -503,8 +503,8 @@ function cast(name){
         player_casting = true;
         if (myhero['spells'].hasOwnProperty(name)){
             if (myhero['stats']['cha'] >= myhero['spells'][name]['cost']){
-                print_term('[SPELL] Now casting '+name+'...', now=true);
-                print_screen(['casting-bar', myhero['spells'][name]['casting_time']], now=true);
+                print_term('[SPELL] Now casting '+name+'...', true);
+                print_screen(['casting-bar', myhero['spells'][name]['casting_time']], true);
                 target_spell = {...myhero['spells'][name]};
                 delete myhero['spells'][name];
                 e = document.getElementById('spell_'+name);
@@ -512,10 +512,10 @@ function cast(name){
                 window.setTimeout(()=>{finish_cast(target_spell)}, target_spell['casting_time']);
                 
             }else{
-                print_term('[SPELL] Insufficient CHA. Casting aborted.', now=true)
+                print_term('[SPELL] Insufficient CHA. Casting aborted.', true)
             }
         }else{
-            print_term('[SPELL] 404 No Such Spell', now=true)
+            print_term('[SPELL] 404 No Such Spell', true)
         }
     }
 }
@@ -525,7 +525,7 @@ function finish_cast(spell){
     outstrings = [];
     outupdates = [];
     if (skill_check(myhero, 'cha', 'spellcasting', spell['power'])){
-        outstrings.push('[SPELL] Casting succeeded!', now=true);
+        outstrings.push('[SPELL] Casting succeeded!');
         myhero['stats']['cha'] -= spell['cost'];
         //lotus flame matrix tensor
         if (spell['effect'] == 'lotus'){
@@ -560,8 +560,8 @@ function finish_cast(spell){
         outupdates.push(['spellcasting', myhero['skills']['spellcasting']])
     }
     outupdates.push(['cha', myhero['stats']['cha']]);
-    print_term(outstrings, now=true);
-    print_screen(outupdates, now=true);
+    print_term(outstrings, true);
+    print_screen(outupdates, true);
 }
 
 function loop_step(){
