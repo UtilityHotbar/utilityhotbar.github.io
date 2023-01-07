@@ -26,7 +26,7 @@ base_hero = {
         'navigation': 0,
         'footing': 0,
         'perception': 0,
-        'spellcasting': 100,
+        'spellcasting': 0,
     },
     'inventory': [],
     'spells': {},
