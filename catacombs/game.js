@@ -405,7 +405,7 @@ function run_fight(you, enemy, surprised=false){
             break;
         }
         // Edge display (to player)
-        edge = Math.round(edge);
+        edge = Math.round(clamp(edge, -6, 6));
         print_screen(['edge', edge])
         if (edge > 0){
             print_term('You think you have the edge right now...');
