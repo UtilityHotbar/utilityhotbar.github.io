@@ -130,7 +130,7 @@ function out(delay, elem){  // Grabs top line in queue and pushes it to webpage,
     }else{
         console.log('cont2')
         PRINTING = false;
-        if (!player_dead){
+        if (!player_dead && !game_over){
             loop_step();
         }
         return
