@@ -563,8 +563,8 @@ function finish_cast(spell){
     }
     outupdates.push(['cha', myhero['stats']['cha']]);
     console.log(outupdates, 'UPDATES')
-    print_term(outstrings, true);
-    print_screen(outupdates, true);
+    print_term(outstrings,);
+    print_screen(outupdates,);
 }
 
 function loop_step(){
