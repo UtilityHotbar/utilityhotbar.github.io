@@ -190,11 +190,16 @@ table {
     letter-spacing: 0.1rem;
 }
 
+#edge-title {
+    margin-bottom: 0em;
+}
+
 .edge-box{
     padding-left: 0.1em;
     padding-right: 0.1em;
     height: 0.5em;
     background-color: inherit;
+    border: solid 1px antiquewhite;
 }
 
 #nospell {
