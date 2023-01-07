@@ -557,7 +557,7 @@ function finish_cast(spell){
         backfire = roll(spell['risk'], 6);
         outstrings.push('[SPELL] Residual spell energy scorches you for '+backfire+' damage!')
         hurt(myhero, backfire);
-
+        outupdates.push(['spellcasting', myhero['skills']['spellcasting']])
     }
     outupdates.push(['cha', myhero['stats']['cha']]);
     print_term(outstrings, now=true);
