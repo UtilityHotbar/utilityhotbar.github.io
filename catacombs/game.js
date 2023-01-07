@@ -530,9 +530,9 @@ function finish_cast(spell){
         //lotus flame matrix tensor
         if (spell['effect'] == 'lotus'){
             health_bonus = roll(spell['power'], 6)+3;
-            outstrings.push('[SPELL] You feel rejuvenated and gain '+health_bonus+' HP + '+spell[['power']]*3+' CHA!');
+            outstrings.push('[SPELL] You feel rejuvenated and gain '+health_bonus+' HP + '+spell['power']*3+' CHA!');
             heal(myhero, health_bonus);
-            myhero['stats']['cha'] += spell[['power']]*3;
+            myhero['stats']['cha'] += spell['power']*3;
             outupdates.push(['hp', myhero['hp']])
         }else if (spell['effect'] == 'tensor'){
             outstrings.push('[SPELL] Your attacks are imbued with a strange, external force tensor...');
