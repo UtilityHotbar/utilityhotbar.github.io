@@ -486,7 +486,7 @@ function roll_treasure(hero, level){
         tskill = skills[roll(1, skills.length)-1];
         print_term('You feel your '+tskill+' skill increase...');
         hero['skills'][tskill] += level;
-        print_screen([[tskill, hero['skills'][tskill]], ['inventory', 'Skill Manual ('+tstat+')']])
+        print_screen([[tskill, hero['skills'][tskill]], ['inventory', 'Skill Manual ('+tskill+')']])
     }else if (result == 8){
         print_term('You find a spell!');
         new_spell = get_spell(level);
