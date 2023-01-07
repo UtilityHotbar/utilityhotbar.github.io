@@ -73,6 +73,7 @@ curr_turn = 10;
 player_dead = false;
 player_casting = false;
 player_fighting = false;
+game_over = false;
 
 QUEUE = [];
 OTHER_ELEMENT_QUEUE = [];
@@ -601,8 +602,12 @@ function loop_step(){
 }
 
 function game_end_function(hero){
-    print_term('Your final score was '+(hero['gold']+curr_turn+(curr_level*10)));
-    console.log('printed final score')
+    if (!game_over){
+        game_over = true;
+        print_term('Your final score was '+(hero['gold']+curr_turn+(curr_level*10)));
+        console.log('printed final score');
+    }
+
 };
 
 function encounter_roll(current_hero, clevel){
