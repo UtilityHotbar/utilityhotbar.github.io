@@ -23,7 +23,7 @@ function out(delay, elem){  // Grabs top line in queue and pushes it to webpage,
         update_other_elements();
         t = QUEUE[0];
         QUEUE = QUEUE.slice(1);
-        if (QUEUE.length == 0){
+        if (t == UPDATE_KEYWORD && QUEUE.length == 0){
             PRINTING = false;
             return;
         }
@@ -74,7 +74,6 @@ function update_indiv_element(thing){
         for (i=-6; i<=6; i++){
             document.getElementById('edge'+i).style.backgroundColor = 'inherit';
         }
-        console.log([elem_new_val])
         document.getElementById('edge'+elem_new_val).style.backgroundColor = 'antiquewhite';
     }else{
         document.getElementById(elem_name).innerHTML = elem_new_val;

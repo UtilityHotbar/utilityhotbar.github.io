@@ -3,8 +3,8 @@ const skills = ['melee', 'ranged', 'defense', 'medicine', 'navigation', 'footing
 
 base_hero = {
     'name': 'You',
-    'hp': 20,
-    'max_hp': 20,
+    'hp': 1,
+    'max_hp': 1,
     'attacks': 1,
     'damage': 6,
     'gold': 0,
@@ -247,6 +247,7 @@ function roll_treasure(hero, level){
 
 function loop_step(main_character){
     if (curr_level > 9){
+        console.log('out1')
         print_term('You win!');
         game_end_function(main_character);
         return;
@@ -276,14 +277,12 @@ function loop_step(main_character){
     }
     if (!player_dead){
         setTimeout(()=>{loop_step(main_character)}, 300);
-    }else{
-        game_end_function(main_character);
-        return false;
     }
 }
 
 function game_end_function(hero){
     print_term('Your final score was '+(hero['gold']+curr_turn+(curr_level*10)));
+    console.log('printed final score')
 };
 
 function encounter_roll(current_hero, clevel){
