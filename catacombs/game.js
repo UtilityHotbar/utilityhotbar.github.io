@@ -112,7 +112,7 @@ function out(delay, elem){  // Grabs top line in queue and pushes it to webpage,
         if (t == UPDATE_KEYWORD && QUEUE.length == 0){
             PRINTING = false;
             console.log('cont1')
-            if (!player_dead){
+            if (!player_dead && !game_over){
                 loop_step();
             }            
             return;
@@ -602,11 +602,9 @@ function loop_step(){
 }
 
 function game_end_function(hero){
-    if (!game_over){
-        game_over = true;
-        print_term('Your final score was '+(hero['gold']+curr_turn+(curr_level*10)));
-        console.log('printed final score');
-    }
+    game_over = true;
+    print_term('Your final score was '+(hero['gold']+curr_turn+(curr_level*10)));
+    console.log('printed final score');
 
 };
 
