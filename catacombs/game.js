@@ -81,7 +81,6 @@ PRINTING = false;
 const UPDATE_KEYWORD = '%UPDATE%'
 
 function print_term(ts, now=false, d=550, l='mainterm', ) {  // push string or list of strings to print queue
-    console.log([ts])
     if (typeof ts === 'string'){
         if (now){
             QUEUE.splice(0, 0, ts)
@@ -140,8 +139,9 @@ function out(delay, elem){  // Grabs top line in queue and pushes it to webpage,
 
 function print_screen(changes, now=false){
     if (now){
+        console.log('changes applied now', changes);
         OTHER_ELEMENT_QUEUE.splice(0, 0, changes);
-        QUEUE.splice(0, 0, UPDATE_KEYWORD);
+        update_other_elements();
     }else{
         OTHER_ELEMENT_QUEUE.push(changes);
         QUEUE.push(UPDATE_KEYWORD);
@@ -284,7 +284,9 @@ function skill_check(character, stat, skill, diff=0){
         if (character['skills'][skill] < 50){
             character['skills'][skill] += 1; // Failing a skill check improves it by 1% to a maximum of 50%
             print_term('Your '+skill+' skill increased by 1%.')
-            print_screen([skill, character['skills'][skill]])
+            if (skill !== 'spellcasting'){ // Preventing spellcasting race condition
+                print_screen([skill, character['skills'][skill]]);
+            }
         }
         return false;
     }
@@ -327,7 +329,6 @@ function get_bonus(person, stat){
 }
 
 function get_monster(level){
-    console.log(level)
     target = monster_index[level][roll(1, monster_index[level].length)-1];
     base = {...base_monster};
     hp = roll(level, 6);
@@ -543,7 +544,7 @@ function finish_cast(spell){
         }else if (spell['effect'] == 'matrix'){
             outstrings.push('[SPELL] You download information from the matrix...');
             tskill = pick(skills);
-            myhero['skills'][tskill] += 3*spell['power'];
+            myhero['skills'][tskill] += 5*spell['power'];
             outupdates.push([tskill, myhero['skills'][tskill]]);
         }else if (spell['effect'] == 'flame'){
             outstrings.push('[SPELL] You are wreathed in flame...');
