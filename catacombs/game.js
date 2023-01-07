@@ -3,8 +3,8 @@ const skills = ['melee', 'ranged', 'defense', 'medicine', 'navigation', 'footing
 
 base_hero = {
     'name': 'You',
-    'hp': 1,
-    'max_hp': 1,
+    'hp': 20,
+    'max_hp': 20,
     'attacks': 1,
     'damage': 6,
     'gold': 0,
