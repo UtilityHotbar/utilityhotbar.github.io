@@ -26,7 +26,7 @@ base_hero = {
         'navigation': 0,
         'footing': 0,
         'perception': 0,
-        'spellcasting': 0,
+        'spellcasting': 100,
     },
     'inventory': [],
     'spells': {},
@@ -91,7 +91,7 @@ function print_term(ts, now=false, d=550, l='mainterm', ) {  // push string or l
         if (now){
             QUEUE = ts.concat(QUEUE);
         }else{
-            QUEUE.push.apply(QUEUE, ts);
+            QUEUE = QUEUE.concat(ts);
         }
     }
     if (QUEUE.length > 0 && !PRINTING){
@@ -540,7 +540,7 @@ function finish_cast(spell){
             outstrings.push('[SPELL] Your attacks are imbued with a strange, external force tensor...');
             myhero['ranged_attacks'] += spell['power'];
             myhero['attacks'] += spell['power'];
-            outupdates.push.apply([['ranged_attacks', myhero['ranged_attacks']], ['attacks', myhero['attacks']]]);
+            outupdates = outupdates.concat([['ranged_attacks', myhero['ranged_attacks']], ['attacks', myhero['attacks']]]);
         }else if (spell['effect'] == 'matrix'){
             outstrings.push('[SPELL] You download information from the matrix...');
             tskill = pick(skills);
@@ -562,6 +562,7 @@ function finish_cast(spell){
         outupdates.push(['spellcasting', myhero['skills']['spellcasting']])
     }
     outupdates.push(['cha', myhero['stats']['cha']]);
+    console.log(outupdates, 'UPDATES')
     print_term(outstrings, true);
     print_screen(outupdates, true);
 }
