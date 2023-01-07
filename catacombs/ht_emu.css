@@ -149,11 +149,11 @@ a:active{
 }
 
 #combat-table{
-    opacity: 0%;
+    display: none;
     transition: all 0.2s;
 }
 
-#character-sheet, #combat-table{
+#character-sheet, #inventory-column{
     padding: 1em;
     margin-left: 2em;
     margin-right: 2em;
@@ -166,8 +166,12 @@ a:active{
     font-family: 'QTChancery', 'Times New Roman', Times, serif;
 }
 
-#data-section, #skills-section, #enemy-section {
+#data-section, #skills-section, #enemy-section, #inventory, #spells, #nospell {
     font-family: 'Cutive Mono', 'Courier New', Courier, monospace;
+}
+
+#inventory, #spells {
+    font-size: 10pt;
 }
 
 #data-section th, #skills-section th, #enemy-section th {
@@ -191,4 +195,22 @@ table {
     padding-right: 0.1em;
     height: 0.5em;
     background-color: inherit;
+}
+
+#nospell {
+    display: none;
+}
+
+#casting-bar {
+    background-color: inherit;
+    width: 100%;
+    height: 0.5em;
+    border: solid 1px antiquewhite;
+}
+
+#casting-progress {
+    background-color: antiquewhite;
+    width: 0%;
+    height: 0.5em;
+
 }

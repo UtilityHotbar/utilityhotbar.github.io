@@ -11,7 +11,7 @@
     <h1>Catacombs of Steel</h1>
     <div id="content">
         <div id="info-block">
-            <i>Version 0.9 - "At the precipice of the beginning"</i><br><br>
+            <i>Version 1.0 - "Ancient whispers through the air"</i><br><br>
             A simulation by <a href="https://utilityhotbar.github.io">Utilityhotbar</a>.<br>
             <!-- Download <a class="special-text" href="manual.pdf">User Manual v1.0</a>. -->
         </div>
@@ -75,6 +75,9 @@
                     <tr>
                         <th>Perception</th><td>+<span id="perception">0</span>%</td>
                     </tr>
+                    <tr>
+                        <th>Spellcasting</th><td>+<span id="spellcasting">0</span>%</td>
+                    </tr>
                 </table>
             </div>
             <div class="terminal">
@@ -82,41 +85,59 @@
                 </div>
             </div>
             
-            <div id="combat-table">
-                <h2>Enemy</h2>
-                <table id="enemy-section">
-                    <tr>
-                        <th colspan=2><span id="enemy-name" ></span></th>
-                    </tr>
-                    <tr>
-                        <th>HP</th><td><span id="enemy-hp"></span>/<span id="enemy-max_hp"></span></td>
-                    </tr>
-                    <tr>
-                        <th>Damage</th><td><span id="enemy-attacks"></span>d<span id="enemy-damage"></span></td>
-                    </tr>
-                    <tr>
-                        <th>Tactic</th><td id="enemy-tactic"></td>
-                    </tr>
-                    <tr>
-                        <th>Speed</th><td id="enemy-speed"></td>
-                    </tr>
-                    <tr>
-                        <th>Strange</th><td id="enemy-strange"></td>
-                    </tr>
-                    <tr>
-                        <th>Tough</th><td id="enemy-tough"></td>
-                    </tr>
-                </table>
-                <br>
-                <h2>Edge</h2>
-                <table id="edge-table">
-                    <tr>
-                        <td style="width: 2em; text-align: left;">You</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td style="width: 2em; text-align: right;">Enemy</td>
-                    </tr>
-                    <tr>
-                        <td id="edge6" class="edge-box"></td><td id="edge5" class="edge-box"></td><td id="edge4" class="edge-box"></td><td id="edge3" class="edge-box"></td><td id="edge2" class="edge-box"></td><td id="edge1" class="edge-box"></td><td id="edge0" class="edge-box"></td><td id="edge-1" class="edge-box"></td><td id="edge-2" class="edge-box"></td><td id="edge-3" class="edge-box"></td><td id="edge-4" class="edge-box"></td><td id="edge-5" class="edge-box"></td><td id="edge-6" class="edge-box"></td>
-                    </tr>
-                </table>
+            <div id="inventory-column">
+                <div id="combat-table">
+                    <h2>Enemy</h2>
+                    <table id="enemy-section">
+                        <tr>
+                            <th colspan=2><span id="enemy-name" ></span></th>
+                        </tr>
+                        <tr>
+                            <th>HP</th><td><span id="enemy-hp"></span>/<span id="enemy-max_hp"></span></td>
+                        </tr>
+                        <tr>
+                            <th>Damage</th><td><span id="enemy-attacks"></span>d<span id="enemy-damage"></span></td>
+                        </tr>
+                        <tr>
+                            <th>Tactic</th><td id="enemy-tactic"></td>
+                        </tr>
+                        <tr>
+                            <th>Speed</th><td id="enemy-speed"></td>
+                        </tr>
+                        <tr>
+                            <th>Strange</th><td id="enemy-strange"></td>
+                        </tr>
+                        <tr>
+                            <th>Tough</th><td id="enemy-tough"></td>
+                        </tr>
+                    </table>
+                    <br>
+                    <h2>Edge</h2>
+                    <table id="edge-table">
+                        <tr>
+                            <td style="width: 2em; text-align: left;">You</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td style="width: 2em; text-align: right;">Enemy</td>
+                        </tr>
+                        <tr>
+                            <td id="edge6" class="edge-box"></td><td id="edge5" class="edge-box"></td><td id="edge4" class="edge-box"></td><td id="edge3" class="edge-box"></td><td id="edge2" class="edge-box"></td><td id="edge1" class="edge-box"></td><td id="edge0" class="edge-box"></td><td id="edge-1" class="edge-box"></td><td id="edge-2" class="edge-box"></td><td id="edge-3" class="edge-box"></td><td id="edge-4" class="edge-box"></td><td id="edge-5" class="edge-box"></td><td id="edge-6" class="edge-box"></td>
+                        </tr>
+                    </table>
+                    <br>
+                </div>
+                <div id="inventory-table">
+                    <h2>Spells</h2>
+                    <div id="casting-bar">
+                        <div id="casting-progress"></div>
+                    </div>
+                    <br>
+                    <div id="spells">
+                    </div>
+                    <p id="nospell">[SPELL] Casting disabled in combat.</p>
+                    <br>
+                    <h2>Inventory</h2>
+                    <div id="inventory">
+                    </div>
+
+                </div>
             </div>
 
         </div>
@@ -125,7 +146,6 @@
     </div>
 
 
-    <script src="terminal.js"></script>
     <script src="game.js"></script>
 </body>
 </html>
