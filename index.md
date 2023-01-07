@@ -17,6 +17,7 @@
 * [**NOVOS Emulator**](https://zhengzi-archive.com/terminal/) - An assembly language programming game with a Zachtronics-style manual and 5 levels.
 * [**Saturday Night One Shot**](https://nakade.itch.io/saturday-night-one-shot) - D&D themed, simple roguelike with a hand-drawn aesthetic based on [rough.js](https://roughjs.com/).
 * [**The Diplomat**](https://nakade.itch.io/diplomat) - Text adventure game made using [ink](https://www.inklestudios.com/ink/).
+* [**Catacombs of Steel**](https://nakade.itch.io/catacombs) - Automated dungeon crawler/roguelike simulation.
 
 ## Minor Projects
 * [**Showmd**](https://github.com/UtilityHotbar/showmd/) - Displays markdown files in a semi-pretty way in the shell.
