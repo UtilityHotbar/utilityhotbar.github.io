@@ -553,6 +553,7 @@ function finish_cast(spell){
     }else{
         outstrings.push('[SPELL] The spell backfires, harming you!');
         myhero['stats']['cha'] -= spell['cost'];
+        myhero['skills']['spellcasting'] += 5
         backfire = roll(spell['risk'], 6);
         outstrings.push('[SPELL] Residual spell energy scorches you for '+backfire+' damage!')
         hurt(myhero, backfire);
