@@ -224,3 +224,20 @@ table {
 .destroy-spell {
     color: rgb(165, 45, 11);
 }
+
+button {
+    background-color: inherit;
+    border: none;
+    font-weight: bold;
+    color: rgb(238, 190, 132);
+    cursor: pointer;
+    font-family: inherit;
+}
+
+button:hover {
+    filter: brightness(110%);
+}
+
+button:active {
+    filter: brightness(130%);
+}
