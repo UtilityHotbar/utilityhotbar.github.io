@@ -1,5 +1,5 @@
 const stats = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
-const skills = ['melee', 'ranged', 'defense', 'medicine', 'navigation', 'footing', 'perception']
+const skills = ['melee', 'ranged', 'defense', 'medicine', 'navigation', 'footing', 'perception', 'spellcasting']
 
 base_hero = {
     'name': 'You',
@@ -53,7 +53,7 @@ monster_index = {
     6: [{'name': 'active terminator', 'tactic': 2, 'speed': 1, 'strange': -1, 'damage': 8}],
     7: [{'name': 'mechadragon', 'speed': -1, 'damage': 12, 'tough': 3},],
     8: [{'name': 'optimised clone', 'speed': 2, 'tactic': 2, 'strange': -2, 'damage': 10}, {'name': 'dangerously competent bounty hunter', 'tactic': 4}, {'name':'glitch in spacetime', 'speed': 4, 'tough': 1}],
-    9: [{'name': 'content-terminating wormhole'}]
+    9: [{'name': 'content-terminating wormhole', 'tough': 3}]
 }
 
 base_spell_effects = ['lotus', 'flame', 'matrix', 'tensor',];
@@ -65,6 +65,16 @@ base_spell = {
     'effect': 'lotus',
     'risk': 0,
     'cost': 0,
+}
+
+base_upgrades = {
+    'str': 'STR +1', 
+    'dex': 'DEX +1', 
+    'con': 'CON +1', 
+    'int': 'INT +1', 
+    'wis': 'WIS +1', 
+    'cha': 'CHA +1', 
+    'spell': 'Generate spell'
 }
 
 curr_length = 18;
@@ -168,6 +178,8 @@ function update_indiv_element(thing){
         if (elem_new_val == 'show'){
             document.getElementById('spells').style.display = 'none';
             document.getElementById('nospell').style.display = 'block';
+            document.getElementById('upgrade-list').style.display = 'none';
+            document.getElementById('noupgrade').style.display = 'block';
 
             document.getElementById('combat-table').style.display = 'block';
         }else if (elem_new_val == 'hide'){
@@ -176,6 +188,9 @@ function update_indiv_element(thing){
             }
             document.getElementById('spells').style.display = 'block';
             document.getElementById('nospell').style.display = 'none';
+            document.getElementById('upgrade-list').style.display = 'block';
+            document.getElementById('noupgrade').style.display = 'none';
+
             document.getElementById('combat-table').style.display = 'none';
         }
     }else if (elem_name == 'edge'){
@@ -186,7 +201,7 @@ function update_indiv_element(thing){
     }else if (elem_name == 'inventory'){
         document.getElementById('inventory').innerHTML += '* '+elem_new_val+'<br>'
     }else if (elem_name == 'spells'){
-        document.getElementById('spells').innerHTML += '<a id="spell_'+elem_new_val+'" href="javascript:cast(\''+elem_new_val+'\')">'+elem_new_val+'</a><br>'
+        document.getElementById('spells').innerHTML += '<div id="spell_'+elem_new_val+'"><a href="javascript:cast(\''+elem_new_val+'\')">'+elem_new_val+'</a> <a class="destroy-spell" href="javascript:destroy_spell(\''+elem_new_val+'\')">[X]</a><br><br></div>'
     }else if (elem_name == 'casting-bar'){
         var id = setInterval(load, elem_new_val/100);
         var w = 1;
@@ -199,6 +214,12 @@ function update_indiv_element(thing){
                 document.getElementById('casting-progress').style.width = w+'%';
             }
         }
+    }else if (elem_name == 'upgrade-list') {
+        e = document.getElementById('upgrade-list');
+        e.innerHTML = '';
+        Object.keys(base_upgrades).forEach((elem) => {
+            e.innerHTML += '<a href="javascript:grant_upgrade(\''+elem+'\')">'+base_upgrades[elem]+'</a> ';
+        })
     }else{
         document.getElementById(elem_name).innerHTML = elem_new_val;
     } 
@@ -331,7 +352,7 @@ function get_bonus(person, stat){
 function get_monster(level){
     target = monster_index[level][roll(1, monster_index[level].length)-1];
     base = {...base_monster};
-    hp = roll(level, 6);
+    hp = roll(level+1, 6);
     base['hp'] = hp;
     base['max_hp'] = hp;
     base['attacks'] = smallest(7, level);
@@ -351,55 +372,62 @@ function get_monster(level){
 }
 
 function get_spell(level){
-    curr_spell = {...base_spell};
-    spell_power = roll(1, 8);
-    if (spell_power < 5){
-        curr_spell['name'] = 'Minor ';
-        curr_spell['power'] = 1;
-    }else if (spell_power < 8){
-        curr_spell['name'] = 'Major ';
-        curr_spell['power'] = 2;
-    }else{
-        curr_spell['name'] = 'Anagrammatised ';
-        curr_spell['power'] = 3;
+    done = false;
+    while (!done){
+        curr_spell = {...base_spell};
+        spell_power = roll(1, 8);
+        if (spell_power < 5){
+            curr_spell['name'] = 'Minor ';
+            curr_spell['power'] = 1;
+        }else if (spell_power < 8){
+            curr_spell['name'] = 'Major ';
+            curr_spell['power'] = 2;
+        }else{
+            curr_spell['name'] = 'Anagrammatised ';
+            curr_spell['power'] = 3;
+        }
+        curr_spell['power'] += Math.floor(level/3);
+        spell_cost = roll(1, 6);
+        if (spell_cost < 3){
+            curr_spell['name'] += 'Transcendental ';
+            curr_spell['cost'] = 1;
+        }else if (spell_cost < 5){
+            curr_spell['name'] += 'Ethereal ';
+            curr_spell['cost'] = 2;   
+        }else{
+            curr_spell['name'] += 'Reified ';
+            curr_spell['cost'] = 3;   
+        }
+        spell_risk = roll(1, 6);
+        if (spell_cost < 3){
+            curr_spell['name'] += 'Lawful ';
+            curr_spell['risk'] = 1;
+        }else if (spell_cost < 5){
+            curr_spell['name'] += 'Neutral ';
+            curr_spell['risk'] = 2;   
+        }else{
+            curr_spell['name'] += 'Chaotic ';
+            curr_spell['risk'] = 3;   
+        }
+        spell_speed = roll(1, 7);
+        if (spell_cost < 3){
+            curr_spell['name'] += 'Optimised ';
+            curr_spell['casting_time'] = 1000;
+        }else if (spell_cost < 5){
+            curr_spell['name'] += 'Compiled ';
+            curr_spell['casting_time'] = 3000;   
+        }else{
+            curr_spell['name'] += 'Interpreted ';
+            curr_spell['casting_time'] = 5000;   
+        }
+        curr_effect = pick(base_spell_effects);
+        curr_spell['name'] += curr_effect.toUpperCase();
+        curr_spell['effect'] = curr_effect;
+        if (!Object.keys(myhero['spells']).includes(curr_spell['name'])){
+            done = true;
+        }
     }
-    curr_spell['power'] += Math.floor(level/3);
-    spell_cost = roll(1, 6);
-    if (spell_cost < 3){
-        curr_spell['name'] += 'Transcendental ';
-        curr_spell['cost'] = 1;
-    }else if (spell_cost < 5){
-        curr_spell['name'] += 'Ethereal ';
-        curr_spell['cost'] = 2;   
-    }else{
-        curr_spell['name'] += 'Reified ';
-        curr_spell['cost'] = 3;   
-    }
-    spell_risk = roll(1, 6);
-    if (spell_cost < 3){
-        curr_spell['name'] += 'Lawful ';
-        curr_spell['risk'] = 1;
-    }else if (spell_cost < 5){
-        curr_spell['name'] += 'Neutral ';
-        curr_spell['risk'] = 2;   
-    }else{
-        curr_spell['name'] += 'Chaotic ';
-        curr_spell['risk'] = 3;   
-    }
-    spell_speed = roll(1, 7);
-    if (spell_cost < 3){
-        curr_spell['name'] += 'Optimised ';
-        curr_spell['casting_time'] = 1000;
-    }else if (spell_cost < 5){
-        curr_spell['name'] += 'Compiled ';
-        curr_spell['casting_time'] = 3000;   
-    }else{
-        curr_spell['name'] += 'Interpreted ';
-        curr_spell['casting_time'] = 5000;   
-    }
-    curr_effect = pick(base_spell_effects);
-    curr_spell['name'] += curr_effect.toUpperCase();
-    curr_spell['effect'] = curr_effect;
+
     return curr_spell
 }
 
@@ -499,7 +527,7 @@ function cast(name){
     if (player_casting){
         print_term('[SPELL] You are already casting a spell!', true);
         return false;
-    }else if (player_dead){
+    }else if (player_dead || game_over){
         return false;
     }else{
         player_casting = true;
@@ -535,7 +563,7 @@ function finish_cast(spell){
         myhero['stats']['cha'] -= spell['cost'];
         //lotus flame matrix tensor
         if (spell['effect'] == 'lotus'){
-            health_bonus = roll(spell['power'], 6)+3;
+            health_bonus = roll(spell['power'], 10)+3;
             print_term('[SPELL] You feel rejuvenated and gain '+health_bonus+' HP + '+spell['power']*3+' CHA!');
             heal(myhero, health_bonus);
             myhero['stats']['cha'] += spell['power']*3;
@@ -571,6 +599,45 @@ function finish_cast(spell){
     // print_screen(outupdates,);
 }
 
+function destroy_spell(spell){
+    if (player_fighting){ // no destroying spells mid combat
+        setTimeout(()=>{destroy_spell(spell)}, 500);
+        return;
+    }
+    if (player_dead || game_over){
+        return false;
+    }
+    if (myhero['spells'].hasOwnProperty(spell)){
+        print_term('[SPELL] Your mind rejects the '+spell+' ideoform...', true);
+        hp_return = myhero['spells'][spell]['power']*3;
+        exp_gain = myhero['spells'][spell]['power']*2;
+        print_term('[SPELL] Destroyed '+spell+' for '+hp_return+' bonus HP and +'+exp_gain+'% Spellcasting skill!');
+        myhero['hp'] += hp_return;
+        myhero['skills']['spellcasting'] += exp_gain;
+        print_screen([['hp', myhero['hp']], ['spellcasting', myhero['skills']['spellcasting']]]);
+        delete myhero['spells'][spell];
+        e = document.getElementById('spell_'+spell);
+        e.parentNode.removeChild(e);
+    }else{
+        print_term('[SPELL] 404 No Such Spell', true)
+    }
+}
+
+function grant_upgrade(upgrade){
+    print_term('[UPGRADE] A strange power builds within you...', true);
+    document.getElementById('upgrade-list').innerHTML = '';
+    if (stats.includes(upgrade)){
+        print_term('[UPGRADE] Your '+upgrade.toUpperCase()+' increases by 1.');
+        myhero['stats'][upgrade] += 1;
+        print_screen([upgrade, myhero['stats'][upgrade]]);
+    }else if (upgrade == 'spell'){
+        print_term('[UPGRADE] Your mind generates a new spell-thought.');
+        level_bonus = get_spell(curr_level);
+        myhero['spells'][level_bonus['name']] = level_bonus;
+        print_screen(['spells', level_bonus['name']]);
+    }
+}
+
 function loop_step(){
     main_character = myhero;
     if (curr_level > 9){
@@ -589,7 +656,7 @@ function loop_step(){
     }
     if (skill_check(main_character, 'int', 'navigation', curr_level)){
         print_term('You progress further into the dungeon...');
-        curr_length -= roll(1, 3) + get_bonus(main_character, 'int');
+        curr_length -= greatest(0, roll(1, 3) + get_bonus(main_character, 'int'));
     }
     if (curr_length <= 0){
         print_term('You find the stairs to the next floor...');
@@ -600,6 +667,7 @@ function loop_step(){
         main_character['hp'] += bump;
         print_term('===LEVEL UP===');
         print_term('You gain '+bump+' HP.');
+        print_screen(['upgrade-list', 'fill']);
         print_screen([['level', curr_level], ['max_hp', main_character['max_hp']], ['hp', main_character['hp']]]);
     }
     // if (!player_dead){
@@ -810,7 +878,7 @@ function run_fight(you, enemy, surprised=false){
 
 function start_game(){
     myhero = {...base_hero};
-    update_list = []
+    update_list = [['upgrade-list', 'show']]
     stats.forEach(element => {
         start_val =  smallest(roll(3, 6) + 2, 18)
         myhero['stats'][element] = start_val;

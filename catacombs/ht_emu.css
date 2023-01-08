@@ -166,7 +166,7 @@ a:active{
     font-family: 'QTChancery', 'Times New Roman', Times, serif;
 }
 
-#data-section, #skills-section, #enemy-section, #inventory, #spells, #nospell {
+#data-section, #skills-section, #enemy-section, #inventory, #spells {
     font-family: 'Cutive Mono', 'Courier New', Courier, monospace;
 }
 
@@ -202,7 +202,8 @@ table {
     border: solid 1px antiquewhite;
 }
 
-#nospell {
+#nospell, #noupgrade {
+    font-family: 'Cutive Mono', 'Courier New', Courier, monospace;
     display: none;
 }
 
@@ -218,4 +219,8 @@ table {
     width: 0%;
     height: 0.5em;
 
+}
+
+.destroy-spell {
+    color: rgb(165, 45, 11);
 }
