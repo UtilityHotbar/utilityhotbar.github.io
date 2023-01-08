@@ -523,48 +523,52 @@ function cast(name){
 }
 
 function finish_cast(spell){
+    if (player_fighting){ // Delay effects of spell until combat finishes
+        setTimeout(()=>{finish_cast(spell)}, 500);
+        return;
+    }
     player_casting = false;
     outstrings = [];
     outupdates = [];
     if (skill_check(myhero, 'cha', 'spellcasting', spell['power'])){
-        outstrings.push('[SPELL] Casting succeeded!');
+        print_term('[SPELL] Casting succeeded!');
         myhero['stats']['cha'] -= spell['cost'];
         //lotus flame matrix tensor
         if (spell['effect'] == 'lotus'){
             health_bonus = roll(spell['power'], 6)+3;
-            outstrings.push('[SPELL] You feel rejuvenated and gain '+health_bonus+' HP + '+spell['power']*3+' CHA!');
+            print_term('[SPELL] You feel rejuvenated and gain '+health_bonus+' HP + '+spell['power']*3+' CHA!');
             heal(myhero, health_bonus);
             myhero['stats']['cha'] += spell['power']*3;
-            outupdates.push(['hp', myhero['hp']])
+            print_screen(['hp', myhero['hp']])
         }else if (spell['effect'] == 'tensor'){
-            outstrings.push('[SPELL] Your attacks are imbued with a strange, external force tensor...');
+            print_term('[SPELL] Your attacks are imbued with a strange, external force tensor...');
             myhero['ranged_attacks'] += spell['power'];
             myhero['attacks'] += spell['power'];
-            outupdates = outupdates.concat([['ranged_attacks', myhero['ranged_attacks']], ['attacks', myhero['attacks']]]);
+            print_screen([['ranged_attacks', myhero['ranged_attacks']], ['attacks', myhero['attacks']]]);
         }else if (spell['effect'] == 'matrix'){
-            outstrings.push('[SPELL] You download information from the matrix...');
+            print_term('[SPELL] You download information from the matrix...');
             tskill = pick(skills);
             myhero['skills'][tskill] += 5*spell['power'];
-            outupdates.push([tskill, myhero['skills'][tskill]]);
+            print_screen([tskill, myhero['skills'][tskill]]);
         }else if (spell['effect'] == 'flame'){
-            outstrings.push('[SPELL] You are wreathed in flame...');
+            print_term('[SPELL] You are wreathed in flame...');
             myhero['damage'] += spell['power'];
-            outupdates.push(['damage', myhero['damage']]);
+            print_screen(['damage', myhero['damage']]);
         }
 
     }else{
-        outstrings.push('[SPELL] The spell backfires, harming you!');
+        print_term('[SPELL] The spell backfires, harming you but giving you extra experience!');
         myhero['stats']['cha'] -= spell['cost'];
         myhero['skills']['spellcasting'] += 5
         backfire = roll(spell['risk'], 6);
-        outstrings.push('[SPELL] Residual spell energy scorches you for '+backfire+' damage!')
+        print_term('[SPELL] Residual spell energy scorches you for '+backfire+' damage!')
         hurt(myhero, backfire);
-        outupdates.push(['spellcasting', myhero['skills']['spellcasting']])
+        print_screen(['spellcasting', myhero['skills']['spellcasting']])
     }
-    outupdates.push(['cha', myhero['stats']['cha']]);
-    console.log(outupdates, 'UPDATES')
-    print_term(outstrings,);
-    print_screen(outupdates,);
+    print_screen(['cha', myhero['stats']['cha']]);
+    // console.log(outupdates, 'UPDATES')
+    // print_term(outstrings,);
+    // print_screen(outupdates,);
 }
 
 function loop_step(){
