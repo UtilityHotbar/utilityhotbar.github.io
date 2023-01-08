@@ -624,6 +624,9 @@ function destroy_spell(spell){
 }
 
 function grant_upgrade(upgrade){
+    if (player_dead || game_over){
+        return false;
+    }
     print_term('[UPGRADE] A strange power builds within you...', true);
     document.getElementById('upgrade-list').innerHTML = '';
     if (stats.includes(upgrade)){
