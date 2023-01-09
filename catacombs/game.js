@@ -154,7 +154,7 @@ function out(delay, elem,){  // Grabs top line in queue and pushes it to webpage
 }
 
 function out_done(d, e){
-    if (OFF_QUEUE.length !== 0){
+    if (OFF_QUEUE.length == 0){
         console.log('handling batched outputs.')
         PRINTING = false;
         if (!player_dead && !game_over){
@@ -163,7 +163,7 @@ function out_done(d, e){
         return;
     }else{
         QUEUE = QUEUE.concat(OFF_QUEUE);
-        OTHER_ELEMENT_QUEUE = QUEUE.concat(OFF_OTHER_ELEMENT_QUEUE);
+        OTHER_ELEMENT_QUEUE = OTHER_ELEMENT_QUEUE.concat(OFF_OTHER_ELEMENT_QUEUE);
         OFF_QUEUE = [];
         OFF_OTHER_ELEMENT_QUEUE = [];
         window.setTimeout(()=>{out(d, e)}, d);
@@ -651,6 +651,7 @@ function grant_upgrade(upgrade){
     if (player_dead || game_over){
         return false;
     }
+    console.log(upgrade);
     print_term('[UPGRADE] A strange power builds within you...', true);
     document.getElementById('upgrade-list').innerHTML = '';
     if (stats.includes(upgrade)){
@@ -663,6 +664,7 @@ function grant_upgrade(upgrade){
         myhero['spells'][level_bonus['name']] = level_bonus;
         off_print_screen(['spells', level_bonus['name']]);
     }
+    console.log(OFF_QUEUE);
 }
 
 function loop_step(){
