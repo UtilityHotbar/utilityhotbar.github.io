@@ -651,7 +651,7 @@ function grant_upgrade(upgrade){
     if (player_dead || game_over){
         return false;
     }
-    off_print_term('[UPGRADE] A strange power builds within you...', true);
+    print_term('[UPGRADE] A strange power builds within you...', true);
     document.getElementById('upgrade-list').innerHTML = '';
     if (stats.includes(upgrade)){
         off_print_term('[UPGRADE] Your '+upgrade.toUpperCase()+' increases by 1.');
