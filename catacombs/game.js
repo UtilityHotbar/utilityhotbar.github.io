@@ -699,9 +699,6 @@ function loop_step(){
         print_screen(['upgrade-list', 'fill']);
         print_screen([['level', curr_level], ['max_hp', main_character['max_hp']], ['hp', main_character['hp']]]);
     }
-    // if (!player_dead){
-    //     setTimeout(()=>{loop_step(main_character)}, 300);
-    // }
 }
 
 function game_end_function(hero){
