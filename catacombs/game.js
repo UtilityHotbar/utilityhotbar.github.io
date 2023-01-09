@@ -643,7 +643,7 @@ function destroy_spell(spell){
         e = document.getElementById('spell_'+spell);
         e.parentNode.removeChild(e);
     }else{
-        off_print_term('[SPELL] 404 No Such Spell', true)
+        print_term('[SPELL] 404 No Such Spell', true)
     }
 }
 
