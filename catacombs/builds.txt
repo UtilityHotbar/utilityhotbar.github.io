@@ -1,3 +1,9 @@
 0.9 - "At the precipice of the beginning"
 1.0 - "Ancient whispers through the air"
 1.2 - "A long and difficult road"
+
+===
+
+TODO
+Pause button
+thought system
