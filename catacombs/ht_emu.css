@@ -231,6 +231,8 @@ table {
 
 #nospell, #noupgrade {
     font-family: 'Cutive Mono', 'Courier New', Courier, monospace;
+    filter: brightness(80%);
+
     display: none;
 }
 
@@ -248,7 +250,7 @@ table {
 
 }
 
-.destroy-spell {
+.important {
     color: rgb(165, 45, 11);
 }
 

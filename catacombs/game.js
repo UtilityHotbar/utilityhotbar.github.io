@@ -79,11 +79,12 @@ base_upgrades = {
 
 curr_length = 18;
 curr_level = 1;
-curr_turn = 10;
+curr_turn = 0;
 player_dead = false;
 player_casting = false;
 player_fighting = false;
 game_over = false;
+paused = false;
 
 QUEUE = [];
 OTHER_ELEMENT_QUEUE = [];
@@ -93,7 +94,7 @@ OFF_OTHER_ELEMENT_QUEUE = [];
 PRINTING = false;
 const UPDATE_KEYWORD = '%UPDATE%'
 
-function print_term(ts, now=false, d=600, l='mainterm', ) {  // push string or list of strings to print queue
+function print_term(ts, now=false, d=750, l='mainterm', ) {  // push string or list of strings to print queue
     if (typeof ts === 'string'){
         if (now){
             QUEUE.splice(0, 0, ts)
@@ -156,7 +157,7 @@ function out(delay, elem,){  // Grabs top line in queue and pushes it to webpage
 function out_done(d, e){
     if (OFF_QUEUE.length == 0){
         PRINTING = false;
-        if (!player_dead && !game_over){
+        if (!player_dead && !game_over && !paused){
             setTimeout(()=>{loop_step()}, 0);
         }            
         return;
@@ -228,7 +229,7 @@ function update_indiv_element(thing){
     }else if (elem_name == 'inventory'){
         document.getElementById('inventory').innerHTML += '* '+elem_new_val+'<br>'
     }else if (elem_name == 'spells'){
-        document.getElementById('spells').innerHTML += '<div id="spell_'+elem_new_val+'"><button onclick="cast(\''+elem_new_val+'\')">'+elem_new_val+'</button> <button class="destroy-spell" onclick="destroy_spell(\''+elem_new_val+'\')">[X]</button><br><br></div>'
+        document.getElementById('spells').innerHTML += '<div id="spell_'+elem_new_val+'"><button onclick="cast(\''+elem_new_val+'\')">'+elem_new_val+'</button> <button class="important" onclick="destroy_spell(\''+elem_new_val+'\')">[X]</button><br><br></div>'
     }else if (elem_name == 'casting-bar'){
         var id = setInterval(load, elem_new_val/100);
         var w = 1;
@@ -252,6 +253,23 @@ function update_indiv_element(thing){
     } 
 }
 
+function pause(){
+    if (!paused){
+        print_term('[PAUSE] Pausing at the end of this turn...', true);
+        document.getElementById('pause-button').innerHTML = '[Unpause]';
+        document.getElementById('pause-button').classList.add('important');
+        paused = true;
+    }else{
+        print_term('[PAUSE] Unpausing...', true);
+        document.getElementById('pause-button').innerHTML = '[Pause]';
+        document.getElementById('pause-button').classList.remove('important');
+        paused = false;
+        if (!PRINTING){
+            out_done();
+
+        }
+    }
+}
 
 function clamp(num, min, max){
     if (num < min){
@@ -554,7 +572,7 @@ function cast(name){
     if (player_casting){
         print_term('[SPELL] You are already casting a spell!', true);
         return false;
-    }else if (player_dead || game_over){
+    }else if (player_dead || game_over || paused){
         return false;
     }else{
         player_casting = true;
@@ -631,7 +649,7 @@ function destroy_spell(spell){
         setTimeout(()=>{destroy_spell(spell)}, 500);
         return;
     }
-    if (player_dead || game_over){
+    if (player_dead || game_over || paused){
         return false;
     }
     if (myhero['spells'].hasOwnProperty(spell)){
@@ -651,7 +669,7 @@ function destroy_spell(spell){
 }
 
 function grant_upgrade(upgrade){
-    if (player_dead || game_over){
+    if (player_dead || game_over || paused){
         return false;
     }
     console.log(upgrade);
@@ -680,6 +698,7 @@ function loop_step(){
     }
     console.log(main_character)
     curr_turn += 1;
+    print_term('[TURN '+curr_turn+']')
     res = encounter_roll(main_character, curr_level);
     if (!res || is_dead(main_character)){
         player_dead = true;
