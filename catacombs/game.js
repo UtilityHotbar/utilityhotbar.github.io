@@ -155,13 +155,13 @@ function out(delay, elem,){  // Grabs top line in queue and pushes it to webpage
 
 function out_done(d, e){
     if (OFF_QUEUE.length == 0){
-        console.log('handling batched outputs.')
         PRINTING = false;
         if (!player_dead && !game_over){
             setTimeout(()=>{loop_step()}, 0);
         }            
         return;
     }else{
+        console.log('handling batched outputs.')
         QUEUE = QUEUE.concat(OFF_QUEUE);
         OTHER_ELEMENT_QUEUE = OTHER_ELEMENT_QUEUE.concat(OFF_OTHER_ELEMENT_QUEUE);
         OFF_QUEUE = [];
@@ -705,9 +705,12 @@ function loop_step(){
 }
 
 function game_end_function(hero){
-    game_over = true;
-    print_term('Your final score was '+(hero['gold']+curr_turn+(curr_level*10)));
-    console.log('printed final score');
+    if (!game_over){
+        game_over = true;
+        print_term('Your final score was '+(hero['gold']+curr_turn+(curr_level*10)));
+        console.log('printed final score');
+    
+    }
 
 };
 
