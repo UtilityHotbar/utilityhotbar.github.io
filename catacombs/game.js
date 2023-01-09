@@ -632,7 +632,7 @@ function destroy_spell(spell){
         return false;
     }
     if (myhero['spells'].hasOwnProperty(spell)){
-        off_print_term('[SPELL] Your mind rejects the '+spell+' ideoform...', true);
+        print_term('[SPELL] Your mind rejects the '+spell+' ideoform...', true);
         hp_return = myhero['spells'][spell]['power']*3;
         exp_gain = myhero['spells'][spell]['power']*2;
         off_print_term('[SPELL] Destroyed '+spell+' for '+hp_return+' bonus HP and +'+exp_gain+'% Spellcasting skill!');
