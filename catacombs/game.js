@@ -205,7 +205,8 @@ function update_indiv_element(thing){
             document.getElementById('upgrade-list').style.display = 'none';
             document.getElementById('noupgrade').style.display = 'block';
 
-            document.getElementById('combat-table').style.display = 'block';
+            document.getElementById('combat-table').classList.remove('hidden');
+            document.getElementById('combat-table').style.opacity = '100%';
         }else if (elem_new_val == 'hide'){
             for (i=-6; i<=6; i++){
                 document.getElementById('edge'+i).style.backgroundColor = 'inherit';
@@ -215,7 +216,9 @@ function update_indiv_element(thing){
             document.getElementById('upgrade-list').style.display = 'block';
             document.getElementById('noupgrade').style.display = 'none';
 
-            document.getElementById('combat-table').style.display = 'none';
+            document.getElementById('combat-table').style.opacity = '0%';
+            document.getElementById('combat-table').classList.add('hidden');
+
         }
     }else if (elem_name == 'edge'){
         for (i=-6; i<=6; i++){
@@ -694,7 +697,7 @@ function loop_step(){
         bump = roll (2, 6);
         main_character['max_hp'] += bump;
         main_character['hp'] += bump;
-        print_term('===LEVEL UP===');
+        print_term('[LEVEL UP]');
         print_term('You gain '+bump+' HP.');
         print_screen(['upgrade-list', 'fill']);
         print_screen([['level', curr_level], ['max_hp', main_character['max_hp']], ['hp', main_character['hp']]]);
@@ -762,8 +765,10 @@ function encounter_roll(current_hero, clevel){
 }
 
 function run_fight(you, enemy, surprised=false){
-    player_fighting = true;
+    print_term('En garde...')
+    print_term('===COMBAT LOG===')
     print_screen(['combat', 'show'])
+    player_fighting = true;
 
     // Combat advantage determination
     if (surprised){
@@ -794,9 +799,10 @@ function run_fight(you, enemy, surprised=false){
                 if (is_dead(enemy)){
                     player_fighting = false;
 
-                    print_screen(['combat', 'hide'])
-
+                    print_screen(['combat', 'hide']);
                     print_term('The '+enemy['name']+' died!');
+                    print_term('===END COMBAT LOG===');
+
                     return true;
                 }
 
@@ -890,15 +896,17 @@ function run_fight(you, enemy, surprised=false){
         // Death check
         if (is_dead(you)){
             player_fighting = false;
-
             print_term('You died!');
-            print_screen(['combat', 'hide'])
+            print_screen(['combat', 'hide']);
+
             return false;
         }else if (is_dead(enemy)){
             player_fighting = false;
 
             print_term('The '+enemy['name']+' died!');
-            print_screen(['combat', 'hide'])
+            print_screen(['combat', 'hide']);
+            print_term('===END COMBAT LOG===');
+
             return true;
         }
 

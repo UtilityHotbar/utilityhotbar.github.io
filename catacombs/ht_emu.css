@@ -67,6 +67,7 @@ body {
     text-align: center;
     margin-top: 0em;
     margin-bottom: 0.5em;
+    line-height: 1.5em;
 }
 
 h1, h2 {
@@ -112,18 +113,27 @@ a:active{
 .terminal {
     font-family: 'VT323', 'Courier New', Courier, monospace;
     /* margin: auto; */
-    width: 300px;
-    height: 300px;
+    width: 37em;
+    height: 100px;
     padding: 1em;
     background-color: black;
     color: white;
     border-radius: 2px;
     box-shadow: 0px 0px 3px black;
+    margin: auto;
+}
+
+@media only screen and (max-width: 1000px) {
+    .terminal {
+        width: 85%;
+        margin: auto;
+        font-size: 10pt;
+    }
 }
 
 .terminal-output {
     font-variant-ligatures: none;
-    height: 300px;
+    height: 100px;
     overflow-y: scroll;
 }
 
@@ -148,18 +158,35 @@ a:active{
     color: darkcyan;
 }
 
-#combat-table{
-    display: none;
-    transition: all 0.2s;
-}
-
-#character-sheet, #inventory-column{
+#character-sheet, #inventory-column, #combat-table{
     padding: 1em;
-    margin-left: 2em;
-    margin-right: 2em;
-    width: 12em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+    width: 10em;
     border: solid 2.5px antiquewhite;
     text-align: center;
+}
+
+#combat-table{
+    transition: all 0.2s;
+    opacity: 0%;
+}
+
+@media only screen and (max-width: 1000px) {
+
+    #character-sheet{
+        max-height: 15em;
+        overflow: scroll;
+    }
+
+    #character-sheet, #combat-table, #inventory-column{
+        width: 80%;
+    }
+    
+    .hidden{
+        display: none;
+    }
 }
 
 #stats-section {
