@@ -77,6 +77,15 @@ base_upgrades = {
     'spell': 'Generate spell'
 }
 
+tier2_upgrades = {
+    'skill': '+5 to all skills',
+    'bonus': '+30 HP',
+}
+
+tier3_upgrades = {
+    'wake': 'Wake up',
+}
+
 curr_length = 18;
 curr_level = 1;
 curr_turn = 0;
@@ -85,6 +94,183 @@ player_casting = false;
 player_fighting = false;
 game_over = false;
 paused = false;
+hacking_revealed = false;
+hack_killing = false;
+
+network_state = {
+    'probe_level': 0,
+    'alert_level': 0,
+    'privilege_level': 0,
+    'knowledge_level': 0,
+    'programs': {
+        './timedecel.sh': {'time': 1000, 'probe_level': 10, 'privilege_level': 5, 'code': 'timedecel'},
+        './timeaccel.sh': {'time': 1000, 'probe_level': 10, 'privilege_level': 5, 'code': 'timeaccel'},
+        './givespell.sh': {'time': 3000, 'probe_level': 30, 'privilege_level': 20, 'code': 'givespell'},
+        './giveupgrade.sh': {'time': 5000, 'probe_level': 50, 'privilege_level': 30, 'code': 'giveupgrade'},
+        './char_manage.sh --kill': {'time': 1000, 'probe_level': 75, 'privilege_level': 40, 'code': 'kill'},
+        './char_manage.sh --force-revive': {'time': 10000, 'probe_level': 100, 'privilege_level': 50, 'code': 'revive'}
+    },
+
+    'commands': {
+        'nmap': {'knowledge_level': 0, 'time': 1000, 'effect': {'probe_level': [3, 6], 'alert_level': [1, 6]}},
+        'nmap -A': {'knowledge_level': 1, 'time': 1500, 'effect': {'probe_level': [3, 10, 3], 'alert_level': [3, 6]}},
+        'login-brute': {'knowledge_level': 1, 'time': 3000, 'effect': {'privilege_level': [1, 3, -1], 'alert_level': [1, 6]}},
+        'privesc': {'knowledge_level': 3, 'time': 3000, 'effect': {'privilege_level': [1, 6,], 'alert_level': [2, 6]}},
+        'exploit_pro': {'knowledge_level': 5, 'time': 5000, 'effect': {'privilege_level': [2, 6], 'alert_level': [1, 6]}},
+        'cleanup': {'knowledge_level': 3, 'time': 5000, 'effect': {'alert_level': [-3, 6]}},
+    }
+}
+
+function hack_reset(){
+    document.getElementById('hack-section').style.transition = 'height 0s';
+    document.getElementById('hack-section').style.height = '0em';
+    document.getElementById('hack-section').classList.remove('disabled');
+    setTimeout(()=>{document.getElementById('hack-section').style.transition = 'height 3s'}, 10);
+    hacking_revealed = false;
+    hack_killing = false;
+    print_term('[SYSTEM] Network interface reset complete.', true);
+}
+
+function hack_setup(){
+    if (!hacking_revealed){
+        hacking_revealed = true;
+        document.getElementById('hack-section').style.height = '25em';
+    }
+
+    document.getElementById('probe-level').innerHTML = network_state['probe_level'];
+    document.getElementById('knowledge-level').innerHTML = network_state['knowledge_level'];
+    document.getElementById('alert-level').innerHTML = network_state['alert_level'];
+    document.getElementById('privilege-level').innerHTML = network_state['privilege_level'];
+
+    progs = document.getElementById('hack-programs');
+    progs.innerHTML = '';
+    Object.keys(network_state['programs']).forEach((elem)=>{
+        p = network_state['programs'][elem];
+        if (network_state['probe_level'] >= p['probe_level']){
+            progs.innerHTML += '<button onclick="run_program(\''+elem+'\')">'+elem+'</button>';
+        }
+    });
+
+    cmds = document.getElementById('hack-commands');
+    cmds.innerHTML = '';
+    Object.keys(network_state['commands']).forEach((elem)=>{
+        c = network_state['commands'][elem];
+        if (network_state['knowledge_level'] >= c['knowledge_level']){
+            cmds.innerHTML += '<button onclick="run_command(\''+elem+'\')">'+elem+'</button>';
+        }
+    });
+
+    if (network_state['alert_level'] >= 100){
+        print_term('[SYSTEM] ERROR. SYSTEM INSTABILITY DETECTED. INTRUDER DETECTED. SYSTEM INSTABILITY DETECTED. INTRUDER DETECTED. SYSTEM INSTABILITY DETECTED. INTRUDER DETECTED. SYSTEM INSTABILITY DETECTED. INTRUDER DETECTED. SYSTEM INSTABILITY DETECTED. INTRUDER DETECTED.', true);
+        hack_killing = true;
+        document.getElementById('hack-section').classList.add('disabled');
+        setTimeout(()=>{wipe_screen(3000, hack_reset)}, 2000);
+    }
+}
+
+function lockup(){
+    progs = document.getElementById('hack-programs');
+    cmds = document.getElementById('hack-commands');
+    progs.innerHTML = '';
+    cmds.innerHTML = '';
+}
+
+function wipe_screen(time, next){
+    lockup();
+    var loading_progress = 0;
+    var e = setInterval(prog_load, time/10);
+
+    function prog_load(){
+        document.getElementById('hack-progress').style.height = `${loading_progress}em`;
+        loading_progress += 2;
+        if (loading_progress >= 27){
+            document.getElementById('hack-progress').style.height = '0em';
+            next();
+            clearInterval(e);
+        }
+    }
+}
+
+function run_command(command){
+    if (!paused && !game_over && !hack_killing){
+        var c = network_state['commands'][command];
+        wipe_screen(c['time'], ()=>{finish_command(command);});
+    }
+}
+
+function finish_command(command){
+
+    var c = network_state['commands'][command];
+    Object.keys(c['effect']).forEach((elem) => {
+        var target = elem;
+        var details = c['effect'][elem];
+        var dice = details[0];
+        var size = details[1];
+        if (details.length == 3){
+            var mod = details[2];
+        }else{
+            var mod = 0;
+        }
+        var mul = 1;
+        if (dice < 0){
+            dice *= -1;
+            mul = -1;
+        }
+
+        network_state[target] += mul*(roll(dice, size)+mod);
+        network_state['probe_level'] = smallest(network_state['probe_level'], 100);
+        network_state['alert_level'] = smallest(network_state['alert_level'], 100);
+
+    })
+    network_state['knowledge_level'] += roll(1, 10)/10;
+    network_state['knowledge_level'] = Math.round(network_state['knowledge_level']*10)/10
+    hack_setup();
+}
+
+function run_program(program){
+    if (!paused && !hack_killing){
+        var p = network_state['programs'][program];
+        if (network_state['privilege_level'] < p['privilege_level']){
+            document.getElementById('privilege-level').style.color = 'var(--hack-red)';
+            setTimeout(()=>{document.getElementById('privilege-level').style.color = 'var(--hack-green)';}, 1000)
+            return false
+        }else{
+            wipe_screen(p['time'], ()=>{finish_program(program)});
+        }
+    }
+}
+
+function finish_program(program){
+    var p = network_state['programs'][program];
+    network_state['privilege_level'] -= p['privilege_level'];
+    if (p['code'] == 'timeaccel'){
+        PRINT_DELAY -= 100;
+        clamp(PRINT_DELAY, 150, 3050);
+    }else if (p['code'] == 'timedecel'){
+        PRINT_DELAY += 100;
+        clamp(PRINT_DELAY, 150, 3050);
+    }else if (p['code'] == 'givespell'){
+        spell_bonus = get_spell(curr_level);
+        myhero['spells'][spell_bonus['name']] = spell_bonus;
+        off_print_screen(['spells', spell_bonus['name']]);
+    }else if (p['code'] == 'giveupgrade'){
+        off_print_screen(['upgrade-list', 'fill']);
+    }else if (p['code'] == 'kill'){
+        hurt(myhero, 1000000);
+    }else if (p['code'] == 'revive'){
+        if (myhero['hp'] <= 0){
+            print_term('[SYSTEM] Somewhere out there someone is singing...', true);
+            myhero['hp'] = myhero['max_hp'];
+            if (myhero['hp'] > 0){
+                off_print_screen(['hp', myhero['hp']]);
+                game_over = false;
+                player_dead = false;
+                out_done();
+            }
+        }
+    }
+    hack_setup();
+}
 
 QUEUE = [];
 OTHER_ELEMENT_QUEUE = [];
@@ -92,9 +278,10 @@ OTHER_ELEMENT_QUEUE = [];
 OFF_QUEUE = [];
 OFF_OTHER_ELEMENT_QUEUE = [];
 PRINTING = false;
+PRINT_DELAY = 750;
 const UPDATE_KEYWORD = '%UPDATE%'
 
-function print_term(ts, now=false, d=750, l='mainterm', ) {  // push string or list of strings to print queue
+function print_term(ts, now=false, l='mainterm', ) {  // push string or list of strings to print queue
     if (typeof ts === 'string'){
         if (now){
             QUEUE.splice(0, 0, ts)
@@ -110,7 +297,7 @@ function print_term(ts, now=false, d=750, l='mainterm', ) {  // push string or l
     }
     if (QUEUE.length > 0 && !PRINTING){
         PRINTING = true;
-        window.setTimeout(()=>{out(d=d, l=l)}, d);
+        window.setTimeout(()=>{out(l=l)}, PRINT_DELAY);
     }
     console.log(QUEUE);
 }
@@ -128,7 +315,7 @@ function off_print_screen(changes){
     OFF_QUEUE.push(UPDATE_KEYWORD);
 }
 
-function out(delay, elem,){  // Grabs top line in queue and pushes it to webpage, then calls itself again after a timeout if there are lines remaining in queue
+function out(elem='mainterm'){  // Grabs top line in queue and pushes it to webpage, then calls itself again after a timeout if there are lines remaining in queue
     t = QUEUE[0];
     QUEUE = QUEUE.slice(1);
     while (t == UPDATE_KEYWORD){
@@ -136,7 +323,7 @@ function out(delay, elem,){  // Grabs top line in queue and pushes it to webpage
         t = QUEUE[0];
         QUEUE = QUEUE.slice(1);
         if (t == UPDATE_KEYWORD && QUEUE.length == 0){
-            out_done(delay, elem);
+            out_done(elem);
         }
     }
     if (typeof t !== 'undefined'){
@@ -148,13 +335,13 @@ function out(delay, elem,){  // Grabs top line in queue and pushes it to webpage
 
 
     if (QUEUE.length > 0){
-        window.setTimeout(()=>{out(delay, elem)}, delay);
+        window.setTimeout(()=>{out(elem)}, PRINT_DELAY);
     }else{
-        out_done(delay, elem);
+        out_done(elem);
     }
 }
 
-function out_done(d, e){
+function out_done(e){
     if (OFF_QUEUE.length == 0){
         PRINTING = false;
         if (!player_dead && !game_over && !paused){
@@ -167,7 +354,7 @@ function out_done(d, e){
         OTHER_ELEMENT_QUEUE = OTHER_ELEMENT_QUEUE.concat(OFF_OTHER_ELEMENT_QUEUE);
         OFF_QUEUE = [];
         OFF_OTHER_ELEMENT_QUEUE = [];
-        window.setTimeout(()=>{out(d, e)}, d);
+        window.setTimeout(()=>{out(e)}, PRINT_DELAY);
     }
 }
 
@@ -243,11 +430,27 @@ function update_indiv_element(thing){
             }
         }
     }else if (elem_name == 'upgrade-list') {
-        e = document.getElementById('upgrade-list');
-        e.innerHTML = '';
-        Object.keys(base_upgrades).forEach((elem) => {
-            e.innerHTML += '<button onclick="grant_upgrade(\''+elem+'\')">'+base_upgrades[elem]+'</button> ';
-        })
+        if (document.getElementById('upgrade-list-1').innerHTML == ''){
+            print_term('[UPGRADE] Tier I upgrades now available...', true);
+            Object.keys(base_upgrades).forEach((elem) => {
+                document.getElementById('upgrade-list-1').innerHTML += '<button onclick="grant_upgrade(\''+elem+'\')">'+base_upgrades[elem]+'</button> ';
+            });
+        }else if (document.getElementById('upgrade-list-2').innerHTML == ''){
+            print_term('[UPGRADE] Tier II upgrades now available...', true);
+            Object.keys(tier2_upgrades).forEach((elem) => {
+                document.getElementById('upgrade-list-2').innerHTML += '<button onclick="grant_upgrade(\''+elem+'\')">'+tier2_upgrades[elem]+'</button> ';
+            });
+        }else if (document.getElementById('upgrade-list-3').innerHTML == '' && !hacking_revealed){
+            print_term('[UPGRADE] Tier III upgrades now available...', true);
+            Object.keys(tier3_upgrades).forEach((elem) => {
+                document.getElementById('upgrade-list-3').innerHTML += '<button onclick="grant_upgrade(\''+elem+'\')">'+tier3_upgrades[elem]+'</button> ';
+            });
+        }else{
+            print_term('[UPGRADE] No more upgrades available! Use upgrades to get more.', true)
+        };
+
+    }else if (elem_name == 'hack-section'){
+        hack_setup();
     }else{
         document.getElementById(elem_name).innerHTML = elem_new_val;
     } 
@@ -417,6 +620,10 @@ function get_monster(level){
 }
 
 function get_spell(level){
+    if (Object.keys(myhero['spells']).length >= 10){
+        off_print_term('[SPELL] Spell limit reached!');
+        return;
+    }
     done = false;
     while (!done){
         curr_spell = {...base_spell};
@@ -674,7 +881,10 @@ function grant_upgrade(upgrade){
     }
     console.log(upgrade);
     print_term('[UPGRADE] A strange power builds within you...', true);
-    document.getElementById('upgrade-list').innerHTML = '';
+    document.getElementById('upgrade-list-1').innerHTML = '';
+    document.getElementById('upgrade-list-2').innerHTML = '';
+    document.getElementById('upgrade-list-3').innerHTML = '';
+
     if (stats.includes(upgrade)){
         off_print_term('[UPGRADE] Your '+upgrade.toUpperCase()+' increases by 1.');
         myhero['stats'][upgrade] += 1;
@@ -684,11 +894,28 @@ function grant_upgrade(upgrade){
         level_bonus = get_spell(curr_level);
         myhero['spells'][level_bonus['name']] = level_bonus;
         off_print_screen(['spells', level_bonus['name']]);
+    }else if (upgrade == 'skill'){
+        off_print_term('[UPGRADE] Your skills are enhanced by countless micro-adjustments attuned to the matrix.');
+        skills.forEach((elem)=>{
+            myhero['skills'][elem] += 5;
+            off_print_screen(['skills', myhero['skills'][elem]]);
+        })
+    }else if (upgrade == 'bonus'){
+        off_print_term('[UPGRADE] A hyperdimensional god-entity blesses you from a rimward plane of existence.');
+        myhero['hp'] += 30;
+        myhero['max_hp'] += 30;
+        off_print_screen([['hp', myhero['hp']], ['max_hp', myhero['max_hp']]]);
+    }else if (upgrade == 'wake'){
+        off_print_term('[UPGRADE] A series of psychological and technical revelations shake your mind. You realise the simulated nature of reality at a higher level than ever thought possible...');
+        off_print_screen(['hack-section', 'show']);
     }
     console.log(OFF_QUEUE);
 }
 
 function loop_step(){
+    if (game_over){
+        return
+    }
     main_character = myhero;
     if (curr_level > 9){
         console.log('out1')
@@ -698,7 +925,7 @@ function loop_step(){
     }
     console.log(main_character)
     curr_turn += 1;
-    print_term('[TURN '+curr_turn+']')
+    print_term('[SYSTEM] Turn '+curr_turn);
     res = encounter_roll(main_character, curr_level);
     if (!res || is_dead(main_character)){
         player_dead = true;
@@ -766,7 +993,20 @@ function encounter_roll(current_hero, clevel){
         };
     }else if (enc == 6){
         print_term('You take a breather...');
-        heal(current_hero, roll(1,6)+clevel);
+        if (current_hero['hp'] < current_hero['max_hp']/3){
+            print_term('You try to rest!');
+            heal(current_hero, roll(1,6)+clevel);
+        }else{
+            print_term('You try to think of an original thought...');
+            if (skill_check(myhero, 'cha', 'spellcasting', -Math.round(curr_level/3))){
+                print_term('A new spell-thought manifests in the void of your mind spontaneously!');
+                spell_bonus = get_spell(curr_level);
+                myhero['spells'][spell_bonus['name']] = spell_bonus;
+                print_screen(['spells', spell_bonus['name']]);
+            }else{
+                print_term('But nothing came to mind.')
+            }
+        }
     }
     // Natural healing if you didn't have an encounter this turn
     if (enc > 2 && current_hero['hp'] < current_hero['max_hp'] && skill_check(current_hero, 'wis', 'medicine', -get_bonus(current_hero, 'con'))){

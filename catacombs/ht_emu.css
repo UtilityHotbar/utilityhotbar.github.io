@@ -1,3 +1,10 @@
+:root {
+    --hack-grey: rgb(31, 37, 41);
+    --hack-green: rgb(151, 255, 184);
+    --hack-light-green: rgb(175, 255, 200);
+    --hack-red: rgb(255, 106, 106);
+}
+
 @font-face {
     font-family: 'QTChancery';
     src: url('fonts/QTChanceryType.otf');
@@ -229,7 +236,7 @@ table {
     border: solid 1px antiquewhite;
 }
 
-#nospell, #noupgrade {
+#nospell, #noupgrade, #nohack {
     font-family: 'Cutive Mono', 'Courier New', Courier, monospace;
     filter: brightness(80%);
 
@@ -269,4 +276,83 @@ button:hover {
 
 button:active {
     filter: brightness(130%);
+}
+
+#hack-section {
+    background-color: var(--hack-grey);
+    box-shadow: 0px 0px 2px var(--hack-green);
+    font-family: 'VT323', 'Courier New', Courier, monospace;
+    margin-bottom: 1em;
+    text-align: left;
+    color: var(--hack-green);
+    height: 0em;
+    transition: height 3s;
+    overflow: hidden;
+    position: relative;
+    border-radius: 3px;
+}
+
+#hack-section h3{
+    margin-bottom: 0em;
+}
+
+#hack-info, #hack-commands, #hack-programs{
+    font-size: 10pt;
+}
+
+#hack-section button {
+    padding: 0.2em;
+    /* border: solid 1px var(--hack-green); */
+    margin: 0.2em;
+    color: inherit;
+    box-shadow: 0px 0px 1px var(--hack-green);
+    border-radius: 1px;
+}
+
+#hack-section button:hover {
+    background-color: var(--hack-green);
+    color: var(--hack-grey);
+}
+
+#hack-progress {
+    height: 0%;
+    background-color: var(--hack-green);
+    z-index: 9;
+
+}
+
+#hack-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.7em;
+}
+
+#hack-programs, #hack-commands {
+    height: 4em;
+    overflow-y: auto;
+}
+
+#privilege-level {
+    transition: all 0.2s;
+}
+
+#hack-section.disabled {
+    box-shadow: 0px 0px 2px var(--hack-red);
+    color: var(--hack-red);
+}
+
+#hack-section.disabled #hack-progress {
+    background-color: var(--hack-red);
+}
+
+#hack-section.disabled button {
+    background-color: var(--hack-red);
+    color: var(--hack-grey);
+}
+
+#hack-section.disabled button:hover {
+    background-color: var(--hack-red);
+    color: var(--hack-grey);
+    cursor: not-allowed;
 }
