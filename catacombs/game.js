@@ -782,9 +782,9 @@ function cast(name){
     }else if (player_dead || game_over || paused){
         return false;
     }else{
-        player_casting = true;
         if (myhero['spells'].hasOwnProperty(name)){
             if (myhero['stats']['cha'] >= myhero['spells'][name]['cost']){
+                player_casting = true;
                 print_term('[SPELL] Now casting '+name+'...', true);
                 print_screen(['casting-bar', myhero['spells'][name]['casting_time']], true);
                 target_spell = {...myhero['spells'][name]};
