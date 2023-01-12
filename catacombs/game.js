@@ -898,7 +898,7 @@ function grant_upgrade(upgrade){
         off_print_term('[UPGRADE] Your skills are enhanced by countless micro-adjustments attuned to the matrix.');
         skills.forEach((elem)=>{
             myhero['skills'][elem] += 5;
-            off_print_screen(['skills', myhero['skills'][elem]]);
+            off_print_screen([elem, myhero['skills'][elem]]);
         })
     }else if (upgrade == 'bonus'){
         off_print_term('[UPGRADE] A hyperdimensional god-entity blesses you from a rimward plane of existence.');
