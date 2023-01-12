@@ -629,16 +629,19 @@ function get_spell(level){
     done = false;
     while (!done){
         curr_spell = {...base_spell};
-        spell_power = roll(1, 8);
+        spell_power = roll(1, 10);
         if (spell_power < 5){
             curr_spell['name'] = 'Minor ';
             curr_spell['power'] = 1;
         }else if (spell_power < 8){
             curr_spell['name'] = 'Major ';
             curr_spell['power'] = 2;
-        }else{
+        }else if (spell_power < 9){
             curr_spell['name'] = 'Anagrammatised ';
             curr_spell['power'] = 3;
+        }else {
+            curr_spell['name'] = 'Heofonlich ';
+            curr_spell['power'] = 5;
         }
         curr_spell['power'] += Math.floor(level/3);
         spell_cost = roll(1, 6);
@@ -830,7 +833,7 @@ function finish_cast(spell){
         }else if (spell['effect'] == 'matrix'){
             off_print_term('[SPELL] You download information from the matrix...');
             tskill = pick(skills);
-            myhero['skills'][tskill] += 5*spell['power'];
+            myhero['skills'][tskill] += 12*spell['power'];
             off_print_screen([tskill, myhero['skills'][tskill]]);
         }else if (spell['effect'] == 'flame'){
             off_print_term('[SPELL] You are wreathed in flame...');
@@ -865,10 +868,12 @@ function destroy_spell(spell){
         print_term('[SPELL] Your mind rejects the '+spell+' ideoform...', true);
         hp_return = myhero['spells'][spell]['power']*3;
         exp_gain = myhero['spells'][spell]['power']*2;
-        off_print_term('[SPELL] Destroyed '+spell+' for '+hp_return+' bonus HP and +'+exp_gain+'% Spellcasting skill!');
+        cha_gain = Math.ceil(myhero['spells'][spell]['power']/2);
+        off_print_term(`[SPELL] Destroyed ${spell} for ${hp_return} bonus HP, ${exp_gain}% Spellcasting skill, and ${cha_gain} CHA!`);
         myhero['hp'] += hp_return;
         myhero['skills']['spellcasting'] += exp_gain;
-        off_print_screen([['hp', myhero['hp']], ['spellcasting', myhero['skills']['spellcasting']]]);
+        myhero['stats']['cha'] += cha_gain
+        off_print_screen([['hp', myhero['hp']], ['spellcasting', myhero['skills']['spellcasting']], ['cha', myhero['stats']['cha']]]);
         delete myhero['spells'][spell];
         e = document.getElementById('spell_'+spell);
         e.parentNode.removeChild(e);
