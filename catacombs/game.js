@@ -116,14 +116,15 @@ network_state = {
         'nmap -A': {'knowledge_level': 1, 'time': 1500, 'effect': {'probe_level': [3, 10, 3], 'alert_level': [3, 6]}},
         'login-brute': {'knowledge_level': 1, 'time': 3000, 'effect': {'privilege_level': [1, 3, -1], 'alert_level': [1, 6]}},
         'privesc': {'knowledge_level': 3, 'time': 3000, 'effect': {'privilege_level': [1, 6,], 'alert_level': [2, 6]}},
-        'exploit_pro': {'knowledge_level': 5, 'time': 5000, 'effect': {'privilege_level': [2, 6], 'alert_level': [1, 6]}},
-        'cleanup': {'knowledge_level': 3, 'time': 5000, 'effect': {'alert_level': [-3, 6]}},
+        'exploit_pro': {'knowledge_level': 5, 'time': 3500, 'effect': {'privilege_level': [2, 6], 'alert_level': [1, 6]}},
+        'cleanup': {'knowledge_level': 3, 'time': 3000, 'effect': {'alert_level': [-3, 6]}},
     }
 }
 
 function hack_reset(){
     document.getElementById('hack-section').style.transition = 'height 0s';
     document.getElementById('hack-section').style.height = '0em';
+    document.getElementById('hack-section').style.marginBottom = '0em';
     document.getElementById('hack-section').classList.remove('disabled');
     setTimeout(()=>{document.getElementById('hack-section').style.transition = 'height 3s'}, 10);
     hacking_revealed = false;
@@ -135,6 +136,7 @@ function hack_setup(){
     if (!hacking_revealed){
         hacking_revealed = true;
         document.getElementById('hack-section').style.height = '25em';
+        document.getElementById('hack-section').style.marginBottom = '1em';
     }
 
     document.getElementById('probe-level').innerHTML = network_state['probe_level'];

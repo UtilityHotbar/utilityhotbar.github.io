@@ -282,7 +282,7 @@ button:active {
     background-color: var(--hack-grey);
     box-shadow: 0px 0px 2px var(--hack-green);
     font-family: 'VT323', 'Courier New', Courier, monospace;
-    margin-bottom: 1em;
+    margin-bottom: 0em;
     text-align: left;
     color: var(--hack-green);
     height: 0em;
