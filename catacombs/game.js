@@ -953,7 +953,7 @@ function loop_step(){
 function game_end_function(hero){
     if (!game_over){
         game_over = true;
-        print_term('Your final score was '+(hero['gold']+curr_turn+(curr_level*10)));
+        print_term('Your final score was '+(hero['gold']+curr_turn+(curr_level*10))+'. Reload to start a new character.');
         console.log('printed final score');
     
     }
