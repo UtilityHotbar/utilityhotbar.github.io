@@ -1176,7 +1176,7 @@ function start_game(){
     myhero = {...base_hero};
     update_list = [['upgrade-list', 'show']]
     stats.forEach(element => {
-        start_val =  smallest(roll(3, 6) + 2, 18)
+        start_val =  smallest(roll(3, 6) + 0, 18)
         myhero['stats'][element] = start_val;
         update_list.push([element, start_val])
     });
