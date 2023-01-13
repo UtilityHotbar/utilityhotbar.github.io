@@ -11,9 +11,9 @@
     <h1>Catacombs of Steel</h1>
     <div id="content">
         <div id="info-block">
-            <i>Version 1.5 - "The sky was the colour of television"</i><br>
+            <i>Version 1.6 - "The end is never the end is never the end is never the end"</i><br>
             A simulation by <a href="https://utilityhotbar.github.io">Utilityhotbar</a>. (<a href="https://discord.gg/tQqw4TGdUv">Discord</a>)<br>
-            <button onclick="pause()" id="pause-button">[Pause]</button>
+            <button onclick="pause()" id="pause-button">[Pause]</button> <button onclick="reset_game_state()" id="reset-button">[Reincarnate]</button>
         </div>
         <br>
         <div class="terminal">
@@ -26,6 +26,7 @@
             <br>
             <div id="character-sheet">
                 <h2>You</h2>
+                <b id="name">Name</b><br>
                 <table id="stats-section">
                     <tr>
                         <th>STR</th><td id="str">18</td>

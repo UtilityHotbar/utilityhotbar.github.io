@@ -1,8 +1,11 @@
 const stats = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
-const skills = ['melee', 'ranged', 'defense', 'medicine', 'navigation', 'footing', 'perception', 'spellcasting']
+const skills = ['melee', 'ranged', 'defense', 'medicine', 'navigation', 'footing', 'perception', 'spellcasting'];
+const phonemes = ['ker', 'ber', 'os', 'kar', 'san', 'dal', 'phon', 'tris', 'mes', 'gis', 'tus', 'ash', 'ur', 'ban', 'ip', 'al'];
 
-base_hero = {
+const base_hero = {
     'name': 'You',
+    'legacy': 1,
+    'world': 1,
     'hp': 20,
     'max_hp': 20,
     'attacks': 1,
@@ -32,7 +35,7 @@ base_hero = {
     'spells': {},
 }
 
-base_monster = {
+const base_monster = {
     'name': 'Nameless',
     'hp': 10,
     'max_hp': 10,
@@ -56,9 +59,9 @@ monster_index = {
     9: [{'name': 'content-terminating wormhole', 'tough': 3}]
 }
 
-base_spell_effects = ['lotus', 'flame', 'matrix', 'tensor',];
+const base_spell_effects = ['lotus', 'flame', 'matrix', 'tensor',];
 
-base_spell = {
+const base_spell = {
     'name': 'umm',
     'casting_time': 1000,
     'power': 1,
@@ -67,7 +70,7 @@ base_spell = {
     'cost': 0,
 }
 
-base_upgrades = {
+const base_upgrades = {
     'str': 'STR +1', 
     'dex': 'DEX +1', 
     'con': 'CON +1', 
@@ -77,25 +80,133 @@ base_upgrades = {
     'spell': 'Generate spell'
 }
 
-tier2_upgrades = {
+const tier2_upgrades = {
     'skill': '+5 to all skills',
     'bonus': '+30 HP',
 }
 
-tier3_upgrades = {
+const tier3_upgrades = {
     'wake': 'Wake up',
 }
 
-curr_length = 18;
-curr_level = 1;
-curr_turn = 0;
-player_dead = false;
-player_casting = false;
-player_fighting = false;
-game_over = false;
-paused = false;
-hacking_revealed = false;
-hack_killing = false;
+const base_game_state = {
+    'curr_length': 18,
+    'curr_level': 1,
+    'curr_turn': 0,
+    'player_dead': false,
+    'player_casting': false,
+    'player_fighting': false,
+    'game_over': false,
+    'paused': false,
+    'hacking_revealed': false,
+    'hack_killing': false,
+    'current_character': null,
+    'reincarnating': false,
+}
+
+game_state = {...base_game_state}
+
+function reset_game_state(dead=true){
+    // game_state['curr_length'] = 18;
+    // game_state['curr_level'] = 1;
+    // game_state['curr_turn'] = 0;
+    // game_state['player_dead'] = false;
+    // game_state['player_casting'] = false;
+    // game_state['player_fighting'] = false;
+    // game_state['game_over'] = false;
+    // game_state['paused'] = false;
+    // game_state['hacking_revealed'] = false;
+    // game_state['hack_killing'] = false;
+    if (game_state['paused'] || game_state['reincarnating']){
+        return;
+    }
+    game_state['reincarnating'] = true;
+    game_state['game_over'] = true;
+
+    var highestTimeoutId = setTimeout(";");
+    for (var i = 0 ; i < highestTimeoutId ; i++) {
+        clearTimeout(i); 
+    }
+
+    update_indiv_element(['combat', 'hide']);
+    update_indiv_element(['spells', 'clear']);
+    update_indiv_element(['casting-bar', 'clear']);
+    update_indiv_element(['inventory', 'clear']);
+
+    update_indiv_element(['upgrade-list', 'clear']);
+
+    hack_reset();
+
+
+    QUEUE = [];
+    OTHER_ELEMENT_QUEUE = [];
+
+    OFF_QUEUE = [];
+    OFF_OTHER_ELEMENT_QUEUE = [];
+    PRINTING = false;
+    PRINT_DELAY = 750;
+
+    var reset_elems = ['hp', 'max_hp', 'attacks', 'damage', 'ranged_attacks', 'ranged_damage', 'gold', 'inventory', 'spells']
+    var curr_char = {...game_state['current_character']};
+
+    reset_elems.forEach((elem)=>{
+        curr_char[elem] = JSON.parse(JSON.stringify(base_hero[elem]));
+    })
+
+    if (dead){
+        curr_char['legacy'] += 1;
+        var cname = curr_char['name'].split(' ');
+        var newname = cname[0]+' '+convertToRoman(curr_char['legacy']);
+        curr_char['name'] = newname;
+        skills.forEach((elem) => {
+            curr_char['skills'][elem] = Math.round(curr_char['skills'][elem]/20);
+        })
+        stats.forEach((elem) => {
+            curr_char['stats'][elem] = get_stat();
+        })
+    }else{
+        curr_char['world'] += 1;
+        skills.forEach((elem) => {
+            curr_char['skills'][elem] = 0;
+        })
+    }
+
+    game_state = {...base_game_state};
+    game_state['game_over'] = false;
+    game_state['player_dead'] = false;
+
+    game_state['current_character'] = curr_char;
+    print_term('[SYSTEM] New cycle initiated.<br><br><br>');
+
+    print_term('Your family elder has died under mysterious circumstances. You inherit a partial memory backup, containing basic training and directions to a strange dungeon. Your adventure begins...');
+    full_character_update();
+    print_screen(['upgrade-list', 'show']);
+    var start_bonus = get_spell(1);
+    game_state['current_character']['spells'][start_bonus['name']] = start_bonus;
+    print_screen(['spells', start_bonus['name']]);
+
+}
+
+function full_character_update(){
+    push_list = [];
+    update_list = Object.keys(base_hero);
+    update_list.splice(update_list.indexOf('stats'), 1);
+    update_list.splice(update_list.indexOf('skills'), 1);
+    update_list.splice(update_list.indexOf('inventory'), 1);
+    update_list.splice(update_list.indexOf('spells'), 1);
+    update_list.splice(update_list.indexOf('world'), 1);
+    update_list.splice(update_list.indexOf('legacy'), 1);
+    update_list.forEach((elem)=>{
+        push_list.push([elem, game_state['current_character'][elem]])
+    });
+    stats.forEach((elem)=>{
+        push_list.push([elem, game_state['current_character']['stats'][elem]])
+    })
+    skills.forEach((elem)=>{
+        push_list.push([elem, game_state['current_character']['skills'][elem]])
+    })
+    print_screen(push_list);
+}
 
 network_state = {
     'probe_level': 0,
@@ -127,14 +238,14 @@ function hack_reset(){
     document.getElementById('hack-section').style.marginBottom = '0em';
     document.getElementById('hack-section').classList.remove('disabled');
     setTimeout(()=>{document.getElementById('hack-section').style.transition = 'height 3s'}, 10);
-    hacking_revealed = false;
-    hack_killing = false;
+    game_state['hacking_revealed'] = false;
+    game_state['hack_killing'] = false;
     print_term('[SYSTEM] Network interface reset complete.', true);
 }
 
 function hack_setup(){
-    if (!hacking_revealed){
-        hacking_revealed = true;
+    if (!game_state['hacking_revealed']){
+        game_state['hacking_revealed'] = true;
         document.getElementById('hack-section').style.height = '25em';
         document.getElementById('hack-section').style.marginBottom = '1em';
     }
@@ -164,7 +275,7 @@ function hack_setup(){
 
     if (network_state['alert_level'] >= 100){
         print_term('[SYSTEM] ERROR. SYSTEM INSTABILITY DETECTED. INTRUDER DETECTED. SYSTEM INSTABILITY DETECTED. INTRUDER DETECTED. SYSTEM INSTABILITY DETECTED. INTRUDER DETECTED. SYSTEM INSTABILITY DETECTED. INTRUDER DETECTED. SYSTEM INSTABILITY DETECTED. INTRUDER DETECTED.', true);
-        hack_killing = true;
+        game_state['hack_killing'] = true;
         document.getElementById('hack-section').classList.add('disabled');
         setTimeout(()=>{wipe_screen(3000, hack_reset)}, 2000);
     }
@@ -194,14 +305,13 @@ function wipe_screen(time, next){
 }
 
 function run_command(command){
-    if (!paused && !game_over && !hack_killing){
+    if (!game_state['paused'] && !game_state['game_over'] && !game_state['hack_killing']){
         var c = network_state['commands'][command];
         wipe_screen(c['time'], ()=>{finish_command(command);});
     }
 }
 
 function finish_command(command){
-
     var c = network_state['commands'][command];
     Object.keys(c['effect']).forEach((elem) => {
         var target = elem;
@@ -230,7 +340,7 @@ function finish_command(command){
 }
 
 function run_program(program){
-    if (!paused && !hack_killing){
+    if (!game_state['paused'] && !game_state['hack_killing']){
         var p = network_state['programs'][program];
         if (network_state['privilege_level'] < p['privilege_level']){
             document.getElementById('privilege-level').style.color = 'var(--hack-red)';
@@ -252,21 +362,21 @@ function finish_program(program){
         PRINT_DELAY += 100;
         clamp(PRINT_DELAY, 150, 3050);
     }else if (p['code'] == 'givespell'){
-        spell_bonus = get_spell(curr_level);
-        myhero['spells'][spell_bonus['name']] = spell_bonus;
+        spell_bonus = get_spell(game_state['curr_level']);
+        game_state['current_character']['spells'][spell_bonus['name']] = spell_bonus;
         off_print_screen(['spells', spell_bonus['name']]);
     }else if (p['code'] == 'giveupgrade'){
         off_print_screen(['upgrade-list', 'fill']);
     }else if (p['code'] == 'kill'){
-        hurt(myhero, 1000000);
+        hurt(game_state['current_character'], 1000000);
     }else if (p['code'] == 'revive'){
-        if (myhero['hp'] <= 0){
+        if (game_state['current_character']['hp'] <= 0){
             print_term('[SYSTEM] Somewhere out there someone is singing...', true);
-            myhero['hp'] = myhero['max_hp'];
-            if (myhero['hp'] > 0){
-                off_print_screen(['hp', myhero['hp']]);
-                game_over = false;
-                player_dead = false;
+            game_state['current_character']['hp'] = game_state['current_character']['max_hp'];
+            if (game_state['current_character']['hp'] > 0){
+                off_print_screen(['hp', game_state['current_character']['hp']]);
+                game_state['game_over'] = false;
+                game_state['player_dead'] = false;
                 out_done();
             }
         }
@@ -346,7 +456,7 @@ function out(elem='mainterm'){  // Grabs top line in queue and pushes it to webp
 function out_done(e){
     if (OFF_QUEUE.length == 0){
         PRINTING = false;
-        if (!player_dead && !game_over && !paused){
+        if (!game_state['player_dead'] && !game_state['game_over'] && !game_state['paused']){
             setTimeout(()=>{loop_step()}, 0);
         }            
         return;
@@ -416,40 +526,60 @@ function update_indiv_element(thing){
         }
         document.getElementById('edge'+elem_new_val).style.backgroundColor = 'antiquewhite';
     }else if (elem_name == 'inventory'){
-        document.getElementById('inventory').innerHTML += '* '+elem_new_val+'<br>'
+        if (elem_new_val == 'clear'){
+            document.getElementById('inventory').innerHTML = '';
+        }else{
+            document.getElementById('inventory').innerHTML += '* '+elem_new_val+'<br>'
+
+        }
     }else if (elem_name == 'spells'){
-        document.getElementById('spells').innerHTML += '<div id="spell_'+elem_new_val+'"><button onclick="cast(\''+elem_new_val+'\')">'+elem_new_val+'</button> <button class="important" onclick="destroy_spell(\''+elem_new_val+'\')">[X]</button><br><br></div>'
+        if (elem_new_val == 'clear'){
+            document.getElementById('spells').innerHTML = ''
+        }else{
+            document.getElementById('spells').innerHTML += '<div id="spell_'+elem_new_val+'"><button onclick="cast(\''+elem_new_val+'\')">'+elem_new_val+'</button> <button class="important" onclick="destroy_spell(\''+elem_new_val+'\')">[X]</button><br><br></div>'
+        }
     }else if (elem_name == 'casting-bar'){
-        var id = setInterval(load, elem_new_val/100);
-        var w = 1;
-        function load(){
-            if (w > 100 || player_fighting){
-                document.getElementById('casting-progress').style.width = '0%'
-                clearInterval(id);
-            }else{
-                w++;
-                document.getElementById('casting-progress').style.width = w+'%';
+        if (elem_new_val == 'clear'){
+            document.getElementById('casting-progress').style.width = '0%'
+        }else{
+            var id = setInterval(load, elem_new_val/100);
+            var w = 1;
+            function load(){
+                if (w > 100 || game_state['player_fighting']){
+                    document.getElementById('casting-progress').style.width = '0%'
+                    clearInterval(id);
+                }else{
+                    w++;
+                    document.getElementById('casting-progress').style.width = w+'%';
+                }
             }
         }
     }else if (elem_name == 'upgrade-list') {
-        if (document.getElementById('upgrade-list-1').innerHTML == ''){
-            print_term('[UPGRADE] Tier I upgrades now available...', true);
-            Object.keys(base_upgrades).forEach((elem) => {
-                document.getElementById('upgrade-list-1').innerHTML += '<button onclick="grant_upgrade(\''+elem+'\')">'+base_upgrades[elem]+'</button> ';
-            });
-        }else if (document.getElementById('upgrade-list-2').innerHTML == ''){
-            print_term('[UPGRADE] Tier II upgrades now available...', true);
-            Object.keys(tier2_upgrades).forEach((elem) => {
-                document.getElementById('upgrade-list-2').innerHTML += '<button onclick="grant_upgrade(\''+elem+'\')">'+tier2_upgrades[elem]+'</button> ';
-            });
-        }else if (document.getElementById('upgrade-list-3').innerHTML == '' && !hacking_revealed){
-            print_term('[UPGRADE] Tier III upgrades now available...', true);
-            Object.keys(tier3_upgrades).forEach((elem) => {
-                document.getElementById('upgrade-list-3').innerHTML += '<button onclick="grant_upgrade(\''+elem+'\')">'+tier3_upgrades[elem]+'</button> ';
-            });
+        if (elem_new_val == 'clear'){
+            document.getElementById('upgrade-list-1').innerHTML = '';
+            document.getElementById('upgrade-list-2').innerHTML = '';
+            document.getElementById('upgrade-list-3').innerHTML = '';
         }else{
-            print_term('[UPGRADE] No more upgrades available! Use upgrades to get more.', true)
-        };
+            if (document.getElementById('upgrade-list-1').innerHTML == ''){
+                print_term('[UPGRADE] Tier I upgrades now available...', true);
+                Object.keys(base_upgrades).forEach((elem) => {
+                    document.getElementById('upgrade-list-1').innerHTML += '<button onclick="grant_upgrade(\''+elem+'\')">'+base_upgrades[elem]+'</button> ';
+                });
+            }else if (document.getElementById('upgrade-list-2').innerHTML == ''){
+                print_term('[UPGRADE] Tier II upgrades now available...', true);
+                Object.keys(tier2_upgrades).forEach((elem) => {
+                    document.getElementById('upgrade-list-2').innerHTML += '<button onclick="grant_upgrade(\''+elem+'\')">'+tier2_upgrades[elem]+'</button> ';
+                });
+            }else if (document.getElementById('upgrade-list-3').innerHTML == '' && !game_state['hacking_revealed']){
+                print_term('[UPGRADE] Tier III upgrades now available...', true);
+                Object.keys(tier3_upgrades).forEach((elem) => {
+                    document.getElementById('upgrade-list-3').innerHTML += '<button onclick="grant_upgrade(\''+elem+'\')">'+tier3_upgrades[elem]+'</button> ';
+                });
+            }else{
+                print_term('[UPGRADE] No more upgrades available! Use upgrades to get more.', true)
+            };
+        }
+
 
     }else if (elem_name == 'hack-section'){
         hack_setup();
@@ -459,16 +589,16 @@ function update_indiv_element(thing){
 }
 
 function pause(){
-    if (!paused){
+    if (!game_state['paused']){
         print_term('[PAUSE] Pausing at the end of this turn...', true);
         document.getElementById('pause-button').innerHTML = '[Unpause]';
         document.getElementById('pause-button').classList.add('important');
-        paused = true;
+        game_state['paused'] = true;
     }else{
         print_term('[PAUSE] Unpausing...', true);
         document.getElementById('pause-button').innerHTML = '[Pause]';
         document.getElementById('pause-button').classList.remove('important');
-        paused = false;
+        game_state['paused'] = false;
         if (!PRINTING){
             out_done();
 
@@ -520,6 +650,35 @@ function pick(l){
     return l[Math.floor(Math.random()*l.length)]
 }
 
+// https://stackoverflow.com/questions/9083037/convert-a-number-into-a-roman-numeral-in-javascript
+
+function convertToRoman(num) {
+    var roman = {
+      M: 1000,
+      CM: 900,
+      D: 500,
+      CD: 400,
+      C: 100,
+      XC: 90,
+      L: 50,
+      XL: 40,
+      X: 10,
+      IX: 9,
+      V: 5,
+      IV: 4,
+      I: 1
+    };
+    var str = '';
+  
+    for (var i of Object.keys(roman)) {
+      var q = Math.floor(num / roman[i]);
+      num -= q * roman[i];
+      str += i.repeat(q);
+    }
+  
+    return str;
+  }
+
 function roll(x, y, return_list=false){  // roll xdy
     results = [];
     total = 0;
@@ -555,9 +714,7 @@ function skill_check(character, stat, skill, diff=0){
         if (character['skills'][skill] < 50){
             character['skills'][skill] += 1; // Failing a skill check improves it by 1% to a maximum of 50%
             print_term('Your '+skill+' skill increased by 1%.')
-            if (skill !== 'spellcasting'){ // Preventing spellcasting race condition
-                print_screen([skill, character['skills'][skill]]);
-            }
+            print_screen([skill, character['skills'][skill]]);
         }
         return false;
     }
@@ -595,6 +752,19 @@ function is_dead(target){
     }
 }
 
+function get_name(){
+    var name_length = roll(1, 4)+2;
+    var name = '';
+    for (let i=0; i<name_length; i++){
+        name += pick(phonemes);
+    }
+    return name.charAt(0).toUpperCase() + name.slice(1);
+}
+
+function get_stat(){
+    return smallest(roll(3, 6) + 1, 18);
+}
+
 function get_bonus(person, stat){
     return smallest((person['stats'][stat]-10)/2)
 }
@@ -622,7 +792,7 @@ function get_monster(level){
 }
 
 function get_spell(level){
-    if (Object.keys(myhero['spells']).length >= 10){
+    if (Object.keys(game_state['current_character']['spells']).length >= 10){
         off_print_term('[SPELL] Spell limit reached!');
         return;
     }
@@ -680,7 +850,7 @@ function get_spell(level){
         curr_effect = pick(base_spell_effects);
         curr_spell['name'] += curr_effect.toUpperCase();
         curr_spell['effect'] = curr_effect;
-        if (!Object.keys(myhero['spells']).includes(curr_spell['name'])){
+        if (!Object.keys(game_state['current_character']['spells']).includes(curr_spell['name'])){
             done = true;
         }
     }
@@ -781,19 +951,19 @@ function roll_treasure(hero, level){
 }
 
 function cast(name){
-    if (player_casting){
+    if (game_state['player_casting']){
         print_term('[SPELL] You are already casting a spell!', true);
         return false;
-    }else if (player_dead || game_over || paused){
+    }else if (game_state['player_dead'] || game_state['game_over'] || game_state['paused']){
         return false;
     }else{
-        if (myhero['spells'].hasOwnProperty(name)){
-            if (myhero['stats']['cha'] >= myhero['spells'][name]['cost']){
-                player_casting = true;
+        if (game_state['current_character']['spells'].hasOwnProperty(name)){
+            if (game_state['current_character']['stats']['cha'] >= game_state['current_character']['spells'][name]['cost']){
+                game_state['player_casting'] = true;
                 print_term('[SPELL] Now casting '+name+'...', true);
-                print_screen(['casting-bar', myhero['spells'][name]['casting_time']], true);
-                target_spell = {...myhero['spells'][name]};
-                delete myhero['spells'][name];
+                print_screen(['casting-bar', game_state['current_character']['spells'][name]['casting_time']], true);
+                target_spell = {...game_state['current_character']['spells'][name]};
+                delete game_state['current_character']['spells'][name];
                 e = document.getElementById('spell_'+name);
                 e.parentNode.removeChild(e);
                 window.setTimeout(()=>{finish_cast(target_spell)}, target_spell['casting_time']);
@@ -808,73 +978,73 @@ function cast(name){
 }
 
 function finish_cast(spell){
-    if (player_fighting){ // Delay effects of spell until combat finishes
+    if (game_state['player_fighting']){ // Delay effects of spell until combat finishes
         setTimeout(()=>{finish_cast(spell)}, 500);
         return;
     }
-    player_casting = false;
+    game_state['player_casting'] = false;
     outstrings = [];
     outupdates = [];
-    if (skill_check(myhero, 'cha', 'spellcasting', spell['power'])){
+    if (skill_check(game_state['current_character'], 'cha', 'spellcasting', spell['power'])){
         off_print_term('[SPELL] Casting succeeded!');
-        myhero['stats']['cha'] -= spell['cost'];
+        game_state['current_character']['stats']['cha'] -= spell['cost'];
         //lotus flame matrix tensor
         if (spell['effect'] == 'lotus'){
             health_bonus = roll(spell['power'], 10)+3;
             off_print_term('[SPELL] You feel rejuvenated and gain '+health_bonus+' HP + '+spell['power']*3+' CHA!');
-            heal(myhero, health_bonus);
-            myhero['stats']['cha'] += spell['power']*3;
-            off_print_screen(['hp', myhero['hp']])
+            heal(game_state['current_character'], health_bonus);
+            game_state['current_character']['stats']['cha'] += spell['power']*3;
+            off_print_screen(['hp', game_state['current_character']['hp']])
         }else if (spell['effect'] == 'tensor'){
             off_print_term('[SPELL] Your attacks are imbued with a strange, external force tensor...');
-            myhero['ranged_attacks'] += spell['power'];
-            myhero['attacks'] += spell['power'];
-            off_print_screen([['ranged_attacks', myhero['ranged_attacks']], ['attacks', myhero['attacks']]]);
+            game_state['current_character']['ranged_attacks'] += spell['power'];
+            game_state['current_character']['attacks'] += spell['power'];
+            off_print_screen([['ranged_attacks', game_state['current_character']['ranged_attacks']], ['attacks', game_state['current_character']['attacks']]]);
         }else if (spell['effect'] == 'matrix'){
             off_print_term('[SPELL] You download information from the matrix...');
             tskill = pick(skills);
-            myhero['skills'][tskill] += 12*spell['power'];
-            off_print_screen([tskill, myhero['skills'][tskill]]);
+            game_state['current_character']['skills'][tskill] += 12*spell['power'];
+            off_print_screen([tskill, game_state['current_character']['skills'][tskill]]);
         }else if (spell['effect'] == 'flame'){
             off_print_term('[SPELL] You are wreathed in flame...');
-            myhero['damage'] += spell['power'];
-            off_print_screen(['damage', myhero['damage']]);
+            game_state['current_character']['damage'] += spell['power'];
+            off_print_screen(['damage', game_state['current_character']['damage']]);
         }
 
     }else{
         off_print_term('[SPELL] The spell backfires, harming you but giving you extra experience!');
-        myhero['stats']['cha'] -= spell['cost'];
-        myhero['skills']['spellcasting'] += 5
+        game_state['current_character']['stats']['cha'] -= spell['cost'];
+        game_state['current_character']['skills']['spellcasting'] += 5
         backfire = roll(spell['risk'], 6);
         print_term('[SPELL] Residual spell energy scorches you for '+backfire+' damage!')
-        hurt(myhero, backfire);
-        off_print_screen(['spellcasting', myhero['skills']['spellcasting']])
+        hurt(game_state['current_character'], backfire);
+        off_print_screen(['spellcasting', game_state['current_character']['skills']['spellcasting']])
     }
-    off_print_screen(['cha', myhero['stats']['cha']]);
+    off_print_screen(['cha', game_state['current_character']['stats']['cha']]);
     // console.log(outupdates, 'UPDATES')
     // print_term(outstrings,);
     // print_screen(outupdates,);
 }
 
 function destroy_spell(spell){
-    if (player_fighting){ // no destroying spells mid combat
+    if (game_state['player_fighting']){ // no destroying spells mid combat
         setTimeout(()=>{destroy_spell(spell)}, 500);
         return;
     }
-    if (player_dead || game_over || paused){
+    if (game_state['player_dead'] || game_state['game_over'] || game_state['paused']){
         return false;
     }
-    if (myhero['spells'].hasOwnProperty(spell)){
+    if (game_state['current_character']['spells'].hasOwnProperty(spell)){
         print_term('[SPELL] Your mind rejects the '+spell+' ideoform...', true);
-        hp_return = myhero['spells'][spell]['power']*3;
-        exp_gain = myhero['spells'][spell]['power']*2;
-        cha_gain = Math.ceil(myhero['spells'][spell]['power']/2);
+        hp_return = game_state['current_character']['spells'][spell]['power']*3;
+        exp_gain = game_state['current_character']['spells'][spell]['power']*2;
+        cha_gain = Math.ceil(game_state['current_character']['spells'][spell]['power']/2);
         off_print_term(`[SPELL] Destroyed ${spell} for ${hp_return} bonus HP, ${exp_gain}% Spellcasting skill, and ${cha_gain} CHA!`);
-        myhero['hp'] += hp_return;
-        myhero['skills']['spellcasting'] += exp_gain;
-        myhero['stats']['cha'] += cha_gain
-        off_print_screen([['hp', myhero['hp']], ['spellcasting', myhero['skills']['spellcasting']], ['cha', myhero['stats']['cha']]]);
-        delete myhero['spells'][spell];
+        game_state['current_character']['hp'] += hp_return;
+        game_state['current_character']['skills']['spellcasting'] += exp_gain;
+        game_state['current_character']['stats']['cha'] += cha_gain
+        off_print_screen([['hp', game_state['current_character']['hp']], ['spellcasting', game_state['current_character']['skills']['spellcasting']], ['cha', game_state['current_character']['stats']['cha']]]);
+        delete game_state['current_character']['spells'][spell];
         e = document.getElementById('spell_'+spell);
         e.parentNode.removeChild(e);
     }else{
@@ -883,7 +1053,7 @@ function destroy_spell(spell){
 }
 
 function grant_upgrade(upgrade){
-    if (player_dead || game_over || paused){
+    if (game_state['player_dead'] || game_state['game_over'] || game_state['paused']){
         return false;
     }
     console.log(upgrade);
@@ -894,24 +1064,24 @@ function grant_upgrade(upgrade){
 
     if (stats.includes(upgrade)){
         off_print_term('[UPGRADE] Your '+upgrade.toUpperCase()+' increases by 1.');
-        myhero['stats'][upgrade] += 1;
-        off_print_screen([upgrade, myhero['stats'][upgrade]]);
+        game_state['current_character']['stats'][upgrade] += 1;
+        off_print_screen([upgrade, game_state['current_character']['stats'][upgrade]]);
     }else if (upgrade == 'spell'){
         off_print_term('[UPGRADE] Your mind generates a new spell-thought.');
-        level_bonus = get_spell(curr_level);
-        myhero['spells'][level_bonus['name']] = level_bonus;
+        level_bonus = get_spell(game_state['curr_level']);
+        game_state['current_character']['spells'][level_bonus['name']] = level_bonus;
         off_print_screen(['spells', level_bonus['name']]);
     }else if (upgrade == 'skill'){
         off_print_term('[UPGRADE] Your skills are enhanced by countless micro-adjustments attuned to the matrix.');
         skills.forEach((elem)=>{
-            myhero['skills'][elem] += 5;
-            off_print_screen([elem, myhero['skills'][elem]]);
+            game_state['current_character']['skills'][elem] += 5;
+            off_print_screen([elem, game_state['current_character']['skills'][elem]]);
         })
     }else if (upgrade == 'bonus'){
         off_print_term('[UPGRADE] A hyperdimensional god-entity blesses you from a rimward plane of existence.');
-        myhero['hp'] += 30;
-        myhero['max_hp'] += 30;
-        off_print_screen([['hp', myhero['hp']], ['max_hp', myhero['max_hp']]]);
+        game_state['current_character']['hp'] += 30;
+        game_state['current_character']['max_hp'] += 30;
+        off_print_screen([['hp', game_state['current_character']['hp']], ['max_hp', game_state['current_character']['max_hp']]]);
     }else if (upgrade == 'wake'){
         off_print_term('[UPGRADE] A series of psychological and technical revelations shake your mind. You realise the simulated nature of reality at a higher level than ever thought possible...');
         off_print_screen(['hack-section', 'show']);
@@ -920,47 +1090,47 @@ function grant_upgrade(upgrade){
 }
 
 function loop_step(){
-    if (game_over){
+    if (game_state['game_over']){
         return
     }
-    main_character = myhero;
-    if (curr_level > 9){
+    main_character = game_state['current_character'];
+    if (game_state['curr_level'] > 9){
         console.log('out1')
         print_term('You win!');
         game_end_function(main_character);
         return;
     }
     console.log(main_character)
-    curr_turn += 1;
-    print_term('[SYSTEM] Turn '+curr_turn);
-    res = encounter_roll(main_character, curr_level);
+    game_state['curr_turn'] += 1;
+    print_term('[SYSTEM] Turn '+game_state['curr_turn']);
+    res = encounter_roll(main_character, game_state['curr_level']);
     if (!res || is_dead(main_character)){
-        player_dead = true;
+        game_state['player_dead'] = true;
         game_end_function(main_character);
         return false;
     }
-    if (skill_check(main_character, 'int', 'navigation', curr_level)){
+    if (skill_check(main_character, 'int', 'navigation', game_state['curr_level'])){
         print_term('You progress further into the dungeon...');
-        curr_length -= greatest(0, roll(1, 3) + get_bonus(main_character, 'int'));
+        game_state['curr_length'] -= greatest(0, roll(1, 3) + get_bonus(main_character, 'int'));
     }
-    if (curr_length <= 0){
+    if (game_state['curr_length'] <= 0){
         print_term('You find the stairs to the next floor...');
-        curr_level += 1;
-        curr_length = roll(3, 6)+3+curr_level;
+        game_state['curr_level'] += 1;
+        game_state['curr_length'] = roll(3, 6)+3+game_state['curr_level'];
         bump = roll (2, 6);
         main_character['max_hp'] += bump;
         main_character['hp'] += bump;
         print_term('[LEVEL UP]');
         print_term('You gain '+bump+' HP.');
         print_screen(['upgrade-list', 'fill']);
-        print_screen([['level', curr_level], ['max_hp', main_character['max_hp']], ['hp', main_character['hp']]]);
+        print_screen([['level', game_state['curr_level']], ['max_hp', main_character['max_hp']], ['hp', main_character['hp']]]);
     }
 }
 
 function game_end_function(hero){
-    if (!game_over){
-        game_over = true;
-        print_term('Your final score was '+(hero['gold']+curr_turn+(curr_level*10))+'. Reload to start a new character.');
+    if (!game_state['game_over']){
+        game_state['game_over'] = true;
+        print_term('Your final score was '+(hero['gold']+game_state['curr_turn']+(game_state['curr_level']*10))+'. Reincarnate or reload to start a new character.');
         console.log('printed final score');
     
     }
@@ -1005,10 +1175,10 @@ function encounter_roll(current_hero, clevel){
             heal(current_hero, roll(1,6)+clevel);
         }else{
             print_term('You try to think of an original thought...');
-            if (skill_check(myhero, 'cha', 'spellcasting', -Math.round(curr_level/3))){
+            if (skill_check(game_state['current_character'], 'cha', 'spellcasting', -Math.round(game_state['curr_level']/3))){
                 print_term('A new spell-thought manifests in the void of your mind spontaneously!');
-                spell_bonus = get_spell(curr_level);
-                myhero['spells'][spell_bonus['name']] = spell_bonus;
+                spell_bonus = get_spell(game_state['curr_level']);
+                game_state['current_character']['spells'][spell_bonus['name']] = spell_bonus;
                 print_screen(['spells', spell_bonus['name']]);
             }else{
                 print_term('But nothing came to mind.')
@@ -1034,7 +1204,7 @@ function run_fight(you, enemy, surprised=false){
     print_term('En garde...')
     print_term('===COMBAT LOG===')
     print_screen(['combat', 'show'])
-    player_fighting = true;
+    game_state['player_fighting'] = true;
 
     // Combat advantage determination
     if (surprised){
@@ -1063,7 +1233,7 @@ function run_fight(you, enemy, surprised=false){
 
                 // Death check
                 if (is_dead(enemy)){
-                    player_fighting = false;
+                    game_state['player_fighting'] = false;
 
                     print_screen(['combat', 'hide']);
                     print_term('The '+enemy['name']+' died!');
@@ -1161,13 +1331,13 @@ function run_fight(you, enemy, surprised=false){
 
         // Death check
         if (is_dead(you)){
-            player_fighting = false;
+            game_state['player_fighting'] = false;
             print_term('You died!');
             print_screen(['combat', 'hide']);
 
             return false;
         }else if (is_dead(enemy)){
-            player_fighting = false;
+            game_state['player_fighting'] = false;
 
             print_term('The '+enemy['name']+' died!');
             print_screen(['combat', 'hide']);
@@ -1180,18 +1350,19 @@ function run_fight(you, enemy, surprised=false){
 }
 
 function start_game(){
-    myhero = {...base_hero};
-    update_list = [['upgrade-list', 'show']]
+    game_state['current_character'] = JSON.parse(JSON.stringify(base_hero));
+    game_state['current_character']['name'] = get_name();
     stats.forEach(element => {
-        start_val =  smallest(roll(3, 6) + 0, 18)
-        myhero['stats'][element] = start_val;
-        update_list.push([element, start_val])
+        start_val = get_stat();
+        game_state['current_character']['stats'][element] = start_val;
     });
     start_bonus = get_spell(1);
-    myhero['spells'][start_bonus['name']] = start_bonus;
-    update_list.push(['spells', start_bonus['name']])
-    print_screen(update_list);
-    console.log(myhero);
+    game_state['current_character']['spells'][start_bonus['name']] = start_bonus;
+    console.log(game_state['current_character']);
+    full_character_update();
+    print_screen(['upgrade-list', 'show']);
+
+    print_screen(['spells', start_bonus['name']]);
 
     print_term('You begin your adventure...');
     loop_step();

@@ -218,7 +218,7 @@ table {
     width: 100%;
 }
 
-#enemy-name{
+#enemy-name,  #name{
     font-weight: bold;
     font-family: 'QTChancery', 'Times New Roman', Times, serif;
     letter-spacing: 0.1rem;
