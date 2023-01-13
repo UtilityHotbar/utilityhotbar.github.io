@@ -1267,6 +1267,7 @@ function run_fight(you, enemy, surprised=false){
         max_rounds -= 1;
         if (max_rounds <= 0){
             print_term('Tiebreak!');
+            print_screen(['combat', 'hide']);
             break;
         }
         // Edge display (to player)
