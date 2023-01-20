@@ -1234,12 +1234,12 @@ function encounter_roll(current_hero, clevel){
         if (current_hero['hp'] < current_hero['max_hp']/3){
             print_term('You try to rest!');
             heal(current_hero, roll(1,6)+clevel);
-        }else if (you['class_levels']['magic_user'] >= 1){
+        }else if (current_hero['class_levels']['magic_user'] >= 1){
             print_term('[CLASS] You try to think of an original thought...');
             if (skill_check(game_state['current_character'], 'cha', 'spellcasting', -Math.round(game_state['curr_level']/3))){
                 print_term('A new spell-thought manifests in the void of your mind spontaneously!');
                 spell_bonus = get_spell(game_state['curr_level']);
-                game_state['current_character']['spells'][spell_bonus['name']] = spell_bonus;
+                current_hero['spells'][spell_bonus['name']] = spell_bonus;
                 print_screen(['spells', spell_bonus['name']]);
             }else{
                 print_term('But nothing came to mind.')
