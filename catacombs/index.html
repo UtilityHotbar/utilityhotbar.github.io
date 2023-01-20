@@ -11,7 +11,7 @@
     <h1>Catacombs of Steel</h1>
     <div id="content">
         <div id="info-block">
-            <i>Version 1.6 - "The end is never the end is never the end is never the end"</i><br>
+            <i>Version 1.8 - "Divers tools and trades þey hadde"</i><br>
             A simulation by <a href="https://utilityhotbar.github.io">Utilityhotbar</a>. (<a href="https://discord.gg/tQqw4TGdUv">Discord</a>)<br>
             <button onclick="pause()" id="pause-button">[Pause]</button> <button onclick="reset_game_state()" id="reset-button">[Reincarnate]</button>
         </div>
@@ -27,6 +27,12 @@
             <div id="character-sheet">
                 <h2>You</h2>
                 <b id="name">Name</b><br>
+                <div id="xp-bar">
+                    <div id="xp-progress"></div>
+                </div>
+                <div id="class-select">
+
+                </div>
                 <table id="stats-section">
                     <tr>
                         <th>STR</th><td id="str">18</td>
@@ -57,7 +63,10 @@
                         <th>Ranged DMG</th><td><span id="ranged_attacks">0</span>d<span id="ranged_damage">4</span></td>
                     </tr>
                     <tr>
-                        <th>Level</th><td id="level">1</td>
+                        <th>Dungeon Level</th><td id="level">1</td>
+                    </tr>
+                    <tr>
+                        <th>Class</th><td id="class"></td> <td id="class_level"></td>
                     </tr>
                 </table>
                 <hr>

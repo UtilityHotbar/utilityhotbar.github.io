@@ -1,6 +1,7 @@
 const stats = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
 const skills = ['melee', 'ranged', 'defense', 'medicine', 'navigation', 'footing', 'perception', 'spellcasting'];
 const phonemes = ['ker', 'ber', 'os', 'kar', 'san', 'dal', 'phon', 'tris', 'mes', 'gis', 'tus', 'ash', 'ur', 'ban', 'ip', 'al'];
+const classes = {'fighter': {'name': 'Fighter', 'skill': 'melee'}, 'thief': {'name': 'Thief', 'skill': 'footing'}, 'magic_user': {'name': 'Neuromancer', 'skill': 'spellcasting'}};
 
 const base_hero = {
     'name': 'You',
@@ -8,6 +9,10 @@ const base_hero = {
     'world': 1,
     'hp': 20,
     'max_hp': 20,
+    'xp': 0,
+    'max_xp': 30,
+    'class': 'fighter',
+    'class_levels': {'fighter': 0, 'magic_user': 0, 'thief': 0},
     'attacks': 1,
     'damage': 6,
     'gold': 0,
@@ -77,10 +82,10 @@ const base_upgrades = {
     'int': 'INT +1', 
     'wis': 'WIS +1', 
     'cha': 'CHA +1', 
-    'spell': 'Generate spell'
 }
 
 const tier2_upgrades = {
+    'spell': 'Generate spell',
     'skill': '+5 to all skills',
     'bonus': '+30 HP',
 }
@@ -132,7 +137,7 @@ function reset_game_state(dead=true){
     update_indiv_element(['spells', 'clear']);
     update_indiv_element(['casting-bar', 'clear']);
     update_indiv_element(['inventory', 'clear']);
-
+    update_indiv_element(['xp-bar', 'clear'])
     update_indiv_element(['upgrade-list', 'clear']);
 
     hack_reset();
@@ -146,7 +151,7 @@ function reset_game_state(dead=true){
     PRINTING = false;
     PRINT_DELAY = 750;
 
-    var reset_elems = ['hp', 'max_hp', 'attacks', 'damage', 'ranged_attacks', 'ranged_damage', 'gold', 'inventory', 'spells']
+    var reset_elems = ['hp', 'max_hp', 'attacks', 'damage', 'ranged_attacks', 'ranged_damage', 'gold', 'inventory', 'spells', 'xp', 'max_xp']
     var curr_char = {...game_state['current_character']};
 
     reset_elems.forEach((elem)=>{
@@ -184,7 +189,7 @@ function reset_game_state(dead=true){
     var start_bonus = get_spell(1);
     game_state['current_character']['spells'][start_bonus['name']] = start_bonus;
     print_screen(['spells', start_bonus['name']]);
-
+    print_screen(['class-select', 'show'])
 }
 
 function full_character_update(){
@@ -196,6 +201,10 @@ function full_character_update(){
     update_list.splice(update_list.indexOf('spells'), 1);
     update_list.splice(update_list.indexOf('world'), 1);
     update_list.splice(update_list.indexOf('legacy'), 1);
+    update_list.splice(update_list.indexOf('class_levels'), 1);
+    update_list.splice(update_list.indexOf('class'), 1);
+    update_list.splice(update_list.indexOf('xp'), 1);
+    update_list.splice(update_list.indexOf('max_xp'), 1);
     update_list.forEach((elem)=>{
         push_list.push([elem, game_state['current_character'][elem]])
     });
@@ -583,6 +592,26 @@ function update_indiv_element(thing){
 
     }else if (elem_name == 'hack-section'){
         hack_setup();
+    }else if (elem_name == 'xp-bar'){
+        if (elem_new_val == 'clear'){
+            document.getElementById('xp-progress').style.width = '0%';
+        }else if (elem_new_val == 'ding'){
+            document.getElementById('xp-progress').style.width = '100%';
+            document.getElementById('xp-progress').classList.add('ding');
+            setTimeout(()=>{document.getElementById('xp-progress').classList.remove('ding');}, 500);
+        }else{
+            document.getElementById('xp-progress').style.width = elem_new_val+'%';
+        }
+    }else if (elem_name == 'class-select'){
+        if (elem_new_val == 'hide'){
+            document.getElementById('class-select').innerHTML = '';
+        }else if (elem_new_val == 'show'){
+            document.getElementById('class-select').innerHTML = '<br>Choose a class:<br>';
+            Object.keys(classes).forEach((elem)=>{
+                document.getElementById('class-select').innerHTML += `<button onclick="choose_class('${elem}')">${classes[elem]['name']}</button>`
+            })
+            document.getElementById('class-select').innerHTML += '<br><br>';
+        }
     }else{
         document.getElementById(elem_name).innerHTML = elem_new_val;
     } 
@@ -752,6 +781,37 @@ function is_dead(target){
     }
 }
 
+function add_xp(target, amt){
+    print_term(`You gain ${amt} XP!`);
+    target['xp'] += amt;
+    if (target['xp'] >= target['max_xp']){
+        print_screen(['xp-bar', 'ding']);
+        print_screen(['class-select', 'hide']);
+        var local_class = 'None';
+        while (target['xp'] > target['max_xp']){
+            target['class_levels'][target['class']] += 1;
+            target['xp'] -= target['max_xp'];
+            target['max_xp'] *= 2;
+            var tname = classes[target['class']]['name'];
+            var tskill = classes[target['class']]['skill'];
+            target['skills'][tskill] += 5;
+            print_term(`[CLASS] You level up as a ${tname} and gain more ${tskill} skill!`);
+            print_screen(['class', tname.substring(0, 5)]);
+            print_screen(['class_level', target['class_levels'][target['class']]]);
+            print_screen([tskill, target['skills'][tskill]]);
+
+        }
+    }
+    print_screen(['xp-bar', Math.round((target['xp']/target['max_xp'])*100)]);
+}
+
+function choose_class(class_name){
+    game_state['current_character']['class'] = class_name;
+    update_indiv_element(['class', classes[class_name]['name'].substring(0, 5)]);
+    update_indiv_element(['class_level', 0]);
+    update_indiv_element(['class-select', 'hide']);
+}
+
 function get_name(){
     var name_length = roll(1, 4)+2;
     var name = '';
@@ -762,7 +822,7 @@ function get_name(){
 }
 
 function get_stat(){
-    return smallest(roll(3, 6) + 1, 18);
+    return smallest(roll(3, 6) + 2, 18);
 }
 
 function get_bonus(person, stat){
@@ -865,7 +925,7 @@ function get_melee_weapon(level){
     }else if (level < 5){
         n += pick(['Industrial ', 'Standard ', 'Small ']);
     }else if (level < 7){
-        n += pick(['Cyber', 'Great', 'Combat '])
+        n += pick(['Cyber', 'Great ', 'Combat '])
     }else {
         n += pick(['Optimised ', 'Psychic ', 'Legendary '])
     }
@@ -985,7 +1045,7 @@ function finish_cast(spell){
     game_state['player_casting'] = false;
     outstrings = [];
     outupdates = [];
-    if (skill_check(game_state['current_character'], 'cha', 'spellcasting', spell['power'])){
+    if (skill_check(game_state['current_character'], 'cha', 'spellcasting', spell['power']-game_state['current_character']['class_levels']['magic_user'])){
         off_print_term('[SPELL] Casting succeeded!');
         game_state['current_character']['stats']['cha'] -= spell['cost'];
         //lotus flame matrix tensor
@@ -1162,6 +1222,7 @@ function encounter_roll(current_hero, clevel){
         print_term('You find '+amt+' gold!');
         current_hero['gold'] += amt;
         print_screen(['gold', current_hero['gold']]);
+        add_xp(current_hero, amt);
     }else if (enc == 5){
         print_term('You look around for anything interesting...');
         if (roll(1,greatest(4, 10-clevel)) < 7){
@@ -1173,8 +1234,8 @@ function encounter_roll(current_hero, clevel){
         if (current_hero['hp'] < current_hero['max_hp']/3){
             print_term('You try to rest!');
             heal(current_hero, roll(1,6)+clevel);
-        }else{
-            print_term('You try to think of an original thought...');
+        }else if (you['class_levels']['magic_user'] >= 1){
+            print_term('[CLASS] You try to think of an original thought...');
             if (skill_check(game_state['current_character'], 'cha', 'spellcasting', -Math.round(game_state['curr_level']/3))){
                 print_term('A new spell-thought manifests in the void of your mind spontaneously!');
                 spell_bonus = get_spell(game_state['curr_level']);
@@ -1238,7 +1299,7 @@ function run_fight(you, enemy, surprised=false){
                     print_screen(['combat', 'hide']);
                     print_term('The '+enemy['name']+' died!');
                     print_term('===END COMBAT LOG===');
-
+                    add_xp(you, roll(game_state['curr_level'], 6))
                     return true;
                 }
 
@@ -1256,7 +1317,23 @@ function run_fight(you, enemy, surprised=false){
         }
 
     }else{
-        print_term('You are surprised by the '+enemy['name']+'!');
+        if (you['class_levels']['thief'] >= 2 && skill_check(you, 'dex', 'footing', enemy['tactic'])){
+            var sneak_dmg = roll(you['class_levels']['thief'], 6) + get_bonus(you, 'dex'); 
+            print_term(`[CLASS] You surprise the ${enemy['name']} and deal ${sneak_dmg} surprise damage!`);
+            edge = 6;
+            hurt(enemy, sneak_dmg, false);
+            if (is_dead(enemy)){
+                game_state['player_fighting'] = false;
+
+                print_screen(['combat', 'hide']);
+                print_term('The '+enemy['name']+' died!');
+                print_term('===END COMBAT LOG===');
+                add_xp(you, roll(game_state['curr_level'], 6))
+                return true;
+            }
+        }else{
+            print_term('You are surprised by the '+enemy['name']+'!');
+        }
     }
 
     print_term('You enter melee combat...')
@@ -1267,8 +1344,20 @@ function run_fight(you, enemy, surprised=false){
         max_rounds -= 1;
         if (max_rounds <= 0){
             print_term('Tiebreak!');
+            game_state['player_fighting'] = false;
+
             print_screen(['combat', 'hide']);
-            break;
+            return true;
+        }else if (you['class_levels']['thief'] >= 1 && (you['hp']/you['max_hp'] >= 0.25)){
+            print_term('[CLASS] Wounded, you try to escape...');
+            if (skill_check(you, 'dex', 'navigation', enemy['speed'])){
+                print_term('[CLASS] You flee successfully!');
+                game_state['player_fighting'] = false;
+                print_screen(['combat', 'hide']);
+                return true;
+            }else{
+                print_term('[CLASS] But the monster catches up...');
+            }
         }
         // Edge display (to player)
         edge = Math.round(clamp(edge, -6, 6));
@@ -1304,13 +1393,13 @@ function run_fight(you, enemy, surprised=false){
 
         // Damage roll (Modified by edge and strength)
         if (hits){
-            dmg = Math.round(roll(you['attacks'], greatest(you['damage'] - enemy['tough'], 2)) + get_bonus(you, 'str'));
+            dmg = Math.round(roll(you['attacks'], greatest(you['damage'] - enemy['tough'], 2)) + get_bonus(you, 'str') + you['class_levels']['fighter']);
             if (skill_check(you, 'int', 'perception', enemy['strange'] - edge)){
                 print_term('Critical hit!');
                 dmg *= 2;
             }
-            if (skill_check(you, 'str', 'melee', enemy['strange'] - edge)){
-                print_term('Brutal attack!')
+            if (you['class_levels']['fighter'] >= 1 && skill_check(you, 'str', 'melee', enemy['strange'] - edge)){
+                print_term('[CLASS] Brutal attack!')
                 dmg += roll(1, 3)+get_bonus(you, 'str');
             }
             print_term('You deal '+dmg+' damage to the '+enemy['name']+'!');
@@ -1343,11 +1432,12 @@ function run_fight(you, enemy, surprised=false){
             print_term('The '+enemy['name']+' died!');
             print_screen(['combat', 'hide']);
             print_term('===END COMBAT LOG===');
-
+            add_xp(you, roll(game_state['curr_level'], 6))
             return true;
         }
 
     }
+    return true;
 }
 
 function start_game(){
@@ -1364,6 +1454,8 @@ function start_game(){
     print_screen(['upgrade-list', 'show']);
 
     print_screen(['spells', start_bonus['name']]);
+
+    print_screen(['class-select', 'show']);
 
     print_term('You begin your adventure...');
     loop_step();
