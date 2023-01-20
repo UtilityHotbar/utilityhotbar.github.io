@@ -1359,16 +1359,6 @@ function run_fight(you, enemy, surprised=false){
                 print_term('[CLASS] But the monster catches up...');
             }
         }
-        // Edge display (to player)
-        edge = Math.round(clamp(edge, -6, 6));
-        print_screen(['edge', edge])
-        if (edge > 0){
-            print_term('You think you have the edge right now...');
-        }else if (edge < 0){
-            print_term('You think the enemy has the edge right now...');
-        }else{
-            print_term('You think nobody has an edge right now.');
-        }
         // Footing check (Modify edge value)
         if (skill_check(you, 'dex', 'footing', enemy['speed'])){
             print_term('You ready your footing...');
@@ -1377,8 +1367,18 @@ function run_fight(you, enemy, surprised=false){
             print_term('The '+enemy['name']+' disrupts your footing...');
             edge -= roll(1, 3);
         }
-
         edge = Math.round(clamp(edge, -6, 6));
+        // Edge display (to player)
+
+        if (edge > 0){
+            print_term('You think you have the edge right now...');
+        }else if (edge < 0){
+            print_term('You think the enemy has the edge right now...');
+        }else{
+            print_term('You think nobody has an edge right now.');
+        }
+
+        print_screen(['edge', edge])
 
 
         // Struggle check (Who hits, modified by edge)
