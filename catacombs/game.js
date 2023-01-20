@@ -255,7 +255,7 @@ function hack_reset(){
 function hack_setup(){
     if (!game_state['hacking_revealed']){
         game_state['hacking_revealed'] = true;
-        document.getElementById('hack-section').style.height = '25em';
+        document.getElementById('hack-section').style.height = '27em';
         document.getElementById('hack-section').style.marginBottom = '1em';
     }
 

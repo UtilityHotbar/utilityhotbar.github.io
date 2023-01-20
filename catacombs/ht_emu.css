@@ -333,7 +333,12 @@ button:active {
     padding: 0.7em;
 }
 
-#hack-programs, #hack-commands {
+#hack-commands {
+    height: 7em;
+    overflow-y: auto;
+}
+
+#hack-programs {
     height: 4em;
     overflow-y: auto;
 }
