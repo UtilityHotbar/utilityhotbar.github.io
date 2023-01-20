@@ -1045,7 +1045,7 @@ function finish_cast(spell){
     game_state['player_casting'] = false;
     outstrings = [];
     outupdates = [];
-    if (skill_check(game_state['current_character'], 'cha', 'spellcasting', spell['power']-game_state['current_character']['class_levels']['magic_user'])){
+    if (skill_check(game_state['current_character'], 'int', 'spellcasting', spell['power']-game_state['current_character']['class_levels']['magic_user'])){
         off_print_term('[SPELL] Casting succeeded!');
         game_state['current_character']['stats']['cha'] -= spell['cost'];
         //lotus flame matrix tensor
