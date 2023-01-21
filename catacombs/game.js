@@ -103,6 +103,7 @@ const tier3_upgrades = {
 const base_game_state = {
     'curr_length': 18,
     'curr_level': 1,
+    'curr_level_threat': 0,
     'curr_turn': 0,
     'player_dead': false,
     'player_casting': false,
@@ -841,18 +842,24 @@ function get_bonus(person, stat){
 }
 
 function get_monster(level){
+    level_mod = level+Math.round(game_state['curr_level_threat']/10);
+    danger_mod = level_mod-level;
     target = monster_index[level][roll(1, monster_index[level].length)-1];
     base = {...base_monster};
-    hp = roll(level+1, 6);
+    hp = roll(level_mod+1, 6);
     base['hp'] = hp;
     base['max_hp'] = hp;
-    base['attacks'] = smallest(7, level);
-    if (level > 7){
-        base['damage'] = level-1;
+    base['attacks'] = smallest(7, level_mod);
+    if (level_mod > 7){
+        base['damage'] = level_mod-1;
     }
     Object.keys(target).forEach(element => {
         base[element] = target[element];
     });
+
+    Object.keys(base).forEach(element => {
+        base[element] += danger_mod;
+    })
     update_listing = [];
     Object.keys(base).forEach(element => {
         update_listing.push(['enemy-'+element, base[element]]);
@@ -1173,6 +1180,7 @@ function loop_step(){
     }
     console.log(main_character)
     game_state['curr_turn'] += 1;
+    game_state['curr_level_threat'] += 1;
     print_term('[SYSTEM] Turn '+game_state['curr_turn']);
     res = encounter_roll(main_character, game_state['curr_level']);
     if (!res || is_dead(main_character)){
@@ -1187,6 +1195,7 @@ function loop_step(){
     if (game_state['curr_length'] <= 0){
         print_term('You find the stairs to the next floor...');
         game_state['curr_level'] += 1;
+        game_state['curr_level_threat'] = 0;
         game_state['curr_length'] = roll(3, 6)+3+game_state['curr_level'];
         bump = roll (2, 6);
         main_character['max_hp'] += bump;
