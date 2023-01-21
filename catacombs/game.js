@@ -157,7 +157,7 @@ function reset_game_state(dead=true){
     PRINTING = false;
     PRINT_DELAY = 750;
 
-    var reset_elems = ['hp', 'max_hp', 'attacks', 'damage', 'ranged_attacks', 'ranged_damage', 'gold', 'inventory', 'spells', 'xp', 'max_xp']
+    var reset_elems = ['hp', 'max_hp', 'attacks', 'damage', 'ranged_attacks', 'ranged_damage', 'gold', 'inventory', 'spells', 'xp', 'max_xp', 'class', 'class_levels']
     var curr_char = {...game_state['current_character']};
 
     reset_elems.forEach((elem)=>{
@@ -1328,7 +1328,7 @@ function run_fight(you, enemy, surprised=false){
         }
 
     }else{
-        if (you['class_levels']['thief'] >= 2 && skill_check(you, 'dex', 'footing', enemy['tactic'])){
+        if ((you['class_levels']['thief'] >= 2) && (skill_check(you, 'dex', 'footing', enemy['tactic']))){
             var sneak_dmg = roll(you['class_levels']['thief'], 6) + get_bonus(you, 'dex'); 
             print_term(`[CLASS] You surprise the ${enemy['name']} and deal ${sneak_dmg} surprise damage!`);
             edge = 6;
