@@ -61,7 +61,13 @@ monster_index = {
     6: [{'name': 'active terminator', 'tactic': 2, 'speed': 1, 'strange': -1, 'damage': 8}],
     7: [{'name': 'mechadragon', 'speed': -1, 'damage': 12, 'tough': 3},],
     8: [{'name': 'optimised clone', 'speed': 2, 'tactic': 2, 'strange': -2, 'damage': 10}, {'name': 'dangerously competent bounty hunter', 'tactic': 4}, {'name':'glitch in spacetime', 'speed': 4, 'tough': 1}],
-    9: [{'name': 'content-terminating wormhole', 'tough': 3}]
+    9: [{'name': 'content-terminating wormhole', 'tough': 3}],
+    10: [{'name': 'Isekai Peasant', 'tough': 3, 'tactic': -1, 'strange': 2}, {'name': 'Isekai Rat', 'tough': 3, 'speed': 1, 'strange': 2}, {'name': 'Isekai Town Guard', 'tough': 4, 'tactic': 2, 'strange': 2}],
+    11: [{'name': 'Isekai Novice Hero', 'tough': 5, 'tactic': 2, 'speed': 2, 'strange': 1}, {'name': 'Isekai Novice Wizard', 'tough': 1, 'speed': -1, 'strange': 5, 'damage': 16}, {'name': 'Isekai Genin', 'tough': 3, 'tactic': 3, 'speed': 3, 'strange': 2}],
+    12: [{'name': 'Isekai Veteran Hero', 'tough': 7, 'tactic': 4, 'speed': 2, 'strange': 1}, {'name': 'Isekai Veteran Wizard', 'tough': 2, 'speed': -1, 'strange': 5, 'damage': 20}, {'name': 'Isekai Chunin', 'tough': 3, 'tactic': 5, 'speed': 5, 'strange': 2}],
+    13: [{'name': 'Isekai Master Hero', 'tough': 9, 'tactic': 6, 'speed': 4, 'strange': 1}, {'name': 'Isekai Master Wizard', 'tough': 2, 'speed': -1, 'strange': 7, 'damage': 30}, {'name': 'Isekai Jonin', 'tough': 3, 'tactic': 7, 'speed': 7, 'strange': 4}],
+    14: [{'name': 'Isekai Lesser Celestial Deity', 'tough': 8, 'tactic': 8, 'speed': 8, 'strange': 8, 'damage': 8}],
+
 }
 
 const base_spell_effects = ['lotus', 'flame', 'matrix', 'tensor',];
@@ -724,7 +730,12 @@ function roll(x, y, return_list=false){  // roll xdy
 }
 
 function roll_under_stat(stat, diff=0, skill=0){
-    if (roll(1, 100) <= (stat*(5-Math.round(diff/2)))+skill){
+    spillover = 0;
+    if (diff>4){
+        spillover = (diff-4)*10;
+        diff = 4;
+    }
+    if (roll(1, 100) <= (stat*(5-diff))+skill-spillover){
         return true;
     }else{
         return false;
@@ -1154,7 +1165,7 @@ function loop_step(){
         return
     }
     main_character = game_state['current_character'];
-    if (game_state['curr_level'] > 9){
+    if (game_state['curr_level'] > 14){
         console.log('out1')
         print_term('You win!');
         game_end_function(main_character);
@@ -1348,7 +1359,7 @@ function run_fight(you, enemy, surprised=false){
 
             print_screen(['combat', 'hide']);
             return true;
-        }else if (you['class_levels']['thief'] >= 1 && (you['hp']/you['max_hp'] >= 0.25)){
+        }else if (you['class_levels']['thief'] >= 1 && (you['hp']/you['max_hp'] <= 0.25)){
             print_term('[CLASS] Wounded, you try to escape...');
             if (skill_check(you, 'dex', 'navigation', enemy['speed'])){
                 print_term('[CLASS] You flee successfully!');
