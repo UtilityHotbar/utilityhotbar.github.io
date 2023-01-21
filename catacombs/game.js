@@ -833,7 +833,7 @@ function get_name(){
 }
 
 function get_stat(){
-    return smallest(roll(3, 6) + 2, 18);
+    return smallest(roll(3, 6) + 1, 18);
 }
 
 function get_bonus(person, stat){
