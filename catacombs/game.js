@@ -842,11 +842,11 @@ function get_bonus(person, stat){
 }
 
 function get_monster(level){
-    level_mod = level+Math.round(game_state['curr_level_threat']/10);
+    level_mod = level+Math.floor(game_state['curr_level_threat']/10);
     danger_mod = level_mod-level;
     target = monster_index[level][roll(1, monster_index[level].length)-1];
     base = {...base_monster};
-    hp = roll(level_mod+1, 6);
+    hp = roll(level+1, 6)+danger_mod;
     base['hp'] = hp;
     base['max_hp'] = hp;
     base['attacks'] = smallest(7, level_mod);
