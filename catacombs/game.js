@@ -842,24 +842,26 @@ function get_bonus(person, stat){
 }
 
 function get_monster(level){
-    level_mod = level+Math.floor(game_state['curr_level_threat']/10);
+    level_mod = level+Math.floor(game_state['curr_level_threat']/15);
     danger_mod = level_mod-level;
     target = monster_index[level][roll(1, monster_index[level].length)-1];
     base = {...base_monster};
     hp = roll(level+1, 6)+danger_mod;
     base['hp'] = hp;
     base['max_hp'] = hp;
-    base['attacks'] = smallest(7, level_mod);
+    base['attacks'] = smallest(7, level);
     if (level_mod > 7){
-        base['damage'] = level_mod-1;
+        base['damage'] = level-1;
     }
+    base['damage'] += danger_mod;
+
     Object.keys(target).forEach(element => {
         base[element] = target[element];
     });
 
-    Object.keys(base).forEach(element => {
-        base[element] += danger_mod;
-    })
+    // Object.keys(base).forEach(element => {
+    //     base[element] += danger_mod;
+    // })
     update_listing = [];
     Object.keys(base).forEach(element => {
         update_listing.push(['enemy-'+element, base[element]]);
