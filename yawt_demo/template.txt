@@ -45,41 +45,15 @@
     <div id="display-area">
         You don't have a project ready to view yet.
     </div>
-    <br>
-    <button id="import-button" class="control-button" onclick="import_project()">Import project</button>
-    <button id="copy-button" class="control-button" onclick="copy_project()">Copy project</button>
-    <button id="export-button" class="control-button" onclick="export_project()">Export to standalone HTML</button>
 
-    <div id="export-area"></div>
-    <script src="js/jquery-3.7.0.min.js"></script>
     <script id="applet-script"></script>
     <style id="applet-css"></style>
 
     <script>
         var CURR_PAGE = 0;
-        var PAGES_TO_VIEW = JSON.parse(localStorage.getItem('saved-project'));
+        var PAGES_TO_VIEW = %PROJECT_DATA%;
 
-        if (PAGES_TO_VIEW){
-            load_project();
-        }
-
-        function copy_project(){
-            navigator.clipboard.writeText(JSON.stringify(PAGES_TO_VIEW));
-            alert('Project data copied to clipboard!')
-        }
-
-        function import_project(){
-            PAGES_TO_VIEW = JSON.parse(prompt('Enter the exported project data:'));
-            load_project();
-        }
-
-        function export_project(){
-            $.ajax('template.txt', {'async': true, 'cache': false}).done((data)=>{
-                var d = data.replace('%PROJECT_DATA%', JSON.stringify(PAGES_TO_VIEW));
-                navigator.clipboard.writeText(d);
-                $('#export-area').html('Save the following data to a .html file (It has also been copied to your clipboard):<br><textarea>'+d+'</textarea>');
-            });
-        }
+        load_project();
 
         function load_project(){
             var applet = PAGES_TO_VIEW['applet'];
