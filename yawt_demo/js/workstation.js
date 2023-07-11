@@ -240,7 +240,7 @@ function unpick(){
 
 function inspectProperties(item){
     var item_id = item.attr('id');
-    item = item.children();
+    item =  $(item.children()[0]);
     $('#inspector-pane').html('');
     var item_type = item.prop('nodeName').toLowerCase();
     $('#inspector-pane').append('<h2>'+item_type+' #'+item_id+'</h2>');
