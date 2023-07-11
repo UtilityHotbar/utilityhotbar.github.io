@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yet Another Web Toolbox</title>
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+</head>
+<body>
+    <div id="loading-screen">
+        EXPORTING CONTENT
+    </div>
+    <div id="content">
+        <div id="control-panel">
+            <h1>Yet Another Web Toolbox (YAWT) v0.75</h1>
+            <p>Designed by <a href="http://utilityhotbar.github.io">UtilityHotbar</a>. Watch a quick tutorial <a href="help.html">here</a>.</p>
+            <input type="text" id="additionurl">
+            <select name="additiontype" id="additiontype">
+                <option value="img">Image Link</option>
+                <option value="youtube">Youtube Link</option>
+                <option value="text">Text</option>
+                <option value="button">Button</option>
+              </select>
+            <button class="control-button" id="import" onclick="fetch_resource()">➕</button>
+            <button class="control-button" id="export" onclick="package_for_export()">💾</button>
+            <button class="control-button" id="export" onclick="launch()">▶️</button>
+            <button class="control-button" id="settings" onclick="toggle_settings()">⚙️</button>
+            <button class="control-button" id="newpage" onclick="add_page()">📄</button>
+            <br>
+            [PAGE <span id="curr-page">0</span>]
+            <label for="goto-target">Goto page: </label>
+            <input type="text" id="goto-target" name="goto-target">
+            <button class="control-button" id="overview" onclick="go_to_page()">Go</button>
+            <button class="control-button" id="page-left" onclick="go_to_page(CURR_PAGE-1)">⬅️</button>
+            <button class="control-button" id="page-right" onclick="go_to_page(CURR_PAGE+1)">➡️</button>
+            <div id="display-area">
+            </div>
+    
+        </div>
+        <div id="inspector-pane">
+            NOTHING SELECTED YET
+        </div>
+    </div>
+    <div id="settings-panel">
+
+    </div>
+    <div id="export-panel">
+        <strong>Exported project data:</strong><br>
+        <textarea name="export-data" id="export-data" cols="50" rows="10"></textarea>
+    </div>
+    
+    <script src="js/jquery-3.7.0.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/markdown-it.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/acejs/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/workstation.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        go_to_page(0);
+    </script>
+    <style id="additional-styling"></style>
+</body>
+</html>

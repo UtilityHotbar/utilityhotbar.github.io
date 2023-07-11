@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help</title>
+    <link rel="stylesheet" href="css/master.css">
+</head>
+<body>
+    <div id="help">
+        <h1>Help</h1>
+        <img src="images/mainscreen.png" alt="control panel screenshot" class="help-img">
+        <p>You should see this page when you first load up YAWT. The large white box is the display area (#display-area), where you will create your applet.</p>
+
+        <h2>1. Control Panel</h2>
+        <img src="images/toolbar.png" alt="control panel toolbar" class="help-img">
+        <p>The control panel houses most of the tools you will use to interact with the project.</p>
+
+        <h3>1.1 Adding Elements</h3>
+        <img src="images/addition.png" alt="control panel element adder" class="help-img">
+        <p>Use the drop-down menu to pick the type of element you wish to add (Image Link, Youtube Link, Text, Button). Use the input box to put the text for the text or button elements or link to the video/image. When you're ready, press the ➕ button to add the element to the display. Once you do, the element will appear in the display area. Click and drag to move it and click and drag the edge of the element to resize it.</p>
+
+        <h3>1.2 Other Controls</h3>
+        <img src="images/other_buttons.png" alt="control panel remaining controls" class="help-img">
+        <ul>
+            <li>💾 - Save your project to your browser's local storage and exporting it to the exported data textbox at the bottom of the screen.</li>
+            <li>▶️ - Save and view your project.</li>
+            <li>⚙️ - Edit document-wide css and javascript.</li>
+            <li>📄 - Add page to project.</li>
+        </ul>
+
+        <h3>1.3 Page Controls</h3>
+        <img src="images/page_control.png" alt="control panel page controls" class="help-img">
+        <p>All projects start on page 0. Pressing the 📄 button on the row above adds a new page and switches to it automatically. Use the ⬅️ and ➡️ buttons to flip betweeen pages, or the "Goto page" box to go to a specific page.</p>
+
+        <h2>Inspector Pane</h2>
+        <img src="images/inspector.png" alt="control panel screenshot" class="help-img">
+        <p>Click on any element in the display area to inspect it. Different elements have different properties but the top row of buttons remain constant for all elements:</p>
+        <ul>
+            <li>⬆️⬇️ - Move the element up or down the visual hierarchy.</li>
+            <li>❌ - Delete element. <strong>You cannot reverse this action!</strong></li>
+            <li>🚫 - Deselect element.</li>
+            <li>⚙️ - Edit element-specific css.</li>
+        </ul>
+
+        <h2>Helper Functions</h2>
+        <p>These are functions that may help you when creating your project</p>
+        <ul>
+            <li><code>change_page()</code> - Go to a specific page. For example, if you set the onclick function of a button to change_page(1), that button will change the display area to page 1 when you view your project.</li>
+            <li><code>save_page()</code> - Save contents of the page.</li>
+        </ul>
+    </div>
+
+</body>
+</html>
