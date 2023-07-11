@@ -46,9 +46,15 @@
         You don't have a project ready to view yet.
     </div>
     <br>
-    <button id="import-button" class="control-button" onclick="import_project()">Import project</button>
-    <button id="copy-button" class="control-button" onclick="copy_project()">Copy project</button>
-    <button id="export-button" class="control-button" onclick="export_project()">Export to standalone HTML</button>
+    <div id="nav-buttons">
+        <button id="left" class="control-button" onclick="change_page(CURR_PAGE-1)">⬅️</button>
+        <button id="right" class="control-button" onclick="change_page(CURR_PAGE+1)">➡️</button>
+        <br><br>
+        <button id="import-button" class="control-button" onclick="import_project()">Import project</button>
+        <button id="copy-button" class="control-button" onclick="copy_project()">Copy project</button>
+        <button id="export-button" class="control-button" onclick="export_project()">Export to standalone HTML</button>
+    
+    </div>
 
     <div id="export-area"></div>
     <script src="js/jquery-3.7.0.min.js"></script>
@@ -93,9 +99,14 @@
         }
 
         function change_page(n){
-            save_page();
-            document.getElementById('display-area').innerHTML = PAGES_TO_VIEW[n];
-            CURR_PAGE = n;
+            if (n<0){
+                n = 0;
+            }
+            if (PAGES_TO_VIEW[n]){
+                save_page();
+                document.getElementById('display-area').innerHTML = PAGES_TO_VIEW[n];
+                CURR_PAGE = n;
+            }
         }
         
     </script>
