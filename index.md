@@ -8,6 +8,8 @@
 * My research interests include Large Language Models (e.g. [GPT-3](https://github.com/openai/gpt-3)), AI safety/interpretability (e.g. occlusion sensitivity), Natural Language Processing (e.g. topic modelling, generating parse trees, and POS tagging) and the implications of digitisation and automation in [societies of control](https://theanarchistlibrary.org/library/gilles-deleuze-postscript-on-the-societies-of-control).
 
 ## Major Projects
+* [**Yet Another Web Toolkit**](yawt_demo/index.html) - A web playground for developing games, applets, slides, or small fixed-viewport websites.
+* [**The Savage Computers**](https://aulddaegs.github.io) - A modern web novel about AI, climate change, and the present state of the world. Includes interactive and non-linear elements.
 * [**Civsim**](https://github.com/UtilityHotbar/civsim) - Automated generation of civilisations and simulation of their growth and decay.
 * [**Journey**](https://github.com/UtilityHotbar/journey) - Automated D&D questing.
 * [**Shellsim**](https://github.com/UtilityHotbar/shellsim) - A self-contained simulation of a bash like shell: piping, streaming, internal filesystem
