@@ -15,6 +15,10 @@
 * [**Shellsim**](https://github.com/UtilityHotbar/shellsim) - A self-contained simulation of a bash like shell: piping, streaming, internal filesystem
 * [**Zhengzi Archive**](https://zhengzi-archive.com/) - Online facing part of an ARG I ran.
 
+## Writing
+* [**The Savage Computers**](https://aulddaegs.github.io) - In progress web novel and interactive archive of in-universe documents.
+* [**The Shape of Minds to Come**](shapeofminds/index.html) - Essay on in-progress mentalities we might develop to face the future.
+
 ## Games
 * [**NOVOS Emulator**](https://zhengzi-archive.com/terminal/) - An assembly language programming game with a Zachtronics-style manual and 5 levels.
 * [**Saturday Night One Shot**](https://nakade.itch.io/saturday-night-one-shot) - D&D themed, simple roguelike with a hand-drawn aesthetic based on [rough.js](https://roughjs.com/).

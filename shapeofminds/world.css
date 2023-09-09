@@ -1,0 +1,68 @@
+:root {
+    --custom-white: rgb(255, 247, 237);
+    --custom-black: rgb(22, 22, 22);
+}
+
+@font-face {
+    font-family: 'ET Book';
+    src: url('fonts/etbookroman.ttf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'ET Book';
+    src: url('fonts/etbooksemibold.ttf');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'ET Book';
+    src: url('fonts/etbookitalic.otf');
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'OldTypefaces';
+    src: url('fonts/OldTypefaces.ttf');
+}
+
+body {
+    font-family: 'ET Book', Times, serif;
+    width: 50%;
+    min-width: 300px;
+    margin: auto;
+    color: var(--custom-black);
+    background-color: var(--custom-white);
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 30pt;
+    font-family: 'OldTypefaces', serif;
+    margin-top: 2em;
+    margin-bottom: 0;
+}
+
+h2 {
+    font-weight: 600;
+    border-bottom: solid 1px var(--custom-black);
+    padding: 5px;
+    padding-left: 3px;
+    font-variant: all-small-caps;
+    letter-spacing: 0.5px;
+}
+
+p {
+    padding-left: 6px;
+}
+
+strong {
+    font-weight: 400;
+    font-variant: all-small-caps;
+    letter-spacing: 0.5px;
+}
+
+.subtitle {
+    font-style: italic;
+    font-size: 14pt;
+}
