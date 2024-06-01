@@ -13,7 +13,7 @@
 
 ## Major Projects
 * [**Socratides**](https://socratides.streamlit.app/) - A demo for a narrow AI system that generates human understandable and editable knowledge graphs out of texts that can be pruned and refined to enhance textual analysis. Source code [here](https://github.com/UtilityHotbar/autoratiocinator).
-* [**The Savage Computers**](https://aulddaegs.github.io) - A modern web novel about AI, climate change, and the present state of the world. Includes interactive and non-linear elements.
+* [**The Savage Computers**](https://aulddaegs.github.io) - A modern web novel about AI, climate change, and the present state of the world. Includes interactive and non-linear elements. Shortlisted for the UK's [New Media Writing Prize](https://newmediawritingprize.co.uk/) Student Prize.
 * [**Zhengzi Archive**](https://zhengzi-archive.com/) - Online facing part of an ARG I ran.
 * [**Civsim**](https://github.com/UtilityHotbar/civsim) - Automated generation of civilisations and simulation of their growth and decay.
 * [**Journey**](https://github.com/UtilityHotbar/journey) - Automated D&D questing.
