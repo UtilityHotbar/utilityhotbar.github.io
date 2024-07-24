@@ -43,6 +43,7 @@
 }
 
 body {
+    padding: 10px;
     background-color: #ede8c5;
     font-family: 'Libre Franklin', 'Arial Narrow', Arial, sans-serif;
     letter-spacing: 0.05em;
