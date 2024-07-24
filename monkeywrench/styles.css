@@ -1,0 +1,81 @@
+@font-face {
+    font-family: "Libre Franklin";
+    src: url("fonts/LibreFranklin-Bold.ttf");
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: "Libre Franklin";
+    src: url("fonts/LibreFranklin-BoldItalic.ttf");
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Libre Franklin";
+    src: url("fonts/LibreFranklin-Regular.ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Libre Franklin";
+    src: url("fonts/LibreFranklin-Italic.ttf");
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Libre Franklin";
+    src: url("fonts/LibreFranklin-Black.ttf");
+    font-weight: 1000;
+}
+
+@font-face {
+    font-family: "Libre Franklin";
+    src: url("fonts/LibreFranklin-BlackItalic.ttf");
+    font-weight: 1000;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Cutive Mono";
+    src: url("fonts/CutiveMono-Regular.ttf");
+}
+
+body {
+    font-family: 'Libre Franklin', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 0.05em;
+    font-weight: 800;
+    max-width: 80ch;
+    margin: auto;
+
+    p {
+        text-indent: 2em;
+    }
+
+    b, strong, i, em {
+        font-weight: 400;
+    }
+
+    h1, h2 {
+        font-weight: 800;
+    }
+
+    a {
+        color: grey;
+    }
+
+    code, mono {
+        font-family: 'Cutive Mono', Courier, monospace;
+        letter-spacing: 0em;
+    }
+
+    .toc {
+        border: solid 1px black;
+    }
+
+    ::selection {
+        color: white;
+        background-color: grey;
+    }
+}
