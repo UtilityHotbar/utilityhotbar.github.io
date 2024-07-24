@@ -91,9 +91,6 @@ body {
     }
 
     code, mono {
-        display: inline-block;
-        max-width: inherit;
-
         font-family: 'Cutive Mono', Courier, monospace;
         letter-spacing: 0em;
     }
