@@ -59,7 +59,7 @@ body {
     padding: 10px;
     background-color: #ede8c5;
     font-family: 'Libre Franklin', 'Arial Narrow', Arial, sans-serif;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.03em;
     font-weight: 800;
     max-width: 70ch;
     margin: auto;
@@ -75,12 +75,27 @@ body {
         font-weight: 400;
     }
 
+
+    h1 {
+        font-size: 24pt;
+        font-weight: 600;
+        letter-spacing: -0.05em;
+
+    }
+
     h2 {
+        font-size: 22pt;
+        font-weight: 400;
+        letter-spacing: -0.05em;
+
+    }
+
+    h3 {
         font-weight: 1000;
     }
 
     a {
-        color: grey;
+        color: navy;
     }
 
     pre {
