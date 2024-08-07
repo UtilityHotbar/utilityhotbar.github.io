@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAIR Website Tutorial</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Quick Thoughts</h1>
+    <p>Hi! This is <a href="https://utilityhotbar.github.io">Chris</a>. If you're here to build a small personal website, this is the place for you! This website was built using the method I describe here, so it should be pretty good.</p>
+<h2>1. Setup</h2>
+<p>To set up a website, you need some data to put on the website. Here's some data:</p>
+<pre><code>hello world
+</code></pre>
+<p>If you save this in a file called <code>index.html</code>, most browsers will show it on click. However, that's a little unsatisfying. Let's use the <a href="https://python-markdown.github.io/">markdown</a> system to add a little flair to our website. To do this, install markdown on your system:</p>
+<pre><code>$ pip3 install markdown
+</code></pre>
+<p>We should probably create a folder to store our work. Call this folder <code>MyWebsite</code>, and inside of it create a folder called <code>public</code>. We want to put our public-facing stuff in a folder where it's separate from everything else, because mixing code and output makes for a messy workflow.</p>
+<p>Now, create a file <code>index.md</code> under <code>MyWebsite</code>. This will store the information you want to put into the website. Your folder structure should now look like this:</p>
+<pre><code>/MyWebsite
+|-&gt; index.md
+|-&gt; /public
+</code></pre>
+<p>Put some data in <code>index.md</code>, formatted using the markdown notation:</p>
+<pre><code class="language-markdown"># This is a header
+
+Here is some body text. This is text in *italics* and **bold**. You can also include `code` and [links](https://www.google.com).
+</code></pre>
+<p>Now we need to turn this human-friendly markdown into html. Create a python file <code>build.py</code> under <code>MyWebsite</code>:</p>
+<pre><code class="language-python">import markdown
+
+with open(&quot;index.md&quot;) as f:
+    data = f.read()
+html_data = markdown.markdown(data)
+with open(&quot;public/index.html&quot;, &quot;w&quot;) as g:
+    g.write(html_data)
+</code></pre>
+<p>What this code does is that it reads the markdown we have written in <code>index.md</code>, converts it to valid HTML, and writes the result to <code>public/index.html</code>. Run it!</p>
+<pre><code>$ python3 build.py
+</code></pre>
+<p>This should now be your folder structure:</p>
+<pre><code>/MyWebsite
+|-&gt; index.md
+|-&gt; build.py
+|-&gt; /public
+    |-&gt; index.html
+</code></pre>
+<p>Open <code>index.html</code> in a text editor:</p>
+<pre><code class="language-html">&lt;h1&gt;This is a header&lt;/h1&gt;
+&lt;p&gt;Here is some body text. This is text in &lt;em&gt;italics&lt;/em&gt; and &lt;strong&gt;bold&lt;/strong&gt;. You can also include &lt;code&gt;code&lt;/code&gt; and &lt;a href=&quot;https://www.google.com&quot;&gt;links&lt;/a&gt;.&lt;/p&gt;
+</code></pre>
+<p>So now we have some functional code. Click on <code>index.html</code> and open it in a browser. This should be a formatted website! Now you see why we put all the public facing data in <code>/public</code>, because we have unformatted text and raw code etc. in our working directory.</p>
+<h2>2. Templating</h2>
+<p>Let's say that you want to have two pages, an <code>index.html</code> page and an <code>about.html</code> page. You'll need the <code>index.md</code> and <code>about.md</code> files, of course, but let's say you want to put the same website title on all of the pages. It would be annoying to copy the same data from page to page! Luckily, templating saves us a lot of trouble.</p>
+<p>Let's first do some reorganisation of our folder structure.</p>
+<pre><code>/MyWebsite
+|-&gt; build.py
+|-&gt; /markdown
+    |-&gt; index.md
+|-&gt; /templates
+    |-&gt; template.html
+|-&gt; /public
+    |-&gt; index.html
+</code></pre>
+<p>The <code>template.html</code> file houses, you guessed it, the template data for your website. You can generate it from markdown too, but I have one prepared for you here (based on the VS Code <code>html5</code> template):</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;YOUR WEBSITE TITLE&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;YOUR WEBSITE TITLE&lt;/h1&gt;
+    %CONTENT%
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Feel free to change everything except <code>%CONTENT%</code>. This is the indicator to tell our build system that each page's content will go here.</p>
+<p>We now need to modify <code>build.py</code>:</p>
+<pre><code class="language-python">import markdown
+import os
+
+with open('templates/template.html') as t:
+    template = t.read()
+
+for thing in os.scandir('markdown'):
+    if thing.is_file():
+        with open(thing.path) as f:
+            data = f.read()
+        html_data = markdown.markdown(data)
+        formatted_page = template.replace(&quot;%CONTENT%&quot;, html_data)
+        with open(f&quot;public/{thing.name.removesuffix('.md')}.html&quot;, &quot;w&quot;) as g:
+            g.write(formatted_page)
+</code></pre>
+<p>This takes the template we have made, iterates over all files in the directory <code>markdown</code>, and writes them into html by copying the file data into the template.</p>
+<p>Run it again, and you should have a finished HTML page for each page in the <code>markdown</code> directory.</p>
+<h2>CSS and styling</h2>
+<p>CSS is not hard! Create a <code>style.css</code> file in the <code>public</code> directory. Add the following style information:</p>
+<pre><code class="language-css">@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&amp;family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap');
+
+.spectral-regular {
+    font-family: &quot;Spectral&quot;, serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+body {
+    background-color: antiquewhite;
+    font-family: 'Spectral', Times, serif;
+    padding: 10px;
+}
+</code></pre>
+<p>The first line imports a font from <a href="https://fonts.google.com/">Google Fonts</a> and adds it to your CSS file. The <code>.spectral-regular</code> instruction sets up the font that we've added, and the <code>body</code> instruction specifies that we should use a certain background colour, the font we've chosen, and add 10 pixels of space around the body content of the page. And it looks better already! There are loads of CSS tutorials online, feel free to check some of them out. I have some of my own on my <a href="https://utilityhotbar.github.io/neoweb/">Github site</a> too!</p>
+<h2>4. Publishing</h2>
+<p>You now have a bunch of files, but no way to show them to people. So we will use <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site">Github Pages</a> to do this.</p>
+<p>Create a new github repository with the name <code>WEBSITE_NAME.github.io</code>. Upload the <code>public</code> folder to the repository however you want (you can totally just use <code>upload existing file</code> on the web UI, it's not cheating). In the <code>Settings</code> tab, select <code>Pages</code> from the side menu. Make sure that Github Pages is building from the <code>main</code> branch and the <code>public</code> directory. After that, you should have a public site. To take it down, delete the repository or <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/unpublishing-a-github-pages-site">disable the pages feature</a>.</p>
+</body>
+</html>
