@@ -5,8 +5,8 @@
 > But the goals of a game aren’t actually arbitrary at all. They only seem arbitrary when we look in the wrong place. In the rest of life, we are used to justifying our goals by looking at the value of the goals themselves or by looking forward, to what follows from those goals. But with the goals of games, we often need to look *backward*. We need to look at the value of the activity of pursuing those goals. In ordinary practical life, we usually take the means for the sake of the ends. But in games, we can take up an end for the sake of the means. Playing games can be a *motivational inversion* of ordinary life.
 > 
 > Seeing this motivational structure will also help us to understand the essential nature of games. A game tells us to take up a particular goal. It designates abilities for us to use in pursuing that goal. It packages all that up with a set of obstacles, crafted to fit those goals and abilities. A game uses all these elements to sculpt a form of activity. And when we play games, we take on an alternate form of agency. We take on new goals and accept different sets of abilities. We give ourselves over to different—and focused—ways of inhabiting our own agency. Goals, ability, and environment: these are the means by which game designers practice their art. And we experience the game designer’s art by flexing our own agency to fit.
-
-*“Games \- Agency as Art”, by C. Thi Nguyen*
+> 
+> *“Games \- Agency as Art”, by C. Thi Nguyen*
 
 Since the mid-20th century, the field of Game Theory has arisen to describe a series of social decision problems that are often called “games”, most famously amongst them the prisoner’s dilemma. In this essay, I argue that a game-theoretic framing of such problems is counterproductive and destructive to meaningful resolutions of such problems. 
 
