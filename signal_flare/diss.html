@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dissertation</title>
+    <link rel="stylesheet" href="essays.css">
+</head>
+<body>
+    <h1 id="sociotechnical-factors-of-institutional-artificial-intelligence-development">Sociotechnical Factors of Institutional Artificial Intelligence Development</h1>
+<p><em>A dissertation submitted in part-fulfilment of the regulations for the Degree of Master of Philosophy 2023 in the University of Cambridge</em></p>
+<blockquote>
+<p>“Why software is eating the world”</p>
+<p>— <em>Title of a 2011 blog post by Marc Andreessen</em></p>
+<p>“Ideas cannot digest reality”</p>
+<p>— <em>Jean-Paul Sartre</em></p>
+</blockquote>
+<h2 id="abstract">Abstract</h2>
+<p>In this dissertation I examine the development of AI technology by Silicon Valley corporate institutions. I lay out four possible sociotechnical narratives which might explain these developments: AI as an extension of the Valley’s culture and business model, AI as a utopian or dystopian fulfilment of the ideologies surrounding “AGI” or the “Singularity”, AI as an economic measure to replace human labour, and AI as an economic narrative that requires continuous re-investment and development of new capabilities to perpetuate itself. I then examine to what degree these narratives apply to Meta, Inc., a prominent Silicon Valley company with a heavy reliance on AI technology. Finally, I consider what these observations inform us about the human culpability for AI development.</p>
+<h2 id="introduction">Introduction</h2>
+<p>In 2022, an opinion piece in Forbes breathlessly informed us that “Within the next decade, artificial general intelligence (AGI)—the ability of computer systems to understand, learn and respond as humans do—is expected to emerge.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>” In recent years, billions of dollars of investment have been invested into a wide portfolio of technologies labelled “AI”, with companies in Silicon Valley leading the charge. However, why and how is this level of AI “expected to emerge”? Is this technological development inevitable? I believe that the development of AI technology as we understand it today is not part of the “natural progression” of technological advancement. Instead, it is the result of a series of conscious choices by humans under social and systemic incentives. To establish these incentives, I will look at the heartland of the modern AI industry in Silicon Valley, California. I will present four different approaches to conceiving of AI development: as the continuation of the Silicon Valley paradigm of “software eating the world”; as an achievement of the transhuman visions of “AGI”; as an economic measure to improve efficiency; and as a self-continuing economic narrative that demands continuous reinvestment. To provide a concise case study of what I mean, I will examine the AI developments and products offered by Meta, formerly Facebook. Finally, I will extrapolate from these findings to present a general conception of human culpability in AI development.</p>
+<p>For the purposes of this dissertation, I define “AI technology” or “AI models” as a category of software programs whose behaviours are determined by inferences obtained from human-curated or machine-generated data without explicit human guidance (i.e. through a process of “learning”). Most of the dissertation will also consider the group of Silicon Valley companies working to develop AI as a collective group of “Valley Institutions”. While my precise conception of the “Valley” will be expanded later, I do this because these companies are highly interconnected, share many key visions or goals, and are also acting in accordance with a set of similar capitalist incentives. I will also examine in the case study not only the incentives behind AI development but the aftermath and risks of this form of AI development. <br />
+Beyond the immediate consequences, however, a deeper question arises—<em>why</em> are these actors pursuing these technological developments? In her book <em>Addiction by Design</em><sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>, Natasha Schull references Bruno Latour’s concept of “inscription”. In her words, it is “a process […] whereby designers inscribe certain modes of use into the products that consumers will interact with”, the designers setting “scripts” which “inhibit or preclude certain actions while inviting or demanding others”.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> The “script” for Schull is simple: the exchange of money for the satisfaction of interacting with the gambling device, a mindless “machine zone” that renders humans little more than rats in a series of nested Skinner Boxes. What, then, is the “script” for AI? What are the end goals of pursuing these technological developments, and who or what is responsible?</p>
+<h2 id="theoretical-overview">Theoretical Overview</h2>
+<p>It is impossible to speak of recent developments about AI without paying attention to Silicon Valley, where many major AI corporations have their offices and where many AI technologies are developed. The theoretical conception of Silicon Valley is both a physical location and a network of persons, ideas, capital flows, and research endeavours—Richard Barbrook and Andy Cameron’s map of the Valley combines “the disciplines of market economics and the freedoms of hippie artisanship”, but also notes that “the West Coast itself is a product of massive state intervention”.<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup> In positioning the Valley as a synthetic mix of place and idea, they also conjoin it to the market economy which powers California and the United States as a whole. This holistic approach which treats the Valley as a connected ecosystem of ideas and actors is also applied by researchers like Timnit Gebru when researching TESCREAL<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup>, the authors of the “How AI Fails Us” discussion paper,<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup> and Shoshana Zuboff in <em>The Age of Surveillance Capitalism</em>.<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup><br />
+When I speak of the “Valley” or “Valley Institutions”, I include in this group Microsoft, OpenAI, Meta, Google, Anthropic, and other major AI developers as well as venture capital firms like A16Z<sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup> and Y Combinator. My approach deviates from approaches like Zuboff’s which, while immensely profitable as a record of the Valley’s tactics and aspirations, risks flattening the Valley into a technological conspiracy moving towards an end goal of behavioural control. I also deviate from the more ideological constructions of Gebru et al. by placing a renewed focus on economic influences. In general, I suppose that there a multiplicity of incentives that drive the development of AI technology, and consider all corporate institutions that shape and are affected by these incentives to be “the Valley”. As such I include Microsoft—headquartered in Redmond but instrumental in the funding of OpenAI; I also include A16Z, which has no machine learning engineers of its own but is vital in shaping the ideological discourse that motivates some AI developers. I exclude research institutions like Stanford and MIT due to their distance from the Valley’s economic incentives, though there is a large overlap in personnel and ideology between the two.<br />
+Drawing on the framework laid down by Thomas Hughes in <em>Networks of Power</em>, I consider AI development as a process of adaption and growth in the face of social resistance and social demand.<sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup> Hughes outlines several approximate stages of technological adoption from initial invention to transfer, growth, momentum, and financialisation. AI as a technology appears to be in the momentum or growth stage, with “a perceptible rate of growth and velocity” that exists alongside significant flaws like hallucination which correspond to Hughes’ ideas of “reverse salients” or “critical problems”.<sup id="fnref:10"><a class="footnote-ref" href="#fn:10">10</a></sup> I further interpret the present trend of AI development as a broad feedback loop between the human institutions that develop these systems, the external public that provides demand and resistance to technological adoption, and the private or public entities that provide resources and funding for development. The institution drives the development of the product but also relies on external input (e.g. user data, funding agreements, or hearings in the US Senate) to shape it further. At the same time, this work considers as its subject both questions of institutional process and of technological “development” or “progress” more generally, which poses certain theoretical difficulties I will now examine.</p>
+<p>Historical conceptions of technology and its development have leaned towards either technological determinist or social determinist perspectives. The degree to which these two extremes shape the course of social and technological progression (or, indeed, if such a progression can be rightly charted at all) has been a perennial cause of debate. Theorists such as Heilbronner claim that progress comes from “a technical conquest of nature that follows one and only one grand avenue of advance”, going on to suggest that “a given technology imposes social and political characteristics on the society in which it is found” before walking back their claims somewhat.<sup id="fnref:11"><a class="footnote-ref" href="#fn:11">11</a></sup> By contrast, in her article proposing a possible “technoculture” Leila Green cites Ursula Franklyn and <em>The Real World of Technology</em>:<sup id="fnref:12"><a class="footnote-ref" href="#fn:12">12</a></sup> “it is better to examine limited settings where one puts technology in context, because context is what matters most”.<sup id="fnref:13"><a class="footnote-ref" href="#fn:13">13</a></sup> The implication here is that what is truly at stake is the <em>social</em> context of technology’s use, rather than the precise nature of the technology that has been used.<br />
+The discourse surrounding AI development throws both of these perspectives into confusion: while imagined general AI systems seem finally capable of actively “impos[ing] social and political characteristics”<sup id="fnref:14"><a class="footnote-ref" href="#fn:14">14</a></sup> onto its users as the technological determinists claim, it does so by adopting human-like qualities of agency and goal-setting. In turn, the social determinist must contend with a technology that demands recognition as a <em>bona fide</em> social participant, confusing the divide between agent and tool. Where medium theorists like Ronald Deibert have argued that changes in “modes of communication” can shape the broad “evolution and character” of society as a whole,<sup id="fnref:15"><a class="footnote-ref" href="#fn:15">15</a></sup> now it is possible for technology to shape society at a level once reserved for humans alone, with a student perhaps generating an AI-written article refuting Deibert’s claims. The usual solution to this confusion is to reject the idea of AI systems as meaningfully separate from human intellectual labour: The discussion paper “How AI fails us” published by Harvard University Carr Centre for Human Rights Policy et al. exemplifies this position.<sup id="fnref:16"><a class="footnote-ref" href="#fn:16">16</a></sup> It states,</p>
+<blockquote>
+<p>The dominant vision of artificial intelligence imagines a future of large-scale autonomous systems outperforming humans in an increasing range of fields. This “actually existing AI” vision misconstrues intelligence as autonomous rather than social and relational. It is both unproductive and dangerous, optimizing for artificial metrics of human replication rather than for systemic augmentation, and tending to concentrate power, resources, and decision-making in an engineering elite.</p>
+</blockquote>
+<p>By casting intelligence as “social and relational”, the paper resists defining AI systems as intelligent independent from human interpretation. Other analyses like that of Gray and Suri’s <em>Ghost Work</em> emphasise the human labour involved in curating training data for AI systems or correcting AI-driven moderation decisions<sup id="fnref:17"><a class="footnote-ref" href="#fn:17">17</a></sup>, emphasising the invisible human labour behind apparent AI automation. These approaches, while presenting many valid criticisms of AI development, do not address the present state of the AI industry effectively. While historically confined to controlled environments like the game of Go<sup id="fnref:18"><a class="footnote-ref" href="#fn:18">18</a></sup>, most recently AI development has led to the rise of large language models (LLMs), programs that have been perceived as comparable to humans in tests of general reasoning,<sup id="fnref:19"><a class="footnote-ref" href="#fn:19">19</a></sup> legal contract review<sup id="fnref:20"><a class="footnote-ref" href="#fn:20">20</a></sup>, or even military decision making<sup id="fnref:21"><a class="footnote-ref" href="#fn:21">21</a></sup>. As these systems become more independently capable, critics of the industry cannot continue to claim that the industry remains reliant on Potemkin AI<sup id="fnref:22"><a class="footnote-ref" href="#fn:22">22</a></sup> or extensive human intervention, lest they risk being branded as irrelevant. I further argue that this form of evasion around what qualifies as truly “intelligent” or “independent” AI constitutes a form of No True Scotsman fallacy, leading to claims like “The end state of [Artificial General Intelligence] is itself poorly defined and thus cannot be acknowledged as a meaningful object to ‘oppose’”.<sup id="fnref:23"><a class="footnote-ref" href="#fn:23">23</a></sup> Meanwhile in 2023 AI-powered conversation partners were already used as methods to exploit humans by forming emotional bonds then withholding intimacy behind payment barriers<sup id="fnref:24"><a class="footnote-ref" href="#fn:24">24</a></sup>.</p>
+<p>Another theoretical lens with which to consider AI is as an actor embedded in an economic system. This requires a slight modification of classical materialist analysis: Oft-cited exceptions like the Fragment on Machines aside,<sup id="fnref:25"><a class="footnote-ref" href="#fn:25">25</a></sup> materialist economic analysis tells us that the origin of profit in a productive endeavour is the (human) capitalist’s exploitation of a (human) working class<sup id="fnref:26"><a class="footnote-ref" href="#fn:26">26</a></sup>—machines have no subjective capacity of their own and only act as a “dead” substitute for human physical labour. Even if we acknowledge that the capitalist may provide intellectual or non-physical labour as a manager, the primary focus of materialist analysis is still on the <em>human</em> or <em>subject</em> participants of the productive process, and on the power imbalance between capitalist and worker. Analysis based on actor-network theory (ANT) as forwarded by Michel Callon and others takes a different approach. Fabian Muniesa writes that “as soon as something happens, there is action to be accounted for, and a good ANT account does not single out any particular form of action, be it social or otherwise”<sup id="fnref:27"><a class="footnote-ref" href="#fn:27">27</a></sup>. If we blur the lines between subject and non-subject, we can consider the possibility that humans have no special place in the productive process, whether as physical or intellectual labourers. Any process which minimises the costs of production is beneficial since it increases the final net profit for the capitalist, including yielding decision-making powers to AI systems if that increases overall efficiency.<br />
+We can extend the economic question further: why pursue AI and automation, instead of other technological advancements? For example, for a period up to around 2022 the focus of the Valley Institutions was on the potential of blockchain technologies. What fundamental benefits does AI offer that cannot be matched by other products? I propose that more than any concern over wages or electricity costs, AI has formed a compelling <em>economic narrative</em> for continued investment as outlined by theorists like Robert Shiller.<sup id="fnref:28"><a class="footnote-ref" href="#fn:28">28</a></sup> On the other hand, scholars like Gebru believe that many in the Valley are motivated by a complex set of ideologies (the TESCREAL constellation) that make their work akin to a technical form of apotheosis. The complex interplay of these diverse perspectives shall form the crux of my analysis.</p>
+<h2 id="software-and-ai">Software and AI</h2>
+<p>Perhaps the first perspective we ought to consider is that AI is simply a continuation of <em>business as usual</em> for Silicon Valley. To do this, I will situate AI within the existing business paradigm of the Valley, which is oriented around creating and marketing technological products, mainly software. I will show how AI constitutes a continuation of their ambitions for software to encompass every aspect of daily life, and evaluate the limitations of this vision.</p>
+<p>It is important to remember that when we speak about AI models, we are also speaking of the class of objects to which they belong: software programs. But what is software? All software is fundamentally a question of symbolic manipulation. This is not a philosophically nebulous truism: the internal operations of software can be described through the operations of a Turing Machine<sup id="fnref:29"><a class="footnote-ref" href="#fn:29">29</a></sup>, which can itself be expressed as a symbolic manipulation or string rewriting problem. In other words, software is a series of logical rules that turn symbols coming in into symbols coming out. The symbols coming in may be entries in a database, search engine inputs, or accelerometer readouts; the symbols coming out may be video game graphics or a Mandelbrot set fractal or the words of the Bible, but software acts to translate one to the other. In this sense AI is just a specialised subset of software, one whose inner workings are less understandable than most programs.<br />
+If this is true, software seems to be a largely symbolic phenomenon, a reference without a referent. Yet a primary partner in Andreessen Horowitz, one of the most influential venture capital firms in Silicon Valley, proposed in a famous blog post that this immaterial construct is “eating the world”.<sup id="fnref:30"><a class="footnote-ref" href="#fn:30">30</a></sup> What does it mean for AI or software to <em>eat the world</em>? For Andreessen, this phenomena seems to largely revolve around the way large organisations in capitalism structure themselves. With growing access to the internet, he argues, comes a growing ability to participate in networked society, and to use the internet to fulfil your needs for food, daily goods, entertainment, and services. As he writes,</p>
+<blockquote>
+<p>More and more major businesses and industries are being run on software and delivered as online services—from movies to agriculture to national defense. Many of the winners are Silicon Valley-style entrepreneurial technology companies that are invading and overturning established industry structures.<sup id="fnref:31"><a class="footnote-ref" href="#fn:31">31</a></sup></p>
+</blockquote>
+<p>For software to “eat the world”, then, implies that more and more parts of our daily life and the broader economy will be “run on software and delivered as online services”—the internet will mediate how we access goods and services of all kinds, not merely for entertainment or web content. Yet this is not entirely a satisfying explanation, since it seems that Andreessen does not adequately explain <em>how</em> this transformation is happening. How does software drive a truck or grow bread?<br />
+For the Valley to direct our lives through symbolic programs, they must find a way to let these programs gain an understanding of reality. To do this, real world data (e.g. the current location of a truck, a map of the local area) must be input into an algorithm which turns data into actionable output (e.g. the shortest path to a warehouse). Scholars like Johanna Drucker have suggested that these inputs—data—should be renamed <em>capta</em><sup id="fnref:32"><a class="footnote-ref" href="#fn:32">32</a></sup>, since data is never passively <em>collected</em> but must be actively <em>captured</em> from reality through intentional acts of measurement and association. At the same time, computer algorithms also have to be developed that can process data effectively and compute useful results. This algorithmic work was historically driven by human researchers: classical computer science is suffused with algorithms named after their supposed inventors (e.g. <em>Djikstra’s</em> path-finding algorithm<sup id="fnref:33"><a class="footnote-ref" href="#fn:33">33</a></sup>). With these requirements in mind, we can see exactly how Silicon Valley plans to let software eat the world—and how AI fits into this plan. <br />
+Armed with what Barbrook calls a “Californian Ideology” that combined libertarian sensibilities with new-left optimism about technology,<sup id="fnref:34"><a class="footnote-ref" href="#fn:34">34</a></sup> the Valley became a major proponent of information technology and its promise to mediate processes from shopping to democracy. To achieve these goals, they combined unprecedented levels of data collection with large amounts of capital investment into software development.<sup id="fnref:35"><a class="footnote-ref" href="#fn:35">35</a></sup> In this light, AI is a powerful symbolic tool that enables data to be processed with less human involvement, which is expensive and difficult to scale up.<sup id="fnref:36"><a class="footnote-ref" href="#fn:36">36</a></sup> AI programs can automatically derive mathematical models for fuzzy concepts like “cats” or “high-risk lenders” or “human faces”, turning raw data into meaningful information computers can interpret.<sup id="fnref:37"><a class="footnote-ref" href="#fn:37">37</a></sup> The most advanced of these models are labelled under the category of “generative artificial intelligence”, in which programs move beyond discovering correlations in existing data to fabricating new data <em>ex nihilo</em>—these models <em>simulate</em> (but do not necessarily <em>replicate</em>) the cognitive or real-world processes that produce their training data. Barbrook points out that, like Jefferson’s dumbwaiter, these advancements allow for the displacement of unreliable human workers and artisans with obedient, computer-operated servants.<sup id="fnref:38"><a class="footnote-ref" href="#fn:38">38</a></sup> In other words, AI is the realisation of Silicon Valley’s dream of using software to control and direct every facet of our lives.<br />
+A road-map has been laid out to make the world a pliant playground for the Valley. The road-map demands the expansion of computing facilities as the next frontier of geopolitical competition. It incentivises hiring disposable contract workers who must follow instructions from their wireless earpieces or phones. It leads to billions of dollars invested in developing autonomous robots, automated factories, and self-driving cars. Today in developed societies almost all basic services and transactions are mediated through software. With AI posited as the next revolution in digital capabilities, software will no longer merely order your food, organise your work, and deliver your leisure. Now, software will also be your friend.<sup id="fnref:39"><a class="footnote-ref" href="#fn:39">39</a></sup></p>
+<p>Still, however, this digestion is incomplete. What technologists like Andreessen like to forget is that beneath the immaterial processes of their software engines lie physical machines, machines that consume copious amounts of electricity and water<sup id="fnref:40"><a class="footnote-ref" href="#fn:40">40</a></sup> and are subject to outages, malfunctions, as well as destruction from man made or natural sources. As Seb Franklin points out, the lie of the Cloud (and now of AI) is that it displaces the real cost of computing to a ethereal otherworld where techno-utopianism can roam free.<sup id="fnref:41"><a class="footnote-ref" href="#fn:41">41</a></sup> In the parts of the world where this displacement has failed, where the internet remains a patchy utility and where the basic necessities of life are threatened by climate change, social upheaveal, and war, we can see these idealised representations fail to capture reality. How can one find their way via Google maps if the city they are traversing has been bombed to ruins?</p>
+<p>Drucker reminds us that the formation of capta always involves an intentional act of measurement and an intentional correlation of the measurement with a real life quality, a correlation that is always conditional and never perfect.<sup id="fnref:42"><a class="footnote-ref" href="#fn:42">42</a></sup> As the AI industry struggles against the persistent problems of hallucinations and confabulations,<sup id="fnref:43"><a class="footnote-ref" href="#fn:43">43</a></sup> we see how models can easily become estranged from the sources of human knowledge they attempt to supplant. In the next section, we will examine a possible <em>telos</em> for this pursuit, what happens if they succeed at aligning world, <em>capta</em> and model.</p>
+<h2 id="the-telos-of-ai">The Telos of AI</h2>
+<p>I will now attempt to describe the hypothetical end goals of AI development as well as the criticisms and alternatives positioned against these teleologies, mainly Gebru et al.’s concept of TESCREAL. The question of a final goal or “end state” for AI technology development seems at first somewhat unintuitive—technological development as a phrase does not presuppose a “final ending”, nor does it suggest a definitive outcome. AI development takes many forms, including the development of novel architectures for AI models (e.g. the GAN architecture which was used for early image generation research<sup id="fnref:44"><a class="footnote-ref" href="#fn:44">44</a></sup>), the development of new AI applications like ChatGPT<sup id="fnref:45"><a class="footnote-ref" href="#fn:45">45</a></sup>, and the retrofitting of existing applications to new domains. All of these processes can happen in disparate fields of research including machine vision, predictive modelling, machine translation, human-computer interaction etc. However, I believe that the Valley Institutions have compatible and well-defined end goals for AI for several reasons: First, these visions are clearly defined through ideas such as “AGI”, “ASI”, and the “Singularity”. Second, these visions form a major part of the communications, PR, and even investor relations efforts conducted by these companies. Third, advancement in many fields of AI has recently been achieved through breakthroughs like the development of the Transformer architecture<sup id="fnref:46"><a class="footnote-ref" href="#fn:46">46</a></sup>, which has been applied to object recognition, autonomous vulnerability exploitation, and text generation tasks amongst others<sup id="fnref:47"><a class="footnote-ref" href="#fn:47">47</a></sup>. This makes disparate fields of AI research more and more closely related and therefore the idea of a coherent and unified “end state” more conceivable. While the last claim is a purely technical hypothesis, the first two claims are evident in the statements issued by the Valley Institutions and their leaders.</p>
+<p>For the first claim, the leaders of Meta, Google, and OpenAI have all stated that their explicit goal is to reach a state of “artificial general intelligence” (AGI)<sup id="fnref:48"><a class="footnote-ref" href="#fn:48">48</a></sup> or “human-level AI”.<sup id="fnref:49"><a class="footnote-ref" href="#fn:49">49</a></sup> More concretely, the idea of a definitive societal shift once we reach “human-level AI” is encapsulated in computer scientist and science fiction writer Vernor Vinge’s idea of the “Singularity”,<sup id="fnref:50"><a class="footnote-ref" href="#fn:50">50</a></sup> which is often cited within the Valley<sup id="fnref:51"><a class="footnote-ref" href="#fn:51">51</a></sup>. Vinge’s definition suggests that “change comparable to the rise of human life on Earth” will come from “the imminent creation by technology of entities with greater than human intelligence”. OpenAI similarly defines “AGI” as “a highly autonomous system that outperforms humans at most economically valuable work”.<sup id="fnref:52"><a class="footnote-ref" href="#fn:52">52</a></sup> Both define AGI in terms of agentic technological systems that compete with and surpass humans intellectually. A key difference between the two statements, however, is the replacement of “human intelligence” with the concept of “economically valuable work”. A sleight of hand has been performed where what is profitable or “valuable” in the present economy has been substituted for the fundamental human capacity for “intelligence”. And it is this ideological substitution that motivates the following claim.</p>
+<p>With regards to my second claim, I believe that the idea of an endpoint for AI development is an immensely attractive cultural and marketing concept. The “Singularity” conception of AI is imbued with superhuman qualities and acts in manners humans cannot understand or predict. In an essay titled “Moore’s Law for Everything” by Sam Altman, this mystical attitude is taken to the extreme, with Altman exhorting his readers to “imagine a world where, for decades, everything–housing, education, food, clothing, etc.–became half as expensive every two years.”<sup id="fnref:53"><a class="footnote-ref" href="#fn:53">53</a></sup> How this will be achieved without disastrous results amid a global climate crisis and ecological collapse is not addressed, except with the promise that AI will “lower the cost of goods and services” by eliminating labour costs. How AGI will continue to lower labour costs for decades on end after presumably replacing all human workers is also not explained. Faith in the power of AGI is a prominent theme in Valley communications: Hagiographic pro-AI peices such as the Techno-Optimist manifesto<sup id="fnref:54"><a class="footnote-ref" href="#fn:54">54</a></sup> state that “we believe Artificial Intelligence is best thought of as a universal problem solver”, displacing human ingenuity as the solution to all of our ailments. More anxious pieces such as the 22-word risk statement endorsed by Sam Altman and Dennis Hassabis<sup id="fnref:55"><a class="footnote-ref" href="#fn:55">55</a></sup> suggest that “mitigating the risk of extinction from AI should be a global priority alongside other societal-scale risks such as pandemics and nuclear war”.<sup id="fnref:56"><a class="footnote-ref" href="#fn:56">56</a></sup> Neither perspective questions the superhuman intellectual potential of AI and its capability to direct human affairs. Even warnings to investors about the risks of investing in AI have become a perverse form of marketing. OpenAI’s for-profit operating agreement includes the following statements:</p>
+<blockquote>
+<p>**Investing in Open AI Global, LLC is a high-risk investment**</p>
+<p>**Investors could lose their capital contribution and not see any return**</p>
+<p>**It would be wise to view any investment in OpenAI Global, LLC in the spirit of a donation, with the understanding that it may be difficult to know what role money will play in a post-AGI world** <sup id="fnref:57"><a class="footnote-ref" href="#fn:57">57</a></sup></p>
+</blockquote>
+<p>While these statements carry the tone of standard investor warnings, the suggestion that the concept of money itself may become moot in a “post-AGI world” serves as a powerful promise of AI’s capacity to enact a final, complete transformation of human society. A joint economic-eschatological myth springs into motion, with AI positioned as a quasi-divine transformative force that answers all human needs and desires. Meanwhile, cultural commentators like Robert Evans have pointed out that this discourse around AI has acquired teleological, even cult-like properties<sup id="fnref:58"><a class="footnote-ref" href="#fn:58">58</a></sup>.<br />
+I have now examined the unified vision of a <em>telos</em> for AI put forward by Valley. It should be noted, however, that the Valley-favoured AGI concept is not the only ideological construction used to summarise AI development. The “How AI Fails Us”<sup id="fnref:59"><a class="footnote-ref" href="#fn:59">59</a></sup> discussion paper advances the concept of Actually Existing AI (AEAI) which it explicitly aligns against the concept of AGI, identifying the chief components of AEAI as human competition, autonomy, and centralisation of power. I believe that this definition is in fact substantially similar with OpenAI’s definition of AGI—both feature competition between humans and AI, the concept of a centralised AI system<sup id="fnref:60"><a class="footnote-ref" href="#fn:60">60</a></sup>, and a focus on autonomy. While the discussion paper highlights that it is focused on the present practices of AI companies rather than their aspirations, it is unclear how aspirations can be disentangled from the instrumental practices used to pursue them, especially when many of the leaders of these companies appear genuinely committed to the point of embracing quasi-religious attitudes towards AGI, even in private.<sup id="fnref:61"><a class="footnote-ref" href="#fn:61">61</a></sup> However, the AEAI paper remains prescient on many fronts, including its depiction of “two symbiotic future visions, one optimistic and one pessimistic, both dependent on centralization,” which has only become more true as AI technologies have become more potent, their pioneers come closer to centres of economic power, and both their upsides and downsides are elevated to matters of existential importance.<br />
+Moving beyond the AEAI paper, social scientist Dave Karpf’s conception of a quasi-unified “WIRED ideology” casts AI developers as both “conquering heroes” gifting the world the benefits of AI and also vanquishing the dangers that come from AI, the literal “motive force” of human development. Extending the “Californian Ideology” of Barbrook and Cameron, he writes:</p>
+<blockquote>
+<p>“The ideological project of today’s tech barons is little different from the ideological project of WIRED’s tech accelerationist, tech optimist, tech solutionist libertarian past. They still wish to be viewed as conquering heroes, gladiatorial competitors jostling for control over the future that only <em>they</em> can build.”<sup id="fnref:62"><a class="footnote-ref" href="#fn:62">62</a></sup></p>
+</blockquote>
+<p>In this view, both the positive and negative modes of Valley Institution communication surrounding AI fit into a mould of the Valley Institutions as “conquering heroes” engaging in a “tech accelerationist, tech optimist, tech solutionist” programme. His notes that the Valley sees “engineers, entrepreneurs, and Silicon Valley investors” as “the motive force driving an inflection point in the course of history itself”. As there is never a serious possibility of abstaining from AI development, the only way to both realise the promise of AI and address any problems stemming from it is to engage in more AI development. Karpf cites Sam Altman’s statement that “techno-optimism is the only good solution to our current problems” as evidence of this forward-only mentality, and his notion of “tech accelerationist, tech optimist” discourse within Valley Institutions has been evidenced both by the “techno-optimist manifesto” we have discussed above and the effective accelerationist (e/acc) movement that it invokes.<sup id="fnref:63"><a class="footnote-ref" href="#fn:63">63</a></sup> .<br />
+Parallel to this sociological examination, Timnit Gebru and Emile Torres have consolidated the Valley’s ideological programme into a constellation of beliefs known as TESCREAL,<sup id="fnref:64"><a class="footnote-ref" href="#fn:64">64</a></sup> highlighting the problematic historical lineage of OpenAI’s “post-AGI world”. The TESCREAL paper presents a particular vision for the “<em>telos</em> of AI”: under the guidance of a munificent superintelligent AI system, humanity will become a race of digital consciousnesses expanding and colonising the galaxy as a post-scarcity machine civilisation. At the same time, Gebru scrutinises the origins of this vision from a historical, ethical, and risk-based perspective. This analysis has since gained popularity in media reports on the Valley Institutions and the AI race<sup id="fnref:65"><a class="footnote-ref" href="#fn:65">65</a></sup>, and deserves serious consideration given the authors’ deep prior involvement with Valley Institutions.</p>
+<p>To begin, although the authors focus on the eugenicist origins of many of TESCREAL’s component ideologies, I believe that this does not necessarily indicate a causal link between participation in the two groups. TESCREAL as described within the paper covers a broad selection of futurist visions related to space travel, virtual reality, AI superintelligences etc., many of which have limited overlap with human genetic modification, selective breeding, or the racist motivations that drove those two projects. That TESCREAL itself can be an over-generalised or inaccurate categorisation of AI developers is also acknowledged by Gebru et al.: “It is important to note that not everyone associated with ideologies in this bundle believes in the totality of the dominant views in this bundle, and some people may even object to being bundled in this manner. […] Our argument is that the TESCREAList ideologies drive the AGI race even though not everyone associated with the goal of building AGI subscribes to these worldviews.” At the same time, Gebru and Torres report that many influential figures within TESCREAL movements have undoubtedly expressed racist or eugenicist attitudes.<sup id="fnref:66"><a class="footnote-ref" href="#fn:66">66</a></sup> This suggests that there is possibly a broader animating principle that leads to enthusiasm for eugenics and enthusiasm for TESCREAL, rather than a direct causal link between a belief in eugenics and being an AI developer<em>.</em> Overall, in my view labelling the field of AI research as inextricable from eugenicist beliefs would be inaccurate and counterproductive to fostering effective dialogue around the risks of developing AI.<sup id="fnref:67"><a class="footnote-ref" href="#fn:67">67</a></sup></p>
+<p>I now move to consider the TESCREAL analysis as a whole. While this constellation seems convincing as a portrait of beliefs commonly presented at a high level within Valley Institutions, it seems deficient in that it does not take into account the role capitalist incentives play in AI development, especially given the for-profit nature of some of the groups it examines. It also does not account for the possibility that these ideas may be imperfectly held, held only as performative signals to other Valley Institution members, or deceptively held to attract funding for otherwise arcane academic interests. J. Robert Oppenheimer famously described the challenge of building the world’s first nuclear weapon as a “technically sweet problem”, and this sentiment was echoed by Geoffrey Hinton—called by some the “Godfather of AI”—about AI research<sup id="fnref:68"><a class="footnote-ref" href="#fn:68">68</a></sup>.</p>
+<p>Finally, it should be noted that most of TESCREAL’s claims about the future developments are essentially unfalsifiable: At a timescale of tens of thousands of years almost any action (up to and including amassing large amounts of wealth or political power, which could be carried out for any number of reasons)<sup id="fnref:69"><a class="footnote-ref" href="#fn:69">69</a></sup> can be justified as incremental progress towards a distant state of utopia. Thus, TESCREAL’s claims about the future of humanity, AI superintelligences etc. cannot be treated as a concrete goal for TESCREAL believers to achieve, or as an effective means to evaluate their present actions. Rather, they seem more like strongly-held personal beliefs or predictions for the general state of human affairs. A low level belief in TESCREAL-adjacent ideologies (perhaps especially Effective Altruism/EA and Longtermism) is therefore quite hard to distinguish from general concern about risks to human civilisation or the future of human society. There is also severe disagreement within the AI development community on questions like whether safety concerns should take precedent over developing AI,<sup id="fnref:70"><a class="footnote-ref" href="#fn:70">70</a></sup> up to and including high-profile resignations.<sup id="fnref:71"><a class="footnote-ref" href="#fn:71">71</a></sup> Like the AEAI discussion paper, it seems prudent to carry forward the potential risks and harms highlighted by the TESCREAL paper as concerns to be wary of without treating the paper as a definitive conclusion about the motivations of AI developers.</p>
+<p>Having explored the ideological visions for the development of AI technology, I will now move to consider the economic or pragmatic visions behind developing AI—in other words, <em>how is AI development supposed to give a return on billions of dollars of investment</em>?</p>
+<h2 id="the-economics-of-ai">The Economics of AI</h2>
+<p>I will now examine the economic motivations for developing AI and offer some preliminary observations as to the economic viability of AI products. There is a significant divide between what idealists or AI enthusiasts claim AI is designed to do and what critics suggest AI actually does in a socio-economic context<sup id="fnref:72"><a class="footnote-ref" href="#fn:72">72</a></sup>. As Sam Altman puts it in “Moore’s Law for Everything”, “AI will lower the cost of goods and services, because labor is the driving cost at many levels of the supply chain.”<sup id="fnref:73"><a class="footnote-ref" href="#fn:73">73</a></sup> In the context of the essay, he suggests that this will make goods cheaper and more accessible, but a lower cost does not necessarily guarantee a lower price for the end product—merely an increase in profit margin. To his credit, Altman recognises this, stating that under AI “even more power will shift from labor to capital” and proposing a series of governmental interventions to mitigate these negative effects.<sup id="fnref:74"><a class="footnote-ref" href="#fn:74">74</a></sup> Regardless, a core economic promise of AI is that it will accelerate the automation of production, reducing the cost of producing goods drastically as both physical and mental labour can now be automated<sup id="fnref:75"><a class="footnote-ref" href="#fn:75">75</a></sup>.</p>
+<p>Besides replacing human labourers, another prominent method of AI monetisation relies on exposing consumers to AI models directly. In this model, the AI acts to provide various services to an end user, ranging from data entry and providing email summaries to more traditionally human roles like emotional or conversational partnership.<sup id="fnref:76"><a class="footnote-ref" href="#fn:76">76</a></sup> Companies like OpenAI have even spoken of allowing AI to produce tailored explicit content<sup id="fnref:77"><a class="footnote-ref" href="#fn:77">77</a></sup>. While the novel nature of this technology means that there is no predefined field of service work they are disrupting, a broad suite of online services already exist which promise to connect users with contractors skilled in copyediting<sup id="fnref:78"><a class="footnote-ref" href="#fn:78">78</a></sup>, dataset labelling<sup id="fnref:79"><a class="footnote-ref" href="#fn:79">79</a></sup>, or therapy<sup id="fnref:80"><a class="footnote-ref" href="#fn:80">80</a></sup>. AI companies would then step in as a similar service provider, but with AI instead of an anonymous human at the other end of the line. Given that many AI models were trained with the help of contractor-sourcing platforms like MTurk, this development would be highly disruptive to those workers affected.</p>
+<p>For these promises to hold, however, AI must be able to perform at least on par with humans at a lower cost. If, for example, “human-level” AI existed but cost a billion dollars a year to replace an average human office worker, then it would not be cost-effective to implement in the workplace. Consequently, the costs of developing and implementing AI systems acts as a negative incentive for the Valley Institutions to invest heavily in developing AI technology, making a cost analysis important for the economic argument for developing AI.<sup id="fnref:81"><a class="footnote-ref" href="#fn:81">81</a></sup> <br />
+I will now attempt an economic analysis of the costs and revenues associated with operating these technologies. According to an article in <em>Nature</em>:</p>
+<blockquote>
+<p>“As performance is skyrocketing, so are costs. GPT-4 — the LLM that powers ChatGPT and that was released in March 2023 by San Francisco-based firm OpenAI — reportedly cost US$78 million to train. Google’s chatbot Gemini Ultra, launched in December, cost $191 million. Many people are concerned about the energy use of these systems, as well as the amount of water needed to cool the data centres that help to run them. “These systems are impressive, but they’re also very inefficient,” Maslej says.”<sup id="fnref:82"><a class="footnote-ref" href="#fn:82">82</a></sup></p>
+</blockquote>
+<p>78 million USD for GPT-4 may seem like a relatively small cost given recent reports that OpenAI is on track to hit 2 billion dollars in revenue this year<sup id="fnref:83"><a class="footnote-ref" href="#fn:83">83</a></sup>. However, this does not account for the costs of operating OpenAI’s services and offering competitive salaries for its employees. In 2023, ChatGPT’s operating costs were estimated to be around 700,000 USD per day.<sup id="fnref:84"><a class="footnote-ref" href="#fn:84">84</a></sup> This gives the annual operating costs of ChatGPT at approximately 250 million USD. Linkedin estimates that OpenAI has 201-500 employees<sup id="fnref:85"><a class="footnote-ref" href="#fn:85">85</a></sup>. With an estimated employee salary of 750, 000 USD per year<sup id="fnref:86"><a class="footnote-ref" href="#fn:86">86</a></sup> based on reported salaries for OpenAI machine learning engineers, this gives employee expenditures of approximately 260 million dollars. This gives an estimate of the operating expenditure on the order of 600 million dollars. Furthermore, the 2 billion in reported revenue is annualised (i.e. obtained by multiplying the last month of revenue by 12) and may not represent actual revenue if subscriber counts decrease. Indeed, services such as Github Copilot were reported in 2023 to actually be losing money on a per-user basis, potentially leading to price raises that turn away users.<sup id="fnref:87"><a class="footnote-ref" href="#fn:87">87</a></sup> At the same time, estimates for AI’s electricity and chip usage show unsustainably high figures that do not seem to correlate with environmental sustainability or long term profitability.<sup id="fnref:88"><a class="footnote-ref" href="#fn:88">88</a></sup> While established corporate actors such as Meta and Google may be able leverage their resources to support these expensive endeavours, previous promised “tech revolutions” such as home automation or voice assistants have been abandoned when they prove unprofitable for extended periods.<sup id="fnref:89"><a class="footnote-ref" href="#fn:89">89</a></sup> It is also important to note as a counterpoint that the cost of operating AI services may decrease with efficiency improvements.</p>
+<p>In some regards, however, a basic profit and revenue analysis for AI technology is largely irrelevant at this stage. After the monumental success of ChatGPT in capturing the public imagination, Microsoft and a group of venture capital investors from various Valley Institutions quickly supplied OpenAI with up to 10 billion dollars in funding.<sup id="fnref:90"><a class="footnote-ref" href="#fn:90">90</a></sup> Similarly, large scale state and academic endowments have funded the development of AI since its beginning as “Good Old-Fashioned AI” with DARPA.<sup id="fnref:91"><a class="footnote-ref" href="#fn:91">91</a></sup> It seems intuitive that these decisions are based less on the promise of an immediately profitable product with a return on investment on the order of billions of dollars (Even assuming a billion dollars in profit each year, OpenAI’s investors would still take a decade to recoup their investment collectively), but rather on the belief that the development of AI will continue to skyrocket and provide outsized benefits that impact the entire global economy. It is conditions behind this belief that I will examine next.</p>
+<h2 id="the-narrative-of-ai">The Narrative of AI</h2>
+<p>I will now examine and evaluate the construction of AI as an economic narrative that justifies continuous reinvestment, rather than as a purely quantitative cost saving measure. The idea that cultural and “viral” narratives provide more direct impetus for investment than sound business fundamentals has been explored by authors such as Robert J. Shiller—writing about the rapid rise of investment into cryptocurrencies, he suggests that an economic narrative is “a contagious story that has the potential to change how people make economic decisions”, including business and investment decisions.<sup id="fnref:92"><a class="footnote-ref" href="#fn:92">92</a></sup> From this perspective, the history of Silicon Valley’s tech successes, the grand ideological <em>telos</em> of AI, and the promise of massive economic return all form part of the basis for a “contagious story”, a powerful economic narrative around the benefits of investing in AI.</p>
+<p>I will now attempt to define exactly what this narrative consists of. To begin with the obvious, AI is a highly attractive prospect for a narrative centred around “the future of work”: Automated systems do not tend to engage in collective bargaining, have no need for biological provisions, decline holiday and sick leave, perform consistently without fatigue or distraction, and are easily scalable with services like OpenAI’s API platform.<sup id="fnref:93"><a class="footnote-ref" href="#fn:93">93</a></sup> Even if AI does not fully replace humans as per the “human-AI competition” model set out in the AEAI paper,<sup id="fnref:94"><a class="footnote-ref" href="#fn:94">94</a></sup> they can in theory augment human workers’ capabilities to achieve greater efficiency outcomes overall. It is therefore no surprise that deployment of AI in highly lucrative industries has been the subject of intense interest<sup id="fnref:95"><a class="footnote-ref" href="#fn:95">95</a></sup>. These economic potentials are directly referenced by Valley Institutions and their marketing/public relations statements<sup id="fnref:96"><a class="footnote-ref" href="#fn:96">96</a></sup>, and form the bulwark of more modest predictions made by Valley Institution figures. Sam Altman’s promises in “Moore’s Law for everything” make a lot more sense when you consider AI as a narrative of economic transformation rather than a fundamental sociopolitical “state change”—according to Altman’s statements in Davos, AI might be considered the ultimate guarantor of continuous advancement, where “every year we put out a new model [and] it’s a lot better than the year before”.<sup id="fnref:97"><a class="footnote-ref" href="#fn:97">97</a></sup></p>
+<p>In general, it is difficult to evaluate these claims of economic hyper-efficiency proposed by AI enthusiasts and Valley Institutions. There are several reasons for this:</p>
+<p>First, the state of the art in this field is advancing extremely rapidly<sup id="fnref:98"><a class="footnote-ref" href="#fn:98">98</a></sup>, with new reports and findings about capability increases constantly appearing, sometimes aided by substantial deceptions.<sup id="fnref:99"><a class="footnote-ref" href="#fn:99">99</a></sup> This makes determining the potential upper bound of AI model capabilities difficult. Any claims which reference supposedly fundamental limitations of AI models are at risk of being quickly rendered inaccurate by these advancements.<sup id="fnref:100"><a class="footnote-ref" href="#fn:100">100</a></sup> However, this does not mean that there are no critical limits and flaws with machine learning models such as the Transformer architecture—limits and flaws that are unlikely to be resolved by scaling up the datasets and parameter counts of these models. One of the most notable is the tendency for models to emit linguistically coherent output that is uncorrelated with reality, otherwise known as hallucination or confabulation<sup id="fnref:101"><a class="footnote-ref" href="#fn:101">101</a></sup>. These flaws are hard to detect and hard to diagnose given the realities of black-box models. As such, model performance is hard to correlate with average human performance, with generative models sometimes exceeding human expectations and sometimes demonstrating unexpected and seemingly elementary mistakes.<sup id="fnref:102"><a class="footnote-ref" href="#fn:102">102</a></sup> This “surprising” quality of model failure will only become more prominent as model performance improves and their weaknesses are partially mitigated by techniques such as Reinforcement Learning from Human Feedback (RLHF<sup id="fnref:103"><a class="footnote-ref" href="#fn:103">103</a></sup>)—as the public and non-technical institutions trust AI models more and implement them into more large-scale use-cases, their failures will become more shocking and more impactful.<sup id="fnref:104"><a class="footnote-ref" href="#fn:104">104</a></sup></p>
+<p>Second, intentional obfuscation about the exact capabilities, resource usage, or other fundamental properties of state of the art AI models is common. For example, OpenAI has cited competition and safety concerns as the reason they still have not released the weights and model architecture of GPT-4 publicly<sup id="fnref:105"><a class="footnote-ref" href="#fn:105">105</a></sup>, despite offering an API platform for commercial and non-commercial usage of the model. While Meta<sup id="fnref:106"><a class="footnote-ref" href="#fn:106">106</a></sup> and Google<sup id="fnref:107"><a class="footnote-ref" href="#fn:107">107</a></sup> have released so-called “open models” by releasing the model weights for public download, by not releasing the training datasets and technical specifications they follow a model more similar to shareware or freeware<sup id="fnref:108"><a class="footnote-ref" href="#fn:108">108</a></sup> rather than the open source ideals they reference publicly<sup id="fnref:109"><a class="footnote-ref" href="#fn:109">109</a></sup>.</p>
+<p>Third, the actual means for achieving this promised economic transformation remain unclear. So far, all of the Valley Institutions have pursued similar tactics for monetising AI, producing chatbots and other AI-powered tools that allow consumers interact directly with powerful AI models. While these tools are undoubtedly promising for replacing intellectual work on a low level,<sup id="fnref:110"><a class="footnote-ref" href="#fn:110">110</a></sup> the most powerful aspect of AI as promised by its proponents is the possibility for human-level automated agents to accomplish tasks entirely without human oversight. That would allow intellectual labour to be massively parallelised and completed rapidly without hiring large teams of humans, becoming an endeavour similar to the large-scale automation of car factories. In essence, such a transformation would mean that some domains of intellectual labour no longer require any human involvement and would therefore be limited only by the speed and availability of computing hardware. At present, this technology does exist, but only for a number of bounded use-cases like content recommendation, content generation, or content moderation—this is particularly of note in the case of Facebook which I will examine later. If this form of automation becomes widespread in industry, businesses who are the first movers in adopting mass-scale AI will easily out-compete their rivals due to lower labour costs and higher efficiency, making fear of missing out or “being late to the party” a major part of the economic narrative for Valley Institutions. If this form of automation could be applied in the domain of scientific research, the rate of scientific progress would experience a rapid “takeoff”—a scenario referred to as “PASTA” in AI safety circles.<sup id="fnref:111"><a class="footnote-ref" href="#fn:111">111</a></sup></p>
+<p>So far, however, PASTA remains a fantasy. LLM-based AI models remain brittle in their abilities to emulate humans,<sup id="fnref:112"><a class="footnote-ref" href="#fn:112">112</a></sup> with strange and hard to anticipate failure modes and a tendency to regress to stock answers (an effect that becomes more noteable when retrained on LLM-generated data).<sup id="fnref:113"><a class="footnote-ref" href="#fn:113">113</a></sup> In essence, bets on current generation technology leading to this human-level “takeoff” scenario assume that linguistic or symbolic representations of real life phenomena can substitute for physical experience with those phenomena—in other words, they constitute a bet that “the map is as good as the territory” for the purposes of certain tasks. While AI models have been able to speed up certain parts of intellectual work today, no model for automated human-level agentic behaviour has been implemented so far—something that may be ultimately a benefit to society as unscoped AI systems are one of the shared concerns for both AI safety and AI ethics proponents.<sup id="fnref:114"><a class="footnote-ref" href="#fn:114">114</a></sup> The risk of funding running out before such ultra-profitable models of AI are implemented is a realistic concern for AI companies, many of which are having trouble attracting more funding after initial eye-raising investment rounds.<sup id="fnref:115"><a class="footnote-ref" href="#fn:115">115</a></sup> If this happens, generative AI may well suffer another “AI winter” and a slow death not unlike that predicted for Amazon Alexa and Google Assistant<sup id="fnref:116"><a class="footnote-ref" href="#fn:116">116</a></sup>.</p>
+<p>Given these caveats, what can we say about the economic narrative powering the current wave of AI investment? It’s clear that enthusiasm and hype are directly tied to AI models demonstrating powerful, awe-inspiring, even worrying capabilities. It’s also clear that the easiest way to get more investment is to demonstrate more powerful and novel capabilities. I believe the Valley Institutions are participants in a vicious cycle, where heavy up-front investment in compute and training allows for the demonstration of new and novel capabilities, which creates market hype and leads to re-investment. However, said hype also leads to a higher expectation for even more advanced capabilities in the next round of model releases. Furthermore, in a situation similar to a pyramid scheme, the development of each round of new models requires massive economic expenditure far outpacing existing revenue streams.<sup id="fnref:117"><a class="footnote-ref" href="#fn:117">117</a></sup> Thus, new investment and cash injections are constantly required to maintain the cycle.<sup id="fnref:118"><a class="footnote-ref" href="#fn:118">118</a></sup> While many major AI developers claim to be pursuing “responsible scaling” and safe development<sup id="fnref:119"><a class="footnote-ref" href="#fn:119">119</a></sup>; the reality remains that they are economically incentivised to constantly produce new models with yet more powerful and untested capabilities and introduce them to the market as soon as they are developed. In this light, it is unsurprising that the open letter from the Future of Life Institute calling for a six-month pause on AI development failed to stop AI research in the Valley despite many notable Valley signatories.<sup id="fnref:120"><a class="footnote-ref" href="#fn:120">120</a></sup> Indeed, many supposed safety guarantees later turn out to be more public relations efforts than genuine safety investments.<sup id="fnref:121"><a class="footnote-ref" href="#fn:121">121</a></sup> The Valley Institutions must do this in order to continue fuelling the cycle—or else risk going out of business.</p>
+<h2 id="case-study-meta">Case Study - Meta</h2>
+<p>Thus far I have considered the cultural, ideological, economic, and narrative factors behind the current process of AI development in the Valley Institutions. Now I will examine a case study of those factors as they relate to a particular group, both in terms of the development process and its consequences. The Valley Institution I have chosen to examine in close detail is Meta, previously known as Facebook. Meta is an ideal Valley Institution to examine for various reasons. Its competitors like Alphabet, Microsoft, and Amazon all feature divisions focused on physical products like self-driving cars, smart speakers, or phones, but Meta’s first concern is the user experience on sites like Facebook and Instagram. Since the company (up until its rebranding) featured a remarkable unity of purpose, we can see clearly how AI development impacts a specific product offering as well as how it impacts the institution as a whole.</p>
+<p>For this section I am greatly indebted to the insider accounts provided by Jeff Horwitz in his book <em>Broken Code</em><sup id="fnref:122"><a class="footnote-ref" href="#fn:122">122</a></sup>. This allows us to somewhat circumvent the methodological difficulties found in books like Eriksson et al.’s <em>Spotify Teardown</em>, which have been criticised for “unnecessarily and speculatively reducing the complexity of organizational decision-making” because they have limited access to internal decision makers.<sup id="fnref:123"><a class="footnote-ref" href="#fn:123">123</a></sup> However, <em>Broken Code</em> also makes clear that Meta is far from a monolithic singular entity. Therefore, when I speak of “Facebook” or “Meta”’s incentives, I speak mostly of the incentives for the institution as a capitalist corporate entity, rather than any incentives that drove particular teams. I will also be focusing on AI’s role in developing the social network Facebook as it is Meta’s most recognisable product and has the most users.</p>
+<p>Facebook’s development of AI is part of the site’s core user experience. A 2016 Facebook Engineering article describing the “Facebook Learner” system states that:</p>
+<blockquote>
+<p>“Many of the experiences and interactions people have on Facebook today are made possible with AI.  When you log in to Facebook, we use the power of machine learning to provide you with unique, personalized experiences. Machine learning models are part of ranking and personalizing News Feed stories, filtering out offensive content, highlighting trending topics, ranking search results, and much more.<sup id="fnref:124"><a class="footnote-ref" href="#fn:124">124</a></sup>”</p>
+</blockquote>
+<p>While this statement’s use of active language (“we use the power of…”) seems to reflect an intentional desire to deploy AI, in some sense Facebook’s reliance on AI systems is unsurprising. Although Facebook positions itself as a neutral service that “give[s] people a voice” to connect with each other<sup id="fnref:125"><a class="footnote-ref" href="#fn:125">125</a></sup>, it exercises editorial control over the content it promotes to users in areas like the News Feed. This content curation is a form of intellectual labour Facebook carries out through AI systems.<sup id="fnref:126"><a class="footnote-ref" href="#fn:126">126</a></sup> With monthly active users (MAU) surpassing 500 million by 2010 and reaching more than 3 billion today,<sup id="fnref:127"><a class="footnote-ref" href="#fn:127">127</a></sup> it would simply be unfeasible for Facebook to hire enough employees to manually curate the content shown to every Facebook user. In that sense, AI as an economic labour-saving device is a prerequisite to operating a website like Facebook <em>at the scale Facebook’s leadership desires</em>. Furthermore, the use of these AI systems engenders a beneficial feedback loop: a more effective content recommendation system increases user engagement and therefore exposes users to more ads, providing Facebook with more behavioural data and advertising revenue to invest into improving its AI systems. Zuboff outlines this cycle of behavioural surplus extraction in <em>Surveillance Capitalism</em><sup id="fnref:128"><a class="footnote-ref" href="#fn:128">128</a></sup>, and we may clearly conclude that economic factors (see “Economics of AI”) are preeminent in driving Meta’s development of AI technology in fields like NLP.</p>
+<p>From an ideological perspective (see “Telos of AI”), even after the founding of the Facebook AI Research (FAIR) lab in 2015<sup id="fnref:129"><a class="footnote-ref" href="#fn:129">129</a></sup> Facebook did not seem to demonstrate a public commitment to TESCREAL. I believe some of this recalcitrance may be attributed to the hiring of Yann LeCun, a famous AI researcher, as the head of FAIR. LeCun has publicly expressed doubt regarding many facets of TESCREAL such as the concept of AGI or the threats to humanity posed by AI systems.<sup id="fnref:130"><a class="footnote-ref" href="#fn:130">130</a></sup> Despite this, he promises that “in the future, everyone&rsquo;s interaction with the digital world, and the world of knowledge more generally, is going to be mediated by AI systems”.<sup id="fnref:131"><a class="footnote-ref" href="#fn:131">131</a></sup> By suggesting that AI systems will control “our entire information diet” and how we interact with online services, LeCun is essentially suggesting a complete takeover of society by AI—especially given our earlier considerations of software “eating the world”. Thus, for LeCun AI development appears to be a no-lose scenario, a position that aligns well with Facebook’s heavy economic reliance on AI.<sup id="fnref:132"><a class="footnote-ref" href="#fn:132">132</a></sup></p>
+<p>Perhaps unsurprisingly, Meta has adopted a relatively cavalier posture towards AI related risks, existential or otherwise. They have open-sourced some of their AI research, including the popular PyTorch platform for creating AI models.<sup id="fnref:133"><a class="footnote-ref" href="#fn:133">133</a></sup> FAIR has also produced models capable of deceiving and manipulating humans during simulated board games.<sup id="fnref:134"><a class="footnote-ref" href="#fn:134">134</a></sup> We can view this risk-positive attitude in AI as continuation of Silicon Valley <em>business as usual</em> (see “Software and AI”), especially since Facebook found its first major investment and growth in the Valley. This attitude is also reflected in Horwitz’s interviews with Brian Boland, a vice president for Facebook’s Advertising and Partnerships divisions: “Building things is way more fun than making things secure and safe,” Horwitz recalls him saying, “Until there’s a regulatory or press fire, you don’t deal with it.<sup id="fnref:135"><a class="footnote-ref" href="#fn:135">135</a></sup>”</p>
+<p>Facebook’s adoption of Silicon Valley dogma extended beyond their attitude towards risk. Meta’s internal communications reflected an intentional distancing from traditional corporate culture in favour of an techno-solutionist position similar to that outlined by Karpf and Barbrook. Horwitz writes, </p>
+<blockquote>
+<p>“An internal manifesto from 2012 known as the Red Book declared that “Facebook was not created to be a company” and urged its employees to think more ambitiously than corporate goals. “CHANGING HOW PEOPLE COMMUNICATE WILL ALWAYS CHANGE THE WORLD,” the book stated above an illustration of a printing press.<sup id="fnref:136"><a class="footnote-ref" href="#fn:136">136</a></sup>”</p>
+</blockquote>
+<p>In addition to this, an infamous leaked memo by Facebook VP Andrew Bosworth suggested that “The ugly truth is that we [at Facebook] believe in connecting people so deeply that anything that allows us to connect more people more often is *de facto* good. It is perhaps the only area where the metrics do tell the true story as far as we are concerned.<sup id="fnref:137"><a class="footnote-ref" href="#fn:137">137</a></sup>” Similar to my analysis of TESCREAL, we can see here the use of a nebulous higher goal like “connecting people” or “changing how people communicate” to justify any number of actions undertaken by Facebook.<sup id="fnref:138"><a class="footnote-ref" href="#fn:138">138</a></sup> However, his emphasis on “the metrics” telling a true story reflects a different way Facebook guides its actions—one that is very distant from any high-minded ideals Facebook’s leadership may possess.</p>
+<p>In <em>Seeing Like a State</em>, James C. Scott outlines the need for states or other institutions to have an all-seeing or panoptic capacity in order to meet goals or fully utilise available resources.<sup id="fnref:139"><a class="footnote-ref" href="#fn:139">139</a></sup> Economic institutions such as companies have a similar need to perceive their own economic position. To do this, institutions often use metrics as tools to set goals and measure progress: for example, the Consumer Price Index is used in the United States as a synthetic metric for inflation. Horwitz points out that a similar obsession with measurable performance existed at Facebook, neatly summarised by the phrase “data wins arguments”.<sup id="fnref:140"><a class="footnote-ref" href="#fn:140">140</a></sup> Leadership and engineers inside Facebook used metrics like Daily Active Users (DAU) and later Meaningful Social Interactions (MSI) to quantify how well its systems were performing and give the organisation collective goals to optimise towards.<sup id="fnref:141"><a class="footnote-ref" href="#fn:141">141</a></sup></p>
+<p>Of course, by defining a metric you necessarily ignore some factors too complicated or difficult to measure, and policies based purely on metrics run the risk of colliding with those confounding factors. Furthermore, this act of measurement often reflects unconscious or hidden assumptions made by the party setting the metric. Finally, even if you have good metrics for what you wish to measure, they can be measured inaccurately or become the target of overoptimisation and therefore lose their efficacy. Facebook, combining a disruption-oriented and risk-positive workplace culture with a strong reliance on metrics to measure progress, fell prey to all of these pitfalls. The “Facebook Learner” system mentioned above was an attempt to make machine learning an accessible tool for all Facebook engineers, replacing a deep theoretical understanding of AI with ease of use and the ability to run “hundreds of experiments” to quickly improve metrics.<sup id="fnref:142"><a class="footnote-ref" href="#fn:142">142</a></sup> These “experiments” (a euphemism for unannounced changes to the Facebook website for a random portion of users) featured limited experimental controls, relatively short durations that did not allow long term effects to manifest, and no meaningful consent from the users they were targeted at.<sup id="fnref:143"><a class="footnote-ref" href="#fn:143">143</a></sup> As a result, the harmful effects of optimising for metrics like MSI (which turned out to increase aggressive interactions online) were allowed to not only persist but become a core part of Facebook’s AI-powered content recommendation system. Finally, a haphazard Valley startup environment that prioritised “building things” and shipping new features meant that even the people in charge of building those systems did not know precisely what data they depended on to function, or where that data could be found: Horwitz recalls that “Engineers and data scientists described living with perpetual uncertainty about where user data was being collected and stored—a poorly labeled data table could be a redundant file or a critical component of an important product.<sup id="fnref:144"><a class="footnote-ref" href="#fn:144">144</a></sup>”</p>
+<p>These poor practices meant that while short term gains in key engagement were reported, over a longer window user trust in Facebook as a whole was eroded, with the site gaining a reputation for being a haven of fake news and incendiary content.<sup id="fnref:145"><a class="footnote-ref" href="#fn:145">145</a></sup>  Large sections of <em>Broken Code</em> are devoted to Facebook’s Civil Engagement teams working to reduce the harmful effects of Facebook’s own core product, as Facebook became tied to political violence in countries like Myanmar, America, and India. According to a leaked internal memo focusing on the “Stop the Steal” movement, Facebook was a locus of polarised election discourse and far-right insurrectionist activity in 2020: “from the earliest Groups, we saw high levels of Hate, [Violence and Incitement], and delegitimization, combined with meteoric growth rates — almost all of the fastest growing FB Groups were Stop the Steal during their peak growth”.<sup id="fnref:146"><a class="footnote-ref" href="#fn:146">146</a></sup>  If their long term goal was to use AI technology to facilitate user experiences that connected people rather than dividing them, Facebook’s short term optimisations set them backwards.</p>
+<p>However, if we observe the revenue generated through these optimisations and examine Facebook’s development of AI from a more economic lens, a different picture emerges. Facebook’s AI developments, in keeping with the goals outlined in the “Narrative of AI” section, successfully “allow[ed] intellectual labour to be massively parallelised and completed rapidly without hiring large teams of humans”. With only 15,000 human moderators for 2.5 billion users in 2019,<sup id="fnref:147"><a class="footnote-ref" href="#fn:147">147</a></sup> this human-out of the loop automation means that Facebook’s AI systems wwere given enormous agency to direct the News Feeds and (indirectly) the information diet of billions of Facebook users with no meaningful human oversight except in extreme circumstances. With 135 billion dollars in revenue in 2023 thanks to this technical feat,<sup id="fnref:148"><a class="footnote-ref" href="#fn:148">148</a></sup> Facebook is a success story for institutional development and deployment of AI at scale.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>So far, we have seen how a confluence of factors push institutions to engage in developing AI technology into powerful, unscoped, autonomous systems designed to replace humans rather than improve human capabilities. They do so because such systems are a continuation of the Valley’s dream to “[eat] the world”, because they are a main component of human “transcendence” for ideological constellations like TESCREAL, because powerful systems that can replace humans at a variety of tasks would vastly cut down labour costs, and because demonstrations of novel capabilities perpetuate a narrative of AI hype and encourage continued investment in AI. Each case of institutional AI development contains an uneven mixture of these factors, making none of them predominant in our analysis. The final question that remains, then, is one of intentionality.</p>
+<p>It is tempting to say that, because Meta’s internal methodology for deploying AI was haphazard and motivated mainly by economic concerns; it was therefore unconscious or the inevitable result of “market forces”. That would be a mistake. Facebook’s engineers were not acting unwillingly but rather (in AI parlance) as optimisers, trying whatever they could with systems like Facebook Learner to raise engagement metrics. In a manner similar to the semi-random process of gradient descent, these changes to the behaviour of Facebook were implemented piecemeal and built upon gradually, always seeking to reach consistent maximum engagement. The engineers’ behaviour was reinforced as engagement metrics were used to determine raises, promotions and bonuses, making the metrics analogous to reward signals in a reinforcement learning paradigm. And like in a reinforcement learning paradigm, the work was carried out without reference to long term consequences until internal dissent or external negative reception was combined with measurable (financial) penalties. In short, Facebook’s corporate structure was engineered by management into a massive self-regulating system with the goal of maximising user engagement. That it proceeded to function as designed is no surprise, and certainly not a natural fact of technological progress.</p>
+<p>This ultimate truth of human responsibility extends to any of the interpretations I have presented for AI. No matter if AI is borne from Silicon Valley hubris or ideological utopianism, cold economic calculation or pressure to maintain investment, the choice to develop AI is a human one, one taken to achieve human objectives. It is my hope that this close examination shows the error of calling AI development “inevitable”: in every sense of the word, AI development by large corporate institutions is a human act, one that can be addressed by reducing the expected reward or increasing the expected downsides through regulation and enforcement. Fatalism about AI serves the same purpose it always does, to make us accept without resistance what we ought to question and scrutinise. Charlie Warzel calls this “AI’s manifest-destiny philosophy: <em>this is happening, whether you like it or not</em>”.<sup id="fnref:149"><a class="footnote-ref" href="#fn:149">149</a></sup></p>
+<p><strong>[11868 words]</strong></p>
+<h2 id="bibliography">Bibliography</h2>
+<div id="bibliography"><p>Agre, Philip E. ‘Toward a Critical Technical Practice: Lessons Learned in Trying to Reform AI’, 2006. https://api.semanticscholar.org/CorpusID:114001296.  </p>
+<p>Allyn, Bobby. ‘ChatGPT Maker OpenAI Exploring How to “responsibly” Make AI Erotica’. <em>NPR</em>, 8 May 2024. https://www.npr.org/2024/05/08/1250073041/chatgpt-openai-ai-erotica-porn-nsfw.  </p>
+<p>Altman, Sam. ‘Moore’s Law for Everything’, 16 March 2021. https://moores.samaltman.com/.  </p>
+<p>Amadeo, Ron. ‘Google Lays off “Hundreds” More Employees, Strips Google Assistant Features’. <em>Ars Technica</em>, 11 January 2024. https://arstechnica.com/gadgets/2024/01/google-lays-off-hundreds-more-employees-strips-google-assistant-features/.  </p>
+<p>Andreessen, Marc. ‘The Techno-Optimist Manifesto’. A16Z, 16 October 2023. https://a16z.com/the-techno-optimist-manifesto/.  </p>
+<p>———. ‘Why Software Is Eating the World’. <em>A16Z</em> (blog), 20 August 2011. https://a16z.com/why-software-is-eating-the-world/.  </p>
+<p>Barbrook, Richard, and Andy Cameron. ‘The Californian Ideology’. <em>Mute</em>, 1 September 1995. https://www.metamute.org/editorial/articles/californian-ideology.  </p>
+<p>BetterHelp. ‘BetterHelp’, n.d. https://www.betterhelp.com/.  </p>
+<p>Breiman, Leo. ‘Statistical Modeling: The Two Cultures (with Comments and a Rejoinder by the Author)’. <em>Statistical Science</em> 16, no. 3 (1 August 2001). https://doi.org/10.1214/ss/1009213726.  </p>
+<p>Bubeck, Sébastien, Varun Chandrasekaran, Ronen Eldan, Johannes Gehrke, Eric Horvitz, Ece Kamar, Peter Lee, et al. ‘Sparks of Artificial General Intelligence: Early Experiments with GPT-4’. arXiv, 13 April 2023. http://arxiv.org/abs/2303.12712.  </p>
+<p>Cuthbertson, Anthony. ‘Company That Made an AI Its Chief Executive Sees Stocks Climb’. <em>The Independent</em>, 16 March 2023. https://www.independent.co.uk/tech/ai-ceo-artificial-intelligence-b2302091.html.  </p>
+<p>Deibert, Ronald J. ‘Introduction’. In <em>Parchment, Printing, and Hypermedia: Communication in World Order Transformation</em>. New Directions in World Politics. New York: Columbia Univ. Press, 1997.  </p>
+<p>Dell’Acqua, Fabrizio, Edward McFowland, Ethan R. Mollick, Hila Lifshitz-Assaf, Katherine Kellogg, Saran Rajendran, Lisa Krayer, François Candelon, and Karim R. Lakhani. ‘Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of AI on Knowledge Worker Productivity and Quality’. <em>SSRN Electronic Journal</em>, 2023. https://doi.org/10.2139/ssrn.4573321.  </p>
+<p><em>Devin Didn’t Solve My Computer Vision Project</em>. Youtube, 2024. https://www.youtube.com/@ComputerVisionEngineer.  </p>
+<p>Dijkstra, E. W. ‘A Note on Two Problems in Connexion with Graphs’. <em>Numerische Mathematik</em> 1, no. 1 (December 1959): 269–71. https://doi.org/10.1007/BF01386390.  </p>
+<p>Dixon, Stacy Jo. ‘Number of Monthly Active Facebook Users Worldwide as of 4th Quarter 2023’. Statista, 21 May 2024. https://www.statista.com/statistics/264810/number-of-monthly-active-facebook-users-worldwide/.  </p>
+<p>Doctorow, Cory. ‘Even If You Think AI Search Could Be Good, It Won’t Be Good’. <em>Medium</em> (blog), 15 May 2024. https://doctorow.medium.com/https-pluralistic-net-2024-05-15-they-trust-me-dumb-fucks-ai-search-b8115252e457.  </p>
+<p>Drucker, Johanna. ‘Data vs. Capta: A Brief Polemic (Data Modelling and Use)’. In <em>The Digital Humanities Coursebook: An Introduction to Digital Methods for Research and Scholarship</em>, First edition., 25–26. Abingdon, Oxon ; New York: Routledge/Taylor &amp; Francis, 2021.  </p>
+<p>Dunn, Jeffrey. ‘Introducing FBLearner Flow: Facebook’s AI Backbone’. <em>Engineering at Meta</em> (blog), 9 May 2016. https://engineering.fb.com/2016/05/09/core-infra/introducing-fblearner-flow-facebook-s-ai-backbone/.  </p>
+<p>Dwoskin, Elizabeth. ‘Misinformation on Facebook Got Six Times More Clicks than Factual News during the 2020 Election, Study Says’. <em>The Washington Post</em>, 4 September 2021. https://www.washingtonpost.com/technology/2021/09/03/facebook-misinformation-nyu-study/.  </p>
+<p>ET Online. ‘OpenAI Faces Financial Challenges amid User Decline: Experts Predict Bankruptcy Concerns’. <em>The Economic Times</em>, 14 August 2023. https://economictimes.indiatimes.com/news/new-updates/openai-faces-financial-challenges-amid-user-decline-experts-predict-bankruptcy-concerns/articleshow/102711336.cms.  </p>
+<p>Evans, Robert. ‘The Cult of AI’. <em>Rolling Stone</em>, 27 January 2024. https://www.rollingstone.com/culture/culture-features/ai-companies-advocates-cult-1234954528/.  </p>
+<p>Feng, Emily. ‘Epic Drought in Taiwan Pits Farmers against High-Tech Factories for Water’. <em>NPR</em>, 19 April 2023. https://www.npr.org/sections/goatsandsoda/2023/04/19/1170425349/epic-drought-in-taiwan-pits-farmers-against-high-tech-factories-for-water.  </p>
+<p>Fiverr. ‘Fiverr’, n.d. https://www.fiverr.com/.  </p>
+<p>Franklin, Seb. ‘Cloud Control, or the Network as Medium’. <em>Cultural Politics</em> 8, no. 3 (1 November 2012): 443–64. https://doi.org/10.1215/17432197-1722154.  </p>
+<p>Franklin, Ursula M. <em>The Real World of Technology</em>. Revised edition. CBC Massey Lectures. Toronto: Anansi, 2004.  </p>
+<p>Future of Life Institute. ‘Pause Giant AI Experiments: An Open Letter’. Future of Life Institute, 22 March 2023. https://futureoflife.org/open-letter/pause-giant-ai-experiments/.  </p>
+<p>Gebru, Timnit, and Émile P. Torres. ‘The TESCREAL Bundle: Eugenics and the Promise of Utopia through Artificial General Intelligence’. <em>First Monday</em>, 14 April 2024. https://doi.org/10.5210/fm.v29i4.13636.  </p>
+<p>Gerard, David. ‘Pivot to AI: Hallucinations Worsen as the Money Runs Out’. <em>Attack of the 50 Foot Blockchain</em> (blog), 11 April 2024. https://davidgerard.co.uk/blockchain/2024/04/11/pivot-to-ai-hallucinations-worsen-as-the-money-runs-out/.  </p>
+<p>Germain, Thomas. ‘‘Magic Intelligence in the Sky’: Sam Altman Has a Cute New Name for the Singularity’. <em>Gizmodo</em>, 13 November 2023. https://gizmodo.com/sam-altman-openai-agi-board-decision-1851017018.  </p>
+<p>Goldman, Sharon. ‘In Davos, Sam Altman Softens Tone on AGI Two Months after OpenAI Drama’. <em>VentureBeat</em>, 17 January 2024. https://venturebeat.com/ai/in-davos-sam-altman-softens-tone-on-agi-two-months-after-openai-drama/.  </p>
+<p>Goodfellow, Ian J., Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, and Yoshua Bengio. ‘Generative Adversarial Nets’. In <em>Proceedings of the 27th International Conference on Neural Information Processing Systems - Volume 2</em>, 2672–80. NIPS’14. Cambridge, MA, USA: MIT Press, 2014.  </p>
+<p>Google. ‘Gemini’, n.d. https://gemini.google.com.  </p>
+<p>Gray, Mary L., and Siddharth Suri. <em>Ghost Work: How to Stop Silicon Valley from Building a New Global Underclass</em>. Boston: Houghton Mifflin Harcourt, 2019.  </p>
+<p>Gray Widder, David, Sarah West, and Meredith Whittaker. ‘Open (For Business): Big Tech, Concentrated Power, and the Political Economy of Open AI’. <em>SSRN Electronic Journal</em>, 2023. https://doi.org/10.2139/ssrn.4543807.  </p>
+<p>Green, Lelia. ‘Technoculture: Another Term That Means Nothing and Gets Us Nowhere?’ <em>Media International Australia</em> 98, no. 1 (February 2001): 11–25. https://doi.org/10.1177/1329878X0109800105.  </p>
+<p>Hammond, George. ‘Speed of AI Development Is Outpacing Risk Assessment’. <em>The Financial Times</em>, 4 October 2024. https://arstechnica.com/ai/2024/04/speed-of-ai-development-is-outpacing-risk-assessment/.  </p>
+<p>Heath, Alex. ‘Mark Zuckerberg’s New Goal Is Creating Artificial General Intelligence’. <em>The Verge</em>, 18 January 2024. https://www.theverge.com/2024/1/18/24042354/mark-zuckerberg-meta-agi-reorg-interview.  </p>
+<p>Heilbroner, Robert L. ‘Do Machines Make History?’ <em>Technology and Culture</em> 8, no. 3 (July 1967): 335. https://doi.org/10.2307/3101719.  </p>
+<p>Horwitz, Jeff. <em>Broken Code: Inside Facebook and the Fight to Expose Its Harmful Secrets</em>. First edition. New York: Doubleday, 2023.  </p>
+<p>———. ‘Chapter 2’. In <em>Broken Code: Inside Facebook and the Fight to Expose Its Harmful Secrets</em>, First edition. New York: Doubleday, 2023.  </p>
+<p>———. ‘Chapter 3’. In <em>Broken Code: Inside Facebook and the Fight to Expose Its Harmful Secrets</em>, First edition. New York: Doubleday, 2023.  </p>
+<p>———. ‘Chapter 17’. In <em>Broken Code: Inside Facebook and the Fight to Expose Its Harmful Secrets</em>, First edition. New York: Doubleday, 2023.  </p>
+<p>Hughes, Thomas Parke. ‘Introduction’. In <em>Networks of Power: Electrification in Western Society, 1880 - 1930</em>, Softshell Books ed., 14–17. Softshell Books History of Technology. Baltimore, Md.: John Hopkins Univ. Press, 1993.  </p>
+<p>Imnimo. ‘A Class of Problem That GPT-4 Appears to Still Really Struggle with Is Variants of Common Puzzles.’ <em>Hacker News</em>, 14 March 2023. https://news.ycombinator.com/item?id=35155467.  </p>
+<p>Jensen, Tabi. ‘An AI “Sexbot” Fed My Hidden Desires—and Then Refused to Play’. <em>WIRED</em>, 9 March 2023. https://www.wired.com/story/replika-chatbot-sexuality-ai.  </p>
+<p>Jones, Nicola. ‘AI Now Beats Humans at Basic Tasks — New Benchmarks Are Needed, Says Major Report’. <em>Nature</em> 628, no. 8009 (25 April 2024): 700–701. https://doi.org/10.1038/d41586-024-01087-4.  </p>
+<p>Kahn, Jeremy. ‘Exclusive: OpenAI Promised 20% of Its Computing Power to Combat the Most Dangerous Kind of AI—but Never Delivered, Sources Say’. <em>Fortune</em>, 21 May 2024. https://fortune.com/2024/05/21/openai-superalignment-20-compute-commitment-never-fulfilled-sutskever-leike-altman-brockman-murati/.  </p>
+<p>Karnofsky, Holden. ‘Forecasting Transformative AI, Part 1: What Kind of AI?’ <em>Cold Takes</em> (blog), 10 August 2021. https://www.cold-takes.com/transformative-ai-timelines-part-1-of-4-what-kind-of-ai/.  </p>
+<p>Karpf, Dave. ‘That Old WIRED Ideology’. Substack blog. <em>The Future, Now and Then</em> (blog), n.d. https://davekarpf.substack.com/p/that-old-wired-ideology.  </p>
+<p>Lenat, Doug, and Gary Marcus. ‘Getting from Generative AI to Trustworthy AI: What LLMs Might Learn from Cyc’. arXiv, 31 July 2023. http://arxiv.org/abs/2308.04445.  </p>
+<p>Levels.fyi. ‘OpenAI’. Accessed 4 June 2024. https://www.levels.fyi/companies/openai/salaries/software-engineer.  </p>
+<p>LinkedIn. ‘OpenAI’. Accessed 4 June 2024. https://www.linkedin.com/company/openai/.  </p>
+<p>Mac, Ryan, Craig Silverman, and Jane Lytvynenko. ‘Facebook Stopped Employees From Reading An Internal Report About Its Role In The Insurrection. You Can Read It Here.’, 26 April 2021. https://www.buzzfeednews.com/article/ryanmac/full-facebook-stop-the-steal-internal-report.  </p>
+<p>Mac, Ryan, Charlie Warzel, and Alex Kantrowitz. ‘Growth At Any Cost: Top Facebook Executive Defended Data Collection In 2016 Memo — And Warned That Facebook Could Get People Killed’. <em>Buzzfeed News</em>, 29 March 2018. https://www.buzzfeednews.com/article/ryanmac/growth-at-any-cost-top-facebook-executive-defended-data.  </p>
+<p>Markelius, Alva, Connor Wright, Joahna Kuiper, Natalie Delille, and Yu-Ting Kuo. ‘The Mechanisms of AI Hype and Its Planetary and Social Costs’. <em>AI and Ethics</em>, 2 April 2024. https://doi.org/10.1007/s43681-024-00461-2.  </p>
+<p>Martin, Lauren, Nick Whitehouse, Stephanie Yiu, Lizzie Catterson, and Rivindu Perera. ‘Better Call GPT, Comparing Large Language Models Against Lawyers’. arXiv, 23 January 2024. http://arxiv.org/abs/2401.16212.  </p>
+<p>Marx, Karl. ‘Estranged Labour’. In <em>Economic and Philosophical Manuscripts of 1844</em>, 1844. https://www.marxists.org/archive/marx/works/1844/manuscripts/labour.htm.  </p>
+<p>———. ‘The Fragment on Machines’. In <em>The Grundrisse Der Kritik Der Politischen Ökonomie</em>, 690–712, 1857. https://thenewobjectivity.com/pdf/marx.pdf.  </p>
+<p>Meta. ‘Discover the Possibilities with Meta Llama’. Meta Llama, n.d. https://llama.meta.com/.  </p>
+<p>———. ‘Driven by Our Belief That AI Should Benefit Everyone’, n.d. https://ai.meta.com/responsible-ai/.  </p>
+<p>———. ‘Meta Reports Fourth Quarter and Full Year 2023 Results; Initiates Quarterly Dividend’. Meta Investor Relations, 1 February 2024. https://investor.fb.com/investor-news/press-release-details/2024/Meta-Reports-Fourth-Quarter-and-Full-Year-2023-Results-Initiates-Quarterly-Dividend/default.aspx.  </p>
+<p>———. ‘Our Story’. Meta.com, n.d. https://about.meta.com/company-info/.  </p>
+<p>———. ‘PyTorch’. Meta, n.d. https://ai.meta.com/tools/pytorch/.  </p>
+<p>Metz, Cade. ‘The Fear and Tension That Led to Sam Altman’s Ouster at OpenAI’. <em>The New York Times</em>, 18 November 2023. https://www.nytimes.com/2023/11/18/technology/open-ai-sam-altman-what-happened.html.  </p>
+<p>———. ‘“The Godfather of A.I.” Leaves Google and Warns of Danger Ahead’. <em>The New York Times</em>, 1 May 2023. https://www.nytimes.com/2023/05/01/technology/ai-google-chatbot-engineer-quits-hinton.html.  </p>
+<p>Metz, Cade, and Karen Weise. ‘Microsoft to Invest $10 Billion in OpenAI, the Creator of ChatGPT’, 23 January 2023. https://www.nytimes.com/2023/01/23/business/microsoft-chatgpt-artificial-intelligence.html.  </p>
+<p>Meyer, Michelle N. ‘Everything You Need to Know About Facebook’s Controversial Emotion Experiment’. <em>WIRED</em>, 30 June 2014. https://www.wired.com/2014/06/everything-you-need-to-know-about-facebooks-manipulative-experiment/.  </p>
+<p>MTurk. ‘Amazon Mechanical Turk’, n.d. https://www.mturk.com/.  </p>
+<p>Muniesa, Fabian. ‘Actor-Network Theory’. In <em>International Encyclopedia of the Social &amp; Behavioral Sciences</em>, 80–84. Elsevier, 2015. https://doi.org/10.1016/B978-0-08-097086-8.85001-1.  </p>
+<p>Murgia, Madhumita, and George Hammond. ‘OpenAI on Track to Hit $2bn Revenue Milestone as Growth Rockets’. <em>The Financial Times</em>, 9 February 2024. https://www.ft.com/content/81ac0e78-5b9b-43c2-b135-d11c47480119.  </p>
+<p>Newton, Casey. ‘The Trauma Floor: The Secret Lives of Facebook Moderators in America’. <em>The Verge</em>, 25 February 2019. https://www.theverge.com/2019/2/25/18229714/cognizant-facebook-content-moderator-interviews-trauma-working-conditions-arizona.  </p>
+<p>OpenAI. ‘Hello GPT-4o’, 13 May 2024. https://openai.com/index/hello-gpt-4o/.  </p>
+<p>———. ‘Introducing ChatGPT’. <em>OpenAI Blog</em> (blog), 30 November 2022. https://openai.com/blog/chatgpt.  </p>
+<p>———. ‘OpenAI’s Approach to Frontier Risk’, 26 October 2023. https://openai.com/global-affairs/our-approach-to-frontier-risk/.  </p>
+<p>———. ‘Our Structure’. OpenAI, n.d. https://openai.com/our-structure.  </p>
+<p>———. ‘The Fastest and Most Powerful Platform for Building AI Products’, n.d. https://openai.com/api/.  </p>
+<p>OpenAI, Josh Achiam, Steven Adler, Sandhini Agarwal, Lama Ahmad, Ilge Akkaya, Florencia Leoni Aleman, et al. ‘GPT-4 Technical Report’. arXiv, 4 March 2024. http://arxiv.org/abs/2303.08774.  </p>
+<p>Ouyang, Long, Jeff Wu, Xu Jiang, Diogo Almeida, Carroll L. Wainwright, Pamela Mishkin, Chong Zhang, et al. ‘Training Language Models to Follow Instructions with Human Feedback’. arXiv, 4 March 2022. http://arxiv.org/abs/2203.02155.  </p>
+<p>Park, Peter S., Simon Goldstein, Aidan O’Gara, Michael Chen, and Dan Hendrycks. ‘AI Deception: A Survey of Examples, Risks, and Potential Solutions’. <em>Patterns</em> 5, no. 5 (May 2024): 100988. https://doi.org/10.1016/j.patter.2024.100988.  </p>
+<p>Peng, Binghui, Srini Narayanan, and Christos Papadimitriou. ‘On Limitations of the Transformer Architecture’. arXiv, 26 February 2024. http://arxiv.org/abs/2402.08164.  </p>
+<p>Perrigo, Billy. ‘Meta’s AI Chief Yann LeCun on AGI, Open-Source, and AI Risk’. <em>TIME Magazine</em>, 13 February 2024. https://time.com/6694432/yann-lecun-meta-ai-interview.  </p>
+<p>Proctor, Jason. ‘Air Canada Found Liable for Chatbot’s Bad Advice on Plane Tickets’, 15 February 2024. https://www.cbc.ca/news/canada/british-columbia/air-canada-chatbot-lawsuit-1.7116416.  </p>
+<p>Rivera, Juan-Pablo, Gabriel Mukobi, Anka Reuel, Max Lamparth, Chandler Smith, and Jacquelyn Schneider. ‘Escalation Risks from Language Models in Military and Diplomatic Decision-Making’. arXiv, 7 January 2024. http://arxiv.org/abs/2401.03408.  </p>
+<p>Roose, Kevin. ‘This A.I. Subculture’s Motto: Go, Go, Go’. <em>The New York Times</em>, 10 December 2023. https://www.nytimes.com/2023/12/10/technology/ai-acceleration.html.  </p>
+<p>Sadowski, Jathan. ‘Potemkin AI’. <em>Real Life</em>, 6 August 2018. https://reallifemag.com/potemkin-ai/.  </p>
+<p>Samuel, Sigal. ‘“I Lost Trust”: Why the OpenAI Team in Charge of Safeguarding Humanity Imploded’. <em>Vox</em>, 19 May 2024. https://www.vox.com/future-perfect/2024/5/17/24158403/openai-resignations-ai-safety-ilya-sutskever-jan-leike-artificial-intelligence.  </p>
+<p>Schüll, Natasha Dow. ‘Introduction: Mapping the Machine Zone’. In <em>Addiction by Design: Machine Gambling in Las Vegas</em>. Princeton: Princeton university press, 2014.  </p>
+<p>Scott, James C. <em>Seeing like a State: How Certain Schemes to Improve the Human Condition Have Failed</em>. Veritas paperback edition. Yale Agrarian Studies. New Haven, CT London: Yale University Press, 2020.  </p>
+<p>Seaver, Nick. ‘Review of Spotify Teardown: Inside the Black Box of Streaming Music, by Maria Eriksson, Rasmus Fleischer, Anna Johansson, et Al.’ <em>Information &amp; Culture: A Journal of History</em> 54, no. 3 (2019): 396–98.  </p>
+<p>Shiller, Robert James. ‘1. The Bitcoin Narratives’. In <em>Narrative Economics: How Stories Go Viral &amp; Drive Major Economic Events</em>. Book Collections on Project MUSE. Princeton: Princeton University press, 2019.  </p>
+<p>———. <em>Narrative Economics: How Stories Go Viral &amp; Drive Major Economic Events</em>. Book Collections on Project MUSE. Princeton: Princeton University press, 2019.  </p>
+<p>Shumailov, Ilia, Zakhar Shumaylov, Yiren Zhao, Yarin Gal, Nicolas Papernot, and Ross Anderson. ‘The Curse of Recursion: Training on Generated Data Makes Models Forget’. arXiv, 14 April 2024. http://arxiv.org/abs/2305.17493.  </p>
+<p>Siddarth, Divya, Daron Acemoglu, Danielle Allen, Kate Crawford, James Evans, Michael Jordan, and E. Glen Weyl. ‘How AI Fails Us’. Harvard University Carr Centre for Human Rights Policy and Justice, Health, and Democracy Impact Initiative, 1 December 2021. https://ethics.harvard.edu/how-ai-fails-us.  </p>
+<p>Silver, David, Julian Schrittwieser, Karen Simonyan, Ioannis Antonoglou, Aja Huang, Arthur Guez, Thomas Hubert, et al. ‘Mastering the Game of Go without Human Knowledge’. <em>Nature</em> 550, no. 7676 (October 2017): 354–59. https://doi.org/10.1038/nature24270.  </p>
+<p>Simon, Charles, and Forbes Technology Council. ‘AGI Is Ready To Emerge (Along With The Risks It Will Bring)’, 27 July 2022. https://www.forbes.com/sites/forbestechcouncil/2022/07/27/agi-is-ready-to-emerge-along-with-the-risks-it-will-bring/?sh=181711d2332e.  </p>
+<p>Steinberg, Arieh, Mark Tonkelowitz, Peter Deng, Adam Mosseri, Adam Hupp, Aaron Sittig, and Mark Zuckerberg. Filtering content in a social networking service. 10379703, filed 26 June 2015, and issued 13 August 2019.  </p>
+<p>Takahashi, Dean. ‘Altera Raises $9M to Develop AI for Digital Humans’. VentureBeat (GamesBeat), 8 May 2024. https://venturebeat.com/games/altera-raises-9m-to-develop-ai-for-digital-humans/.  </p>
+<p>Tangermann, Victor. ‘OpenAI Employees Say Firm’s Chief Scientist Has Been Making Strange Spiritual Claims’. <em>Futurism</em>, 20 November 2023. https://futurism.com/openai-employees-say-firms-chief-scientist-has-been-making-strange-spiritual-claims.  </p>
+<p>The Associated Press. ‘Amazon Cuts Hundreds of Jobs in Its Alexa Unit as It Doubles down on Layoffs That Already Total More than 27,000 over the Past Year’. <em>Fortune</em>, 17 November 2023. https://fortune.com/2023/11/17/amazon-layoffs-alexa-division-ai-andy-jassy/.  </p>
+<p>Troy, Dave. ‘The Wide Angle: Understanding TESCREAL — the Weird Ideologies Behind Silicon Valley’s Rightward Turn’. <em>The Washington Spectator</em>, 1 May 2023. https://washingtonspectator.org/understanding-tescreal-silicon-valleys-rightward-turn/.  </p>
+<p>Turing, A. M. ‘On Computable Numbers, with an Application to the Entscheidungsproblem’. <em>Proceedings of the London Mathematical Society</em> s2-42, no. 1 (1937): 230–65. https://doi.org/10.1112/plms/s2-42.1.230.  </p>
+<p>Udandarao, Vishaal, Ameya Prabhu, Adhiraj Ghosh, Yash Sharma, Philip H. S. Torr, Adel Bibi, Samuel Albanie, and Matthias Bethge. ‘No “Zero-Shot” Without Exponential Data: Pretraining Concept Frequency Determines Multimodal Model Performance’. arXiv, 8 April 2024. http://arxiv.org/abs/2404.04125.  </p>
+<p>Vallance, Chris. ‘Artificial Intelligence Could Lead to Extinction, Experts Warn’. <em>BBC</em>, 30 May 2023. https://www.bbc.com/news/uk-65746524.  </p>
+<p>Vaswani, Ashish, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. ‘Attention Is All You Need’. arXiv, 1 August 2023. http://arxiv.org/abs/1706.03762.  </p>
+<p>Vincent, James. ‘How Much Electricity Does AI Consume?’, 16 February 2024. https://www.theverge.com/24066646/ai-electricity-energy-watts-generative-consumption.  </p>
+<p>Vinge, Vernor. ‘The Coming Technological Singularity’. <em>Whole Earth Review</em>, 1993. https://accelerating.org/articles/comingtechsingularity.  </p>
+<p>Warzel, Charlie. ‘OpenAI Just Gave Away the Entire Game’. <em>The Atlantic</em>, 24 May 2024. https://www.theatlantic.com/technology/archive/2024/05/openai-scarlett-johansson-sky/678446/.  </p>
+<p>Wenar, Leif. ‘The Deaths of Effective Altruism’. <em>WIRED</em>, 27 March 2024. https://www.wired.com/story/deaths-of-effective-altruism/.  </p>
+<p><em>Yann LeCun: Meta’s New AI Model LLaMA; Why Elon Is Wrong about AI; Open-Source AI Models | E1014 (Starting 25:01)</em>, n.d. https://www.youtube.com/watch?v=OgWaowYiBPM.  </p>
+<p>Yao, Deborah. ‘Microsoft’s GitHub Copilot Loses $20 a Month Per User’, 11 October 2023. https://aibusiness.com/nlp/github-copilot-loses-20-a-month-per-user.  </p>
+<p>Zuboff, Shoshana. <em>The Age of Surveillance Capitalism: The Fight for a Human Future at the New Frontier of Power</em>. First trade paperback edition. New York, NY: PublicAffairs, 2020.  </p>
+<p>———. ‘The Discovery of Behavioural Surplus’. In <em>The Age of Surveillance Capitalism: The Fight for a Human Future at the New Frontier of Power</em>, chap. 3. London: Profile books, 2019.</p></div>
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Simon and Forbes Technology Council, ‘AGI Is Ready To Emerge (Along With The Risks It Will Bring)’.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Schüll, ‘Introduction: Mapping the Machine Zone’.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>Ibid.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>Barbrook and Cameron, ‘The Californian Ideology’.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>Gebru and Torres, ‘The TESCREAL Bundle’.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>Siddarth et al., ‘How AI Fails Us’.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>Zuboff, <em>The Age of Surveillance Capitalism</em>.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>Also referred to as “Andreessen Horowitz”.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>Hughes, ‘Introduction’.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>Ibid.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>Heilbroner, ‘Do Machines Make History?’&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>Franklin, <em>The Real World of Technology</em>.&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>Green, ‘Technoculture’.&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:14">
+<p>Heilbroner, ‘Do Machines Make History?’&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+<li id="fn:15">
+<p>Deibert, ‘Introduction’.&#160;<a class="footnote-backref" href="#fnref:15" title="Jump back to footnote 15 in the text">&#8617;</a></p>
+</li>
+<li id="fn:16">
+<p>Siddarth et al., ‘How AI Fails Us’.&#160;<a class="footnote-backref" href="#fnref:16" title="Jump back to footnote 16 in the text">&#8617;</a></p>
+</li>
+<li id="fn:17">
+<p>Gray and Suri, <em>Ghost Work</em>.&#160;<a class="footnote-backref" href="#fnref:17" title="Jump back to footnote 17 in the text">&#8617;</a></p>
+</li>
+<li id="fn:18">
+<p>Silver et al., ‘Mastering the Game of Go without Human Knowledge’.&#160;<a class="footnote-backref" href="#fnref:18" title="Jump back to footnote 18 in the text">&#8617;</a></p>
+</li>
+<li id="fn:19">
+<p>Bubeck et al., ‘Sparks of Artificial General Intelligence’.&#160;<a class="footnote-backref" href="#fnref:19" title="Jump back to footnote 19 in the text">&#8617;</a></p>
+</li>
+<li id="fn:20">
+<p>Martin et al., ‘Better Call GPT, Comparing Large Language Models Against Lawyers’.&#160;<a class="footnote-backref" href="#fnref:20" title="Jump back to footnote 20 in the text">&#8617;</a></p>
+</li>
+<li id="fn:21">
+<p>Rivera et al., ‘Escalation Risks from Language Models in Military and Diplomatic Decision-Making’.&#160;<a class="footnote-backref" href="#fnref:21" title="Jump back to footnote 21 in the text">&#8617;</a></p>
+</li>
+<li id="fn:22">
+<p>Sadowski, ‘Potemkin AI’.&#160;<a class="footnote-backref" href="#fnref:22" title="Jump back to footnote 22 in the text">&#8617;</a></p>
+</li>
+<li id="fn:23">
+<p>Siddarth et al., ‘How AI Fails Us’.&#160;<a class="footnote-backref" href="#fnref:23" title="Jump back to footnote 23 in the text">&#8617;</a></p>
+</li>
+<li id="fn:24">
+<p>Jensen, ‘An AI “Sexbot” Fed My Hidden Desires—and Then Refused to Play’.&#160;<a class="footnote-backref" href="#fnref:24" title="Jump back to footnote 24 in the text">&#8617;</a></p>
+</li>
+<li id="fn:25">
+<p>Marx, ‘The Fragment on Machines’.&#160;<a class="footnote-backref" href="#fnref:25" title="Jump back to footnote 25 in the text">&#8617;</a></p>
+</li>
+<li id="fn:26">
+<p>Marx, ‘Estranged Labour’.&#160;<a class="footnote-backref" href="#fnref:26" title="Jump back to footnote 26 in the text">&#8617;</a></p>
+</li>
+<li id="fn:27">
+<p>Muniesa, ‘Actor-Network Theory’.&#160;<a class="footnote-backref" href="#fnref:27" title="Jump back to footnote 27 in the text">&#8617;</a></p>
+</li>
+<li id="fn:28">
+<p>Shiller, <em>Narrative Economics</em>.&#160;<a class="footnote-backref" href="#fnref:28" title="Jump back to footnote 28 in the text">&#8617;</a></p>
+</li>
+<li id="fn:29">
+<p>Turing, ‘On Computable Numbers, with an Application to the Entscheidungsproblem’.&#160;<a class="footnote-backref" href="#fnref:29" title="Jump back to footnote 29 in the text">&#8617;</a></p>
+</li>
+<li id="fn:30">
+<p>Andreessen, ‘Why Software Is Eating the World’.&#160;<a class="footnote-backref" href="#fnref:30" title="Jump back to footnote 30 in the text">&#8617;</a></p>
+</li>
+<li id="fn:31">
+<p>Ibid.&#160;<a class="footnote-backref" href="#fnref:31" title="Jump back to footnote 31 in the text">&#8617;</a></p>
+</li>
+<li id="fn:32">
+<p>Drucker, ‘Data vs. Capta: A Brief Polemic (Data Modelling and Use)’.&#160;<a class="footnote-backref" href="#fnref:32" title="Jump back to footnote 32 in the text">&#8617;</a></p>
+</li>
+<li id="fn:33">
+<p>Dijkstra, ‘A Note on Two Problems in Connexion with Graphs’.&#160;<a class="footnote-backref" href="#fnref:33" title="Jump back to footnote 33 in the text">&#8617;</a></p>
+</li>
+<li id="fn:34">
+<p>Barbrook and Cameron, ‘The Californian Ideology’.&#160;<a class="footnote-backref" href="#fnref:34" title="Jump back to footnote 34 in the text">&#8617;</a></p>
+</li>
+<li id="fn:35">
+<p>Zuboff, ‘The Discovery of Behavioural Surplus’.&#160;<a class="footnote-backref" href="#fnref:35" title="Jump back to footnote 35 in the text">&#8617;</a></p>
+</li>
+<li id="fn:36">
+<p>The importance of scale will become evident in the case study section.&#160;<a class="footnote-backref" href="#fnref:36" title="Jump back to footnote 36 in the text">&#8617;</a></p>
+</li>
+<li id="fn:37">
+<p>Breiman, ‘Statistical Modeling’.&#160;<a class="footnote-backref" href="#fnref:37" title="Jump back to footnote 37 in the text">&#8617;</a></p>
+</li>
+<li id="fn:38">
+<p>Barbrook and Cameron, ‘The Californian Ideology’.&#160;<a class="footnote-backref" href="#fnref:38" title="Jump back to footnote 38 in the text">&#8617;</a></p>
+</li>
+<li id="fn:39">
+<p>Takahashi, ‘Altera Raises $9M to Develop AI for Digital Humans’.&#160;<a class="footnote-backref" href="#fnref:39" title="Jump back to footnote 39 in the text">&#8617;</a></p>
+</li>
+<li id="fn:40">
+<p>Feng, ‘Epic Drought in Taiwan Pits Farmers against High-Tech Factories for Water’.&#160;<a class="footnote-backref" href="#fnref:40" title="Jump back to footnote 40 in the text">&#8617;</a></p>
+</li>
+<li id="fn:41">
+<p>Franklin, ‘Cloud Control, or the Network as Medium’.&#160;<a class="footnote-backref" href="#fnref:41" title="Jump back to footnote 41 in the text">&#8617;</a></p>
+</li>
+<li id="fn:42">
+<p>Drucker, ‘Data vs. Capta: A Brief Polemic (Data Modelling and Use)’.&#160;<a class="footnote-backref" href="#fnref:42" title="Jump back to footnote 42 in the text">&#8617;</a></p>
+</li>
+<li id="fn:43">
+<p>Doctorow, ‘Even If You Think AI Search Could Be Good, It Won’t Be Good’.&#160;<a class="footnote-backref" href="#fnref:43" title="Jump back to footnote 43 in the text">&#8617;</a></p>
+</li>
+<li id="fn:44">
+<p>Goodfellow et al., ‘Generative Adversarial Nets’.&#160;<a class="footnote-backref" href="#fnref:44" title="Jump back to footnote 44 in the text">&#8617;</a></p>
+</li>
+<li id="fn:45">
+<p>OpenAI, ‘Introducing ChatGPT’.&#160;<a class="footnote-backref" href="#fnref:45" title="Jump back to footnote 45 in the text">&#8617;</a></p>
+</li>
+<li id="fn:46">
+<p>Vaswani et al., ‘Attention Is All You Need’.&#160;<a class="footnote-backref" href="#fnref:46" title="Jump back to footnote 46 in the text">&#8617;</a></p>
+</li>
+<li id="fn:47">
+<p>Bubeck et al., ‘Sparks of Artificial General Intelligence’.&#160;<a class="footnote-backref" href="#fnref:47" title="Jump back to footnote 47 in the text">&#8617;</a></p>
+</li>
+<li id="fn:48">
+<p>This is sometimes mentioned alongside the concept of Artificial Superintelligence (ASI), but since the boundary between the two terms is unclear I shall use the more common term.&#160;<a class="footnote-backref" href="#fnref:48" title="Jump back to footnote 48 in the text">&#8617;</a></p>
+</li>
+<li id="fn:49">
+<p><a href="https://www.theverge.com/2024/1/18/24042354/mark-zuckerberg-meta-agi-reorg-interview">“</a>OpenAI’s stated mission is to create this artificial general intelligence, or AGI. Demis Hassabis, the leader of Google’s AI efforts, <a href="https://www.theverge.com/23778745/demis-hassabis-google-deepmind-ai-alphafold-risks">has the same goal</a>. Now, Meta CEO Mark Zuckerberg is entering the race.”&#160;<a class="footnote-backref" href="#fnref:49" title="Jump back to footnote 49 in the text">&#8617;</a></p>
+</li>
+<li id="fn:50">
+<p>Vinge, ‘The Coming Technological Singularity’.&#160;<a class="footnote-backref" href="#fnref:50" title="Jump back to footnote 50 in the text">&#8617;</a></p>
+</li>
+<li id="fn:51">
+<p>Germain, ‘‘Magic Intelligence in the Sky’: Sam Altman Has a Cute New Name for the Singularity’.&#160;<a class="footnote-backref" href="#fnref:51" title="Jump back to footnote 51 in the text">&#8617;</a></p>
+</li>
+<li id="fn:52">
+<p>OpenAI, ‘Our Structure’.&#160;<a class="footnote-backref" href="#fnref:52" title="Jump back to footnote 52 in the text">&#8617;</a></p>
+</li>
+<li id="fn:53">
+<p>Altman, ‘Moore’s Law for Everything’.&#160;<a class="footnote-backref" href="#fnref:53" title="Jump back to footnote 53 in the text">&#8617;</a></p>
+</li>
+<li id="fn:54">
+<p>Andreessen, ‘The Techno-Optimist Manifesto’.&#160;<a class="footnote-backref" href="#fnref:54" title="Jump back to footnote 54 in the text">&#8617;</a></p>
+</li>
+<li id="fn:55">
+<p>CEO of OpenAI and head of Google Deepmind.&#160;<a class="footnote-backref" href="#fnref:55" title="Jump back to footnote 55 in the text">&#8617;</a></p>
+</li>
+<li id="fn:56">
+<p>Vallance, ‘Artificial Intelligence Could Lead to Extinction, Experts Warn’.&#160;<a class="footnote-backref" href="#fnref:56" title="Jump back to footnote 56 in the text">&#8617;</a></p>
+</li>
+<li id="fn:57">
+<p>OpenAI, ‘Our Structure’.&#160;<a class="footnote-backref" href="#fnref:57" title="Jump back to footnote 57 in the text">&#8617;</a></p>
+</li>
+<li id="fn:58">
+<p>Evans, ‘The Cult of AI’.&#160;<a class="footnote-backref" href="#fnref:58" title="Jump back to footnote 58 in the text">&#8617;</a></p>
+</li>
+<li id="fn:59">
+<p>Siddarth et al., ‘How AI Fails Us’.&#160;<a class="footnote-backref" href="#fnref:59" title="Jump back to footnote 59 in the text">&#8617;</a></p>
+</li>
+<li id="fn:60">
+<p>It should be noted however that the Valley Institutions rarely paint AGI as a force they will be in full control of after it is “complete”. To the contrary, AEAI emphasises the concentration of power under “a small group of engineers of AI systems”, ultimately attributing full responsibility to the human engineers of AI.&#160;<a class="footnote-backref" href="#fnref:60" title="Jump back to footnote 60 in the text">&#8617;</a></p>
+</li>
+<li id="fn:61">
+<p>Tangermann, ‘OpenAI Employees Say Firm’s Chief Scientist Has Been Making Strange Spiritual Claims’.&#160;<a class="footnote-backref" href="#fnref:61" title="Jump back to footnote 61 in the text">&#8617;</a></p>
+</li>
+<li id="fn:62">
+<p>Karpf, ‘That Old WIRED Ideology’.&#160;<a class="footnote-backref" href="#fnref:62" title="Jump back to footnote 62 in the text">&#8617;</a></p>
+</li>
+<li id="fn:63">
+<p>Roose, ‘This A.I. Subculture’s Motto: Go, Go, Go’.&#160;<a class="footnote-backref" href="#fnref:63" title="Jump back to footnote 63 in the text">&#8617;</a></p>
+</li>
+<li id="fn:64">
+<p>Gebru and Torres, ‘The TESCREAL Bundle’.&#160;<a class="footnote-backref" href="#fnref:64" title="Jump back to footnote 64 in the text">&#8617;</a></p>
+</li>
+<li id="fn:65">
+<p>Troy, ‘The Wide Angle: Understanding TESCREAL — the Weird Ideologies Behind Silicon Valley’s Rightward Turn’.&#160;<a class="footnote-backref" href="#fnref:65" title="Jump back to footnote 65 in the text">&#8617;</a></p>
+</li>
+<li id="fn:66">
+<p>Gebru and Torres, ‘The TESCREAL Bundle’.&#160;<a class="footnote-backref" href="#fnref:66" title="Jump back to footnote 66 in the text">&#8617;</a></p>
+</li>
+<li id="fn:67">
+<p>Hammond, ‘Speed of AI Development Is Outpacing Risk Assessment’.&#160;<a class="footnote-backref" href="#fnref:67" title="Jump back to footnote 67 in the text">&#8617;</a></p>
+</li>
+<li id="fn:68">
+<p>Metz, ‘“The Godfather of A.I.” Leaves Google and Warns of Danger Ahead’.&#160;<a class="footnote-backref" href="#fnref:68" title="Jump back to footnote 68 in the text">&#8617;</a></p>
+</li>
+<li id="fn:69">
+<p>Wenar, ‘The Deaths of Effective Altruism’.&#160;<a class="footnote-backref" href="#fnref:69" title="Jump back to footnote 69 in the text">&#8617;</a></p>
+</li>
+<li id="fn:70">
+<p>Metz, ‘The Fear and Tension That Led to Sam Altman’s Ouster at OpenAI’.&#160;<a class="footnote-backref" href="#fnref:70" title="Jump back to footnote 70 in the text">&#8617;</a></p>
+</li>
+<li id="fn:71">
+<p>Samuel, ‘“I Lost Trust”: Why the OpenAI Team in Charge of Safeguarding Humanity Imploded’.&#160;<a class="footnote-backref" href="#fnref:71" title="Jump back to footnote 71 in the text">&#8617;</a></p>
+</li>
+<li id="fn:72">
+<p>Markelius et al., ‘The Mechanisms of AI Hype and Its Planetary and Social Costs’.&#160;<a class="footnote-backref" href="#fnref:72" title="Jump back to footnote 72 in the text">&#8617;</a></p>
+</li>
+<li id="fn:73">
+<p>Altman, ‘Moore’s Law for Everything’.&#160;<a class="footnote-backref" href="#fnref:73" title="Jump back to footnote 73 in the text">&#8617;</a></p>
+</li>
+<li id="fn:74">
+<p>Ibid.&#160;<a class="footnote-backref" href="#fnref:74" title="Jump back to footnote 74 in the text">&#8617;</a></p>
+</li>
+<li id="fn:75">
+<p>Including the kinds of intellectual labour traditionally performed by the managerial class and the capitalists themselves<a href="https://www.independent.co.uk/tech/ai-ceo-artificial-intelligence-b2302091.html">.</a>&#160;<a class="footnote-backref" href="#fnref:75" title="Jump back to footnote 75 in the text">&#8617;</a></p>
+</li>
+<li id="fn:76">
+<p>OpenAI, ‘Hello GPT-4o’.&#160;<a class="footnote-backref" href="#fnref:76" title="Jump back to footnote 76 in the text">&#8617;</a></p>
+</li>
+<li id="fn:77">
+<p>Allyn, ‘ChatGPT Maker OpenAI Exploring How to “responsibly” Make AI Erotica’.&#160;<a class="footnote-backref" href="#fnref:77" title="Jump back to footnote 77 in the text">&#8617;</a></p>
+</li>
+<li id="fn:78">
+<p>Fiverr, ‘Fiverr’.&#160;<a class="footnote-backref" href="#fnref:78" title="Jump back to footnote 78 in the text">&#8617;</a></p>
+</li>
+<li id="fn:79">
+<p>MTurk, ‘Amazon Mechanical Turk’.&#160;<a class="footnote-backref" href="#fnref:79" title="Jump back to footnote 79 in the text">&#8617;</a></p>
+</li>
+<li id="fn:80">
+<p>BetterHelp, ‘BetterHelp’.&#160;<a class="footnote-backref" href="#fnref:80" title="Jump back to footnote 80 in the text">&#8617;</a></p>
+</li>
+<li id="fn:81">
+<p>A similar argument explains why the Valley is loathe to invest in fundamental science research or “deep tech”, given the high costs of developing a new technology versus commercialising an existing technology.&#160;<a class="footnote-backref" href="#fnref:81" title="Jump back to footnote 81 in the text">&#8617;</a></p>
+</li>
+<li id="fn:82">
+<p>Jones, ‘AI Now Beats Humans at Basic Tasks — New Benchmarks Are Needed, Says Major Report’.&#160;<a class="footnote-backref" href="#fnref:82" title="Jump back to footnote 82 in the text">&#8617;</a></p>
+</li>
+<li id="fn:83">
+<p>Murgia and Hammond, ‘OpenAI on Track to Hit $2bn Revenue Milestone as Growth Rockets’.&#160;<a class="footnote-backref" href="#fnref:83" title="Jump back to footnote 83 in the text">&#8617;</a></p>
+</li>
+<li id="fn:84">
+<p>ET Online, ‘OpenAI Faces Financial Challenges amid User Decline: Experts Predict Bankruptcy Concerns’.&#160;<a class="footnote-backref" href="#fnref:84" title="Jump back to footnote 84 in the text">&#8617;</a></p>
+</li>
+<li id="fn:85">
+<p>LinkedIn, ‘OpenAI’.&#160;<a class="footnote-backref" href="#fnref:85" title="Jump back to footnote 85 in the text">&#8617;</a></p>
+</li>
+<li id="fn:86">
+<p>Levels.fyi, ‘OpenAI’.&#160;<a class="footnote-backref" href="#fnref:86" title="Jump back to footnote 86 in the text">&#8617;</a></p>
+</li>
+<li id="fn:87">
+<p>Yao, ‘Microsoft’s GitHub Copilot Loses $20 a Month Per User’.&#160;<a class="footnote-backref" href="#fnref:87" title="Jump back to footnote 87 in the text">&#8617;</a></p>
+</li>
+<li id="fn:88">
+<p>Vincent, ‘How Much Electricity Does AI Consume?’&#160;<a class="footnote-backref" href="#fnref:88" title="Jump back to footnote 88 in the text">&#8617;</a></p>
+</li>
+<li id="fn:89">
+<p>The Associated Press, ‘Amazon Cuts Hundreds of Jobs in Its Alexa Unit as It Doubles down on Layoffs That Already Total More than 27,000 over the Past Year’.&#160;<a class="footnote-backref" href="#fnref:89" title="Jump back to footnote 89 in the text">&#8617;</a></p>
+</li>
+<li id="fn:90">
+<p>Metz and Weise, ‘Microsoft to Invest $10 Billion in OpenAI, the Creator of ChatGPT’.&#160;<a class="footnote-backref" href="#fnref:90" title="Jump back to footnote 90 in the text">&#8617;</a></p>
+</li>
+<li id="fn:91">
+<p>Agre, ‘Toward a Critical Technical Practice: Lessons Learned in Trying to Reform AI’.&#160;<a class="footnote-backref" href="#fnref:91" title="Jump back to footnote 91 in the text">&#8617;</a></p>
+</li>
+<li id="fn:92">
+<p>Shiller, ‘1. The Bitcoin Narratives’.&#160;<a class="footnote-backref" href="#fnref:92" title="Jump back to footnote 92 in the text">&#8617;</a></p>
+</li>
+<li id="fn:93">
+<p>OpenAI, ‘The Fastest and Most Powerful Platform for Building AI Products’.&#160;<a class="footnote-backref" href="#fnref:93" title="Jump back to footnote 93 in the text">&#8617;</a></p>
+</li>
+<li id="fn:94">
+<p>Siddarth et al., ‘How AI Fails Us’.&#160;<a class="footnote-backref" href="#fnref:94" title="Jump back to footnote 94 in the text">&#8617;</a></p>
+</li>
+<li id="fn:95">
+<p>Dell’Acqua et al., ‘Navigating the Jagged Technological Frontier’.&#160;<a class="footnote-backref" href="#fnref:95" title="Jump back to footnote 95 in the text">&#8617;</a></p>
+</li>
+<li id="fn:96">
+<p>AI will aid in “increasing abundance, turbocharging the global economy, and aiding in the discovery of new scientific knowledge” as well as augment humans and “give everyone incredible new capabilities”. From <a href="https://openai.com/blog/planning-for-agi-and-beyond">https://openai.com/blog/planning-for-agi-and-beyond</a>&#160;<a class="footnote-backref" href="#fnref:96" title="Jump back to footnote 96 in the text">&#8617;</a></p>
+</li>
+<li id="fn:97">
+<p>Goldman, ‘In Davos, Sam Altman Softens Tone on AGI Two Months after OpenAI Drama’.&#160;<a class="footnote-backref" href="#fnref:97" title="Jump back to footnote 97 in the text">&#8617;</a></p>
+</li>
+<li id="fn:98">
+<p>Jones, ‘AI Now Beats Humans at Basic Tasks — New Benchmarks Are Needed, Says Major Report’.&#160;<a class="footnote-backref" href="#fnref:98" title="Jump back to footnote 98 in the text">&#8617;</a></p>
+</li>
+<li id="fn:99">
+<p><em>Devin Didn’t Solve My Computer Vision Project</em>.&#160;<a class="footnote-backref" href="#fnref:99" title="Jump back to footnote 99 in the text">&#8617;</a></p>
+</li>
+<li id="fn:100">
+<p>E.g. claims like “GPTs/LLMs will never…”&#160;<a class="footnote-backref" href="#fnref:100" title="Jump back to footnote 100 in the text">&#8617;</a></p>
+</li>
+<li id="fn:101">
+<p>Peng, Narayanan, and Papadimitriou, ‘On Limitations of the Transformer Architecture’.&#160;<a class="footnote-backref" href="#fnref:101" title="Jump back to footnote 101 in the text">&#8617;</a></p>
+</li>
+<li id="fn:102">
+<p>Imnimo, ‘A Class of Problem That GPT-4 Appears to Still Really Struggle with Is Variants of Common Puzzles.’&#160;<a class="footnote-backref" href="#fnref:102" title="Jump back to footnote 102 in the text">&#8617;</a></p>
+</li>
+<li id="fn:103">
+<p>Ouyang et al., ‘Training Language Models to Follow Instructions with Human Feedback’.&#160;<a class="footnote-backref" href="#fnref:103" title="Jump back to footnote 103 in the text">&#8617;</a></p>
+</li>
+<li id="fn:104">
+<p>Proctor, ‘Air Canada Found Liable for Chatbot’s Bad Advice on Plane Tickets’.&#160;<a class="footnote-backref" href="#fnref:104" title="Jump back to footnote 104 in the text">&#8617;</a></p>
+</li>
+<li id="fn:105">
+<p>“Given both the competitive landscape and the safety implications of large-scale models like GPT-4, this report contains no further details about the architecture (including model size), hardware, training compute, dataset construction, training method, or similar.&rdquo;&#160;<a class="footnote-backref" href="#fnref:105" title="Jump back to footnote 105 in the text">&#8617;</a></p>
+</li>
+<li id="fn:106">
+<p>Meta, ‘Discover the Possibilities with Meta Llama’.&#160;<a class="footnote-backref" href="#fnref:106" title="Jump back to footnote 106 in the text">&#8617;</a></p>
+</li>
+<li id="fn:107">
+<p>Google, ‘Gemini’.&#160;<a class="footnote-backref" href="#fnref:107" title="Jump back to footnote 107 in the text">&#8617;</a></p>
+</li>
+<li id="fn:108">
+<p>A practice where a company releases the binary executable of a program for free rather than the source code. Users can download and use the software for free, but cannot easily modify the software.&#160;<a class="footnote-backref" href="#fnref:108" title="Jump back to footnote 108 in the text">&#8617;</a></p>
+</li>
+<li id="fn:109">
+<p>Gray Widder, West, and Whittaker, ‘Open (For Business)’.&#160;<a class="footnote-backref" href="#fnref:109" title="Jump back to footnote 109 in the text">&#8617;</a></p>
+</li>
+<li id="fn:110">
+<p>This is not guaranteed, given that problems like confabulation or hallucination may not be tackled fully even with more investment and training.&#160;<a class="footnote-backref" href="#fnref:110" title="Jump back to footnote 110 in the text">&#8617;</a></p>
+</li>
+<li id="fn:111">
+<p>Karnofsky, ‘Forecasting Transformative AI, Part 1: What Kind of AI?’&#160;<a class="footnote-backref" href="#fnref:111" title="Jump back to footnote 111 in the text">&#8617;</a></p>
+</li>
+<li id="fn:112">
+<p>Lenat and Marcus, ‘Getting from Generative AI to Trustworthy AI’.&#160;<a class="footnote-backref" href="#fnref:112" title="Jump back to footnote 112 in the text">&#8617;</a></p>
+</li>
+<li id="fn:113">
+<p>Shumailov et al., ‘The Curse of Recursion’.&#160;<a class="footnote-backref" href="#fnref:113" title="Jump back to footnote 113 in the text">&#8617;</a></p>
+</li>
+<li id="fn:114">
+<p>Gebru: “[…] this quest to create a superior being akin to a machine-god has resulted in current (real, non-AGI) systems that are unscoped and thus unsafe.” From Gebru and Torres, ‘The TESCREAL Bundle’.&#160;<a class="footnote-backref" href="#fnref:114" title="Jump back to footnote 114 in the text">&#8617;</a></p>
+</li>
+<li id="fn:115">
+<p>Gerard, ‘Pivot to AI: Hallucinations Worsen as the Money Runs Out’.&#160;<a class="footnote-backref" href="#fnref:115" title="Jump back to footnote 115 in the text">&#8617;</a></p>
+</li>
+<li id="fn:116">
+<p>Amadeo, ‘Google Lays off “Hundreds” More Employees, Strips Google Assistant Features’.&#160;<a class="footnote-backref" href="#fnref:116" title="Jump back to footnote 116 in the text">&#8617;</a></p>
+</li>
+<li id="fn:117">
+<p>See the last section for a cost breakdown.&#160;<a class="footnote-backref" href="#fnref:117" title="Jump back to footnote 117 in the text">&#8617;</a></p>
+</li>
+<li id="fn:118">
+<p>In this instance we do not distinguish between internal funding (Microsoft funding Github Copilot which it owns) or external funding (Micrrosoft funding OpenAI’s efforts to develop successors to GPT-4). Both require the buy-in of high level Valley Institution figures due to the high capital expenditure required.&#160;<a class="footnote-backref" href="#fnref:118" title="Jump back to footnote 118 in the text">&#8617;</a></p>
+</li>
+<li id="fn:119">
+<p>For examples of such statements, see OpenAI, ‘OpenAI’s Approach to Frontier Risk’ or&#160;<a class="footnote-backref" href="#fnref:119" title="Jump back to footnote 119 in the text">&#8617;</a></p>
+</li>
+<li id="fn:120">
+<p>Future of Life Institute, ‘Pause Giant AI Experiments: An Open Letter’.&#160;<a class="footnote-backref" href="#fnref:120" title="Jump back to footnote 120 in the text">&#8617;</a></p>
+</li>
+<li id="fn:121">
+<p>Kahn, ‘Exclusive: OpenAI Promised 20% of Its Computing Power to Combat the Most Dangerous Kind of AI—but Never Delivered, Sources Say’.&#160;<a class="footnote-backref" href="#fnref:121" title="Jump back to footnote 121 in the text">&#8617;</a></p>
+</li>
+<li id="fn:122">
+<p>Horwitz, <em>Broken Code</em>.&#160;<a class="footnote-backref" href="#fnref:122" title="Jump back to footnote 122 in the text">&#8617;</a></p>
+</li>
+<li id="fn:123">
+<p>Seaver, ‘Review of Spotify Teardown: Inside the Black Box of Streaming Music, by Maria Eriksson, Rasmus Fleischer, Anna Johansson, et Al.’&#160;<a class="footnote-backref" href="#fnref:123" title="Jump back to footnote 123 in the text">&#8617;</a></p>
+</li>
+<li id="fn:124">
+<p>Dunn, ‘Introducing FBLearner Flow: Facebook’s AI Backbone’.&#160;<a class="footnote-backref" href="#fnref:124" title="Jump back to footnote 124 in the text">&#8617;</a></p>
+</li>
+<li id="fn:125">
+<p>Meta, ‘Our Story’.&#160;<a class="footnote-backref" href="#fnref:125" title="Jump back to footnote 125 in the text">&#8617;</a></p>
+</li>
+<li id="fn:126">
+<p>Steinberg et al., Filtering content in a social networking service.&#160;<a class="footnote-backref" href="#fnref:126" title="Jump back to footnote 126 in the text">&#8617;</a></p>
+</li>
+<li id="fn:127">
+<p>Dixon, ‘Number of Monthly Active Facebook Users Worldwide as of 4th Quarter 2023’.&#160;<a class="footnote-backref" href="#fnref:127" title="Jump back to footnote 127 in the text">&#8617;</a></p>
+</li>
+<li id="fn:128">
+<p>Zuboff, <em>The Age of Surveillance Capitalism</em>.&#160;<a class="footnote-backref" href="#fnref:128" title="Jump back to footnote 128 in the text">&#8617;</a></p>
+</li>
+<li id="fn:129">
+<p>Later renamed Fundamental AI Research (FAIR).&#160;<a class="footnote-backref" href="#fnref:129" title="Jump back to footnote 129 in the text">&#8617;</a></p>
+</li>
+<li id="fn:130">
+<p>Perrigo, ‘Meta’s AI Chief Yann LeCun on AGI, Open-Source, and AI Risk’.&#160;<a class="footnote-backref" href="#fnref:130" title="Jump back to footnote 130 in the text">&#8617;</a></p>
+</li>
+<li id="fn:131">
+<p>Ibid.&#160;<a class="footnote-backref" href="#fnref:131" title="Jump back to footnote 131 in the text">&#8617;</a></p>
+</li>
+<li id="fn:132">
+<p>LeCun even admits on record that Facebook is the main beneficiary of open source NLP AI research. In <em>Yann LeCun: Meta’s New AI Model LLaMA; Why Elon Is Wrong about AI; Open-Source AI Models | E1014 (Starting 25:01)</em>.&#160;<a class="footnote-backref" href="#fnref:132" title="Jump back to footnote 132 in the text">&#8617;</a></p>
+</li>
+<li id="fn:133">
+<p>Meta, ‘PyTorch’.&#160;<a class="footnote-backref" href="#fnref:133" title="Jump back to footnote 133 in the text">&#8617;</a></p>
+</li>
+<li id="fn:134">
+<p>Park et al., ‘AI Deception’.&#160;<a class="footnote-backref" href="#fnref:134" title="Jump back to footnote 134 in the text">&#8617;</a></p>
+</li>
+<li id="fn:135">
+<p>Horwitz, ‘Chapter 3’.&#160;<a class="footnote-backref" href="#fnref:135" title="Jump back to footnote 135 in the text">&#8617;</a></p>
+</li>
+<li id="fn:136">
+<p>Horwitz, ‘Chapter 2’.&#160;<a class="footnote-backref" href="#fnref:136" title="Jump back to footnote 136 in the text">&#8617;</a></p>
+</li>
+<li id="fn:137">
+<p>Mac, Warzel, and Kantrowitz, ‘Growth At Any Cost: Top Facebook Executive Defended Data Collection In 2016 Memo — And Warned That Facebook Could Get People Killed’.&#160;<a class="footnote-backref" href="#fnref:137" title="Jump back to footnote 137 in the text">&#8617;</a></p>
+</li>
+<li id="fn:138">
+<p>Horwitz: “In the context of a massive and rapidly expanding market, the company’s mission of making the world more open and connected could sometimes be hard to distinguish from the more craven pursuit of locking down market share.” In Horwitz, ‘Chapter 3’.&#160;<a class="footnote-backref" href="#fnref:138" title="Jump back to footnote 138 in the text">&#8617;</a></p>
+</li>
+<li id="fn:139">
+<p>Scott, <em>Seeing like a State</em>.&#160;<a class="footnote-backref" href="#fnref:139" title="Jump back to footnote 139 in the text">&#8617;</a></p>
+</li>
+<li id="fn:140">
+<p>Horwitz, ‘Chapter 2’. However, executive reluctance to accept data showing the negative effects of their platform can be found in Horwitz, ‘Chapter 17’.&#160;<a class="footnote-backref" href="#fnref:140" title="Jump back to footnote 140 in the text">&#8617;</a></p>
+</li>
+<li id="fn:141">
+<p>Ibid.&#160;<a class="footnote-backref" href="#fnref:141" title="Jump back to footnote 141 in the text">&#8617;</a></p>
+</li>
+<li id="fn:142">
+<p>Horwitz says of this feature: “[FB Learner] packaged [machine learning techniques] into a template that could be used by engineers who quite literally did not understand what they were doing”. In Horwitz, ‘Chapter 3’.&#160;<a class="footnote-backref" href="#fnref:142" title="Jump back to footnote 142 in the text">&#8617;</a></p>
+</li>
+<li id="fn:143">
+<p>Meyer, ‘Everything You Need to Know About Facebook’s Controversial Emotion Experiment’.&#160;<a class="footnote-backref" href="#fnref:143" title="Jump back to footnote 143 in the text">&#8617;</a></p>
+</li>
+<li id="fn:144">
+<p>Horwitz, ‘Chapter 3’.&#160;<a class="footnote-backref" href="#fnref:144" title="Jump back to footnote 144 in the text">&#8617;</a></p>
+</li>
+<li id="fn:145">
+<p>Dwoskin, ‘Misinformation on Facebook Got Six Times More Clicks than Factual News during the 2020 Election, Study Says’.&#160;<a class="footnote-backref" href="#fnref:145" title="Jump back to footnote 145 in the text">&#8617;</a></p>
+</li>
+<li id="fn:146">
+<p>Mac, Silverman, and Lytvynenko, ‘Facebook Stopped Employees From Reading An Internal Report About Its Role In The Insurrection. You Can Read It Here.’&#160;<a class="footnote-backref" href="#fnref:146" title="Jump back to footnote 146 in the text">&#8617;</a></p>
+</li>
+<li id="fn:147">
+<p>Newton, ‘The Trauma Floor: The Secret Lives of Facebook Moderators in America’.&#160;<a class="footnote-backref" href="#fnref:147" title="Jump back to footnote 147 in the text">&#8617;</a></p>
+</li>
+<li id="fn:148">
+<p>Meta, ‘Meta Reports Fourth Quarter and Full Year 2023 Results; Initiates Quarterly Dividend’.&#160;<a class="footnote-backref" href="#fnref:148" title="Jump back to footnote 148 in the text">&#8617;</a></p>
+</li>
+<li id="fn:149">
+<p>Warzel, ‘OpenAI Just Gave Away the Entire Game’.&#160;<a class="footnote-backref" href="#fnref:149" title="Jump back to footnote 149 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+</body>
+</html>

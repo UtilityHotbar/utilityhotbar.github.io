@@ -1,0 +1,205 @@
+@font-face {
+    font-family: 'Linden Hill';
+    src: url('fonts/LindenHill-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Linden Hill';
+    font-style: italic;
+    src: url('fonts/LindenHill-Italic.ttf');
+}
+
+@font-face {
+    font-family: 'ET Bembo';
+    font-style: italic;
+    src: url('fonts/ETBembo-DisplayItalic.otf');
+}
+
+@font-face {
+    font-family: 'Spectral';
+    src: url('fonts/Spectral-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Spectral';
+    font-style: italic;
+    src: url('fonts/Spectral-Italic.ttf');
+}
+
+@font-face {
+    font-family: 'Spectral';
+    font-weight: bold;
+    src: url('fonts/Spectral-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Spectral';
+    font-weight: bold;
+    font-style: italic;
+    src: url('fonts/Spectral-BoldItalic.ttf');
+}
+
+@font-face {
+    font-family: 'JSL Blackletter';
+    src: url('fonts/JBLACK.TTF');
+}
+
+@font-face {
+    font-family: 'Server Mono';
+    src: url('fonts/V1-ServerMono-Regular.otf');
+}
+
+@font-face {
+    font-family: 'Server Mono';
+    src: url('fonts/V1-ServerMono-RegularSlanted.otf');
+    font-style: italic;
+}
+
+
+:root {
+    --text-color: rgb(27, 27, 27);
+    --bg-color: rgb(242, 242, 242);
+    --shadow-color: rgba(29, 29, 29, 100);
+    --rubrication: rgb(162, 22, 0);
+    --link-color: rgb(20, 20, 105);
+}
+
+body {
+    background-color: var(--bg-color);
+    font-size: 14pt;
+    font-family: 'Linden Hill', Times, serif;
+    letter-spacing: 0;
+    width: 65ch;
+    margin: auto;
+}
+
+h1,h2 {
+    font-weight: normal;
+    font-family: 'ET Bembo';
+    font-style: italic;
+    letter-spacing: -0.05rem;
+}
+
+h2 {
+    font-size: 22pt;
+}
+
+
+#quote-box {
+    padding: 0.75rem;
+    font-size: 12pt;
+    max-width: fit-content;
+    margin: auto;
+    height: fit-content;
+    max-height: 300px;
+    background-image: url("imgs/frontmatter3_3.jpg");
+    overflow-y: scroll;
+    font-family: 'Spectral', 'Times New Roman', Times, serif;
+    letter-spacing: -0.05rem;
+    filter: blur(0.1px);
+    color: var(--text-color);
+    box-shadow: 0px 0px 3px var(--shadow-color);
+    border: solid 1.5px var(--rubrication);
+
+    #next-question-box {
+        transition: all 0.1s;
+    }
+
+    button {
+        color: var(--rubrication);
+        background-color: transparent;
+        border: none;
+        font-family: inherit;
+        font-size: inherit;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s;
+
+    }
+
+    button:hover{
+        filter: brightness(150%);
+    }
+
+    .disabled-game-button {
+        color: var(--text-color);
+        user-select: none;
+        font-weight: normal;
+    }
+
+    .next-question-div {
+        font-size: inherit;
+        font-style: italic;
+        letter-spacing: -0.01rem;
+    }
+
+    .quote {
+        max-width: 65ch;
+        width: 65ch;
+        font-size: inherit;
+        line-height: 120%;
+    }
+    
+    .quote-text, .quote-attrib {
+        width: inherit;
+        max-width: inherit;
+    }
+    
+    .quote-text {
+        text-align: justify;
+        padding-bottom: 0.5rem;
+    }
+    
+    .quote-text::before {
+        content: "¶ ";
+        font-weight: bold;
+        color: var(--rubrication)
+    }
+    
+    .quote-attrib {
+        text-align: right;
+        font-weight: bold;
+        font-size: 12pt;
+        letter-spacing: -0.01rem;
+    
+    }
+    
+    .quote-attrib::before {
+        content: "— ";
+    }
+    
+    .quote-author {
+        color: var(--rubrication);
+        font-family: 'JSL Blackletter';
+        letter-spacing: 0.05rem;
+        font-size: 13.5pt;
+    }
+    
+    .small-caps {
+        font-variant: small-caps;
+    }
+}
+
+pre {
+    display: inline-block;
+    max-width: inherit;
+    white-space: pre-wrap;
+    word-wrap: anywhere;
+}
+
+pre, code{
+    font-size: 11pt;
+    font-family: 'Server Mono', Courier, monospace
+}
+
+a {
+    color: var(--link-color)
+}
+
+a:hover {
+    filter: brightness(150%);
+}
+
+#bibliography {
+    text-indent: 1rem hanging;
+}

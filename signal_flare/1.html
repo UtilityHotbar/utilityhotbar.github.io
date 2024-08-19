@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Something Different This Way Comes - Part 1</title>
+    <link rel="stylesheet" href="essays.css">
+</head>
+<body>
+    <h1 id="something-different-this-way-comes-part-1">Something Different This Way Comes - Part 1</h1>
+<p><em>In which I attempt to renegotiate rationalism as a personal philosophy,
+and offer my alternative—Game theory is not a substitute for real
+life—Heuristics over theories</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>This essay focuses on outlining an alternative to the ideology of
+rationalism. As part of this, I offer my definition of the rationalist
+project, my account of its problems, and my concept of a
+counter-paradigm for living one’s life. The second part of this essay
+will examine the political implications of rationalism and try to offer
+an alternative on a larger scale.</p>
+<h2 id="defining-rationalism">Defining Rationalism</h2>
+<p>To analyse rationalism, I must first define what I am analysing.
+Rationalism (as observed <em>in vivo</em> on forums like LessWrong) is a loose
+constellation of ideas radiating out of various intellectual traditions,
+amongst them Bayesian statistics, psychological decision theories, and
+game theory. These are then combined with concepts in sub-fields of
+computer science (AI and simulation modelling), economics (rational
+actor theory or <em>homo economicus</em>), politics (libertarianism),
+psychology (evolutionary psychology) and ethics (the utilitarianism of
+Peter Singer).</p>
+<p>The broad project of rationalism aims to generalise the insights of
+these traditions into application at both the “wake up and make a
+sandwich” and the “save the world” level. Like any good tradition, it
+has a bunch of contradictions embedded: Some of these include
+intuitionism (e.g. when superforecasters talk about going with their
+gut) vs deterministic analysis (e.g. concepts of perfect game-players
+and k-level rationality). Another one is between Bayesianism (which is
+about updating priors about the world based on evidence received,
+generally without making any causal assumptions) vs systemisation (which
+is about creating causal models/higher level representations of real
+life situations to understand them better). In discussing this general
+state of rhetorical confusion I am preceded by Philip Agre’s <em>Towards a
+Critical Technical Practice</em>, which is AI specific but still quite
+instructive.</p>
+<p>The broader rationalist community (especially online) includes all sorts
+of subcultures but generally there are in group norms that promote
+certain technical argot (“priors”, “updating“), certain attitudes
+towards classes of entities (“blank faces“/bureaucrats/NPCs/the woke mob
+etc), and certain general ideas about how to solve “wicked problems”
+like governance or education. There is some overlap with online
+conservatives, libertarians, and the far-right. There is a similar
+overlap with general liberal technocratic belief systems, generally
+through a belief in meritocracy and policy solutions founded on
+scientific or technological principles.</p>
+<p>At the root of this complex constellation there seems to be a bucket of
+common values which are vaguely expressed as follows:</p>
+<ol>
+<li>
+<p>The world can be understood and modelled by high level systems that
+    are constructed based on rational, clearly defined principles and
+    refined by evidence/observation.</p>
+</li>
+<li>
+<p>Understanding and use of these systems enables us to solve high
+    level problems (social coordination, communication, AI alignment) as
+    well as achieving our personal goals.</p>
+</li>
+<li>
+<p>Those who are more able to comprehend and use these models are
+    therefore of a higher agency/utility and higher moral priority than
+    those who cannot.</p>
+</li>
+</ol>
+<p>There is also a fourth law which can be constructed from the second and
+third: By thinking about this at all, by starting to consciously play
+the game of thought-optimisation and higher order world-modelling, you
+(the future rationalist) have elevated yourself above the “0-level”
+player who does not think about such problems and naively pursues their
+goals.</p>
+<p>It is easy to suggest that I am strawmanning the opposition, so I will
+try to align my statements with quotes from the community I am
+analysing. A more direct formulation of the first two principles can be
+found in the following article <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. Rationality as formulated by
+Eliezer Yudkowsky contains two core ideas which are also summarised into
+short and catchy phrases:</p>
+<ol>
+<li>
+<p>“Epistemic rationality: systematically improving the accuracy of
+    your beliefs.” i.e. “Seeking truth”</p>
+</li>
+<li>
+<p>“Instrumental rationality: systematically achieving your values.”
+    i.e. “Winning”</p>
+</li>
+</ol>
+<p>Here, epistemic rationality roughly corresponds to my first proposed
+core belief, and instrumental rationality the second. As to the third
+principle, while Yudkowsky explicitly notes that you can win without
+“winning at others” expense” the word “winning” still suggests a triumph
+against <em>some opposition</em> in a game-like situation. This focus on games
+will return later, but for now it is enough to note that to “win” is
+explicitly correlated here with agency and utility for your chosen
+values or causes, hence validating my third core belief. The fourth
+belief is slightly more nebulous, but it rears its head when the
+melodramatic or quasi-satirical side of rationalism emerges:</p>
+<blockquote>
+<p>It’s sad that our Earth couldn’t be one of the more dignified planets
+that makes a real effort, correctly pinpointing the actual real
+difficult problems and then allocating thousands of the sort of
+brilliant kids that our Earth steers into wasting their lives on
+theoretical physics. But <em>better MIRI’s effort than nothing</em>. What
+were we supposed to do instead, pick easy irrelevant fake problems
+that we could make an illusion of progress on, and have nobody out of
+the human species even try to solve the hard scary real problems,
+until everybody just fell over dead? [Emphasis mine]</p>
+<p>— Eliezer Yudkowsky, <u><u><a href="https://www.lesswrong.com/posts/j9Q8bRmwCgXRYAgcJ/miri-announces-new-death-with-dignity-strategy">MIRI announces new “Death With Dignity”
+strategy</a></u></u></p>
+</blockquote>
+<p>Here, to be dignified is to be a rationalist who sees the “hard scary
+real problems” as opposed to those who delude themselves by working on
+“easy irrelevant fake problems”. It’s not difficult to extend the
+implication from “dignity” to “moral worth”, especially given the tone
+of this article.</p>
+<h2 id="rationalism-is-path-dependent">Rationalism is path-dependent</h2>
+<p>Eliezer explicitly calls out probability and decision theory in his
+definitional article above, and writes the following about probability
+theory: “It’s all the same problem of how to process the evidence and
+observations to update one’s beliefs. Similarly, decision theory is the
+set of laws underlying rational action, and is equally applicable
+<em>regardless of what one’s goals and available options are.</em> [Emphasis
+mine]”</p>
+<p>We will for a moment set down probability and focus first on decision
+theory, though I argue what I am saying applies in general to them both.
+Eliezer lays down two important qualifiers when discussing rational
+action—First, that agents may want different things and therefore have
+different goals. Second, he notes that agents may have different options
+available to them to achieve said goals. These are true and worthy
+constraints. However, I argue that some linguistic sleight of hand has
+occurred here. Leaving aside any ontological arguments of whether humans
+truly “want” anything, or only appear to want things etc., the landscape
+of choice includes not only where you want to go and how you might get
+there, but also the terrain you will walk on, your environment and
+context. Humans are not static containers of properties like “wants X”
+or “fears Y”, but dynamic systems constantly updating from their
+environment <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</p>
+<p>At first, my focus on context seems like a distinction that can be
+easily folded into either one’s goals or one’s options, but I would
+suggest that this is not easily done. While a rationalist view posits
+life as the pursuit of long term goals that remain like north stars,
+most of our short term goals come from what we see as our context: As
+<u><a href="https://commoncog.com/cash-flow-games/">this article about business cash
+flow</a></u> makes clear, the
+environment we think we are in (what he calls the axioms or principles
+we set up) determines what we see as optimal strategies far more than we
+think—if you think your job is to make profits, your “game” looks a lot
+different from Jeff Bezos, who sees business in the context of cash
+flows and financial optionality <sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>.</p>
+<p>Similarly, our options too are often defined not by our ability to
+reason through what the optimal path is, but rather by what our
+environment makes available to us. Being trapped on a sinking ship with
+no lifeboats limits your options even if you are a world-class reasoning
+expert. Finally, how we approach deciding at all is context-dependent:
+No matter how hard we try to reason ourselves to the Cartesian root of
+<em>cogito ergo sum</em>, we are brought up in different environments and
+exposed to different ideas that lead us to be “initialised” in random
+ways, like the starting weights and biases of a neural network. Often
+such biases are not fully known even to us, but they can affect our
+judgement profoundly: try managing a social crisis while hungry, or
+suffering from a mild headache, or in a quiet library. Our “rational
+decision” should not be described as a cognitive function we perform on
+our immutable goals and the actions available to us. Instead, it is a
+largely <em>subjective</em> thought process we perform based on our environment
+as we observe and update our internal world-model. All rationality is,
+to some extent, bounded rationality.</p>
+<p>It is this context-dependence that makes applying rational choice theory
+to the real world exceptionally difficult. Indeed, one of the hallmarks
+of a certain type of hypothetical malicious AI is that it <em>cannot</em> take
+into account its context, <u><a href="http://www.decisionproblem.com/paperclips/">endlessly optimising for an abstract
+objective</a></u> without
+considering whether that pursuit might eventually harm itself or its
+creators. As Nassim Taleb writes in his book <em>Antifragile</em>:</p>
+<blockquote>
+<p>The great economist Ariel Rubinstein gets the green lumber fallacy—it
+requires a great deal of intellect and honesty to see things that way.
+Rubinstein is one of the leaders in the field of game theory, which
+consists in thought experiments; he is also the greatest expert in
+cafés for thinking and writing across the planet. Rubinstein refuses
+to claim that his knowledge of theoretical matters can be
+translated—by him—into anything directly practical. To him, economics
+is like a fable—a fable writer is there to stimulate ideas, indirectly
+inspire practice perhaps, but certainly not to direct or determine
+practice. Theory should stay independent from practice and vice
+versa—and we should not extract academic economists from their
+campuses and put them in positions of decision making. Economics is
+not a science and should not be there to advise policy.</p>
+<p>In his intellectual memoirs, Rubinstein recounts how he tried to get a
+Levantine vendor in the souk to apply ideas from game theory to his
+bargaining in place of ancestral mechanisms. The suggested method
+failed to produce a price acceptable to both parties. Then the fellow
+told him: “For generations, we have bargained in our way and you come
+and try to change it?” Rubinstein concluded: “I parted from him
+shamefaced.” All we need is another two people like Rubinstein in that
+profession and things will be better on planet Earth.</p>
+<p>— Nassim Nicholas Taleb, <em>Antifragile</em></p>
+</blockquote>
+<p>In the example, we see that what holds true for a certain context (the
+game theoretic bargainer) does not hold true in a different one, and in
+fact fails to achieve the instrumental outcome of rationalism (in this
+case, “winning” the bargain in a way that makes the bargainers
+satisfied). Rational choice theory takes as its starting point the
+perfect agent in a perfect void, and therefore matches the experience
+only of game theorists role-playing as hypothetical people standing
+before a rapidly approaching trolley. While it is true that two
+identical clones in two identical universes faced with the same decision
+at the same moment in time would make the same decision if they were
+perfectly rational agents, the same cannot be guaranteed for any other
+situation, especially in our messy and chaotic world <sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>. Thus I argue
+that, in the language of rationalism itself, <em>rationalism is
+path-dependent</em>.</p>
+<h2 id="games-and-game-theory">Games and Game Theory</h2>
+<p>Perhaps because applying their theories directly to the real world is
+difficult, it is common for various social, political and economic
+situations to be described in formalised forms as games by rationalists
+<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup>. I argue that a game-theoretic framing of such problems is
+counterproductive and destructive to meaningful resolutions of such
+problems. To begin our analysis, however, we need a concrete definition
+of what a game is and why games matter:</p>
+<blockquote>
+<p>Games can seem like an utterly silly way to spend one’s time. We
+struggle and strain and sweat—and for what? The goals of games seem so
+arbitrary. Game players burn energy and effort, not on curing cancer
+or saving the environment, but on trying to beat each other at some
+unnecessary, invented activity. Why not spend that time on something
+real?</p>
+<p>But the goals of a game aren’t actually arbitrary at all. They only
+seem arbitrary when we look in the wrong place. In the rest of life,
+we are used to justifying our goals by looking at the value of the
+goals themselves or by looking forward, to what follows from those
+goals. But with the goals of games, we often need to look backward. We
+need to look at the value of the activity of pursuing those goals. In
+ordinary practical life, we usually take the means for the sake of the
+ends. But in games, we can take up an end for the sake of the means.
+Playing games can be a motivational inversion of ordinary life.</p>
+<p>Seeing this motivational structure will also help us to understand the
+essential nature of games. A game tells us to take up a particular
+goal. It designates abilities for us to use in pursuing that goal. It
+packages all that up with a set of obstacles, crafted to fit those
+goals and abilities. A game uses all these elements to sculpt a form
+of activity. And when we play games, we take on an alternate form of
+agency. We take on new goals and accept different sets of abilities.
+We give ourselves over to different—and focused—ways of inhabiting our
+own agency. Goals, ability, and environment: these are the means by
+which game designers practice their art. And we experience the game
+designer’s art by flexing our own agency to fit.</p>
+<p>— C. Thi Nguyen, <em>Games - Agency as Art</em></p>
+</blockquote>
+<p>In extract above, Nguyen proposes that the main artistic medium of games
+is <em>agency</em>: while games incorporate other art forms in their
+production, the true defining aspect of a game is the cultivation of a
+possibility space in the mind of the player. The agency is imagined
+because it is not true agency, in the sense that the player’s choices do
+not impact the world outside of the game. The goals of the game (getting
+the ball into the net, reaching a high score in a certain time,
+defeating the boss) are illusory, but the player enters into a magic
+circle or contract to take them seriously for the duration of the game,
+achieving these goals within the rules of the game and deriving
+satisfaction from that triumph. Taking the imaginary game-goals too
+seriously and acting outside the set parameters to achieve them (i.e.
+“cheating”) is deemed a false victory because it is a sign that you are
+performing a Goodhart’s law-style degenerate optimisation: For most
+people if you use a rocket launcher to shoot the football into the goal
+you won’t score any points, because you are no longer meaningfully
+playing in the agentic space set out by football’s designers. In other
+words, you’re no longer playing football, so the points don’t matter.</p>
+<p>With this analysis in mind, we can take a look at whether the prisoner’s
+dilemma is, indeed, a game. We can extend our previous insight about
+rationalism to these games as well, considering not only the goal and
+the choices at hand but also the constraint or contexts implied or
+communicated through the game’s rules. Therefore, the primary elements
+of our analysis are whether there is some cultivated agency or
+possibility space set out, whether this agency is bounded by a set
+context, and whether those moves are tied to achieving some goal that is
+game-dependent and hence illusory. Under this analysis, the prisoner’s
+dilemma is a game:</p>
+<ul>
+<li>
+<p>The <em>illusory goal</em> of the game is to minimise your time in jail.</p>
+</li>
+<li>
+<p>The <em>agency</em> the game imparts is the choice to cooperate or defect.</p>
+</li>
+<li>
+<p>The <em>context or premise</em> of the game is that the two prisoners/players
+  are isolated and cannot transmit information to each other.</p>
+</li>
+</ul>
+<p>So long as all of these conditions are fulfilled, a game-theoretic
+analysis can now be applied: for any given option, analyse the expected
+payout for each player, and assess each combination of moves and payouts
+to derive a Nash equilibrium. The study of game theory can therefore be
+described as <em>the study of how to most effectively exercise a player’s
+in-game agency</em>.</p>
+<p>Indeed, it is this exercise that powers some of game theory’s most
+unintuitive and impactful results. The standard analysis of the
+prisoner’s dilemma says that, rather than cooperating to achieve a
+better outcome for everyone, if each prisoner is to maximise their
+objective they must defect. A more general case of this analysis is
+known as the tragedy of the commons, where many players can choose to
+cooperate or defect over a period of time in the context of managing a
+shared good all players have access to.</p>
+<p>Now that we have defined a game, we can see why solutions to the
+prisoner’s dilemma that take the form “the prisoners should just break
+out of prison”, “the prisoners should have a secret code” etc. are
+unsatisfying from a game-theoretic perspective: it’s like saying the
+most effective way to win at football is to bring a drone and a rocket
+launcher. Similarly, games like the Trolley problem are interesting or
+frustrating (depending on your point of view) thanks to the constrained
+agency of the player: arguing that the setup of the problem is contrived
+is like saying that the player ought to be able to pick up the football
+since they have hands. In some sense, all games are contrived, the
+difference is the satisfaction we gain from obeying their contrivances.</p>
+<h2 id="come-on-this-is-serious">Come on, this is serious</h2>
+<p>However, there is a more insidious aspect to game theory. The prisoner’s
+dilemma or the tragedy of the commons is often used as an argument for
+why cooperation is impossible or often fails in the real world. Moved by
+such arguments and confirmation bias with real life examples, defecting
+becomes accepted as a baseline policy, and any cooperation is seen as a
+miracle or the result of some edge case such as a higher power imposing
+cooperation on two squabbling players. However, this belief is only
+insidious if it is derived from false premises: after all, if rational
+or rational-enough actors truly have a foolproof analysis as to why
+defection is the best base policy in cooperation games, then this is a
+tragic truth rather than an dangerous lie.</p>
+<p>Why is this projection of conclusions from games to reality incorrect,
+then? Game theory purports to be about perfect agents and their choices.
+However, recall that the definition of a game is not only what you can
+do, but what you cannot. As we discussed earlier with theories of
+rational choice, games are contextually dependent and inject their
+context as the axiomatic foundations of the game-world. The possibility
+space of most games constrains at least as much as it enables: If you
+are able to break these strict constraints on player agency then the
+conclusions of any game-theoretic analysis fall apart, their payout
+matrices crumbling into the mire of relativity and infinite
+hypotheticals.</p>
+<p>We can of course respect this artificiality to play a game and extract
+satisfaction, e.g. by agreeing not to pick up the ball in football. This
+self-awareness does not go both ways, however. The implication of many
+game-theoretic analyses of geopolitical cooperation, climate cooperation
+etc is that if rational players defect in the game they have set up they
+will also defect in real life, that the artificial model of the game is
+an accurate enough model of reality such that conclusions in one can be
+effectively projected to the other. In other words, this brand of
+analysis demands that you keep real life non-linear problem-solving out
+of the game, but demands that the conclusions drawn from the game be
+applied into real life with no such caveats. The game-theoretic football
+analyst knows that that touching a ball with your hands is possible only
+for the goalkeepers of the world, and even then only if they are
+standing in front of goal-shaped objects.</p>
+<p>The usual game theoretic solution to such arguments is to shape the
+constraints of the game to better model reality. We can play many rounds
+of the prisoner’s dilemma, with players having some memory of previous
+rounds, such that their agency can be better shaped by their models of
+their opponent. We can introduce means of signalling intent into the
+commons game, or introduce more parallel tracks in the trolley problem.
+<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup> Yet, no matter how elaborate these premises become, they remain
+games. Recall that participating in a game involves the conscious
+adoption of illusory game-goals as your temporary objectives. Standing
+in two rows before the referee blows the whistle in football is a form
+of conscious buy in, the same thing we do when we read the rules of the
+trolley problem and agree to consider what we would do in that
+game-world seriously. The necessary pre-condition of playing a game is
+to know that a game exists and to agree to play. In most social
+situations, this <em>tabula rasa</em>-eque buy in does not exist, both because
+of contrasting factors like honour, emotion, pre-commitments etc. but
+also because of imperfect communication and information asymmetry.
+Kicking a ball at someone on their phone does not mean that you are now
+playing football with them.</p>
+<p>Of course, game theory does have particular applications. Game theory
+describes useful equilibria that can be aimed for or avoided in the
+design of large scale social systems like markets or incentive
+structures, where agents are relatively impersonal, have access to ample
+information and consciously buy in to participation. However, in the
+domain which game theory finds itself (mis)applied most often, that of
+the social sphere, knowledge of such a theory can often become
+counterproductive. This is because the knowledge of some optimal
+strategy in the context of a game biases one’s attitudes towards both
+what actions they should take and even what actions are available in
+their internal conception of the “game”. In short, the reference frame
+of “I am playing a game” causes them to rule out cooperative or
+supposedly “suboptimal” strategies. Game theory, designed to assist in
+reasoning about problems becomes a hazard to reasoning accurately about
+problems because it turns problems into games and imagines that
+conclusions can propagate backwards with perfect accuracy. The
+commonsensical formulation of this conclusion is again Taleb’s:</p>
+<blockquote>
+<p>There is an anecdote about one Professor Triffat (I am changing the
+name because the story might be apocryphal, though from what I have
+witnessed, it is very characteristic). He is one of the highly cited
+academics of the field of decision theory, wrote the main textbook
+[…] Triffat, then at Columbia University, was agonizing over the
+decision to accept an appointment at Harvard […] A colleague
+suggested he use some of his Very Highly Respected and Grandly Honored
+and Decorated academic techniques with something like “maximum
+expected utility,” as, he told him, “you always write about this.”
+Triffat angrily responded, “Come on, this is serious!”</p>
+<p>— Nassim Nicholas Taleb, <em>Antifragile</em></p>
+</blockquote>
+<h2 id="models-collapse-in-contact-with-reality">Models Collapse in Contact with Reality</h2>
+<p>So far, what I have described are instrumental failings of rationalism;
+in general I am attempting to attack the second core belief that
+rationalism makes us better at solving problems or achieving our goals.
+I will now attempt to question the first core belief, that rationalism
+helps us understand the world. To do this, I will introduce the concepts
+of irreducible and fractal complexity.</p>
+<p>For the sake of rigor, I will begin with questioning the idea of a
+complete and total high level model of society through some light
+application of chaos theory: After all, if such a model is possible, all
+else follows for the project of epistemic rationality. The field of
+chaos theory is dominated in popular culture by the idea of the
+butterfly effect. However, an idea I find more interesting is the
+concept of the saddle point, a form of metastable equilibrium (temporary
+resting point) where any slight disturbance can cause the future paths
+of the object at equilibrium to diverge wildly. It is these features
+that make chaotic systems “highly sensitive to initial conditions”, and
+they are present in theoretically deterministic systems like the
+weather, the stock market, etc. In fact, since self-contained cyclical
+chaotic systems with strange attractors return to such metastable saddle
+points regularly, they are <em>regularly</em> highly sensitive to their
+conditions, a feature that makes predicting the future for such systems
+beyond extremely near-range forecasts nearly impossible <sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup>.</p>
+<p>Before you protest that such features are only true of complex physical
+systems, I will point out that our societies are also composed of
+billions of complex components in a complex and ever-shifting
+environment. They also seem to oscillate between periods of relative
+predictability (“peace”) and periods of extreme instability, where one
+errant action or bullet can change the fate of millions (“war“), with
+both seemingly inevitable in retrospect but somehow always escaping our
+best predictive efforts until it is too late. <sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup>. We can combine the
+idea of saddle points with Taleb’s idea of black swans, unpredicted
+events with high negative or positive impact on the state of the complex
+system as a whole <sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup>. This can give us a rough sense of “irreducible
+complexity”, the idea that higher order models of complex and chaotic
+systems can and must spiral into divergent and irreconcilable
+predictions beyond the near range. This applies to human simulators as
+well as computer simulators: Predicting the 2024 US election is one
+thing, predicting the 2032 election is another entirely—after all, who
+can guarantee that there will even be a 2032 US election, and if there
+is that the same parties will participate? <sup id="fnref:10"><a class="footnote-ref" href="#fn:10">10</a></sup></p>
+<p>If a total top down model is difficult to achieve, what about precise
+models of smaller sub-systems within society, like nations or
+corporations? Here is where the idea of fractal complexity comes in.
+While the actions of, say, a large corporation like Facebook seem
+monolithic, ruthless, or even to some degree rational (remember again
+that in a subjective path-dependent world the definition of rationalism
+is post-hoc), whenever we look deeper we find these systems composed of
+innumerable, equally complex sub-systems. Down to the level of
+individuals (as one will find with any biography of a notable historical
+figure), accurately accounting for the actions of the various parts of a
+marketing department, or a mind, or a military unit is an incredibly
+complex endeavour, and any model becomes a game with its own baked-in
+presumptions.</p>
+<p>That is not to say that heuristic rules for properties of complex
+phenomenae do not exist. For example, we can model the pressure in a
+container using the ideal gas law without massively expensive
+simulations of millions of atoms. However, the success of classical
+physics in this regard relies on simplifications that come from a
+difference in scale between atoms and coke cans, something we simply
+don’t have access to in the social sphere. Furthermore, the mechanisms
+they model are non-agentic, and therefore largely exhibit Brownian
+(random) motion. People are not so simple: If you disagree, I refer you
+again to the stochastic nature of the stock market, where every
+incentive is there to refine the science of prediction and we’ve still
+gotten nowhere without some kind of insider edge. <sup id="fnref:11"><a class="footnote-ref" href="#fn:11">11</a></sup></p>
+<h2 id="probability-and-his-problems">Probability and His Problems</h2>
+<p>Okay, okay, okay, I hear you say. But surely <em>probability</em> isn’t wrong?
+After all, this is what the basic program of epistemic rationality is:</p>
+<blockquote>
+<p>Light leaves the Sun and strikes your shoelaces and bounces off; some
+photons enter the pupils of your eyes and strike your retina; the
+energy of the photons triggers neural impulses; the neural impulses
+are transmitted to the visual-processing areas of the brain; and there
+the optical information is processed and reconstructed into a 3D model
+that is recognized as an untied shoelace; and so you believe that your
+shoelaces are untied.</p>
+<p>Here is the secret of deliberate rationality—this whole process is not
+magic, and you can understand it. You can understand how you see your
+shoelaces. You can think about which sort of thinking processes will
+create beliefs which mirror reality, and which thinking processes will
+not.</p>
+<p>Mice can see, but they can’t understand seeing. You can understand
+seeing, and because of that, you can do things that mice cannot do.
+Take a moment to marvel at this, for it is indeed marvelous.</p>
+<p>[…]</p>
+<p>The whole idea of Science is, simply, reflective reasoning about a
+more reliable process for making the contents of your mind mirror the
+contents of the world. It is the sort of thing mice would never
+invent. Pondering this business of “performing replicable experiments
+to falsify theories,” we can see why it works. Science is not a
+separate magisterium, far away from real life and the understanding of
+ordinary mortals. Science is not something that only applies to the
+inside of laboratories. Science, itself, is an understandable
+process-in-the-world that correlates brains with reality.</p>
+<p>— Eliezer Yudkowsky, <u><u><a href="https://www.readthesequences.com/The-Lens-That-Sees-Its-Own-Flaws">“The Lens That Sees Its Own
+Flaws”</a></u></u></p>
+</blockquote>
+<p>There are two problems with this account of epistemic rationality and
+Science (capital-S). The first and most obvious is that “get up and make
+a sandwich” level Bayesian statistics <sup id="fnref:12"><a class="footnote-ref" href="#fn:12">12</a></sup> translate poorly to
+modelling outcomes of complex distributions in society, nature, politics
+and economics. Just because the causal chain between “it is raining” and
+“the floor will be wet later” or “my shoelaces are untied” and “I see
+that my shoelaces are untied” is obvious does not mean that “Federal
+Reserve interest rates are raised” and “consumer purchasing power goes
+up/down/sideways” is obvious.</p>
+<p>The second and perhaps more dangerous error is that this is <em>not how
+science operates</em>. Yudkowsky says that science is “reflective reasoning
+about a more reliable process for making the contents of your mind
+mirror the contents of the world”, and carried out by “performing
+replicable experiments to falsify theories”. However, when we learn
+physics we do not start by exhaustively verifying the laws of motion,
+then the laws of thermodynamics, then move on to recreating the
+experiments that proved the existence of atoms, quarks, the Higgs Boson
+or relativity. We may get tasters of such scientific experiments, to
+“get a feel” for the scientific method, but what we do a lot instead is
+<em>take other people at their word</em>. Some of these people happen to be
+called Niels Bohr and Albert Einstein, and we are told that there are
+very good reasons for taking them at their word, but taking someone’s
+word for it is just that—taking someone’s word for it <sup id="fnref:13"><a class="footnote-ref" href="#fn:13">13</a></sup></p>
+<p>But why is science effective, then? Why don’t we take the words of flat
+earthers, or moon landing conspiracists, or Christian scientists? If
+science is truly about “making the contents of your mind mirror the
+contents of the world”, what business have we learning and using
+erroneous theories like Newtonian motion? Yudkowsky betrays a
+fundamental misunderstanding of science when he writes in awe about “the
+potential power [science] bestows on us as individuals, not just
+scientific societies”. Because it is precisely the other way around: we
+overestimate the power science gives the lone scientist, and
+underestimate the role played by the scientific society. Alone, we are
+prey to confirmation bias and cognitive dissonance and a thousand other
+tricks our brain plays on us. The most effective way to resolve these
+errors is not to sit still and think very hard, but to submit our ideas
+to others for replication, falsification, and criticism, even when our
+opponents disagree with us strongly. Over time, ideas are adopted as
+knowledge and become taken as granted, the foundations of further
+research, making it no longer necessary for us to spend hours splitting
+the atom in every undergraduate physics class. Alone, what we have is
+ideas, together, what we have is knowledge:</p>
+<blockquote>
+<p>When we think of knowledge in scientific contexts, however, we need to
+treat the communal function of scientific knowledge as paramount. And
+this is a function which ideas can perform whether or not they are
+true, as well as whether or not they are believed to be true. It is a
+function which ideas can perform even when there is no persuasive
+evidence in favor of their truth. This is because the role that ideas
+play in science depends more on what the community of practitioners
+<em>agrees to use</em> to propel the study of nature than it does on what
+mind-independent nature is fundamentally like. But, surely
+practitioners would not adopt an idea unless they believed it to be
+true, right? Right?! I think it is very far from clear whether that is
+the case, and I think that lack of clarity says something of profound
+significance about the peculiar nature of <em>scientific</em> knowledge.</p>
+<p>Looking across the history of science, we find countless instances of
+ideas which we would regard as literally false nevertheless serving
+this communal function. We find practitioners employing ideas which
+they by their own admission do not believe. And we find them adopting
+ideas which clearly lack persuasive evidence. None of this makes any
+sense if we view the adoption of a scientific idea as the adoption of
+a belief about nature. If, instead, we view the adoption of a
+scientific idea as the adoption of a technique used to study nature,
+we are able to fit a lot more of what researchers do into a coherent
+picture of knowledge production. In adopting a technique, we do not
+ask whether the technique is true; techniques are not the sorts of
+things that can be true. In adopting a technique, we do routinely
+demand something like evidence – but not evidence of its truth.
+Rather, we seek evidence of its efficacy. There are better or worse
+techniques, or techniques which are more or less useful.</p>
+<p>— Chris Haufe, <em>Do the Humanities Create Knowledge</em>, in Ch. 2 “What
+Would the Community Think?”</p>
+</blockquote>
+<p>So far, I seem to have launched a full scale attack on the very idea
+that we can create universally applicable higher order representations
+of the world <sup id="fnref:14"><a class="footnote-ref" href="#fn:14">14</a></sup>. Despite this, it seems intuitive that we should be
+able to know <em>some</em> things about the world. How does this work then?</p>
+<h2 id="heuristics-over-theories">Heuristics over Theories</h2>
+<p>In this section I introduce the idea that (local) heuristics may be
+superior to (universal) theories in terms of predictive power and
+practical utility. To be clear, when I say a theory or model I mean
+something on the order of Einstein’s general theory of relativity.
+Heuristics are general estimates like “will I have time to cross the
+road before that car hits me” or “is this book going to be a good read
+for me”. More mathematical heuristics might be “should I try solving
+this problem with induction” or “what probability distribution fits this
+data best”?</p>
+<p>At first, heuristics seem like inferior, degraded forms of theories:
+where theories are universal and rigorous, heuristics are situationally
+dependent and fuzzy; where theories are precise and elegant, heuristics
+are rough and often extremely path-dependent. Heuristics are borne out
+of personal experience and practice while theories are precisely
+captured in mathematical formulations and can be shared across many
+different contexts. Compare the instincts of a New York options trader
+with a neophyte relying on the Black-Scholes-Merton formula for options
+pricing <sup id="fnref:15"><a class="footnote-ref" href="#fn:15">15</a></sup>.</p>
+<p>However, perhaps you have already begun to anticipate what I will
+say—the benefit of heuristics is that they acknowledge (and are indeed
+dependent) on the presence of context. Unlike a “hard” theory, which
+must be applicable to all cases equally and fails in the event a single
+counter-example can be found, a “soft” heuristic is triggered only when
+the conditions are right: we do not use our “judge popular songs”
+heuristic when staring at a dinner menu.</p>
+<p>It is precisely this contextual awareness that allows heuristics to
+evade the problems of naive probabilistic world-modelling, which lead to
+such inductive conclusions as the <u><a href="https://en.wikipedia.org/wiki/Turkey_illusion">Turkey
+Illusion</a></u>. This means
+that we avoid the pitfalls of treating spaghetti like a Taylor Swift
+song, and it also means (slightly more seriously) that we do not treat
+discussions with our parents like bargaining games to extract maximum
+expected value. Engineers and physicists employ Newton’s laws of motion
+not because they are universal laws, but because they are useful
+heuristics about how things move in our daily lives (i.e. when they are
+not moving at near light speed). Heuristics are what Chris Haufe called
+“techniques” in the last section: what we worry about is not their
+truthfulness, but their usefulness.</p>
+<p>Moreover, it may be that, as much as we find heuristics distasteful, we
+have to work with them anyways. Heuristics work at the subconscious
+level, as tacit and internalised knowledge rather than cumbersome and
+externalised knowledge. This means that, whether we like it or not,
+heuristics guide our actions whenever we don’t stop to explicitly reason
+out our options. When I’m deciding what to eat for dinner or what to say
+next at a party or how to steer my bike, I’m using heuristics. Improving
+our decision making, therefore, is inextricably linked with improving
+our heuristics. <sup id="fnref:16"><a class="footnote-ref" href="#fn:16">16</a></sup></p>
+<p>More concretely, shifting the balance of our thought from applying
+perfect theories to cultivating and cataloguing useful heuristics allows
+us to make meaningful use of, rather than suppress, those instinctual
+and subconscious parts of our brain we call hunches, biases, and
+emotions. Properly “trained” by experience, these systems can allow us
+to generate spontaneous connections between ideas, recall precisely the
+correct answer to a question we had no idea how to solve, or recognise
+danger before it arises, and they should not be derided or ignored.
+Rationalism, as a whole, privileges working things out in the conscious
+brain to trusting our gut, and that is I argue one of the reasons that,
+when true emergencies appear and real difficult decisions are on the
+line, it is rare to see Pareto-optimal strategies being employed.</p>
+<h2 id="a-heuristic-for-life-conscious-reinvestment">A Heuristic for Life: Conscious reinvestment</h2>
+<p>Suppose, then, that you accept in principle that heuristics might be a
+better way for handling problems than having a perfect decision theory,
+both because we are inherently only capable of limited cognition and
+because heuristics imply a recognition and respect for context. How does
+that play out over a lifetime, how does this statement cash out?</p>
+<p>Much is made in rationalist circles of the need to expand your
+optionality, to accrue options and choices and agency by recognising the
+choices at hand. Of course, in an abstract environment having more
+policies available to achieve your goals is better than having less,
+especially if you can keep all options open while constantly getting
+more. Much effort is also expended in breaking down the artificial value
+and goal structures imposed by society, with the general belief that
+people should be free to determine their own goals rather than bowing to
+social pressure. However, in real life these liberations can manifest as
+a kind of malaise, a sense that you could do <em>everything</em> and therefore
+cannot easily decide on doing <em>anything</em>. It can feel like we’re
+standing in a great desert, with options stretching out all around us in
+a combinatoric explosion, with nothing to do except to walk endlessly
+down one decision tree or another.</p>
+<p>How can we achieve what we want when the options are so vast and opaque,
+when we have liberated ourselves from society’s carefully manicured
+pre-set routes? When love and fear and hope and democracy are just so
+many signalling games we play, what does it even mean to live a good
+life?</p>
+<p>The first thing we can do is follow the “north star” approach, where we
+fix some point in the sky as our ultimate destination and walk
+unceasingly forward. This naturally runs into problems of degenerate
+optimisation (which can in many cases sunder your chances of actually
+achieving your goal, especially in a social context), but it also
+invites a painful and unsatisfying form of life in which there is no way
+to embrace unexpected opportunities or change your mind without giving
+up your entire life project and branding yourself “irrational”. Instead,
+we might try adopting the heuristic approach to achieving a goal: define
+a heuristic direction pointing where we roughly wish to go, and then
+taking the option to move in that direction when the situation seems
+appropriate, rather than at every possible opportunity. By “loosening
+our grip” on our agency, we allow ourselves the freedom to experiment
+and in turn gain more information about our goal, iteratively improving
+our ability to recognise and exercise the options our circumstances
+afford to us.</p>
+<p>But what if you cannot be sure what your true preferences are? Then it
+may be necessary to perform a second-order heuristic search. Since you
+are reading this, you have already been “randomly initialised”, with a
+set of opportunities and people around you that you may like more or
+less or understand more or less. Then you can begin your heuristic
+search: When the opportunity arises, lean in to investing in people and
+causes rather than not, but don’t hold any idea or person particularly
+strongly at the start <sup id="fnref:17"><a class="footnote-ref" href="#fn:17">17</a></sup>. Over time, reinvest in things you find more
+meaningful, and exit situations that don’t give you meaning (but not too
+hastily, hindsight is a powerful introspection tool). Once you have a
+clear sense of what appeals to you and what is meaningful to you, you
+can start on the broader project of heuristically pursuing meaning where
+it leads you.</p>
+<p>In high school, I was lonely, loveless, and miserable, on the verge of
+slipping into the right-wing radicalisation pipeline. I resolved to
+change my situation with no clear idea of how to do so. In university, I
+developed this method out of desperation, throwing myself into every
+group and relationship I could find in COVID to give my life some kind
+of attachment and meaning. Over many painful experiences, I got a rough
+grip of what I actually wanted to learn about and do in the world. This
+was not a clean, optimal path, but precisely because it was not optimal
+I managed to gain lessons and friends from unexpected places, pushing
+back my unknown unknowns and refining my approach to life <sup id="fnref:18"><a class="footnote-ref" href="#fn:18">18</a></sup>. This
+method is what I call conscious reinvestment, and it partially saved my
+life. I hope it helps you.</p>
+<p><a href="index.html#toc">Table of Contents</a>
+<a href="0.html">Previous Section</a>
+<a href="2.html">Next Section</a></p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Eliezer Yudkowsky, What Do We Mean By “Rationality”? in
+<u><u><a href="https://www.lesswrong.com/posts/RcZCwxFiZzE6X7nsv/what-do-we-mean-by-rationality-1">https://www.lesswrong.com/posts/RcZCwxFiZzE6X7nsv/what-do-we-mean-by-rationality-1</a></u></u>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>For a much longer exploration of these ideas, see “Context changes
+everything” by Alicia Juarrero:
+<u><u><a href="https://mitpress.mit.edu/9780262545662/context-changes-everything/">https://mitpress.mit.edu/9780262545662/context-changes-everything/</a></u></u>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>And, of course, the same is true the other way around: witness the
+crypto scams that boast high EBITDAs but do not realise that their
+cash flows are not materialising. Delusions about your environment
+are often more dangerous than ignored facts about your environment.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>The standard rationalist counterargument to this line of reasoning
+appears to be that, while it is indeed difficult to be perfectly
+rational, one can still strive to be more rational overall in the
+situations one finds themselves in. Of course, such a judgement is
+itself subjective and based on one’s assessment of the environment
+around them, the energy they have to evaluate the expected value of
+their actions, etc. If my goals, my actions to achieve those goals,
+and also my assessment of how efficient I have been at achieving my
+goals are all subjective, then almost any combination of goal and
+action can be made to appear “rational” by post-hoc reasoning.
+Hence, the meme of the 4-dimensional chess player for whom every
+failure is just another step towards total domination.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>I would argue that the Effective Altruism community has a similar
+problem with formulating different interventions as game-like policy
+trade offs, as if they are triaging patients at a hospital.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>A second, easier strategy is to lean on our natural ability to
+recognise patterns and say that while the game isn’t a <em>perfect</em>
+match for real life, the lessons of the game should carry over
+nonetheless. As I hope I have explained sufficiently, the
+mathematical validity of game-theoretic analyses do not survive such
+creative re-interpretations. On the other hand, game designers who
+act with a clear knowledge of their context and the agencies they
+are cultivating can create quite beautiful metaphors of real life
+that don’t rely on mathematical conclusions to deliver their
+lessons. Cole Wehrle discusses this in the context of wargaming
+here: <u><u><a href="https://www.youtube.com/watch?v=wi_MpZxLPFM">https://www.youtube.com/watch?v=wi_MpZxLPFM</a></u></u>&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>For some humorous evidence of the difficulty of predicting chaotic
+systems, see the following article about how monkeys beat the stock
+market:
+<u><u><a href="https://www.forbes.com/sites/rickferri/2012/12/20/any-monkey-can-beat-the-market/">https://www.forbes.com/sites/rickferri/2012/12/20/any-monkey-can-beat-the-market/</a></u></u>&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>A general sense of such cyclical alternation between moments of
+relative predictability and total uncertainty was not unknown in the
+past. The venerable Chinese novel <em>The Romance of the Three
+Kingdoms</em> begins as follows: “Of the great matters under heaven,
+that which is long divided must unite, and that which is long united
+must divide”.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>Unpredicted because they are exceptional and “break the historical
+record”, and therefore cannot possibly feature in risk analyses that
+only look at historical worst cases; but also because they are often
+literally out of the distribution of conceivable events.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>It would not be amiss to call forecasting a game using the scheme
+we have established above.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>Here’s another way to think about it: if a system does not
+contain a large amount of random actors but rather a large amount of
+actors in a temporary metastable (read: moderate) state who can fall
+into more stable (read: radical) states and influence others
+thereby, a small difference in which actors change state first will
+have a contagious effect and therefore lead to high divergences in
+the final predictions.&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>A general example being “I have five drawers, I know there’s a
+90% chance my socks are in one of the drawers, and have opened two
+drawers, what are the odds it’s in the third?”&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>Before the usual counter-claims about evidentiary standards and
+falsifiability are raised, I will note that Jan Hendrik Schön got
+very far in physics by <em>literally</em> making up his numbers and asking
+people to take his word for it: See BobbyBroccoli’s excellent series
+on the matter at
+<u><u><a href="https://www.youtube.com/watch?v=nfDoml-Db64">https://www.youtube.com/watch?v=nfDoml-Db64</a></u></u> . At the
+end of the series it is noted (by a scientist who was critical of
+him, no less) that science requires a great deal of trust, and that
+exhaustive requirements for every experiment to be repeated and
+verified would almost certainly grind scientific research to a halt.&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:14">
+<p>Some, like Taleb, even claim that the delusion that we can
+construct such theories comes from the success of heuristics, rather
+than people deriving heuristics from sound theories.&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+<li id="fn:15">
+<p>Taleb and Haug, “Option traders use (very) sophisticated
+heuristics, never the Black–Scholes–Merton formula”, in the Journal
+of Economic Behavior and Organization&#160;<a class="footnote-backref" href="#fnref:15" title="Jump back to footnote 15 in the text">&#8617;</a></p>
+</li>
+<li id="fn:16">
+<p>This is, apparently, more or less what people mean when they say
+that they are improving their forecasting ability. I argue that such
+a valuable skill is wasted at “horse race“-focused betting games
+(after all, it seems unlikely that superforecasters will branch into
+weather forecasting any time soon).&#160;<a class="footnote-backref" href="#fnref:16" title="Jump back to footnote 16 in the text">&#8617;</a></p>
+</li>
+<li id="fn:17">
+<p>For me, this was almost impossible, but you learn to loosen up
+somewhat after a few heartbreaks.&#160;<a class="footnote-backref" href="#fnref:17" title="Jump back to footnote 17 in the text">&#8617;</a></p>
+</li>
+<li id="fn:18">
+<p>Incidentally, the episode that inspired me to formalise this
+method was coming across Venkatesh Rao’s psychic assault upon all I
+believed in, also known as his dissection of American sitcom <em>The
+Office</em>. See here:
+<u><u><a href="https://www.ribbonfarm.com/2009/10/07/the-gervais-principle-or-the-office-according-to-the-office/">https://www.ribbonfarm.com/2009/10/07/the-gervais-principle-or-the-office-according-to-the-office/</a></u></u>
+. As an exercise for the reader, I invite you to re-analyse this
+extremely well written and persuasive theory focusing instead on
+psychological pressures exerted by the office context, which Rao
+entirely ignores.&#160;<a class="footnote-backref" href="#fnref:18" title="Jump back to footnote 18 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+</body>
+</html>
