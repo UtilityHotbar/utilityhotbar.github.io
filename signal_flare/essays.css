@@ -71,7 +71,7 @@ body {
     letter-spacing: 0;
     max-width: 65ch;
     margin: auto;
-    padding: 10px;
+    padding: 12px;
 }
 
 h1,h2 {
@@ -203,4 +203,20 @@ a:hover {
 
 #bibliography {
     text-indent: 1rem hanging;
+}
+
+.back-button {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    padding: 10px;
+    /* border: solid 1px var(--text-color); */
+    box-shadow: 0px 0px 2px var(--shadow-color);
+    background-color: var(--bg-color);
+}
+
+@media  (pointer:none), (pointer:coarse)  {
+    .back-button {
+        position: static;
+    }
 }
