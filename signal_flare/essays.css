@@ -69,8 +69,9 @@ body {
     font-size: 14pt;
     font-family: 'Linden Hill', Times, serif;
     letter-spacing: 0;
-    width: 65ch;
+    max-width: 65ch;
     margin: auto;
+    padding: 10px;
 }
 
 h1,h2 {
@@ -135,7 +136,7 @@ h2 {
 
     .quote {
         max-width: 65ch;
-        width: 65ch;
+        /* width: 65ch; */
         font-size: inherit;
         line-height: 120%;
     }
