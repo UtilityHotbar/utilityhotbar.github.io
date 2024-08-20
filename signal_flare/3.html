@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Program for a Different Model of AI Development</title>
+    <title>Something Different This Way Comes - Part 2</title>
     <link rel="stylesheet" href="essays.css">
 </head>
 <body>
@@ -12,440 +12,346 @@
         <hr>
         <a href="index.html">Home</a><br><a href="2.html">Previous</a><br><a href="4.html">Next</a>
     </div>
-    <h1 id="a-program-for-a-different-model-of-ai-development">A Program for a Different Model of AI Development</h1>
-<p><em>In which I ask for a program of human augmentation, rather than human
-replacement—&ldquo;Good enough&rdquo; AI is a scam—A call to arms</em></p>
-<h2 id="-1-a-note-on-accuracy-and-links">-1. A Note on accuracy and links</h2>
-<p>All links to papers or resources present here are drawn from my
-(limited) memory and do not represent the best or most well-written
-works in the areas that I reference. While I am drawing on three years
-of hands-on experience with models big and small as well as working on a
-<u><a href="https://arxiv.org/abs/2302.10329">paper</a></u> and a
-<u><a href="diss.html">dissertation</a></u> on this topic, I am nevertheless conscious
-of the likelihood that I have made many obvious and non-obvious errors.
-Factual and conceptual corrections are welcome where supplied with
-sufficiently clear evidence. Contact me at mutatismutandisetplusultra at
-gmail dot com.</p>
-<h2 id="0-navigating-this-document">0. Navigating this document</h2>
-<p>If you want an overview of why I believe the present mode of AI
-development is harmful, start from the beginning with section 1. If you
-are already convinced or just want to see some code, go to section 4. If
-you are not particularly technically inclined, reading up to section 4
-gives you a good idea of my general points and stance. If you are
-interested in AI safety and feel pessimistic about the state of AI, I
-would recommend everything, but especially section 4 onwards.</p>
-<h2 id="1-introduction">1. Introduction</h2>
-<p>The present state of AI development is dangerous and unsustainable.
-Unfathomable amounts of time, manpower,
-<u><a href="https://www.independent.co.uk/climate-change/news/google-climate-emissions-ai-data-centers-b2572865.html">electricity</a></u>,
-and
-<u><a href="https://gizmodo.com/microsoft-water-usage-ai-iowa-data-center-1850826419">water</a></u>
-have been spent on models that promise the world but deliver
-questionable results. The present <u><a href="diss.html?#the-narrative-of-ai">AI investment cycle</a></u>
-depends on companies announcing a never-ending parade of new models with
-powerful capabilities to attract new investment for training yet more
-models. With revenue lagging far behind expenditure, this cycle creates
-both a <u><a href="https://www.wheresyoured.at/burst-damage/">vicious bubble about to
-burst</a></u> and dangerous race
-dynamics between companies that encourage risk-taking, one-upmanship,
-and dangerous deployments of unready technology.</p>
-<p>Despite this, AI technology is definitely far more advanced than it was
-even five (much less ten) years ago. The claims of the AI skeptics (that
-AI would never master language or complex problem solving outside of
-games) have been decisively wounded. As companies rush to slap labels
-like “safe” and “friendly” on their models, the time will come when the
-line between truly capable artificial intelligence and billions of
-dollars of emergency hotfixes becomes invisible to the human eye.</p>
-<p>I believe we are in need of a different method of conceiving of how to
-use, deploy, and manage AI technology. This is my attempt to provide
-that alternative view.</p>
-<h2 id="2-ai-as-signal-processing">2. AI as Signal Processing</h2>
-<p>The present paradigm of AI focuses on using AI as an advanced form of
-signal processing. Raw data (images, user speech, video, natural
-language prompts), too complex and multifaceted to be handled by human
-programming or hand-crafted rules, comes into a black box called an “AI
-model”. Processed data comes out of the black box in the form of image
-labels, continuations of text, or entity classifications, in a format
-that is legible and useful to humans. In other words, the image of a cat
-already contains the information “this is a cat”, what AI does is
-extract this “relevant” information from the image and discard the rest
-<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
-<p>This problem is not new: signal processing is a discipline as old as
-World War II, where separating a voice or electrical signal from the
-noise generated through the physical medium a signal traveled in was key
-<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>. The major innovation of the “machine learning revolution” has been
-the development of ways to relieve humans of designing the processes
-which perform the intermediate steps of signal processing. By providing
-automated feedback to a system capable of <u><a href="https://en.wikipedia.org/wiki/Universal_approximation_theorem">approximating <em>any</em> signal
-processing
-function</a></u>,
-we hope to steer it to organically settling upon an optimal algorithm
-for our desired signal processing problem, whether that problem is
-sorting the wheat from the chaff in a pile of hopeful applicants or
-finding the lowest-error continuation of the signal we are receiving.</p>
-<p>A major feature of this paradigm is that the intermediate steps of
-computation (where the real work of “feature extraction” i.e. “signal
-amplification” gets done) are efficiently abstracted away. The general
-contemporary machine learning approach is to encourage the model to
-develop an internal “shorthand” for encoding all manner of possible
-inputs, and then asking it to kindly throw that shorthand away to expose
-the few morsels of information we actually need <sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>. Thus, the vast
-majority of information in an image of a cat (a tabby cat, incidentally,
-sitting next to a potted plant, slightly frowning, with a crooked
-whisker or two) is discarded to obtain an image embedding <sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>, which is
-itself crunched down to a list of human-specified labels with
-probabilities listed next to them (cat: 50%, dog: 4%, gerbil: 2% …)
-<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup>. Incidentally, this is also how transformers work: a sequence of
-tokens (“to”, “be”, “or”, “not”, “to”) come in, a great deal of
-computation occurs where information is extracted and transferred
-between tokens to create a contextual shorthand for the meaning of the
-token sequence, then all that shorthand is discarded to obtain a list of
-next-word probabilities: (“be”: 95%, “hamlet”: 1% …).</p>
-<p>There are several problems with this approach. Perhaps the easiest to
-explain is that a great deal of computation is wasted when this is done,
-since all the animal-identifying model has learned about a given image
-of a tabby cat is discarded when the next image (possibly only different
-from the first by a few pixels!) comes in. This is part of the reason
-why it is incredibly wasteful to run AI models, especially models with
-high levels of information processing or transfer capabilities like the
-transformers. Work is underway to cache latent representations, but as I
-understand it, it is still in its early stages.</p>
-<p>Perhaps more worryingly, such an efficient abstraction of inner
-computational processes hides those processes both from our
-<em>understanding</em> and from our <em>control</em>. If we trust the model to
-separate signal from noise, we naturally cede control over the
-definitions of “signal” and “noise” to the model. Has the model declared
-this candidate a “good fit” for our company because he says he has a
-strong work ethic, or because he is of the same ethnicity and cultural
-background as the rest of the team? Who knows? It does good enough on
-our self-defined benchmarks, so we should start pitching it to venture
-capital!</p>
-<p>An entire instrumental science of model interpretability has thus arisen
-to research powerful AI models after training is complete, prying open
-their internal shorthand and their learned parameters to extract
-features or signals models focus on. Many
-<u><a href="https://github.com/TransformerLensOrg/TransformerLens">tools</a></u>
-and <u><a href="https://jalammar.github.io/illustrated-transformer/">guides</a></u>
-have been published to this end, forming a small discipline of
-interpretability research that is also sponsored by major developers
-like OpenAI and
-<u><a href="https://transformer-circuits.pub/2024/scaling-monosemanticity/index.html">Anthropic</a></u>.
-Leaving aside the sense that this is like inviting the vet to visit
-after the horse has already left the barn, the pragmatic truth is that
-this process is incredibly difficult. Models, besides basic constraints
-of computing resources allocated and time spent on training, have no
-impetus to make their decision making processes compact or <u><a href="https://arxiv.org/abs/2210.01892">human
-legible in any way</a></u>. It also
-remains unclear how, if a harmful feature were indeed discovered in a
-production model, a model might be modified to “forget” such features
-<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup>. And, of course, the release of open weights models like <u><a href="https://llama.meta.com/">Llama
-by Meta</a></u> means that even if such a
-foolproof technique were discovered, we would still need to do a
-“recall” on every AI model being used in the wild, which is somewhat
-akin to trying to recall every radio in the world if duplicating radios
-was also free.</p>
-<h2 id="3-good-enough-ai">3. “Good Enough” AI</h2>
-<p>With no fundamental way yet discovered to understand and modify AI
-models from the inside, the “solution” settled on by OpenAI et al. is
-simple: more training. Such paradigms have names like <u><a href="https://en.wikipedia.org/wiki/Reinforcement_learning_from_human_feedback">Reinforcement
-Learning from Human
-Feedback</a></u>
-or <u><a href="https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback">Constitutional
-AI</a></u>,
-and largely consist of further feedback to the models that they have
-already trained, this time of the variety “could you please not tell
-people on the internet how to make methamphetamine, thanks”. In the days
-of cat-dog identification, this training was known as “adversarial
-robustness”: Both paradigms consist of further training to teach a model
-to identify a class of signals that is pathological and therefore should
-be ignored or handled in some special way. Unfortunately, we’re no
-better at telling AI models not to label <u><a href="https://www.sciencedirect.com/science/article/abs/pii/S1383762124000924">bursts of TV static as
-gibbons</a></u>
-than we are at <u><a href="https://arxiv.org/html/2307.15043v2">telling ChatGPT not to teach murderers how to dispose
-of bodies</a></u>. These companies
-will pretend that they have no choice, that it is these stop-gap methods
-or nothing. That is a lie. <strong>They always have the option of not
-deploying or developing these models. They just choose to deploy them
-anyways.</strong></p>
-<p>So what are we left with? I do not claim that <em>no</em> progress has been
-made in AI safety or AI alignment with “human values”. ChatGPT or GPT-4o
-is demonstrably safer than GPT-3 out of the box when faced with most
-harmful prompts <sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup>. However, as AI deployments become more
-<u><a href="https://preview.devin.ai/">sophisticated</a></u> and more
-<u><a href="https://arstechnica.com/information-technology/2024/08/research-ai-model-unexpectedly-modified-its-own-code-to-extend-runtime/">autonomous</a></u>,
-I am more and more convinced that such incremental improvements do
-nothing except create a false sense of security around these opaque and
-obfuscated models, especially as the arms race to train GPT-5 and its
-equivalents is already on and models are set to become <em>more</em> complex,
-not less. <u><a href="https://situational-awareness.ai/">A general</a></u> is much
-more likely to launch a 70% accurate guided missile than he is to launch
-a 20% accurate missile, but the potential harm from a misguided missile
-is still catastrophic (and has possibly become more severe now that
-launching is no longer off the table).</p>
-<p>What the major AI corporations are trying to sell us is AI that is “good
-enough”, where they define “good” and they define “enough”. Well, fuck
-that. If we must develop these models, can we at least do them in a
-slightly less insane way?</p>
-<h2 id="4-the-promise-of-a-better-ai">4. The Promise of a Better AI</h2>
-<p>I am by no means a Luddite. I believe in the capacity for powerful
-information processing technologies to make human lives and decision
-making better. I believe that AI models, when used in properly
-constrained cases, constitute powerful information processing and signal
-processing systems. However, I believe that any such technology must
-meet several key criteria.</p>
+    <h1 id="something-different-this-way-comes-part-2">Something Different This Way Comes - Part 2</h1>
+<p><em>In which I attempt to renegotiate rationalism as a political
+philosophy, and offer my alternative—A king is not a
+micromanager—Decentralisation can save the world</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>In this part, I lay out what I see to be the political implications of
+rationalism, and try to offer an alternative worldview for solving high
+level cooperation and coordination problems.</p>
+<h2 id="the-ugly-side-of-things">The Ugly Side of Things</h2>
+<p>So far, I have not laid my cards on the table as to why I am writing
+this essay. It seems clear to me that the four core beliefs I laid out
+in “Defining Rationalism” place rationalists and their ideological
+neighbours at a high risk of ideological radicalisation to conservative
+and far-right causes. This is generally done by extrapolating the third
+principle to the idea that the smart and agentic should direct the
+affairs of the <em>hoi polloi</em> due to their inability to self-govern, along
+with adopting a dim view of human cooperation that leads to the adoption
+of “might makes right” strategies. It also leads to a libertarian
+impulse which resists social constraints and sees social conventions as
+entirely retrograde and not worthy of respecting, eroding the social
+ties of rationalist participants in the process. There is also a large
+element of potential overlap with scientific racism (so-called “Human
+Bio-Diversity”): Once it can be “determined factually” that one
+sub-group of humans is more intelligent than another, the intellectual
+supremacism that has already been established justifies depriving the
+less intellectual of equal standing in society. It is a lie to say that
+rationalism is compatible with every value set, because not every value
+set values “winning”, and the supremacy that entails <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
+<p>Of course, the rationalists would say that, however repugnant such
+conclusions might be to conventional morality, they are the best way of
+analysing the world we have before us. However, what if there was an
+alternative?</p>
+<h2 id="there-is-another-way">There is another way</h2>
+<p>It seems clear to me that, if we aim to dethrone an ideology constructed
+on the supposed rigorous study of reality, then we must make sure that
+any alternative world-model we propose have at least as much explanatory
+power as the original. It should also enable instrumental and ethical
+outcomes superior to rationalism, otherwise rationalism would still
+remain the best way of achieving your goals even if its world-model is
+incorrect. We must win more and win better, so to speak. In that light,
+I tried to generalise some of the ideas behind conscious reinvestment to
+broader systemic principles. Here’s my best shot:</p>
 <ol>
 <li>
-<p><strong>Interpretability by design:</strong> Models must have at least somewhat
-    human auditable and editable inner latent representations, even at
-    the cost of performance. Post-hoc “alignment” is not enough.
-    Ideally, these models should clearly and unambiguously showcase the
-    strengths and downsides of any given model.</p>
+<p>The world can be understood as complex systems that are constructed
+    based on complex, nonlinear principles of interaction - these models
+    escape the understanding of any individual or group of individuals
+    due to their irreducible complexity</p>
 </li>
 <li>
-<p><strong>Domain limitations:</strong> Models should do one thing well, not many
-    things nebulously good enough.</p>
+<p>Developing heuristics about and influence over these systems enables
+    us to solve high level problems (social coordination, communication,
+    ai alignment). This is best done by distributing agency and enabling
+    anti-fragile local self-improvement rather than top-down
+    orchestrated optimisation and change.</p>
 </li>
 <li>
-<p><strong>Efficiency:</strong> Models should not re-perform computation on already
-    processed items, not only because it’s more efficient, but because
-    it makes models more consistent over time and (I believe) ultimately
-    more capable and reliable.</p>
-</li>
-<li>
-<p><strong>Human in the loop:</strong> Current models are designed to be “agents”
-    i.e. take the place of whole human workers at once. Models should
-    instead aim to <u><u><a href="https://ethics.harvard.edu/how-ai-fails-us">enhance human decision
-    making</a></u></u> and
-    create opportunities for humans to be more creative, dynamic, and
-    efficient.</p>
+<p>The efficiency of a decentralised system increases the more agents
+    are empowered to locally self-optimise and coordinate. Therefore,
+    any promotion of knowledge about these systems and the truth of
+    nonlinear influence increases the total compute capacity of the
+    human race and improves the distributed system’s performance at
+    every level.</p>
 </li>
 </ol>
-<p>Below are three concepts for AI models (along with code, as a sign of
-good will) that can demonstrate some of these ideas. In many of these
-cases we do not swear off frontier models, but instead carefully scope
-their deployment to maximise interpretability and human control.</p>
-<h3 id="41-concept-one-unsupervised-human-friendly-online-object-categorisation">4.1 Concept One - Unsupervised Human-Friendly Online Object Categorisation</h3>
-<ul>
-<li><u><u><a href="https://github.com/utilityhotbar/sam2_hierarch">https://github.com/utilityhotbar/sam2_hierarch</a></u></u></li>
-</ul>
-<p>We use
-<u><a href="https://github.com/facebookresearch/segment-anything-2">SAM2</a></u> to
-segment incoming images into objects. Each object is then masked out and
-fed into
-<u><a href="https://huggingface.co/transformers/v4.8.0/model_doc/clip.html">CLIP</a></u>
-to create embeddings of each object. Instead of discarding these
-embeddings, we save them (alongside their associated image) in
-automatically generated categories by clustering them following a
-simplified <u><a href="https://arxiv.org/pdf/1909.09667">Online Hierarchical Agglomerative
-Clustering</a></u> (OHAC) algorithm, with
-the similarity index being the cosine similarity of the stored image
-embeddings. As a result of this approach, the dynamically generated
-classifications can be displayed as a list of folders containing images
-of objects. Moving an image from one folder to another and then updating
-the categories automatically gives us unprecedented control over the
-model’s learned behaviour without further retraining.</p>
-<h3 id="42-concept-two-textual-knowledge-graph-generation-and-analysis">4.2 Concept Two - Textual Knowledge Graph Generation and Analysis</h3>
-<ul>
-<li><u><u><a href="https://github.com/UtilityHotbar/autoratiocinator/">https://github.com/UtilityHotbar/autoratiocinator/</a></u></u></li>
-</ul>
-<p>Instead of feeding an LLM foundation model raw text and then prompting
-it to summarise the text, we use foundation models to rewrite the text
-to contain less ambiguity (pronouns, references etc) and then split the
-text into sentences. These rewritten sentences are exposed and
-auditable/editable by humans. Each sentence is compared against a list
-of candidate related sentences using a cosine similarity heuristic. The
-result is a knowledge graph that contains directed edges (sentence X
-implies sentence Y) and undirected edges (sentence A is related to
-sentence B). Using these edges, analyses can be provided for each
-sentence in the text that are more auditable than simply prompting an
-LLM with a large context window.</p>
-<h3 id="43-concept-three-constraintclassification-separation">4.3 Concept Three - Constraint/Classification Separation</h3>
-<p>Instead of retraining <u><a href="https://arxiv.org/abs/2111.06377v2">Masked Autoencoder-Vision Transformer
-models</a></u> to make them “more
-robust” against pathological inputs, I use the otherwise discarded
-decoder from the training process as a way of testing if images have
-been tampered with or are otherwise poorly represented within the latent
-space of the vision transformer. If the reconstruction loss after an
-image is fed through the constraint module (an encoder-decoder process)
-is too high, the system will flag it as anomalous instead of attempting
-to classify it. This is an example of treating machine learning models
-as powerful contextual heuristics rather than general “world modelers”.</p>
-<p>The proof of concept code is short enough to put here:</p>
-<pre><code class="language-python">from transformers import ViTForImageClassification, AutoImageProcessor, ViTMAEForPreTraining
-from datasets import load_dataset
-# import tensorflow as tf
-from PIL import Image
-
-import pickle
-import torch
-
-dataset = load_dataset(&quot;huggingface/cats-image&quot;)
-
-image = dataset[&quot;test&quot;][&quot;image&quot;][0]
-
-image_processor = AutoImageProcessor.from_pretrained(&quot;facebook/vit-mae-base&quot;)
-
-pretraining_model = ViTMAEForPreTraining.from_pretrained(&quot;facebook/vit-mae-base&quot;)
-
-classifier_image_processor = AutoImageProcessor.from_pretrained(&quot;google/vit-base-patch16-224&quot;)
-
-classifier_model = ViTForImageClassification.from_pretrained(&quot;google/vit-base-patch16-224&quot;,)
-
-def safe_classify_image(image):
-    inputs = image_processor(images=image, return_tensors=&quot;pt&quot;)
-
-    outputs = pretraining_model(**inputs)
-
-    loss = outputs.loss
-
-    reconstructed_img = pretraining_model.unpatchify(outputs.logits).detach().cpu()
-
-    print(reconstructed_img.shape)
-    # Reject the input if its too different
-    # Otherwise, use the reconstructed image as the input to the classifier
-    print(loss)
-    if loss &gt; 0.5:
-        return &quot;adversarial&quot;
-
-    with torch.no_grad():
-        classifier_inputs = classifier_image_processor(images=image, return_tensors=&quot;pt&quot;)
-        logits = classifier_model(**classifier_inputs).logits
-
-    predicted_label = logits.argmax(-1).item()
-
-    final_label = classifier_model.config.id2label[predicted_label]
-    return final_label
-
-def raw_classify_image(image):
-    classifier_inputs = classifier_image_processor(images=image, return_tensors=&quot;pt&quot;)
-
-    with torch.no_grad():
-
-        logits = classifier_model(**classifier_inputs).logits
-
-    predicted_label = logits.argmax(-1).item()
-
-    final_label = classifier_model.config.id2label[predicted_label]
-    return final_label
-
-if __name__ == '__main__':
-    norm_label = raw_classify_image(image)
-    safe_label = safe_classify_image(image)
-    print(norm_label, safe_label)
-</code></pre>
-<h2 id="5-why-this-programmethodologyplan-for-safe-ai">5. Why this program/methodology/plan for safe AI?</h2>
-<p>I know that my methods are not “sophisticated” in ML terms or backed by
-years of research. However, this technical program was not borne out of
-a grand theoretical ideal, or some utopian dream of benevolent AI
-assistants for everyone. It was instead developed out of necessity due
-to my limited access to funds and compute. With only a laptop and public
-models to work with, I wanted to make systems that could function on
-(relatively) limited hardware and still deliver human-interpretable and
-editable inner representations. In that regard, I would argue that I
-have succeeded more than many high-concept labs that have raised more
-funds but produced much less to show for it.</p>
-<p>Time is of the essence. The pieces of a world we do not wish to see are
-being assembled around us as we speak.</p>
-<h2 id="6-but-ai-isnt-actually-sentientthinkingself-aware-so-isnt-this-safety-stuff-all-just-hype-for-ai-companies">6. But AI isn’t actually sentient/thinking/self aware, so isn’t this safety stuff all just hype for AI companies?</h2>
-<p>In some sense, I could not care less if AI was actually sentient or self
-aware. LLMs and generative AI models, while definitely <em>not</em> sentient,
-are already causing great losses to freelance artists and writers. If AI
-models become more capable and are then placed in greater <u><a href="https://www.politico.eu/article/dutch-scandal-serves-as-a-warning-for-europe-over-risks-of-using-algorithms/">positions
-of
-responsibility</a></u>,
-whether they are “really AI” or not becomes a moot point compared to the
-harm they can cause <sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup>.</p>
-<h2 id="7-wont-ai-capabilitiessafety-just-get-better-and-make-all-your-concerns-moot">7. Won’t AI capabilities/safety just get better and make all your concerns moot?</h2>
-<p>I have strong reasons to believe that the limitations of current AI
-models are tricky to solve without exponential investment in scaling,
-which current funders may be <u><a href="www.wheresyoured.at/burst-damage">loathe to
-provide</a></u>. I also believe that
-<em>much of their supposed capacity</em> to handle knowledge work tasks is
-either “patched in” through fine tuning or competence attributed to
-vague language. Here I refer to large language models specifically
-rather than AI models in general.</p>
-<p>The reason I believe this limit exists is as follows: <u><a href="https://arxiv.org/html/2406.08787v1">Function
-composition</a></u> is a
-much-discussed topic with regards to the fundamental abilities of LLMs.
-In general, function composition refers to the ability to apply logical
-operations, mathematical functions etc. in a predefined sequence,
-“composing” them into a longer function. A simple example is as follows:
-<em>The cat ate the bat. The whale ate the cat. What ate the thing that ate
-the bat?</em>. The question can be formulated as
-<code>what_ate(what_ate("bat"))</code>, and solving the problem requires applying
-both operations in sequence.</p>
-<p>I have designed a <u><a href="https://github.com/UtilityHotbar/crashtestbench">rudimentary benchmark</a></u> to test LLM
-capabilities to solve this category of problem at various depths, and
-the initial results seem to indicate that they are no better than chance
-at solving problems humans can be trained to solve trivially <sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup>. This
-is reinforced by <u><a href="https://arxiv.org/html/2406.02061v1">existing
-research</a></u>. I further believe
-that many knowledge work tasks (generating policy briefs, summarising
-text etc.) contain implicit forms of such function composition problems
-(“Who is the protege of the last French prime minister?” etc.).
-Currently LLM models might get around this using memorised facts in the
-feed forward networks of each block, allowing them to hard-code answers
-to such composition questions without needing to actually engage with
-the actual logic problem. However, in tasks like autonomous scientific
-research, autonomous policy briefing etc. these techniques will quickly
-become useless due to the granularity of the issues at hand. It also
-seems true that this limitation arises from <u><a href="https://arxiv.org/html/2402.08164v2">a limitation in the
-fundamental design of current generation
-transformers</a></u>. Therefore, I
-have cause to believe that without exponential investment in scaling
-infrastructure this hurdle may not be surpassed, while model
-misbehaviour remains an issue.</p>
-<p>As an add-on to all of this, I still believe in the original arguments
-against language models—in essence, that the map is not the territory,
-and that a <u><a href="https://blog.dileeplearning.com/p/ingredients-of-understanding">world model predicated on
-language</a></u>
-is an imperfect map onto a sensory reality powered by physics. However,
-now I am quite satisfied that models will be able to map one onto the
-other well enough to cause significant mischief.</p>
-<h2 id="8-but-agiasithe-singularity-is-inevitable-so-why-bother">8. But AGI/ASI/the Singularity is inevitable, so why bother?</h2>
-<p>Here I address the views present in articles like
-<u><a href="https://gwern.net/tool-ai#why-you-shouldnt-be-a-tool">these</a></u>, as
-well as arguments that because of some combination of technological and
-social factors generalised AI systems are inevitable. Therefore, it is
-implied that non-general efforts to create “tool-like” or “safe” AI
-systems are wastes of time. Ironically, such arguments are often made
-(in eerily similar ways) by both AI enthusiasts and AI safety
-proponents, although in one case it is a cause for celebration and in
-the other a cause for nihilism.</p>
-<p>First, I will address the idea that AGI/agentic AI emergence is
-inevitable because of race dynamics/market
-dynamics/competition/capitalism etc. I believe that these arguments make
-the mistake of correctly recognising the context of how we develop AI
-today but then treating it as an inevitable constant. It is not a
-guarantee that we will continue down this socio-political trajectory,
-with endless competition leading to misery for all. Indeed, part of my
-goal with human-auditable AI systems is to make social coordination and
-therefore a better social system more likely, reducing the risk of
-runaway race dynamics leading to agentic emergence.</p>
-<p>Second, I believe that these claims establish some teleological endpoint
-to AI development and then “handwave” the interim stages, often through
-references to rapid takeoff etc., which I believe is a poor method of
-advancing an argument. Simply because the underlying drives for a
-hoped-for or unhoped-for outcome are present does not then relieve you
-of the responsibility of ushering in the future you hope for or trying
-to avert one you dread. Microsoft, Amazon, Facebook, and Google are
-investing billions of dollars into AI development, committing huge
-amounts of resources and manpower in the process. This is by no means a
-done deal. At the risk of repeating the conclusion of my dissertation:</p>
-<p><em>This ultimate truth of human responsibility extends to any of the
-interpretations I have presented for AI. No matter if AI is borne from
-Silicon Valley hubris or ideological utopianism, cold economic
-calculation or pressure to maintain investment, the choice to develop AI
-is a human one, one taken to achieve human objectives. It is my hope
-that this close examination shows the error of calling AI development
-“inevitable”: in every sense of the word, AI development by large
-corporate institutions is a human act, one that can be addressed by
-reducing the expected reward or increasing the expected downsides
-through regulation and enforcement. Fatalism about AI serves the same
-purpose it always does, to make us accept without resistance what we
-ought to question and scrutinise. Charlie Warzel calls this “AI’s
-manifest-destiny philosophy: this is happening, whether you like it or
-not”.</em></p>
+<p>And hence the fourth principle - By thinking about this problem, you
+take on the responsibility to explain this problem to others and get as
+many brains online to tackle this problem as possible. Loosely speaking,
+one million minds are better than one hundred, no matter how smart the
+one hundred are.</p>
+<h2 id="the-perfect-case-of-governance-is-no-governance">The Perfect Case of Governance is No Governance</h2>
+<p>In the previous section I have brought up the idea of decentralisation.
+It is necessary for me now to define it more rigorously.</p>
+<p>The ideal case of governance is often presented as a supremely wise
+philosopher-king, one who makes all decisions justly and whose word is
+law, turning those perfect decisions into perfect actions <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>. But, if
+we accept the constraint that such a perfect being could exist and be
+identified at all, surely the best case scenario is that all citizens of
+a kingdom are such perfect beings? In such a world, the kingdom governs
+itself without error, every citizen instantly knowing the best solution
+to cooperate to solve any issue that arises. So we establish that the
+perfect case of governance is that no governance is necessary. How does
+it apply to the real world?</p>
+<h2 id="fucking-around-and-finding-out">Fucking around and finding out</h2>
+<p>As an example of a useful heuristic I have learned through painful
+experience, I will now present my account of why erroneous theories and
+systems persist for so long, and cause so much harm when they fail (e.g.
+the financial order behind the 2008 financial crash). The heuristic is
+this: the longer you fuck around, the worse it is for you when you find
+out. To be slightly more specific, the longer it takes for a theory or
+proposition to be tested, the worse the consequences are if it is
+invalid.</p>
+<p>To be clear, this is a limited heuristic: your theory that you can
+outrun a car will be swiftly tested and the consequences will still be
+extremely dire from your perspective despite less than 3 seconds
+transpiring between theory and test. However, when constructing systems,
+I propose that the longer a system has to wait before it comes under
+stress the worse the results will be. In general, systems grow
+labyrinthine with no pressure to stay resilient and errors compound
+silently in non-stressed states. A casual example of this is the global
+network of Just-In-Time logistics, founded on the belief that ships will
+always arrive on time and that stockpiles need only carry exactly as
+much stock as is needed to manufacture a product because losses during
+production are predictable and minimal <sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>. Constructed in a time
+before the consequences of climate change were evident, the system has
+had some 70 years to accrue errors of judgement and critical
+dependencies <sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>. The worsening weather will finally show us how bad
+those errors of judgement are.</p>
+<p>This heuristic is a quasi-adaption of Taleb’s concept of antifragility,
+where small shocks to a system actually strengthen it if it can learn
+from those shocks. Here, I position that systems that can rapidly
+iterate over feedback (i.e. learn from mistakes without too much time
+lag for their errors to become established doctrine) are more efficient
+than those systems that will not or cannot. In practice, while some
+degree of organisation is needed to coordinate effectively, having local
+units free to react to situations as they arise allows them to iterate
+more rapidly and get a better grip on the situation. We contrast this
+against the failures of top-down systems of control such as those in the
+Soviet Union, or the failure of the Federal Reserve to prevent economic
+crises in America. <sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup> If we accept the general proposition that those
+closer to an event (physically or socially) have more information about
+it, the idea of decentralisation becomes a lossy approximation of the
+kingdom of perfect philosopher-kings. Each unit is still making
+decisions quasi-independently, but under the aegis of a larger whole
+which manages coordination and larger issues <sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup>.</p>
+<h2 id="levels-of-organisation">Levels of Organisation</h2>
+<p>At this point, much has been offered in terms of high level abstraction.
+How do these supposed principles play out in practice? To even partially
+answer that question I will have to do something that I have in the last
+part accused rationalists of doing: turning complex real world
+phenomenae into abstract systems. Specifically, I would like to compare
+decision making systems to computer networksr or signal transmission
+systems.</p>
+<p>Lest I be accused of hypocrisy, I will now point out the constraints
+such a high level model places on the environments I am seeking to
+model. I am generally modelling a system with no overtly malicious
+actors or saboteurs, or at least one where they are sufficiently rare as
+to be anomalies. The components in a signal processing system have fixed
+efficiencies and fixed utility functions, things real people rarely
+possess as constants for long amounts of time. In general, I assume that
+people are generally decent, working to something like their overall
+capabilities, and largely working cooperatively. This heuristic analogy
+definitely fails when applied to states where officials might be
+intentionally sabotaging the functioning of the state, or the governing
+bodies are occupying colonisers there to essentially perform a
+mock-state without executing any of its actual functions.</p>
+<p>What does this framework offer? Once we see individual bureaucrats or
+social officers as components in a greater information network, some
+features of organisation immediately become clear. Many <u><a href="https://en.wikipedia.org/wiki/Reigns_(video_game)">video
+games</a></u> and media
+that feature kings portray them as effectively nothing more than
+national micromanagers, resolving their petitioner’s claims one by one
+and setting standards that apply to the whole of their domain. In
+practice, such a system would be almost impossible without computational
+capacities far beyond that of a human or group of humans: total top down
+control would mean that a kingdom becomes a star network, every terminal
+requesting information and depositing information to a central server,
+quickly overloading it at scales of more than even fifty users.
+Similarly, the slowdowns brought about bureaucracy become easy to model:
+the speed of information transmission in a chain of signal repeaters is
+bottlenecked by the efficiency of the slowest repeater. Systems where
+multiple parties must sign off on the same task or approve the same form
+also become upper-bounded by the speed of the slowest worker.</p>
+<p>A birds-eye view of societies as information systems also allows us to
+appreciate the <em>statistical</em> function of the state, what Foucault refers
+to as <em>biopower</em> <sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup>. This is best illustrated, as Foucault does, with
+the example of “law and order”: Consider the mundane securitarian, the
+beat cop. For him, crime and order are individual questions, discrete
+assignments he can succeed or fail at. A thief let loose is a single,
+real, entity who shall commit tangible harms, a person with whom it is
+possible to have a relationship of admiration, anger, or hatred. Insofar
+as he concerns himself with the community’s continued security it is in
+real and conceivable terms of knowable persons who live in that locale.
+So-and-so has been robbed, so-and-so murdered.</p>
+<p>Now consider the Director of Police, or the Minister for Security. His
+concerns stretch out both in terms of space and in time, he concerns
+himself not with neighbourhoods but national districts, not with
+moment-to-moment assignments but broad trends of crime and punishment.
+The success metric here is probabilistic, that is to say non-discrete.
+It does not matter if a single cop catches a single thief, what matters
+is the percentage of cops who catch a percentage of thieves. Returning
+to the metaphor of social systems as information systems, mesh networks
+such as the internet demonstrate a similar property in that the general
+success of a message-passing directive depends not on the individual
+performance of any node, but rather on the overall performance of
+sufficient nodes in the mesh network.</p>
+<p>But it would be a mistake to conclude that only Ministers of Security
+view these problems in such a way. Compared to the individual doctor,
+the Minister for Health in the neighbouring building takes a similar
+approach to his securitarian counterpart: while for a local doctor it
+matters personally if their patient lives or dies, the Minister for
+Health deals in broad statistical categories. They do not consider
+Joanna the overworked single mother with stage III lung cancer, they
+consider the group of all single mothers in long term care. Insofar as
+these directors and ministers and presidents concern themselves with
+individual cases, it is because they have become prominent enough to
+affect the psychological landscape and therefore the broader trends
+which form the system—or that they have become obsessed with some model
+problem which is often not in fact the broader phenomenon it is a cypher
+for. The paradigms are incomparable, more has shown itself again to be
+different.</p>
+<p>And it is not even that these two perspectives are in conflict: if the
+local doctors no longer cared about individual patients, the overall
+trends of national healthcare would suffer, and if the overall trends
+were not considered local doctors would not receive adequate centralised
+resources with which to care for individual patients. If the beat cop
+started reasoning in overall trends and no longer caring about
+individual assignments, he would fail in his securitarian task and harm
+the broader securitarian project. This micro-macro syncopation explains
+the so-called Voter’s Paradox: while in the broadest sense voting trends
+are based on population level distributions, these distributions are
+constituted through the local-level belief that individual decisions are
+important and matter; and the broader scale implications of these
+distributed local decisions gives each local decision weight and
+importance. One cannot exist without the other <sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup>.</p>
+<h2 id="society-as-a-black-box">Society as a Black Box</h2>
+<p>A further benefit of considering society as an information system with
+defined processes and utilities (<u><a href="http://www.econlib.org/library/Essays/rdPncl1.html">each with their preset inputs and
+outputs</a></u>) is
+that society itself can now be considered as a totality, a system with
+its own defined set of inputs and outputs. In aggregate, then, societies
+take in resources of various kinds (labour, capital, natural) and
+produces services for its members (food, water, shelter, electricity).
+We can describe the <em>efficiency</em> of a society as the disparity between,
+for example, the energy it takes in from livestock, agriculture and
+transport; and compare that to the amount of food it produces with that
+energy. However, we must be careful to separate overproduction and waste
+from actual useful production: in other words, we measure calories taken
+in and compare that to calories produced <em>and consumed by a society’s
+members</em>, rather than also accounting for, say, wasted food that goes
+straight to a landfill. Similarly, we can aim for reducing duplicate
+labour, wasted time etc.</p>
+<p>If alarm bells aren’t ringing already, they should be. The crude version
+of this optimisation process led to the so-called optimised supply
+chains of Just-in-Time logistics, which we have discussed already. The
+<u><a href="https://www.bitsaboutmoney.com/archive/optimal-amount-of-fraud/">optimal amount of fraud is not
+zero</a></u>,
+and the optimal amount of slippage/redundancy is <em>definitely</em> not zero
+in a world with freak storms and heat waves in February. Furthermore, we
+can begin to quantify statements like “capitalism is not fit for
+purpose” by examining what outputs the existing information networks of
+society accelerate and incentivise. A full version of this analysis is
+beyond the scope of this essay, but suffice it to say that we perhaps
+owe more to the legacy pre-industrial contexts that we have inherited
+than we do to capitalism the bread on our table today <sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup>. And, of
+course, once one obtains this high level view of society’s functions,
+one further understands the impossibility of directing a million, much
+less eight billion, people.</p>
+<h2 id="other-pragmatic-arguments-for-decentralisation">Other Pragmatic Arguments for Decentralisation</h2>
+<p>Beyond such high level, conceptual arguments, more pragmatic arguments
+can be made for the “chunking” or decentralisation of society. Consider
+the following chain of argument (and the contextual presumptions it
+takes as axiomatic!):</p>
+<ol>
+<li>
+<p>We are only capable of a limited number of personal connections
+    beyond immediate ties, approximately 100.</p>
+</li>
+<li>
+<p>We work best when working with people we understand personally and
+    can empathise with.</p>
+</li>
+<li>
+<p>Similarly, we are most empathic and helpful within these personal
+    bonds.</p>
+</li>
+<li>
+<p>Society is improved when its members are empathic, helpful, and can
+    work together efficiently.</p>
+</li>
+</ol>
+<p>This suggests that, rather than a centralised “<em>beamtersstadt</em>” relying
+on anonymous bureaucracy to manage millions, a society consisting of
+self-organised social units that work not by abstract principles of
+ideology but rather by close-knit community bonds would feature less
+fracturing and conflict. Taleb addresses this approach in his
+description of the cantonal organisation of Switzerland, which he refers
+to as the most successful country in the world. He attributes this
+success to their relatively weak central government and strong local
+social participation. The removal of cold bureaucratic abstraction would
+also reduce the likelihood of harmful decisions being inflicted on
+people by anonymous others with no understanding of the impact of their
+actions.</p>
+<h2 id="dignity-without-supremacy">Dignity without Supremacy</h2>
+<p>If we take into account the concept of decentralisation, then we begin
+to dissolve the intellectual hierarchy/meritocracy framework that
+underlies rationalism’s affinity with the right. After all, the
+principle of meritocracy is that a society needs to elect or promote
+those most qualified (by some metric ordained from above) to operate it
+in a centralised fashion. By contrast, a decentralised society might
+have many such centres of operation at a mesoscale, with intervention
+between clusters or groups occurring only in times of shared need. The
+goal becomes not to subjugate, control, or otherwise <em>manage</em> those less
+intelligent than you, but to empower them to contribute to the
+collective thinking-effort of society at whatever level suits them best.
+Once the oppositional framing is removed, cooperation becomes much
+easier, even straightforwardly rational.</p>
+<p>There are those who will say that these words are only possible in our
+modern, degenerate, toothless age, where all conflict is mediated and
+the inner brutality of man is hemmed in by civilised watchmen on all
+sides. There are those who would further posit that, should this veneer
+of civility be stripped back, the strong (by which they always mean
+themselves) will inevitably emerge and reshape the world in their image.
+However, I would venture to argue the opposite: that it is this
+anonymised, alienated society that allows cruelty to flourish. In a vast
+and impersonal system the worst that can happen (socially, at least) is
+that you are required to relocated to another anonymous corner to
+continue your cruel acts. Society creates systems of faceless workers to
+enable monsters to access food, water, and fresh victims by accruing
+power and money, establishing barriers of plausible deniability between
+sociopath CEOs and those they wound and injure. Whereas, in the
+counterfactual world where the community is small and survival
+difficult, a tyrant’s grip is (though harder perhaps to disturb
+initially) much more of a brittle thing, with no recourse for the Roman
+king if his subjects revolt. Writing in just such a time of tumult,
+Macchiavelli understood this principle well:</p>
+<blockquote>
+<p>But concerning his subjects, when affairs outside are disturbed he has
+only to fear that they will conspire secretly, from which a prince can
+easily secure himself by avoiding being hated and despised, and by
+keeping the people satisfied with him, which it is most necessary for
+him to accomplish, as I said above at length. And one of the most
+efficacious remedies that a prince can have against conspiracies is
+not to be hated and despised by the people, for he who conspires
+against a prince always expects to please them by his removal; but
+when the conspirator can only look forward to offending them, he will
+not have the courage to take such a course, for the difficulties that
+confront a conspirator are infinite.</p>
+<p>— Niccolo Macchiavelli, <em>The Prince</em></p>
+</blockquote>
+<p>Therefore take care not to assume that what is ruthless and bloody is
+natural, nor that what is soft and gentle-seeming is a sign of weakness.</p>
+<p>Recall again that rationalism is path-dependent, that games where you
+can win are poor metaphors for life, that perfect prediction and control
+are near-impossible. In this schema, I argue, any top-down plan for
+world optimisation is misguided—doomed to failure by the sheer scope
+required. I understand that the alternative I present can be attacked as
+its own particular form of baseless theory. But it did not seem right to
+criticise without offering my own alternative, so I hope it is of some
+interest, at least, to think about.</p>
 <p><a href="index.html#toc">Table of Contents</a>
 <a href="2.html">Previous Section</a>
 <a href="4.html">Next Section</a></p>
@@ -453,48 +359,52 @@ not”.</em></p>
 <hr />
 <ol>
 <li id="fn:1">
-<p>What is “relevant”, of course, depends on the problem and the
-user.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>For more analysis on rationalism’s ties to scientific racism and
+eugenics, see Timnit Gebru’s TESCREAL analysis:
+<u><u><a href="https://firstmonday.org/ojs/index.php/fm/article/view/13636/11599">https://firstmonday.org/ojs/index.php/fm/article/view/13636/11599</a></u></u>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
-<p>For an overview of this area, see this MIT course (Computation
-Structures, 6.004, 2007):
-<u><u><a href="https://www.youtube.com/playlist?list=PLUl4u3cNGP62WVs95MNq3dQBqY2vGOtQ2">https://www.youtube.com/playlist?list=PLUl4u3cNGP62WVs95MNq3dQBqY2vGOtQ2</a></u></u>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>It is, of course, a particular kind of blindness that assumes
+that, if such a man were real, he’d be able to administer perfectly
+the affairs of a thousand people, much less several hundred million.
+The kings of old ruled by delegation and the modern lords of finance
+rule by decentralisation not out of benevolence but by necessity&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:3">
-<p>I am conscious that I am ignoring the setup of Reinforcement
-Learning based models, but I believe that even the training regimens
-of RL-based models are somewhat isomorphic to this principle.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p>An article with more detail for reference:
+<u><u><a href="https://www.theguardian.com/commentisfree/2021/oct/11/just-in-time-supply-chains-logistical-capitalism">https://www.theguardian.com/commentisfree/2021/oct/11/just-in-time-supply-chains-logistical-capitalism</a></u></u>&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn:4">
-<p>Also known as a representation in latent space/embedding space.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<p>Like, for example, being disruptable by both global pandemics and
+a single ship ending up in the wrong part of a canal&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 <li id="fn:5">
-<p>In terms of information theory, a 256*256 image with three colour
-channels (~20000 bits of information by my napkin math) gets reduced
-by an ImageNet classifier to one of 1000 possible classes (~10 bits
-of information).&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+<p>Of further interest, naturally, is James C. Scott’s seminal
+<em>Seeing like a State</em>, which goes into much more detail about such
+topics.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
 </li>
 <li id="fn:6">
-<p>The general term for this research area is “model unlearning”.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+<p>For those who will protest that this is some delusional form of
+leftist optimism, a similar argument is also put forth by Hayek as
+to why decentralised markets are more efficient than central state
+control.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
 </li>
 <li id="fn:7">
-<p>The exceptional malicious prompts, known colloquially as
-“jailbreaks”, are somewhat obscure and generally not the sort of
-thing you would type in by accident, but they do exist and are
-constantly being found. Here are some examples:
-<u><u><a href="https://github.com/elder-plinius/L1B3RT45">https://github.com/elder-plinius/L1B3RT45</a></u></u>&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+<p>Cf. Section 1 in <em>Security, Territory, Population</em> by Michel
+Foucault:
+<u><u><a href="https://en.wikipedia.org/wiki/Security,_Territory,_Population">https://en.wikipedia.org/wiki/Security,_Territory,_Population</a></u></u>&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
 </li>
 <li id="fn:8">
-<p>In a similar vein, I don’t care if AIs are maliciously extending
-their own runtimes, or merely doing so out of naive optimisation. In
-general, I am not super concerned as to whether the terminator drone
-that kills me might actually have a rich inner life, so long as
-bullets are still being fired in the direction of my torso.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+<p>Another excellent account of this stochastic or statistical
+approach to crime can be found in the field of financial Know Your
+Customer/Anti Money Laundering regulations, as described by Patrick
+McKenzie here:
+<u><u><a href="https://www.bitsaboutmoney.com/archive/kyc-and-aml-beyond-the-acronyms/">https://www.bitsaboutmoney.com/archive/kyc-and-aml-beyond-the-acronyms/</a></u></u>&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
 </li>
 <li id="fn:9">
-<p>Naturally, I am particularly interested in knowing if any mistakes
-have been made in drawing up this benchmark.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+<p>As a taster of arguments in this direction, in a perfect void
+rational agents aiming to maximise earnings would prefer to work in
+finance rather than agriculture. Think about that for a second.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
