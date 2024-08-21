@@ -302,7 +302,6 @@ def safe_classify_image(image):
 
     print(reconstructed_img.shape)
     # Reject the input if its too different
-    # Otherwise, use the reconstructed image as the input to the classifier
     print(loss)
     if loss &gt; 0.5:
         return &quot;adversarial&quot;
