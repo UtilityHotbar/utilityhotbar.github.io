@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memex Note</title>
+    <link rel="stylesheet" href="editor.css">
+</head>
+<body>
+    <div id="editor-container">
+        <div id="editor-primary">
+            <h1>&gt; MEMEX NOTE</h1>
+            <p>
+                Memex [No]nlinear [T]ext [E]ditor v0.2
+            </p>
+            <p>
+                <em>By Nakade</em>
+            </p>
+            <br>
+            <table id="editor-body">
+        
+            </table>
+            <h2>&gt; Output</h2>
+            <pre id="editor-output"></pre>
+        </div>
+        <div id="editor-secondary">
+            <h2>Instructions</h2>
+            <p>Each line in this editor is similar to a <em>cell</em> in a Notebook.</p>
+            <h3>Navigation</h3>
+            <ul>
+                <li><span class="editor-keycombo">Ctrl+Up/Down</span> - Switch between cells</li>
+                <li><span class="editor-keycombo">Ctrl+Shift+Up</span> - Collapse multiple <em>empty</em> cells into one</li>
+            </ul>
+            <h3>Cell Manipulation</h3>
+            <ul>
+                <li><span class="editor-keycombo">Ctrl+Enter</span> - Create new cell/split current cell (when caret is in the middle of a cell)</li>
+                <li><span class="editor-keycombo">Ctrl+Backspace</span> - Merge cell content with previous cell (when caret is at the start of a cell)</li>
+                <li><span class="editor-keycombo">Ctrl+Shift+Enter</span> - Explode a cell into a series of cells (one cell per newline)</li>
+                <li><span class="editor-keycombo">Ctrl+Shift+Backspace</span> - Collapse a series of cells into one (one cell per newline)</li>
+            </ul>
+            <h3>Document</h3>
+            <ul>
+                <li><span class="editor-keycombo">Ctrl+S</span> - Save to output (for copying)</li>
+            </ul>
+        </div>
+    </div>
+   
+    <script src="system.js"></script>
+    <script>
+        editorInit()
+    </script>
+</body>
+</html>

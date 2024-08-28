@@ -1,0 +1,99 @@
+@font-face {
+    font-family: 'Server Mono';
+    src: url('fonts/V1-ServerMono-Regular.otf');
+}
+
+@font-face {
+    font-family: 'Server Mono';
+    font-style: italic;
+    src: url('fonts/V1-ServerMono-RegularSlanted.otf');
+}
+
+body {
+    font-family: 'Server Mono', 'Courier New', Courier, monospace;
+    background-color: rgb(230, 235, 243);
+}
+
+#editor-container {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    margin: auto;
+}
+
+#editor-primary {
+    width: fit-content;
+    padding: 10px;
+
+    p {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}
+
+#editor-secondary {
+    line-height: 120%;
+    font-size: 9.5pt;
+    width: 300px;
+    height: 90vh;
+    overflow-y: scroll;
+    padding: 15px;
+
+    .editor-keycombo {
+        color: rgb(32, 32, 32);
+        font-style: italic;
+    }
+
+}
+
+#editor-body {
+    margin: auto;
+    padding: 5px;
+    color: aliceblue;
+    background-color: black;
+
+    .editor-line {
+        width: fit-content;
+        min-height: 1em;
+        height: fit-content;
+        resize: none;
+        border: none;
+        outline: none;
+        padding-left: 7px;
+        line-height: 120%;
+        background: none;
+        color: inherit;
+        font-family: inherit;
+        font-size: 11pt;
+
+    }
+
+    .editor-line:focus{
+        border: none;
+        outline: none;
+        background-color: rgb(41, 49, 67);
+        margin: 0;
+        padding-top: 7px;
+        padding-bottom: 7px;
+
+    }
+
+    .editor-linenum {
+        color: rgba(240, 248, 255,0.75);
+        padding-right: 5px;
+        text-align: right;
+        min-width: 2ch;
+        font-size: 9pt;
+
+    }
+
+
+}
+
+#editor-output {
+    padding: 10px;
+    width: 70ch;
+    height: fit-content;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}

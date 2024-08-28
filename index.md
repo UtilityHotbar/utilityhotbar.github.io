@@ -20,6 +20,7 @@
 * [**Shellsim**](https://github.com/UtilityHotbar/shellsim) - A self-contained simulation of a bash like shell: piping, streaming, internal filesystem
 
 ## Writing
+* [**Turning 22 in the Pre-Apocalypse**](signal_flare) - A collection of essays as I face the end of my 21st year on this planet. Covers and questions rationality, AI development, the Humanities, and my own motivations for doing this.
 * [**The Savage Computers**](https://aulddaegs.github.io) - In progress web novel and interactive archive of in-universe documents.
 * [**Automatic Memory - Issue N**](https://nakade.itch.io/automatic-memory-n) - A zine made by me (graphic design + words).
 * [**The Shape of Minds to Come**](shapeofminds/index.html) - Essay on in-progress mentalities we might develop to face the future.
@@ -33,6 +34,7 @@
 * [**Catacombs of Steel**](https://utilityhotbar.github.io/catacombs) - Automated dungeon crawler/roguelike simulation.
 
 ## Minor Projects
+* [**Memex Note**](memex/) - An experimental text editor based on cells in Jupyter notebooks and other funky concepts.
 * [**Yet Another Web Toolkit**](yawt_demo/index.html) - A web playground for developing games, applets, slides, or small fixed-viewport websites.
 * [**Showmd**](https://github.com/UtilityHotbar/showmd/) - Displays markdown files in a semi-pretty way in the shell.
 * [**oldbook.css**](https://github.com/UtilityHotbar/oldbook-css) - A CSS theme that simulates old books. For some reason, my most popular project by far. No JS needed.
