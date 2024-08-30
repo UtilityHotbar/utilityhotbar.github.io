@@ -35,14 +35,14 @@
 
 ## Minor Projects
 * [**Memex Note**](memex/) - An experimental text editor based on cells in Jupyter notebooks and other funky concepts.
-* [**Yet Another Web Toolkit**](yawt_demo/index.html) - A web playground for developing games, applets, slides, or small fixed-viewport websites.
 * [**Showmd**](https://github.com/UtilityHotbar/showmd/) - Displays markdown files in a semi-pretty way in the shell.
-* [**oldbook.css**](https://github.com/UtilityHotbar/oldbook-css) - A CSS theme that simulates old books. For some reason, my most popular project by far. No JS needed.
-* [**neoweb.css**](https://utilityhotbar.github.io/neoweb/) - Another CSS theme, with a demo page. No JS needed.
 * [**ARG Tools**](https://utilityhotbar.github.io/args/) - Tools for running and making ARGs.
 
 ## Old Stuff
 * [**Progress Game**](https://utilityhotbar.github.io/progress_game) - Short incremental game with [paper.css](https://www.getpapercss.com/).
 * [**Bytedelver**](https://utilityhotbar.github.io/bytedelver/) - Unfinished roguelike using [rot.js](https://ondras.github.io/rot.js/hp/) and [NES.css](https://nostalgic-css.github.io/NES.css/).
 * [**Mass Defect**](https://utilityhotbar.github.io/alchemy/html/site-main/index.html) - Unfinished alchemy-themed incremental game. 
+* [**Yet Another Web Toolkit**](yawt_demo/index.html) - A web playground for developing games, applets, slides, or small fixed-viewport websites. Dangerously unfinished.
+* [**oldbook.css**](https://github.com/UtilityHotbar/oldbook-css) - A CSS theme that draws from old books. For some reason, my most popular project by far. No JS needed. I'm working on a new version of this.
+* [**neoweb.css**](https://utilityhotbar.github.io/neoweb/) - Another CSS theme, with a demo page. No JS needed.
 
