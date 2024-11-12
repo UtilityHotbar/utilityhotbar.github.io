@@ -10,6 +10,7 @@
 ## Research
 * [**Harms from Increasingly Agentic Systems**](https://arxiv.org/abs/2302.10329) - A paper I was a co-author on, talking about the risks from AI systems we are yielding autonomy to.
 * [**AI Generated Multimodal Disinformation Networks**](https://www.youtube.com/watch?v=xF7c2OOwyw4) - Conference presentation demonstrating some of the capabilities for AI to be used for complex disinformation narratives.
+* [**Embedding Modification for Llama 3.2**](https://colab.research.google.com/drive/1g9blMIl-4tHO16p8vHVtdOcEpG_PoFW5?usp=sharing) - A notebook containing some ideas I had for changing the input embeddings of LLMs. In particular, contains the same test-time/inference time training idea as [this MIT paper](https://ekinakyurek.github.io/papers/ttt.pdf) and others, but I could not get confirmation of a performance increase due to limited compute budget.
 
 ## Major Projects
 * [**Socratides**](https://socratides.streamlit.app/) - A demo for a narrow AI system that generates human understandable and editable knowledge graphs out of texts that can be pruned and refined to enhance textual analysis. Source code [here](https://github.com/UtilityHotbar/autoratiocinator).
