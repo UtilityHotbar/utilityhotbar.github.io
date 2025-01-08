@@ -3,7 +3,7 @@
 # UtilityHotbar
 
 ## About me
-* I have been coding since ~2018.
+* I have been coding since ~2018. Email me here: mutatismutandisetplusultra (the usual symbol) gmail (another symbol) com. Book a meeting here: [https://calendly.com/mutatismutandisetplusultra/30min](https://calendly.com/mutatismutandisetplusultra/30min) (If you don't know me personally, please send an email first! I do not bite and actually respond to emails, I promise)
 * I program [simulations](https://github.com/UtilityHotbar/civsim), [tools](https://github.com/UtilityHotbar/showmd/), [toy compilers/languages](https://zhengzi-archive.com/terminal/), [games](progress_game/index.html), and [multimedia projects/ARGs](https://aulddaegs.github.io/)
 * My research interests include responsible uses for Large Language Models, AI safety/interpretability (e.g. occlusion sensitivity or risks from unscoped models with broad capabilities), Natural Language Processing (e.g. topic modelling, textual comprehension, and POS tagging) and the institutional incentives for developing AI technology.
 
