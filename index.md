@@ -21,6 +21,7 @@
 * [**Shellsim**](https://github.com/UtilityHotbar/shellsim) - A self-contained simulation of a bash like shell: piping, streaming, internal filesystem
 
 ## Writing
+* [**A Clever Name Goes Here**](https://aclevername.substack.com/) - A small substack for occasional pieces related to AI safety, philosophy etc.
 * [**Turning 22 in the Pre-Apocalypse**](signal_flare) - A collection of essays as I face the end of my 21st year on this planet. Covers and questions rationality, AI development, the Humanities, and my own motivations for doing this.
 * [**The Savage Computers**](https://aulddaegs.github.io) - In progress web novel and interactive archive of in-universe documents.
 * [**Automatic Memory - Issue N**](https://nakade.itch.io/automatic-memory-n) - A zine made by me (graphic design + words).
