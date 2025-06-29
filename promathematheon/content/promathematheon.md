@@ -318,16 +318,6 @@ Now it seems that we have collectively achieved those productive miracles. We pr
 > *“Once men turned their thinking over to machines in the hope that this would set them free. But that only permitted other men with machines to enslave them.”*  
 > — Frank Herbert, *Dune*
 
-> *I'm all out of love*  
-> *I'm so lost without you*  
-> *I know you were right*  
-> *Believing for so long*  
-> *I'm all out of love*  
-> *What am I without you*  
-> *I can't be too late*  
-> *To say that I was so wrong*  
-> — Air Supply, “All Out of Love”
-
 **Naturally,** responses to this disintegration of the future have been mixed. There are those who doggedly claim that, if a few burdensome regulations and obstinate administrators could be removed, then the wheels of progress will turn once more[^59]. This seems to belie the obvious evidence that, when the governments and industries of the world decide to do something, that something is done. Even in 2025, no one has found it overly burdensome to build a new oil pipeline, or iphone factory. That industrial or medical development procedures are hampered and slow seems less a function of evil meddling bureaucrats and more a general symptom of exhaustion within the social consciousness. Competence is spread thin and burned up putting out endless fires[^60], confusion reigns supreme. Everywhere, more and more, even at the highest levels of government and industry, there is the sense that there are no adults in the room[^61].
 
 From a complexity perspective, the causes for this confusion and disorientation seem self-evident. We have indeed created an ever accelerating, ever more tightly knit society. Today war looks less like the ancient struggles of hygiene[^62] and more like this[^63]:  
@@ -340,6 +330,16 @@ Into this confusion steps AI, which promises to organise information on a scale 
 
 > *“For a successful technology, reality must take precedence over public relations, for Nature cannot be fooled.”*  
 > — Richard Feynman
+
+> *I'm all out of love*  
+> *I'm so lost without you*  
+> *I know you were right*  
+> *Believing for so long*  
+> *I'm all out of love*  
+> *What am I without you*  
+> *I can't be too late*  
+> *To say that I was so wrong*  
+> — Air Supply, “All Out of Love”
 
 **Some ask with** confusion what exactly it is AI will do to clarify this hopelessly confused situation. Some others will suggest that their simple trick is the key, and that AI is merely a distraction from the powers that be. Allow me then to propose two statements: 
 
