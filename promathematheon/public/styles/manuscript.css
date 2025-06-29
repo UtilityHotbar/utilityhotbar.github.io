@@ -1,0 +1,143 @@
+@font-face {
+    font-family: 'Spectral';
+    src: url('fonts/Spectral-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Spectral';
+    font-style: italic;
+    src: url('fonts/Spectral-Italic.ttf');
+}
+
+@font-face {
+    font-family: 'Spectral';
+    font-weight: bold;
+    src: url('fonts/Spectral-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Spectral';
+    font-weight: bold;
+    font-style: italic;
+    src: url('fonts/Spectral-BoldItalic.ttf');
+}
+
+
+@font-face {
+    font-family: 'ET Bembo';
+    font-style: italic;
+    src: url('fonts/ETBembo-DisplayItalic.otf');
+}
+
+@font-face {
+    font-family: 'ET Bembo';
+    font-weight: bold;
+    src: url('fonts/ETBembo-SemiBoldOSF.otf');
+}
+
+@font-face {
+    font-family: 'ET Bembo';
+    font-weight: normal;
+    src: url('fonts/ETBembo-RomanOSF.otf');
+}
+
+:root {
+    --text-color: rgb(27, 27, 27);
+    --bg-color: rgb(242, 242, 242);
+    --shadow-color: rgba(29, 29, 29, 100);
+    --rubrication: rgb(162, 22, 0);
+    --blue-rubrication: rgb(38, 85, 186);
+    --brown-rubrication: rgb(78, 40, 15);
+}
+
+body {
+    font-family: 'Spectral', Times, serif;
+    max-width: 700px;
+    margin: auto;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+h1 {
+    font-family: 'ET Bembo', Times, serif;
+    color: var(--rubrication);
+    text-align: center;
+    font-weight: normal;
+    font-style: italic;
+    letter-spacing: 0.15em;
+    font-size: 300%;
+}
+
+h2 {
+    font-family: 'ET Bembo', Times, serif;
+    font-weight: normal;
+    font-variant: small-caps;
+    letter-spacing: 0.05em;
+}
+
+h2::first-letter {
+  font-size: 150%;
+  font-weight: normal;
+  color: var(--rubrication);
+  font-style: normal;
+}
+
+p {
+    text-align: justify;
+}
+p::before {
+  content: "¶ ";
+  font-family: 'Linden Hill', Times, serif;
+  color: var(--brown-rubrication);
+  font-weight: bold;
+}
+
+.front-matter {
+    p::before {
+        content: "";
+
+    }
+}
+
+blockquote{
+    color: var(--blue-rubrication);
+    p::before {
+        content: "";
+
+    }
+}
+
+.footnote{
+    p::before {
+        content: "";
+
+    }
+}
+
+a {
+    color: var(--blue-rubrication);
+}
+
+table {
+    font-family: 'ET Bembo', Times, serif;
+    border: none;
+}
+
+td {
+    padding: 5px;
+}
+
+th {
+    font-family: 'ET Bembo', Times, serif;
+    font-variant: small-caps;
+}
+
+.greek {
+    color: var(--rubrication);
+    font-variant: small-caps;
+}
+
+strong {
+    font-variant: small-caps;
+    font-weight: normal;
+}
