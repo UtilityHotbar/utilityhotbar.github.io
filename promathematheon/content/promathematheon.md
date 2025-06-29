@@ -326,7 +326,7 @@ Now it seems that we have collectively achieved those productive miracles. We pr
 > *What am I without you*  
 > *I can't be too late*  
 > *To say that I was so wrong*  
-> — “All Out of Love”, Air Supply
+> — Air Supply, “All Out of Love”
 
 **Naturally,** responses to this disintegration of the future have been mixed. There are those who doggedly claim that, if a few burdensome regulations and obstinate administrators could be removed, then the wheels of progress will turn once more[^59]. This seems to belie the obvious evidence that, when the governments and industries of the world decide to do something, that something is done. Even in 2025, no one has found it overly burdensome to build a new oil pipeline, or iphone factory. That industrial or medical development procedures are hampered and slow seems less a function of evil meddling bureaucrats and more a general symptom of exhaustion within the social consciousness. Competence is spread thin and burned up putting out endless fires[^60], confusion reigns supreme. Everywhere, more and more, even at the highest levels of government and industry, there is the sense that there are no adults in the room[^61].
 
