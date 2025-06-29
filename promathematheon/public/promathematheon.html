@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>promathematheon</title>
     <link rel="stylesheet" href="styles/manuscript.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
 </head>
 <body>
     <h1 id="promathematheon">PROMATHEMATHEON</h1>
@@ -162,7 +166,7 @@
 — Chaucer, “The Parliament of Foules”</p>
 </blockquote>
 <p><strong>It seems now</strong> fairly established what machine learning “does” in its two main branches (supervised learning and reinforcement learning). Each domain has associated jargon, best practices, “black magic”-like optimisation hacks, et cetera. I engage with supervised learning thanks to its simplicity, and also because it powers most of the impressive behaviour possessed by large language models today<sup id="fnref:35"><a class="footnote-ref" href="#fn:35">35</a></sup>. The conventional understanding of supervised learning derives from learning theory, and postulates that a deep neural network learns to estimate some baseline or “true” distribution of training data <em>P</em>. The learned distribution <em>Q</em> is parameterised by weights and biases of the neural network, which are denoted <em>Φ</em>. The basic learning rule is given here:</p>
-<p><img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOsAAAAUCAYAAABszsoZAAAFp0lEQVR4Xu2bTchtUxjHnxsDoRhQBsoZSCaKMjBA78DXQFEMKHXfgcEdUJIBMtgYGEjUHehegzepe/NdFAPqkCImknwUeQc3IcpAoQxYf3s/9zzv/zzrY++z97v3Ob2/ejp7/feznvWxv9Zaex+R7pzFQiGnWJgoXdt3wHDsxzHZjzKYW1jok9+DHWGxoWLBsBXsXxYnSKp9B4zH0OfOGMf9Shm4XangFQtEKu9UWIc6risPsdCCoY8Lx7+A0kOAG8S9pF1K6SLOZSEwk7pR+PWoWCC4Q8akS/vGZN7R7kJmYifYU1IfL9jRYO+a/QxOoB9ZdEBM9B+MeY2FCB9RGkPTmQx3XC6Sun1e/A+C3UhaX8xkUSbqoNwh5X11mk9ZaPiGBUPFAuEdxLHo0r4x0YugrcW4T+r9u7zDIRVHwZMIfnhSsP+ZjhYj5ufddPpiW+RQ7LjH6tMHsdh/BbuVxRReoJtl+e6zbexNSsMsXsyx8OritW8qXCHLF2LO3vg/p8+X4vcB83Sw71h00DIxD9t19pWCejGvs9AzqN+MxYbHg13GYg88Guw9Fg1t+ky+ZSHwk9n2Vs4qFohWFRiYLu0bG3sh5sj59BVHgd8Oiw2lMa4Odj2LUp6/K7n4uf1dQMzLm22et4LiMq8Kdh2LsgiAx7RHxQJRXIGB6dq+KaAXGRYnYnwh+b7WOCnOlryPAj9vHeBrqetTwmcsNGgdSuvSltxxH6JcjRkb3n8Y7EIWFTxJEOCT5lfnHt4BiFGxMCH6aN8QYJiJemCO8kezrWCuxzwmtQ/sftoHbpP8yXWN1D65d3zvSz6W1sWa7VOkvaelsi21z5PN7wvNbx9cK/VNTWNino6pGlalS4b2SklfWc6XOj7mwbyq3KZt/7AAENwGiW3vF/fI8gmQstyQdWrtUzDs5vKRPmm2PWzbGWivskjgCeLlZeCDJ2OOXyQeL6YD3Kjsws68+X1Y0vlKsbERT0/+WN/FgO9zLCbQ2OhnOy/FcWlb7hIsaqcB7PPG1OvEFNt3gyzXC9gTyc6hLb/Jwu8loz/RaDlsGSng8w6LDql4MZ0/CLhd9t50Y/lK2aU04ukcEU/aNiBvbIjO4EmKV0GA25DqJ4+9vofqx3Wu01Z5mT02Q7QPQynt+JzFiO3He0boqTkp8MrA9t0mHQN+P7DYwPFOmHQM+D3DYoPXRgAdw36btnB6FfjG0Bbk/ZnFDDrtsiCN4X4pnH/pgNtxslfgujHV9qFc74LBwgL2YSiY4nNZtE2HWyVtOSy1H15TMZcEO27S8PvYpGPA7zwWG2J1go7RhU0rc0qvCm58q8RD3rdYzPCr7C2zzbtmZcn/bxJ5e4whYp9MtX0oG1/8MG3mNfCzVkLKl3VdjMuR8sE+vJJhoNsRDRZ/lFQ8C766she8BTdljYNf+4XWnZJf57Ag/wOk4X1wanESeezIwVufyOH6W1Hv6LgboVGbwBTb97YsHwwc0CNGn5t9Hjq8g71I+2Kov0WfyqzjZGTNI+WDi2aHRVmsSAN704LmrYJ7eHVWoOvFgm18Uqm4q6wJvDJSZQN7s9ARXOzVkAfOg+jcWguHYZ63aUyxffY1jK2Tfl2EVw85cieNgnn2bsZm6mxIxj5D5JjUQ/cYhyUdQ+sPs4tlJTwv8a+AtqSOqRemljFXhxZ49ceTOreuoKvuzza/3ggjhlfmHrIOa86mt28I8HS6iUUD+vRiFolcv+f2p/iehZ45J9grLDak6q0rwqCStK9H1j/rsOZsevuGgvsNK+rQ8KEA7/N4OdgjLBoqFlpQUv4q/MmCYc5CA+pk64Vtb30ixoPBvmLRgvnJFosbxKa3b0jwFy47TEdaT8jSL3tiUw8sYnVl6AsV6xux+qXKxuu3U1LPk1N+MbrkOeCA0/SxGNd2YWdMsMhlv4DaL9wL9T82lwj4zxg5QgAAAABJRU5ErkJggg==" /></p>
+<p>$ \phi^{t+1} = \phi^t - \alpha \nabla L (f(\phi^t, x^t), y^t) $</p>
 <p>For supervised learning we want to learn a function <em>f</em> to map some inputs to some outputs (here denoted as <em>x</em> and <em>y</em>). Learning proceeds through a series of timesteps, where the current step is step <em>t</em>. The parameters of the network at the next step (<em>t+1</em>) are defined by the parameters at the current step, minus the gradient of the loss function <em>L</em> scaled by the learning rate. The loss is given by the distance (error) between the output of the forward pass <em>f</em> and the ground truth output. Importantly, unlike the theoretically optimal gradient descent algorithm, the model does not receive all input-output pairs in the training dataset simultaneously, since it would be prohibitively expensive. Instead it receives <em>xt</em> and <em>yt</em>, which are random samples or “batches” of the total training dataset. My next argument is therefore somewhat predictable: <em>we are in fact observing an evolutionary algorithm at work</em>.</p>
 <p>We now apply a thoroughly rote formulation. Where is variation, replication, and selection in supervised learning? The weights of a model are randomly initialised in SGD, just as our particles were scattered randomly in timeline #2—this gives us <em>variation</em>. At each timestep the loss function and backpropagation <em>selects</em> for those random weight combinations that are most beneficial to solving the task defined by the input-output pairs. Those successful combinations are <em>replicated</em> and reinforced via weight updates before the next time step. It is true that the weights do not randomly update throughout training in a “brownian motion” like manner as we would expect given our examples beforehand. However, noise injection into neural network weights has been thoroughly studied as a method of improving performance<sup id="fnref:36"><a class="footnote-ref" href="#fn:36">36</a></sup>, and the random sampling of training data also supplies a stochastic variation throughout the process. Most importantly, thanks to the <em>temporal</em> nature of training (with training steps applied linearly in sequence), the sieve of time-the-eater is in full effect: That which persists till the end of training will be the most persistent configuration of weights <em>by definition</em>. Since we have engineered training to select against configuration of weights that produce wrong answers, we are using evolutionary pressures to program our network.</p>
 <p>The full implications of an evolutionary perspective on supervised learning become apparent when we consider the training of very large neural networks, especially those which demonstrate the phenomenon of “double descent”. It is difficult to understand, for example, why “performance first improves, then gets worse, and then improves again with increasing model size”<sup id="fnref:37"><a class="footnote-ref" href="#fn:37">37</a></sup>. The “lottery ticket hypothesis” attempts to address this question<sup id="fnref:38"><a class="footnote-ref" href="#fn:38">38</a></sup>:</p>
@@ -538,5 +542,21 @@ The sciences which were established to improve the human condition—economics, 
 </li>
 </ol>
 </div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    });
+    </script>
 </body>
 </html>
