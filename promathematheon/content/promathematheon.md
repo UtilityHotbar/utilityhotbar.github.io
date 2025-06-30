@@ -401,6 +401,9 @@ I close with a caution. In his excellent book *Nexus* (which in many ways preced
 [^21]:  As Brynes notes, granule cells in the brain seem to purposefully decompose incoming signals into many tiny random patterns, furthering this ensemble hypothesis. Furthermore, the ability of neurons to mix signals within the brain is [well documented](https://www.sciencedirect.com/science/article/pii/S2211124724006028). I am also particularly in favour of the synaptic homeostasis (SHY) hypothesis that says that sleep is used by the brain to normalise itself and maintain homeostasis, effectively resetting some of the temporarily acquired connections from the day as part of a continuous learning process.
 
 [^22]:  For any problem with a P time verifier and a solution that can be expressed as an binary string of length *n* where *n* is a finite positive integer, we can construct a “NP free lunch problem" that is solvable with only a fair coin and no memory. Specifically, we apply the following steps:
+* We sample the fair coin n times to construct an n-bit random string.
+* We apply the verifier to check the string.
+* If the solution is valid, we stop. Otherwise, return to step 1.
 
 [^23]:  Recall that at the bottom level the question we are asking is “what can best resist time-the-eater”, to which possible answers include *any possible configuration of every single atom in the universe*. Furthermore, as evolution progresses it produces more and more chaotic environments that require ever-greater levels of complex adaptation. In a void world of randomly vibrating particles there is no need to produce a self-aware mind.
 
