@@ -143,3 +143,7 @@ strong {
     font-variant: small-caps;
     font-weight: normal;
 }
+
+img {
+    max-width: 80%;
+}
