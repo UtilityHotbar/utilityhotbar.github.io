@@ -150,4 +150,5 @@ img {
 
 a {
     word-wrap: break-word;
+    white-space: pre-wrap;
 }
