@@ -145,5 +145,9 @@ strong {
 }
 
 img {
-    max-width: 80vw;
+    max-width: 80%;
+}
+
+a {
+    word-wrap: break-word;
 }
