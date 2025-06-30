@@ -19,6 +19,13 @@
 
 Being undisciplined in thought and reason, this is the work that must precede those powerful realisations. Hence it is the *promathematheon*, as a prologue is to a novel.
 
+## A Declaration of Ignoramus
+As with any work written in youth and in haste many errors have been introduced, both from failures in understanding and also from simple ignorance. For example, it was only after I completed this exercise that I discovered the work of Peter Putnam and began to read Max Bennett's *A Brief History of Intelligence*. Together they offer an elegant and powerful answer to my vague musings about cognitive development. Thus also with philosophy, and economics, and any other discipline which I have lightly touched upon here. 
+
+There are many others whose subject-specific works I find far more elegant than mine. Some of their teachings I acknowledge through epigraphs. Far more I cannot thanks to forgetfulness and, again, simple ignorance. Nevertheless, I am determined put this text into a mostly-fixed form now. If I don't, it will never be finished, and I think that in the total picture of this essay there is merit that somewhat makes up for the grave technical errors in any one corner. 
+
+So I ask you, reader, to treat my words as a first stab and a preliminary treatment. Nothing here merits the status of fact, or even that of consistent theory. This essay should be seen as a collection of metaphors which happened to inspire me. With time, I hope to do these metaphors justice and complete my learning. Still, I hope there is something here for you to enjoy and be inspired by as well. I am eternally grateful to you for taking the time to read my words and share in my excitement.
+
 ## A beginning is a very delicate time
 
 > *And yet, if we may without unfitness compare God's present and man's, just as ye see certain things in this your temporary present, so does He see all things in His eternal present.*  
