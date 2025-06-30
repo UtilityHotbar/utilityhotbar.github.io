@@ -54,6 +54,7 @@ body {
     font-family: 'Spectral', Times, serif;
     max-width: 700px;
     margin: auto;
+    padding: 4%;
     background-color: var(--bg-color);
     color: var(--text-color);
 }
@@ -66,6 +67,7 @@ h1 {
     font-style: italic;
     letter-spacing: 0.15em;
     font-size: 300%;
+    word-wrap: break-word;
 }
 
 h2 {
