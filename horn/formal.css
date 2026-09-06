@@ -24,7 +24,7 @@
   --gold-high:       #d3b25e;   /* raked-light glint on the leaf         */
   --parchment:       #f2ead6;   /* prepared vellum, pale and even        */
   --parchment-deep:  #e9dfc4;   /* toward the gutter and edges           */
-  --parchment-high:  #f8f2e2;   /* burnished center of the leaf          */
+  --parchment-high:  #e9e4d6;   /* burnished center of the leaf          */
   --measure: 60ch;
 
 }
@@ -34,7 +34,7 @@ html {
 }
 
 body {
-    background: url("images/bg.jpg");
+    background: var(--parchment-high);
     background-size: cover; 
     max-width: var(--measure);
     margin: 0 auto;
