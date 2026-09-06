@@ -1,0 +1,147 @@
+@font-face {
+  font-family: "Junicode";
+  src: url("fonts/JunicodeVF-Roman.ttf");
+}
+
+@font-face {
+  font-family: "Junicode";
+  src: url("fonts/JunicodeVF-Italic.ttf");
+  font-style: italic;
+}
+
+
+@font-face {
+  font-family: "Belwe Gotisch";
+  src: url("fonts/Belwe\ Gotisch.ttf");
+}
+
+@font-face {
+  font-family: "Goudy Mediaeval";
+  src: url("fonts/GoudyMediaeval-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Gutenberg Textura";
+  src: url("fonts/GutenbergTextura.ttf");
+}
+:root {
+      /* inks & pigments */
+  --ink:             #3a2f22;   /* iron-gall ink, warm brown-black       */
+  --ink-faded:       #6b5c46;   /* hairlines and glosses                 */
+  --rubric:          #99311f;   /* minium / vermilion for rubrics        */
+  --ultramarine:     #2c4a72;   /* lapis grounds of initials             */
+  --gold:            #a8862f;   /* burnished gold leaf                   */
+  --gold-high:       #d3b25e;   /* raked-light glint on the leaf         */
+  --parchment:       #f2ead6;   /* prepared vellum, pale and even        */
+  --parchment-deep:  #e9dfc4;   /* toward the gutter and edges           */
+  --parchment-high:  #f8f2e2;   /* burnished center of the leaf          */
+  --measure: 60ch;
+
+}
+
+html { 
+    background: var(--parchment-deep); 
+}
+
+body {
+    background: url("images/bg.jpg");
+    background-size: cover; 
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 5rem clamp(1.25rem, 6vw, 4rem) 6rem;
+    line-height: 110%;
+
+    font-family: "Goudy Mediaeval", "Junicode", 'Times New Roman', Times, serif;
+    font-size: 1.5em;
+    font-weight: normal;
+
+    color: var(--ink);
+    text-shadow: 0 0 0.1px var(--ink-faded);
+
+    box-shadow:
+        inset 0 0 10px rgba(101, 78, 42, 0.1),   /* aged edges */
+        0 0 0 1px rgba(101, 78, 42, 0.1);        /* trimmed leaf edge */
+    
+    filter: blur(0.1px);
+}
+
+@media screen and (width <= 500px) {
+    body {
+        font-size: 1.15em;
+    }
+
+}
+
+h1, h2, h3 {
+    font-family: "Belwe Gotisch", "Junicode", 'Times New Roman', Times, serif;
+
+    font-size: 175%;
+    font-weight: normal;
+    color: var(--ultramarine);
+    letter-spacing: 3.5%;
+    text-align: center;
+    /* font-style: italic; */
+    /* text-shadow: 0 0 0.1px var(--rubric); */
+    /* text-transform: uppercase; */
+    text-shadow: 0 0 0.1px var(--ultramarine);
+    padding-bottom: 10px;
+    border-bottom: solid 1px var(--ink-faded);
+}
+
+h1::first-letter {
+    font-family: "Belwe Gotisch", "Junicode", 'Times New Roman', Times, serif;
+    color: var(--rubric);
+    text-shadow: 0 0 0.1px var(--rubric);
+}
+
+.paraholder {
+    display: grid;
+    grid-template-columns: 0.75fr 10fr;
+    gap: none;
+}
+
+.pilcrow {
+    font-style: normal;
+    font-size: 170%;
+    margin-top: 0.4em;
+    margin-bottom: inherit;
+    text-align: center;
+    font-family: "Belwe Gotisch", "Junicode", 'Times New Roman', Times, serif;
+    color: var(--rubric);
+    text-shadow: 0 0 0.1px var(--rubric);
+}
+
+p {
+    display: inline;
+    letter-spacing: 3.5%;
+    margin-bottom: 0.5em;
+    margin-top: 0.2em;
+
+}
+
+p::first-letter {
+    font-size: 115%;
+}
+
+.blackletter {
+    font-family: 'Gutenberg Textura', "Junicode", Times, serif;
+    display: inline;
+    letter-spacing: 7%;
+    font-size: 102%;
+    color: var(--rubric);
+    text-shadow: 0 0 0.1px var(--rubric);
+}
+
+a,a:visited {
+    font-family: 'Junicode', Times, serif;
+    color: var(--ultramarine);
+    text-decoration: none;
+    font-size: 98%;
+    filter: brightness(105%);
+}
+
+a:hover {
+    filter: brightness(175%);
+}
+
+
