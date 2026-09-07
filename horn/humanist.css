@@ -144,4 +144,28 @@ a:hover {
     filter: brightness(175%);
 }
 
+#righthandlink {
+    text-align: right;
+}
+
+#zoombox{
+    transition: transform .4s;
+}
+
+#zoombox:hover {
+    transform: scale(1.05);
+}
+
+
+.innerlink, .innerlink:visited {
+    font-family: inherit;
+    color: var(--rubric);
+    font-size: 125%;
+    text-shadow: 0 0 1px var(--rubric);
+}
+
+.innerlink:hover {
+    filter: none;
+}
+
 
