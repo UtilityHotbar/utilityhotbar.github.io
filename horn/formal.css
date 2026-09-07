@@ -55,7 +55,7 @@ body {
 
 @media screen and (width <= 500px) {
     body {
-        font-size: 1.15em;
+        font-size: 1em;
     }
 
 }
