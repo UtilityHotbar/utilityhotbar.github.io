@@ -14,7 +14,7 @@
 
 ## Writing
 * [**Promathematheon**](https://docs.google.com/document/d/1KnmkmV9NtkzMR-oHUX1754tPVn105p73oXpMqRBcoo0/edit?usp=sharing) - An attempt to derive a coherent philosophy around the origin of life, intelligent behaviour, high level organisation, human intelligence, artificial intelligence, and what all of this means for our present condition.
-* [**A Clever Name Goes Here**](https://aclevername.substack.com/) - A small substack for occasional pieces related to AI safety, philosophy etc. Selected post: [A Letter to His Highness Louis XV, the King of France](https://aclevername.substack.com/p/a-letter-to-his-highness-louis-xv).
+* [**A Clever Name Goes Here**](https://aclevername.substack.com/) - A small substack for occasional pieces related to AI safety, philosophy etc. Selected post: [The World has a Grounding Problem](https://aclevername.substack.com/p/the-world-has-a-grounding-problem).
 * [**Turning 22 in the Pre-Apocalypse**](signal_flare) - A collection of essays as I face the end of my 21st year on this planet. Covers and questions rationality, AI development, the Humanities, and my own motivations for doing this.
 * [**The Savage Computers**](https://aulddaegs.github.io) - A modern web novel about AI, climate change, and the present state of the world. Includes interactive and non-linear elements. Shortlisted for the UK's [New Media Writing Prize](https://newmediawritingprize.co.uk/) Student Prize.
 * [**Automatic Memory - Issue N**](https://nakade.itch.io/automatic-memory-n) - A zine made by me (graphic design + words).
